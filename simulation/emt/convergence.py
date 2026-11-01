@@ -1,7 +1,8 @@
 """
-해석 시간 간격(dt) 수렴 확인: 50 / 25 / 10 / 1 µs 에서 같은 시나리오의 핵심 지표를 비교한다.
+해석 시간 간격(dt) 수렴 확인: 10 / 5 / 2 / 1 µs 에서 같은 시나리오의 핵심 지표를 비교한다.
+스위칭 모델(5 kHz)이므로 dt 는 샘플링 주기 100 µs 를 나누어 떨어지는 값만 쓴다.
 
-사용법:  python convergence.py        (약 5분, 4코어)
+사용법:  python convergence.py        (약 6분, 4코어)
 출력:    results/convergence.md
 """
 from __future__ import annotations
@@ -18,7 +19,7 @@ sys.path.insert(0, HERE)
 from gfm_gfl_emt import Params, Scenario, simulate, steady_state  # noqa: E402
 
 T = 0.2
-DTS = (50e-6, 25e-6, 10e-6, 1e-6)
+DTS = (10e-6, 5e-6, 2e-6, 1e-6)
 
 
 def run(job):
@@ -62,7 +63,8 @@ def main():
             for k, lab in keys:
                 vals = " | ".join(f"{res[(case, m, dt)][k]:.3f}" for dt in DTS)
                 rows.append(f"| {name} | {m} | {lab} | {vals} |")
-    md = "# 해석 시간 간격 수렴 확인\n\n`python convergence.py` 로 생성. RK4 고정 스텝.\n\n" + "\n".join(rows) + "\n"
+    md = ("# 해석 시간 간격 수렴 확인\n\n`python convergence.py` 로 생성. 5 kHz 스위칭 모델, RK4 고정 스텝. "
+          "기본값은 2 µs.\n\n" + "\n".join(rows) + "\n")
     open(os.path.join(HERE, "results", "convergence.md"), "w", encoding="utf-8").write(md)
     print(md)
 

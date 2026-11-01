@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GFM·GFL 시험 결과</title>
+<meta name="description" content="NERC·AEMO·ERCOT·ENTSO-E·GB·한국 연계기준안의 시험 의도를 EMT 스위칭 모델(2 µs)에 적용한 GFM/GFL 인버터 시험 결과 보고서">
+<style>
+:root {
+  color-scheme: light;
+  --page: #f9f9f7; --surface: #fcfcfb; --surface-2: #f3f2ee;
+  --ink: #0b0b0b; --ink-2: #52514e; --muted: #898781;
+  --grid: #e1e0d9; --axis: #c3c2b7; --border: rgba(11,11,11,.10);
+  --s1: #2a78d6; --s2: #eb6834; --s3: #1baf7a; --s4: #6250d6;
+  --good-ink: #006300; --good-bg: rgba(12,163,12,.11);
+  --bad-ink: #b02a2a; --bad-bg: rgba(208,59,59,.11);
+  --na-bg: rgba(137,135,129,.12);
+  --accent: #2a78d6; --accent-bg: rgba(42,120,214,.08);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --page: #0d0d0d; --surface: #1a1a19; --surface-2: #232321;
+    --ink: #f0efec; --ink-2: #c3c2b7; --muted: #898781;
+    --grid: #2c2c2a; --axis: #383835; --border: rgba(255,255,255,.10);
+    --s1: #3987e5; --s2: #d95926; --s3: #199e70; --s4: #9085e9;
+    --good-ink: #0ca30c; --good-bg: rgba(12,163,12,.16);
+    --bad-ink: #e66767; --bad-bg: rgba(208,59,59,.18);
+    --accent: #3987e5; --accent-bg: rgba(57,135,229,.12);
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --page: #0d0d0d; --surface: #1a1a19; --surface-2: #232321;
+  --ink: #f0efec; --ink-2: #c3c2b7; --muted: #898781;
+  --grid: #2c2c2a; --axis: #383835; --border: rgba(255,255,255,.10);
+  --s1: #3987e5; --s2: #d95926; --s3: #199e70; --s4: #9085e9;
+  --good-ink: #0ca30c; --good-bg: rgba(12,163,12,.16);
+  --bad-ink: #e66767; --bad-bg: rgba(208,59,59,.18);
+  --accent: #3987e5; --accent-bg: rgba(57,135,229,.12);
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--page); color: var(--ink);
+  font-family: "Pretendard", "Apple SD Gothic Neo", "Malgun Gothic", "Noto Sans KR", system-ui, -apple-system, "Segoe UI", sans-serif;
+  line-height: 1.6; -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 1120px; margin: 0 auto; padding: 40px 24px 80px; }
+header h1 { font-size: 34px; line-height: 1.2; margin: 6px 0 10px; letter-spacing: -0.01em; }
+.eyebrow { font-size: 13px; font-weight: 700; color: var(--accent); letter-spacing: .04em; }
+.lede { color: var(--ink-2); font-size: 17px; max-width: 860px; margin: 0; }
+h2 { font-size: 24px; margin: 48px 0 12px; letter-spacing: -0.01em; }
+h3 { font-size: 19px; margin: 0; }
+section.card, .panel { background: var(--surface); border-radius: 14px; box-shadow: 0 0 0 1px var(--border); padding: 22px 24px; }
+.grid { display: grid; gap: 16px; }
+.g2 { grid-template-columns: 1fr 1fr; } .g3 { grid-template-columns: repeat(3, 1fr); } .g4 { grid-template-columns: repeat(4, 1fr); }
+.tile { background: var(--surface); border-radius: 12px; box-shadow: 0 0 0 1px var(--border); padding: 18px 20px; }
+.tile .k { font-size: 13px; color: var(--ink-2); }
+.tile .v { font-size: 34px; font-weight: 800; letter-spacing: -0.02em; line-height: 1.15; margin-top: 4px; }
+.tile .v small { font-size: 16px; font-weight: 600; color: var(--ink-2); margin-left: 4px; }
+.tile .d { font-size: 13px; color: var(--ink-2); margin-top: 6px; }
+.tag { display: inline-block; font-size: 12px; font-weight: 700; padding: 2px 8px; border-radius: 999px; background: var(--surface-2); color: var(--ink-2); margin: 2px 4px 2px 0; }
+.sw { display: inline-block; width: 10px; height: 10px; border-radius: 3px; margin-right: 6px; vertical-align: -1px; }
+table { border-collapse: collapse; width: 100%; font-size: 14px; }
+th, td { text-align: left; padding: 9px 10px; border-bottom: 1px solid var(--grid); vertical-align: top; }
+th { color: var(--ink-2); font-weight: 600; font-size: 13px; background: var(--surface); position: sticky; top: 0; }
+td.num, .num { font-variant-numeric: tabular-nums; }
+.badge { display: inline-flex; align-items: center; gap: 4px; font-weight: 700; font-size: 12.5px; padding: 3px 9px; border-radius: 6px; white-space: nowrap; }
+.badge.ok { background: var(--good-bg); color: var(--good-ink); }
+.badge.ng { background: var(--bad-bg); color: var(--bad-ink); }
+.badge.na { background: var(--na-bg); color: var(--ink-2); }
+.matrix td:nth-child(n+3), .matrix th:nth-child(n+3) { text-align: center; }
+.matrix tr:hover td { background: var(--surface-2); }
+.matrix a { color: var(--ink); text-decoration: none; }
+.matrix a:hover { text-decoration: underline; }
+.test { margin-top: 18px; }
+.test .head { display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; flex-wrap: wrap; }
+.test .id { font-size: 13px; font-weight: 800; color: var(--accent); }
+.test .cond { color: var(--ink-2); font-size: 14px; margin: 6px 0 12px; }
+.verdicts { display: flex; gap: 8px; flex-wrap: wrap; }
+.crit td .val { display: block; font-variant-numeric: tabular-nums; }
+.crit td .badge { margin-top: 4px; }
+.note { font-size: 13px; color: var(--ink-2); margin-top: 8px; }
+.charts { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 14px; }
+.chart { position: relative; min-width: 0; }
+.chart svg { display: block; width: 100%; height: auto; overflow: visible; }
+.chart .title { font-size: 13.5px; font-weight: 700; }
+.chart .legend { display: flex; gap: 14px; font-size: 12.5px; color: var(--ink-2); flex-wrap: wrap; margin: 2px 0; }
+.chart .legend i { display: inline-block; width: 16px; height: 0; border-top: 2.5px solid; vertical-align: middle; margin-right: 5px; }
+.tip { position: absolute; pointer-events: none; background: var(--surface); box-shadow: 0 0 0 1px var(--border), 0 6px 18px rgba(0,0,0,.12);
+  border-radius: 8px; padding: 7px 9px; font-size: 12.5px; line-height: 1.5; white-space: nowrap; display: none; z-index: 5; font-variant-numeric: tabular-nums; }
+.tip .sw { width: 10px; height: 3px; }
+ul.plain { padding-left: 1.2em; margin: 8px 0; } ul.plain li + li { margin-top: 6px; }
+.kv { display: grid; grid-template-columns: max-content 1fr; gap: 6px 18px; font-size: 14px; }
+.kv dt { color: var(--ink-2); } .kv dd { margin: 0; font-variant-numeric: tabular-nums; }
+.toolbar { position: fixed; right: 16px; bottom: 16px; z-index: 10; }
+.toolbar button { font: inherit; font-size: 13px; border: 0; border-radius: 8px; padding: 8px 12px; background: var(--surface); color: var(--ink); box-shadow: 0 0 0 1px var(--border); cursor: pointer; }
+.scroll { overflow-x: auto; }
+footer { margin-top: 48px; font-size: 13px; color: var(--muted); }
+@media (max-width: 760px) {
+  .wrap { padding: 24px 16px 64px; }
+  header h1 { font-size: 26px; }
+  .g2, .g3, .g4, .charts { grid-template-columns: 1fr; }
+  table { font-size: 13px; } th, td { padding: 7px 6px; }
+}
+@media print {
+  .toolbar { display: none; } body { background: #fff; }
+  .test { break-inside: avoid; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <div class="eyebrow">GFM / GFL 지식창고 · EMT 시험 보고서</div>
+  <h1>표준 시험 기준으로 본 GFM과 GFL</h1>
+  <p class="lede">NERC·AEMO·ERCOT·ENTSO-E·GB 계통코드와 한전 연계기준안(초안)의 시험 항목을 EMT 스위칭 모델에 적용해, 같은 하드웨어의 계통추종(GFL)과 계통형성(GFM) 인버터를 시험했습니다. <b>공식 적합성 판정이 아니라</b> 각 시험의 의도를 단일 인버터·테브난 계통 모델에 옮긴 비교 시험입니다.</p>
+</header>
+
+<h2>요약</h2>
+<div class="grid g4" id="tiles"></div>
+<div class="panel" style="margin-top:16px" id="findings"></div>
+
+<h2>판정표</h2>
+<div class="panel scroll"><table class="matrix" id="matrix"></table></div>
+<p class="note">적합 = 해당 시험의 판정 항목을 모두 만족. 항목별 기준과 측정값은 아래 상세에 있습니다. "본 보고서 기준"으로 표시한 항목은 규격이 정성적이어서 이 보고서가 정한 수치입니다.</p>
+
+<h2>시험 조건</h2>
+<div class="grid g2">
+  <section class="card">
+    <h3>모델과 해석</h3>
+    <dl class="kv" id="meta" style="margin-top:12px"></dl>
+  </section>
+  <section class="card">
+    <h3>시험 방식</h3>
+    <ul class="plain">
+      <li>정상상태(2.5 s 램프·정착) 상태에서 시작해, 그래프의 t = 0 에 외란을 줍니다.</li>
+      <li>공식 시험계통(동기기 + 부하 + 대상 설비 + 복제 설비)은 동기기 모델이 없어 <b>무한모선 분리 + 국부 부하</b>로 대신했습니다.</li>
+      <li>GFL 은 기본 설정(PLL 20 Hz, FRT 진입 0.85 pu, 드룹 없음)으로 시험했고, RoCoF 시험에서만 드룹 2 %를 켰습니다. GFL+SI 는 합성관성(H 4 s)을 더한 변형입니다.</li>
+      <li>한국 연계기준안 시험은 전류 한계 1.2 pu 사양과 2.0 pu 사양을 함께 비교했습니다.</li>
+    </ul>
+  </section>
+</div>
+
+<h2>스위칭 파형</h2>
+<div class="panel"><div class="charts" id="hires"></div>
+<p class="note">위상 점프(−20°) 직후 상전류의 2 µs 해석 결과를 10 µs 간격으로 표시. 5 kHz 스위칭 리플(약 0.1 pu 피크-피크)이 기본파 위에 실려 있습니다. 제어기는 반송파 꼭짓점에서 샘플링하므로 리플 평균값을 봅니다.</p></div>
+
+<h2>시험 상세</h2>
+<div id="details"></div>
+
+<h2>수행하지 않은 시험과 한계</h2>
+<div class="grid g2">
+  <section class="card">
+    <h3>미수행 항목</h3>
+    <ul class="plain">
+      <li><b>직렬보상 스텝</b> (ERCOT AGS #8): 직렬 커패시터 계통 모델 없음.</li>
+      <li><b>주파수 스캔·수동성</b> (ERCOT #11, NERC 0~300 Hz): 임피던스 스캔 기능 미구현.</li>
+      <li><b>불평형 고장·역상 응답</b> (EirGrid, IEEE 2800): 3상 평형 모델.</li>
+      <li><b>블랙스타트</b>, <b>단기 과전류 정격</b>(UNIFI 1.5 pu·2 s, HECO), <b>보호 협조</b>.</li>
+      <li><b>모델 검증 시험</b> (NERC MOD-026/027, MISO BPM-015 Appendix I): 실측 비교 대상 없음.</li>
+    </ul>
+  </section>
+  <section class="card">
+    <h3>해석상 주의</h3>
+    <ul class="plain">
+      <li>결과는 이 보고서의 파라미터(Lf 0.2 pu, Xv 0.3 pu, H 4 s, 드룹 2 % 등)에 대한 것입니다. 제어 튜닝에 따라 적합 여부가 바뀔 수 있습니다.</li>
+      <li>단일 등가 인버터입니다. 다수 PCS 상호작용, 집전망, 플랜트 제어기는 없습니다.</li>
+      <li>DC 링크는 700 V 이상적 전원입니다. DC 전압 변동과 배터리 SOC 제약은 반영하지 않았습니다.</li>
+      <li>실제 계통연계 검토는 제조사 EMT 모델과 계통운영자 시험 절차로 해야 합니다.</li>
+    </ul>
+  </section>
+</div>
+
+<footer>
+  생성: <code>simulation/emt/compliance_tests.py</code> → <code>results/compliance.json</code>. 시험 기준 출처는 <code>docs/05-표준-계통코드/</code>.
+</footer>
+</div>
+<div class="toolbar"><button id="theme" aria-label="밝은/어두운 테마 전환">테마</button></div>
+
+<script>
+const DATA = /*REPORT_DATA_START*/{}/*REPORT_DATA_END*/;
+</script>
+<script>
+(() => {
+  const css = (v) => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+  const COL = { 'GFM': '--s1', 'GFL': '--s2', 'GFL+SI': '--s3', 'GFM (I_max 2.0)': '--s4', 'GFL (I_max 2.0)': '--muted' };
+  const DASH = { 'GFL+SI': '6 4', 'GFM (I_max 2.0)': '6 3', 'GFL (I_max 2.0)': '2 3' };
+  const NS = 'http://www.w3.org/2000/svg';
+  const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+  const el = (tag, attrs = {}, parent) => { const n = document.createElementNS(NS, tag); for (const [k, v] of Object.entries(attrs)) n.setAttribute(k, v); if (parent) parent.appendChild(n); return n; };
+  const badge = (v) => v === true ? '<span class="badge ok">✓ 적합</span>' : v === false ? '<span class="badge ng">✗ 부적합</span>' : '<span class="badge na">– 참고</span>';
+  function niceTicks(lo, hi, n = 5) {
+    const span = hi - lo || 1, step0 = span / n, mag = Math.pow(10, Math.floor(Math.log10(step0)));
+    const step = [1, 2, 2.5, 5, 10].map((m) => m * mag).find((s) => span / s <= n) || 10 * mag;
+    const out = []; for (let v = Math.ceil(lo / step) * step; v <= hi + 1e-9; v += step) out.push(+v.toFixed(10));
+    return { ticks: out, step };
+  }
+  const fmt = (v, step) => { const d = Math.min(3, Math.max(0, (String(+step.toPrecision(6)).split('.')[1] || '').length)); return v.toFixed(d); };
+
+  function lineChart(host, title, series, opt = {}) {
+    host.innerHTML = '';
+    const W = opt.W || 520, H = opt.H || 220, m = { l: 48, r: 14, t: 8, b: 32 };
+    const tt = document.createElement('div'); tt.className = 'title'; tt.textContent = title; host.appendChild(tt);
+    if (series.length > 1) {
+      const lg = document.createElement('div'); lg.className = 'legend';
+      series.forEach((s) => { const it = document.createElement('span'); const sw = document.createElement('i'); sw.style.borderTopColor = s.color; if (s.dash) sw.style.borderTopStyle = 'dashed'; it.append(sw, s.label); lg.appendChild(it); });
+      host.appendChild(lg);
+    }
+    const xs = series[0].x, x0 = xs[0], x1 = xs[xs.length - 1];
+    let lo = Infinity, hi = -Infinity; series.forEach((s) => s.y.forEach((v) => { lo = Math.min(lo, v); hi = Math.max(hi, v); }));
+    const pad = (hi - lo) * 0.08 || 0.05; lo -= pad; hi += pad;
+    const X = (v) => m.l + ((v - x0) / (x1 - x0)) * (W - m.l - m.r), Y = (v) => m.t + (1 - (v - lo) / (hi - lo)) * (H - m.t - m.b);
+    const svg = el('svg', { viewBox: `0 0 ${W} ${H}`, role: 'img', 'aria-label': title }); host.appendChild(svg);
+    const yt = niceTicks(lo, hi, 4), xt = niceTicks(x0, x1, 6);
+    yt.ticks.forEach((v) => { el('line', { x1: m.l, x2: W - m.r, y1: Y(v), y2: Y(v), stroke: css('--grid') }, svg); const t = el('text', { x: m.l - 6, y: Y(v) + 4, 'text-anchor': 'end', 'font-size': 11, fill: css('--muted') }, svg); t.textContent = fmt(v, yt.step); });
+    xt.ticks.forEach((v) => { const t = el('text', { x: X(v), y: H - m.b + 16, 'text-anchor': 'middle', 'font-size': 11, fill: css('--muted') }, svg); t.textContent = fmt(v, xt.step); });
+    el('line', { x1: m.l, x2: W - m.r, y1: H - m.b, y2: H - m.b, stroke: css('--axis') }, svg);
+    if (x0 < 0 && x1 > 0) el('line', { x1: X(0), x2: X(0), y1: m.t, y2: H - m.b, stroke: css('--axis'), 'stroke-dasharray': '3 3' }, svg);
+    const xl = el('text', { x: W - m.r, y: H - 2, 'text-anchor': 'end', 'font-size': 11, fill: css('--muted') }, svg); xl.textContent = opt.xlabel || '외란 후 시간 [s]';
+    series.forEach((s) => { let d = ''; s.x.forEach((xv, i) => { d += (i ? 'L' : 'M') + X(xv).toFixed(1) + ' ' + Y(s.y[i]).toFixed(1); });
+      el('path', { d, fill: 'none', stroke: s.color, 'stroke-width': opt.thin ? 1.2 : 2, 'stroke-linejoin': 'round', 'stroke-dasharray': s.dash || '' }, svg); });
+    const cross = el('line', { y1: m.t, y2: H - m.b, stroke: css('--muted'), visibility: 'hidden' }, svg);
+    const dots = series.map((s) => el('circle', { r: 4, fill: s.color, stroke: css('--surface'), 'stroke-width': 2, visibility: 'hidden' }, svg));
+    const tip = document.createElement('div'); tip.className = 'tip'; host.appendChild(tip);
+    const hit = el('rect', { x: m.l, y: m.t, width: W - m.l - m.r, height: H - m.t - m.b, fill: 'transparent' }, svg);
+    const unit = opt.unit || '', sc = opt.xscale || 1;
+    function move(ev) {
+      const pt = svg.createSVGPoint(); pt.x = ev.clientX; pt.y = ev.clientY; const p = pt.matrixTransform(svg.getScreenCTM().inverse());
+      const xv = x0 + ((p.x - m.l) / (W - m.l - m.r)) * (x1 - x0);
+      let i = 0, best = Infinity; xs.forEach((v, k) => { const d = Math.abs(v - xv); if (d < best) { best = d; i = k; } });
+      const px = X(xs[i]); cross.setAttribute('x1', px); cross.setAttribute('x2', px); cross.setAttribute('visibility', 'visible');
+      let html = `<div style="color:${css('--ink-2')}">t = ${(xs[i] * sc).toFixed(sc > 1 ? 2 : 4)} ${sc > 1 ? 'ms' : 's'}</div>`;
+      series.forEach((s, k) => { dots[k].setAttribute('cx', px); dots[k].setAttribute('cy', Y(s.y[i])); dots[k].setAttribute('visibility', 'visible'); html += `<div><span class="sw" style="background:${s.color}"></span>${esc(s.label)}: <b>${s.y[i].toFixed(3)}</b>${unit}</div>`; });
+      tip.innerHTML = html; tip.style.display = 'block';
+      const hr = host.getBoundingClientRect(); let lx = ev.clientX - hr.left + 12, ly = ev.clientY - hr.top - 8;
+      if (lx + tip.offsetWidth > host.offsetWidth) lx -= tip.offsetWidth + 24; tip.style.left = lx + 'px'; tip.style.top = Math.max(0, ly) + 'px';
+    }
+    const leave = () => { cross.setAttribute('visibility', 'hidden'); dots.forEach((d) => d.setAttribute('visibility', 'hidden')); tip.style.display = 'none'; };
+    hit.addEventListener('pointermove', move); hit.addEventListener('pointerdown', move); hit.addEventListener('pointerleave', leave);
+  }
+
+  function render() {
+    if (!DATA.tests) { document.getElementById('details').innerHTML = '<p class="note">시험 데이터가 없습니다. simulation/emt 에서 python compliance_tests.py 를 실행하세요.</p>'; return; }
+    const tests = DATA.tests, M = DATA.meta;
+    // 요약 타일
+    const count = (lab) => { let ok = 0, n = 0; tests.forEach((t) => { if (t.verdict[lab] === undefined || t.verdict[lab] === null) return; n++; if (t.verdict[lab]) ok++; }); return [ok, n]; };
+    const tiles = [['GFL', '계통추종, PLL 20 Hz'], ['GFM', '계통형성, VSM H 4 s']].map(([lab, d]) => { const [ok, n] = count(lab); return `<div class="tile"><div class="k"><span class="sw" style="background:${css(COL[lab])}"></span>${lab} 적합</div><div class="v">${ok}<small>/ ${n} 시험</small></div><div class="d">${d}</div></div>`; });
+    tiles.push(`<div class="tile"><div class="k">해석 시간 간격</div><div class="v">${M.dt_us}<small>µs</small></div><div class="d">RK4 고정 스텝, 기록 100 µs</div></div>`);
+    tiles.push(`<div class="tile"><div class="k">스위칭</div><div class="v">${M.f_sw / 1000}<small>kHz</small></div><div class="d">2레벨 SVPWM, 샘플링 ${M.f_samp / 1000} kHz</div></div>`);
+    document.getElementById('tiles').innerHTML = tiles.join('');
+    // 주요 발견: 데이터에서 자동 생성
+    const fails = (lab) => tests.filter((t) => t.verdict[lab] === false).map((t) => `${t.id} ${t.title}`);
+    const passes = (lab) => tests.filter((t) => t.verdict[lab] === true).map((t) => t.id);
+    const f = [];
+    f.push(`<li><b>GFM 부적합</b>: ${fails('GFM').length ? fails('GFM').map(esc).join(', ') : '없음'}</li>`);
+    f.push(`<li><b>GFL 부적합</b>: ${fails('GFL').length ? fails('GFL').map(esc).join(', ') : '없음'}</li>`);
+    const kr = tests.find((t) => t.id === 'T13');
+    if (kr) f.push(`<li><b>한국 연계기준안 고장전류</b>: ${Object.entries(kr.verdict).map(([l, v]) => `${esc(l)} ${v ? '적합' : '부적합'}`).join(', ')}. 2.0 pu·140 ms 는 제어 방식보다 <b>전류 정격</b>이 좌우하며, 전압원 동작 요건까지 만족하려면 GFM 이면서 2.0 pu 사양이어야 합니다.</li>`);
+    document.getElementById('findings').innerHTML = `<h3>주요 발견</h3><ul class="plain">${f.join('')}</ul>`;
+    // 판정표
+    const labs = ['GFL', 'GFM', 'GFL+SI', 'GFL (I_max 2.0)', 'GFM (I_max 2.0)'].filter((l) => tests.some((t) => t.labels.includes(l)));
+    let h = `<thead><tr><th>구분</th><th>시험</th>${labs.map((l) => `<th><span class="sw" style="background:${css(COL[l])}"></span>${esc(l)}</th>`).join('')}</tr></thead><tbody>`;
+    tests.forEach((t) => { h += `<tr><td style="color:${css('--ink-2')}">${esc(t.group)}</td><td><a href="#${t.id}"><b>${t.id}</b> ${esc(t.title)}</a></td>${labs.map((l) => `<td>${t.labels.includes(l) ? badge(t.verdict[l]) : '<span style="color:var(--muted)">—</span>'}</td>`).join('')}</tr>`; });
+    document.getElementById('matrix').innerHTML = h + '</tbody>';
+    // 조건
+    const kv = [['해석', `RK4 고정 스텝, dt = ${M.dt_us} µs`], ['컨버터', `2레벨 VSC, 스위칭 ${M.f_sw / 1000} kHz, min-max 영상분 주입(SVPWM 등가)`], ['제어 샘플링', `${M.f_samp / 1000} kHz (반송파 꼭짓점 동기), 1샘플 계산 지연`], ['전압 기준', `DC ${M.V_dc} V / AC ${M.V_ac_ll} V(선간 실효), 최대 출력 ${M.V_conv_max} pu`], ['필터·변압기', `Lf ${M.Lf}, Cf ${M.Cf}, Rd ${M.Rd}, Lt ${M.Lt} pu`], ['전류', `한계 ${M.I_max} pu, 전류제어 대역 ${M.f_cc} Hz`], ['GFL', `SRF-PLL ${M.f_pll} Hz, FRT 고정 무효전류`], ['GFM', `VSM H ${M.H} s, 드룹 ${M.droop * 100} %, 가상 임피던스 ${M.Rv} + j${M.Xv} pu`]];
+    document.getElementById('meta').innerHTML = kv.map(([k, v]) => `<dt>${k}</dt><dd>${esc(v)}</dd>`).join('');
+    // 스위칭 파형
+    const t7 = tests.find((t) => t.hires);
+    if (t7) {
+      const box = document.getElementById('hires'); box.innerHTML = '';
+      ['GFL', 'GFM'].forEach((lab) => { const hh = t7.hires[lab]; if (!hh) return; const d = document.createElement('div'); d.className = 'chart'; box.appendChild(d);
+        const x = hh.t.map((v) => v * 1000);
+        lineChart(d, `${lab} 상전류 [pu]`, [{ label: 'i_a', x, y: hh.ia, color: css('--s1') }, { label: 'i_b', x, y: hh.ib, color: css('--s2') }, { label: 'i_c', x, y: hh.ic, color: css('--s3'), dash: '5 3' }], { xlabel: '점프 후 시간 [ms]', unit: ' pu', thin: true, xscale: 1 }); });
+    }
+    // 상세
+    const det = document.getElementById('details'); det.innerHTML = '';
+    tests.forEach((t) => {
+      const s = document.createElement('section'); s.className = 'card test'; s.id = t.id;
+      let html = `<div class="head"><div><div class="id">${t.id} · ${esc(t.group)}</div><h3>${esc(t.title)}</h3></div><div class="verdicts">${t.labels.map((l) => `<span><span class="sw" style="background:${css(COL[l])}"></span><span style="font-size:13px;color:${css('--ink-2')}">${esc(l)}</span> ${badge(t.verdict[l])}</span>`).join('')}</div></div>`;
+      html += `<div style="margin-top:6px">${t.refs.map((r) => `<span class="tag">${esc(r)}</span>`).join('')}</div><p class="cond">조건: ${esc(t.cond)}</p>`;
+      html += `<div class="scroll"><table class="crit"><thead><tr><th style="width:18%">판정 항목</th><th style="width:26%">기준</th>${t.labels.map((l) => `<th>${esc(l)}</th>`).join('')}</tr></thead><tbody>`;
+      t.criteria.forEach((c) => { html += `<tr><td><b>${esc(c.name)}</b><div class="note" style="margin-top:2px">${esc(c.ref)}</div></td><td>${esc(c.threshold)}</td>${t.labels.map((l) => `<td><span class="val">${esc(c.values[l])}</span>${badge(c.passes[l])}</td>`).join('')}</tr>`; if (c.note) html += `<tr><td></td><td colspan="${1 + t.labels.length}" class="note" style="border-bottom:1px solid var(--grid)">${esc(c.note)}</td></tr>`; });
+      html += `</tbody></table></div><div class="charts"></div>`;
+      s.innerHTML = html; det.appendChild(s);
+      const cbox = s.querySelector('.charts');
+      t.charts.forEach((ch) => { const d = document.createElement('div'); d.className = 'chart'; cbox.appendChild(d);
+        const zoom = ch.title.includes('60 ms');
+        const series = t.labels.map((l) => ({ label: l, x: ch.series[l].t.map((v) => zoom ? v * 1000 : v), y: ch.series[l][ch.key], color: css(COL[l]), dash: DASH[l] }));
+        const unit = ch.key === 'freq' ? ' Hz' : ch.key === 'delta_deg' ? '°' : ' pu';
+        lineChart(d, ch.title, series, { unit, xlabel: zoom ? '외란 후 시간 [ms]' : '외란 후 시간 [s]', xscale: zoom ? 1 : 1 }); });
+    });
+  }
+  function toggleTheme() { const r = document.documentElement; const dark = r.dataset.theme ? r.dataset.theme === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches; r.dataset.theme = dark ? 'light' : 'dark'; try { localStorage.setItem('gfm-report-theme', r.dataset.theme); } catch (e) {} render(); }
+  try { const t = localStorage.getItem('gfm-report-theme'); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
+  document.getElementById('theme').onclick = toggleTheme;
+  matchMedia('(prefers-color-scheme: dark)').addEventListener?.('change', render);
+  render();
+})();
+</script>
+</body>
+</html>

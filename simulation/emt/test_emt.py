@@ -1,8 +1,9 @@
 """
-EMT 모델 회귀 테스트 (pytest 또는 `python test_emt.py` 로 실행, 약 1분)
+EMT 모델 회귀 테스트 (pytest 또는 `python test_emt.py` 로 실행, 약 2분)
 
 물리적으로 반드시 성립해야 하는 성질만 검사한다.
-속도를 위해 dt = 10 µs 로 돌린다. 1 µs 결과와의 차이는 convergence.py 로 확인한다.
+- 물리 성질 검사: 속도를 위해 평균값 모델(converter="average"), dt = 10 µs
+- 스위칭 모델 검사: 기본 설정(5 kHz PWM, dt = 2 µs)으로 정상상태·리플·변조 한계 확인
 """
 import math
 import os
@@ -11,13 +12,14 @@ import sys
 import numpy as np
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from gfm_gfl_emt import Params, Scenario, simulate, steady_state  # noqa: E402
+from gfm_gfl_emt import Params, Scenario, replace, simulate, steady_state  # noqa: E402
 
 T_EV = 0.2
 DT = 10e-6
 
 
 def _run(mode, p, **ev):
+    p = replace(p, converter="average")
     x0 = steady_state(mode, p, dt=DT)
     r = simulate(mode, p, Scenario(**ev), x0=x0, dt=DT)
     t = np.asarray(r["t"]) - T_EV
@@ -79,6 +81,23 @@ def test_gfm_current_limit_during_fault():
     m = (t > 0.02) & (t < 0.15)
     assert r["I"][m].max() < 1.3
     assert abs(r["P"][t > 1.2].mean() - 0.8) < 0.08
+
+
+def test_switching_model_steady_state_and_ripple():
+    """5 kHz 스위칭 모델: 샘플 평균은 지령을 추종하고, 순시 전류에는 스위칭 리플이 있다."""
+    p = Params(P_ref=0.5, scr=3.0)                       # 기본 converter="switching"
+    assert abs(p.V_conv_max - 700 / math.sqrt(3) / (380 * math.sqrt(2 / 3))) < 1e-9   # 1.302 pu
+    for mode in ("GFL", "GFM"):
+        r = simulate(mode, p, Scenario(t_end=1.0, p_ref=lambda t: 0.5 * min(1.0, t / 0.3)),
+                     dt=2e-6, hires=(0.95, 0.97))
+        t, P = np.asarray(r["t"]), np.asarray(r["P"])
+        assert abs(P[t > 0.8].mean() - 0.5) < 0.05, mode
+        h = r["hires"]
+        th, ia = np.asarray(h["t"]), np.asarray(h["ia"])
+        A = np.vstack([np.cos(2 * np.pi * 60 * th), np.sin(2 * np.pi * 60 * th)]).T
+        c, *_ = np.linalg.lstsq(A, ia, rcond=None)
+        ripple = np.ptp(ia - A @ c)
+        assert 0.03 < ripple < 0.3, (mode, ripple)       # 5 kHz 리플 존재 (Lf 0.2 pu 기준 약 0.1 pu)
 
 
 if __name__ == "__main__":

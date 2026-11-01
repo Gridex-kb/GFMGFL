@@ -4,13 +4,17 @@ GFM / GFL 인버터 평균값 EMT 시뮬레이터 (교육·비교용)
 
 - 3상 순시값을 복소 αβ 공간벡터로 다룬다 (x = xα + j·xβ, 진폭 불변 변환).
   |v| = 1 pu 이면 상전압 진폭이 정격이다. P = Re(v·i*), Q = Im(v·i*).
-- 스위칭을 평균화한 전압형 컨버터(VSC) + LCL 필터(커패시터 직렬 댐핑저항) +
-  변압기 + 테브난 등가 계통(SCR, X/R) + PCC 국부 부하 + 계통 차단기.
+- 2레벨 전압형 컨버터(VSC) + LCL 필터(커패시터 직렬 댐핑저항) + 변압기 +
+  테브난 등가 계통(SCR, X/R) + PCC 국부 부하 + 계통 차단기.
+  * converter="switching"(기본): 5 kHz 삼각파 PWM(min-max 영상분 주입 = SVPWM 등가),
+    DC 700 V / AC 380 V, 반송파 꼭짓점 동기 샘플링(10 kHz, 2회 갱신), 1샘플 계산 지연.
+  * converter="average": 스위칭 평균화 + 1차 지연 근사 (빠른 검토·회귀 테스트용).
 - 같은 하드웨어·같은 내부 전류제어기에 외부 루프만 바꿔 GFL / GFM 을 비교한다.
     * GFL : SRF-PLL → P/Q(또는 V) 지령 → dq 전류 지령 (+선택: 합성관성)
     * GFM : VSM(가상동기기, 관성 H·댐핑 D) → 내부 기전력 E∠θ →
             동적 가상 인덕턴스(가상 어드미턴스) → 전류 지령 (원형 전류제한)
-- 고정 스텝 RK4 적분, 기본 해석 시간 간격(solution time step) dt = 1 µs, 기록 간격 100 µs.
+- 고정 스텝 RK4 적분, 기본 해석 시간 간격(solution time step) dt = 2 µs, 기록 간격 100 µs
+  (반송파 꼭짓점과 동기되므로 기록값은 리플 평균값에 해당).
   단위는 인버터 정격 기준 pu, 시간은 초.
 
 이 모델은 개념 검증·교육용이다. 계통연계 검토에는 제조사 EMT 모델(PSCAD 등)을 써야 한다.
@@ -26,7 +30,9 @@ from dataclasses import asdict, dataclass, field, replace
 from typing import Callable
 
 TWO_PI = 2.0 * math.pi
-DT_DEFAULT = 1e-6        # 해석 시간 간격 [s]
+A120 = cmath.exp(-1j * TWO_PI / 3)   # b상 추출: Re(v·A120)
+A240 = cmath.exp(1j * TWO_PI / 3)    # c상 추출: Re(v·A240)
+DT_DEFAULT = 2e-6        # 해석 시간 간격 [s]
 RECORD_DT_DEFAULT = 1e-4 # 결과 기록 간격 [s]
 
 
@@ -40,7 +46,7 @@ class Params:
     scr: float = 3.0              # 단락비 (인버터 정격 기준)
     xr: float = 10.0              # 계통 X/R
     # 필터·변압기 [pu]
-    Lf: float = 0.15
+    Lf: float = 0.20              # 컨버터측 필터 [pu]
     Rf: float = 0.005
     Cf: float = 0.05              # 커패시터 서셉턴스 [pu]
     Rd: float = 2.0               # 커패시터 직렬 댐핑 저항 [pu]
@@ -51,8 +57,13 @@ class Params:
     # 공통 내부 전류제어
     f_cc: float = 800.0           # 전류제어 대역폭 [Hz]
     I_max: float = 1.2            # 전류 한계 [pu]
-    V_conv_max: float = 1.4       # 컨버터 출력 전압 한계 (DC링크) [pu]
-    t_delay: float = 150e-6       # 계산·PWM 지연 (1차 지연 근사, 10 kHz 샘플 × 1.5) [s]. 0 이면 없음
+    # 전압 기준: DC 링크 700 V, AC 380 V(선간 실효). 1 pu = 상전압 진폭 380·√2/√3 = 310.3 V
+    V_dc: float = 700.0           # DC 링크 전압 [V] (이상적 직류원으로 가정)
+    V_ac_ll: float = 380.0        # AC 정격 선간전압 실효값 [V]
+    modulation: str = "svpwm"     # "svpwm": 최대 상전압 진폭 V_dc/√3, "spwm": V_dc/2
+    converter: str = "switching"  # "switching" 또는 "average"
+    f_sw: float = 5000.0          # 스위칭(반송파) 주파수 [Hz]. 샘플링은 2 × f_sw (2회 갱신)
+    t_delay: float = 150e-6       # average 모델 전용: 계산·PWM 지연 1차 근사 [s] (= 1.5 / 10 kHz)
     # 공통 지령
     P_ref: float = 0.5
     V_ref: float = 1.0
@@ -82,6 +93,17 @@ class Params:
     ff_gain: float = 0.0          # 전류제어 전압 피드포워드 이득. 지연이 있는 약계통에서 순시 피드포워드는
                                   # 공통 내부루프 불안정(100~200 Hz)을 일으키므로 기본은 끔 (README 참고)
     f_vff: float = 100.0          # 전압 피드포워드 LPF (dq 좌표) [Hz]. 0 이면 순시값
+
+    @property
+    def V_base_peak(self) -> float:
+        """1 pu 상전압 진폭 [V]."""
+        return self.V_ac_ll * math.sqrt(2.0 / 3.0)
+
+    @property
+    def V_conv_max(self) -> float:
+        """선형 변조 영역에서 컨버터가 낼 수 있는 최대 상전압 진폭 [pu] (700 V/380 V, SVPWM → 1.302)."""
+        vmax = self.V_dc / math.sqrt(3.0) if self.modulation == "svpwm" else self.V_dc / 2.0
+        return vmax / self.V_base_peak
 
     @property
     def wb(self) -> float:
@@ -144,6 +166,17 @@ class Inverter:
         self.frt = False  # GFL FRT 모드 (스텝마다 갱신되는 이산 상태)
         self.t_frt = -1.0
         self.G_L = p.P_load  # 저항 부하 컨덕턴스 (1 pu 전압에서 P_load)
+        # 스위칭·디지털 제어 상태
+        self.sw = p.converter == "switching"
+        self.Ts = 1.0 / (2.0 * p.f_sw)          # 샘플링 주기 (반송파 꼭짓점)
+        self.Tc = 1.0 / p.f_sw                  # 반송파 주기
+        self.vdc = p.V_dc / p.V_base_peak       # DC 전압 [pu]
+        self.meas = (1 + 0j, 0j)                # 샘플-홀드된 (v_pcc, i_f)
+        self.v_pending = 1 + 0j                 # 이번 샘플에서 계산된 전압 지령 (다음 샘플에 적용)
+        self.v_applied = 1 + 0j                 # 현재 PWM 에 적용 중인 지령 (αβ, pu)
+        self.vpole = 1 + 0j                     # 현재 스위치 상태가 만드는 컨버터 전압 (αβ, pu)
+        self.next_sample = 0.0
+        self.duty = (0.0, 0.0, 0.0)
         # 출력 버퍼
         self.aux: dict = {}
 
@@ -160,6 +193,37 @@ class Inverter:
                 self.frt, self.t_frt = True, t
             elif self.frt and x[VF] > self.p.gfl_frt_exit and t - self.t_frt > self.p.gfl_frt_hold:
                 self.frt = False
+
+    # ---- 디지털 제어 샘플링과 PWM ----
+    def pcc_voltage(self, t: float, x: list[float]) -> complex:
+        i_f = complex(x[IF_RE], x[IF_IM])
+        i_g = complex(x[IG_RE], x[IG_IM]) if self.sc.breaker_closed(t) else 0j
+        G = self.G_L + (self.sc.pcc_fault_g(t) if self.sc.pcc_fault_g else 0.0)
+        return (complex(x[VC_RE], x[VC_IM]) + self.p.Rd * (i_f - i_g)) / (1.0 + self.p.Rd * G)
+
+    def sample(self, t: float, x: list[float]) -> None:
+        """반송파 꼭짓점에서 측정을 샘플-홀드하고, 지령을 계산해 다음 샘플에 적용 (1샘플 지연)."""
+        self.meas = (self.pcc_voltage(t, x), complex(x[IF_RE], x[IF_IM]))
+        self.v_applied = self.v_pending
+        self.deriv(t, x)
+        self.v_pending = self.aux["v_cmd"]
+        # min-max 영상분 주입 (SVPWM 등가) → 상별 듀티 [-1, 1]
+        v = self.v_applied
+        va = v.real
+        vb = (v * A120).real
+        vc = (v * A240).real
+        v0 = -0.5 * (max(va, vb, vc) + min(va, vb, vc))
+        h = 0.5 * self.vdc
+        self.duty = tuple(max(-1.0, min(1.0, (vx + v0) / h)) for vx in (va, vb, vc))
+
+    def pwm(self, t: float) -> None:
+        """삼각파 반송파(-1~1, t=0 에서 골)와 비교해 스위치 상태 → 극전압 αβ."""
+        ph = (t / self.Tc) % 1.0
+        c = 4.0 * ph - 1.0 if ph < 0.5 else 3.0 - 4.0 * ph
+        h = 0.5 * self.vdc
+        sa, sb, sc_ = (h if d > c else -h for d in self.duty)
+        # 진폭 불변 Clarke: (2/3)(va + vb·e^{j2π/3} + vc·e^{-j2π/3}), 영상분은 자동 제거
+        self.vpole = (2.0 / 3.0) * (sa + sb * A120.conjugate() + sc_ * A240.conjugate())
 
     # ---- 미분방정식 ----
     def deriv(self, t: float, x: list[float]) -> list[float]:
@@ -182,17 +246,19 @@ class Inverter:
         L_tot = p.Lt + Xth
         R_tot = p.Rt + Rth
 
-        # 측정
-        s = v_p * i_f.conjugate()
-        P, Q = s.real, s.imag
-        Vmag = abs(v_p)
+        # 측정: 스위칭 모델은 샘플-홀드 값, 평균 모델은 순시값을 제어기에 넣는다
+        v_m, i_m = self.meas if self.sw else (v_p, i_f)
+        s_m = v_m * i_m.conjugate()
+        P, Q = s_m.real, s_m.imag
+        Vmag = abs(v_m)
+        s_inst = v_p * i_f.conjugate()
         P_ref = sc.p_ref(t) if sc.p_ref else p.P_ref
 
         dx = [0.0] * N_STATES
         th_c = x[TH_C]
         rot = cmath.exp(-1j * th_c)
-        i_dq = i_f * rot
-        v_dq = v_p * rot
+        i_dq = i_m * rot
+        v_dq = v_m * rot
         # 전류제어 피드포워드용 전압: dq 좌표에서 LPF (f_vff <= 0 이면 순시값)
         v_ff = complex(x[VFF_D], x[VFF_Q]) if p.f_vff > 0 else v_dq
         saturated = False
@@ -282,8 +348,11 @@ class Inverter:
             d_cc = self.ki_c * err
             dx[XCC_RE], dx[XCC_IM] = d_cc.real, d_cc.imag
         v_cmd = v_conv_dq * cmath.exp(1j * th_c)
+        if self.sw:
+            # 스위치 상태가 만든 극전압 (스텝 시작 시 결정, 스텝 동안 일정)
+            v_conv = self.vpole
         # 계산·PWM 지연 (1차 지연): 실제 컨버터 출력은 지령을 늦게 따라간다
-        if p.t_delay > 0:
+        elif p.t_delay > 0:
             v_conv = complex(x[VD_RE], x[VD_IM])
             d_vd = (v_cmd - v_conv) / p.t_delay
             dx[VD_RE], dx[VD_IM] = d_vd.real, d_vd.imag
@@ -309,8 +378,8 @@ class Inverter:
         d_vff = self.w_vff * (v_dq - v_ff) if p.f_vff > 0 else 0j
         dx[VFF_D], dx[VFF_Q] = d_vff.real, d_vff.imag
 
-        self.aux.update(P=P, Q=Q, V=Vmag, v_p=v_p, i_f=i_f, i_g=i_g, e_g=e_g,
-                        i_ref=i_ref, saturated=saturated, closed=closed)
+        self.aux.update(P=s_inst.real, Q=s_inst.imag, V=abs(v_p), v_p=v_p, i_f=i_f, i_g=i_g, e_g=e_g,
+                        i_ref=i_ref, saturated=saturated, closed=closed, v_cmd=v_cmd, v_conv=v_conv)
         return dx
 
 
@@ -319,7 +388,8 @@ class Inverter:
 # ----------------------------------------------------------------------------
 def simulate(mode: str, p: Params, sc: Scenario, dt: float = DT_DEFAULT,
              record_every: int | None = None, x0: list[float] | None = None,
-             record_dt: float = RECORD_DT_DEFAULT) -> dict:
+             record_dt: float = RECORD_DT_DEFAULT,
+             hires: tuple[float, float] | None = None) -> dict:
     """RK4 고정 스텝. 결과는 리스트 dict (numpy 변환은 호출측).
 
     x0 를 주면 그 상태에서 이어서 시작한다(웜스타트). 결과의 'x_final' 을 다음 x0 로 쓸 수 있다.
@@ -341,9 +411,29 @@ def simulate(mode: str, p: Params, sc: Scenario, dt: float = DT_DEFAULT,
         "t", "P", "Q", "V", "I", "freq", "grid_freq", "delta_deg", "E",
         "ia", "ib", "ic", "va", "vb", "vc", "sat", "id_ref_mag")}
     n = int(round(sc.t_end / dt))
-    a120 = cmath.exp(-1j * TWO_PI / 3)
+    a120 = A120
+    hires_out = {k: [] for k in ("t", "ia", "ib", "ic", "va", "vb", "vc")} if hires else None
+    if inv.sw:
+        if x0 is not None:  # 웜스타트: 홀드 값을 현재 상태로 초기화
+            inv.meas = (inv.pcc_voltage(0.0, x), complex(x[IF_RE], x[IF_IM]))
+            inv.deriv(0.0, x)
+            inv.v_pending = inv.v_applied = inv.aux["v_cmd"]
+        eps = 0.25 * dt
     for k in range(n + 1):
         t = k * dt
+        if inv.sw:
+            if t >= inv.next_sample - eps:
+                inv.sample(t, x)
+                inv.next_sample += inv.Ts
+            inv.pwm(t)
+        if hires and hires[0] <= t <= hires[1]:
+            v_p = inv.pcc_voltage(t, x)
+            i_f = complex(x[IF_RE], x[IF_IM])
+            hires_out["t"].append(t)
+            for nm, z in (("i", i_f), ("v", v_p)):
+                hires_out[nm + "a"].append(z.real)
+                hires_out[nm + "b"].append((z * a120).real)
+                hires_out[nm + "c"].append((z * A240).real)
         if k % record_every == 0:
             inv.deriv(t, x)
             a = inv.aux
@@ -361,10 +451,10 @@ def simulate(mode: str, p: Params, sc: Scenario, dt: float = DT_DEFAULT,
             # 순시 상값 (진폭 불변: a상 = Re, b/c 는 회전)
             out["ia"].append(i_f.real)
             out["ib"].append((i_f * a120).real)
-            out["ic"].append((i_f * a120.conjugate()).real)
+            out["ic"].append((i_f * A240).real)
             out["va"].append(v_p.real)
             out["vb"].append((v_p * a120).real)
-            out["vc"].append((v_p * a120.conjugate()).real)
+            out["vc"].append((v_p * A240).real)
             out["sat"].append(1.0 if a["saturated"] else 0.0)
             out["id_ref_mag"].append(abs(a["i_ref"]))
         if k == n:
@@ -388,6 +478,8 @@ def simulate(mode: str, p: Params, sc: Scenario, dt: float = DT_DEFAULT,
     out["mode"] = mode
     out["scenario"] = sc.name
     out["x_final"] = x
+    if hires_out is not None:
+        out["hires"] = hires_out
     return out
 
 
