@@ -119,7 +119,8 @@ def scenario(ev: dict, t_end: float) -> Scenario:
     elif k == "fault":
         d["grid_v"] = lambda t: 0.3 if T <= t < T + 0.15 else 1.0
     elif k == "pcc_fault":
-        d["pcc_fault_g"] = lambda t: 20.0 if T <= t < T + 0.2 else 0.0
+        # 고장 제거는 1 ms 램프 (계단 제거 시 대수 PCC 노드에 비물리적 전압 스파이크가 생김)
+        d["pcc_fault_g"] = lambda t: 20.0 if T <= t < T + 0.2 else (20.0 * (1.0 - (t - T - 0.2) / 1e-3) if T + 0.2 <= t < T + 0.201 else 0.0)
     return Scenario(**d)
 
 

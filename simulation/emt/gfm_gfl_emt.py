@@ -339,6 +339,9 @@ class Inverter:
             # --- 전압 제어 → 내부 기전력 E ---
             dx[X_V] = p.gfm_vctrl_ki * (p.V_ref - x[VF])
             E = 1.0 + max(-0.3, min(0.3, x[X_V]))
+            # anti-windup: E 가 한계에 걸리면 한계 밖으로 더 쌓지 않는다 (고장 후 과전압 방지)
+            if (x[X_V] >= 0.3 and dx[X_V] > 0) or (x[X_V] <= -0.3 and dx[X_V] < 0):
+                dx[X_V] = 0.0
             # --- 동적 가상 인덕턴스 (θ 회전좌표) ---
             #   (Xv/ωb) di/dt = E - v - Rv·i - j·ω·Xv·i
             i_v = complex(x[IV_RE], x[IV_IM])

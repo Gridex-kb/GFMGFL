@@ -161,7 +161,7 @@ def stacked(plt, results, panels, title, fname, xlim=None, refs=None, label_end=
     axes[-1].set_xlabel("외란 후 시간 [s]")
     if xlim:
         axes[-1].set_xlim(*xlim)
-    fig.suptitle(title, x=0.01, ha="left", fontsize=12, fontweight="bold")
+    fig.suptitle(title + " · 계통 60 Hz", x=0.01, ha="left", fontsize=12, fontweight="bold")
     fig.tight_layout(rect=(0, 0, 1, 0.93))
     fig.savefig(os.path.join(RES, fname), dpi=140)
     plt.close(fig)
@@ -182,7 +182,7 @@ def waveforms(plt, results, fname, title, win=(-0.03, 0.06)):
     h, l = np.atleast_1d(axes)[0].get_legend_handles_labels()
     fig.legend(h, l, loc="upper right", bbox_to_anchor=(0.995, 0.955), ncol=3)
     np.atleast_1d(axes)[-1].set_xlabel("외란 후 시간 [ms]")
-    fig.suptitle(title, x=0.01, ha="left", fontsize=12, fontweight="bold")
+    fig.suptitle(title + " · 계통 60 Hz", x=0.01, ha="left", fontsize=12, fontweight="bold")
     fig.tight_layout(rect=(0, 0, 1, 0.92))
     fig.savefig(os.path.join(RES, fname), dpi=140)
     plt.close(fig)
@@ -205,9 +205,9 @@ def stability_map(plt, table, scrs, rows, fname):
             ax.add_patch(plt.Rectangle((j + 0.04, i + 0.08), 0.92, 0.84, color=col, alpha=0.14, lw=0))
             ax.text(j + 0.5, i + 0.5, ("✓ 안정" if ok else "✗ 불안정"), ha="center", va="center",
                     color=("#006300" if ok else "#b02a2a"), fontsize=9, fontweight="bold")
-    fig.suptitle("약계통 안정도 맵 — SCR 5에서 목표 SCR로 급변(선로 트립), P = 0.8 pu, 1.8 s 관찰",
+    fig.suptitle("약계통 안정도 맵 — SCR 5에서 목표 SCR로 급변, P = 0.8 pu, 계통 60 Hz",
                  x=0.01, ha="left", fontsize=11, fontweight="bold")
-    fig.subplots_adjust(left=0.22, right=0.99, top=0.80, bottom=0.03)
+    fig.subplots_adjust(left=0.27, right=0.99, top=0.80, bottom=0.03)
     fig.savefig(os.path.join(RES, fname), dpi=140)
     plt.close(fig)
 
@@ -314,17 +314,17 @@ def main():
                    for m in ("GFL", "GFM")], args.workers)
     # 웜스타트 파라미터는 SCR 5, 시나리오가 1.5로 바꾼다
     stacked(plt, wg, [("P", "P [pu]"), ("V", "|V_PCC| [pu]"), ("I", "|i| [pu]")],
-            "선로 트립: SCR 5 → 1.5 (P = 0.8 pu, GFL PLL 50 Hz)", "fig04_weak_grid.png", xlim=(-0.05, 1.4))
+            "선로 트립: SCR 5 → 1.5 (P = 0.8 pu, GFL PLL 대역폭 50 Hz)", "fig04_weak_grid.png", xlim=(-0.05, 1.4))
     for m, r in wg.items():
         d = osc_desc(r, 0.6)
-        summary.append(("SCR 5→1.5 (PLL 50 Hz)", m, "안정" if is_stable(r, 0.6) else "불안정(지속 진동)",
+        summary.append(("SCR 5→1.5 (PLL 대역폭 50 Hz)", m, "안정" if is_stable(r, 0.6) else "불안정(지속 진동)",
                         f"5~300 Hz 진동 {d['osc_amp']:.4f} pu @ {d['osc_f']:.0f} Hz, 저주파 스윙 {d['swing_std']:.4f} pu"))
     data["weak_grid"] = {m: downsample(r, ["P", "V", "I"], t1=1.4, n=1600) for m, r in wg.items()}
 
     # 4) 안정도 맵 ---------------------------------------------------------
     scrs = [5.0, 3.0, 2.0, 1.5, 1.3, 1.2] if not args.quick else [3.0, 1.5]
-    rows = {"GFL · PLL 10 Hz": ("GFL", 10.0), "GFL · PLL 35 Hz": ("GFL", 35.0),
-            "GFL · PLL 50 Hz": ("GFL", 50.0), "GFM · VSM": ("GFM", 20.0)}
+    rows = {"GFL · PLL 대역폭 10 Hz": ("GFL", 10.0), "GFL · PLL 대역폭 35 Hz": ("GFL", 35.0),
+            "GFL · PLL 대역폭 50 Hz": ("GFL", 50.0), "GFM · VSM": ("GFM", 20.0)}
     jobs = []
     for row, (m, fp) in rows.items():
         for s in scrs:

@@ -134,7 +134,7 @@ footer { margin-top: 48px; font-size: 13px; color: var(--muted); }
     <ul class="plain">
       <li>정상상태(2.5 s 램프·정착) 상태에서 시작해, 그래프의 t = 0 에 외란을 줍니다.</li>
       <li>공식 시험계통(동기기 + 부하 + 대상 설비 + 복제 설비)은 동기기 모델이 없어 <b>무한모선 분리 + 국부 부하</b>로 대신했습니다.</li>
-      <li>GFL 은 기본 설정(PLL 20 Hz, FRT 진입 0.85 pu, 드룹 없음)으로 시험했고, RoCoF 시험에서만 드룹 2 %를 켰습니다. GFL+SI 는 합성관성(H 4 s)을 더한 변형입니다.</li>
+      <li>GFL 은 기본 설정(PLL 대역폭 20 Hz, FRT 진입 0.85 pu, 드룹 없음)으로 시험했고, RoCoF 시험에서만 드룹 2 %를 켰습니다. GFL+SI 는 합성관성(H 4 s)을 더한 변형입니다.</li>
       <li>한국 연계기준안 시험은 전류 한계 1.2 pu 사양과 2.0 pu 사양을 함께 비교했습니다.</li>
     </ul>
   </section>
@@ -243,7 +243,7 @@ const DATA = /*REPORT_DATA_START*/{"meta":{"dt_us":2.0,"f_sw":5000.0,"f_samp":10
     const tests = DATA.tests, M = DATA.meta;
     // 요약 타일
     const count = (lab) => { let ok = 0, n = 0; tests.forEach((t) => { if (t.verdict[lab] === undefined || t.verdict[lab] === null) return; n++; if (t.verdict[lab]) ok++; }); return [ok, n]; };
-    const tiles = [['GFL', '계통추종, PLL 20 Hz'], ['GFM', '계통형성, VSM H 4 s']].map(([lab, d]) => { const [ok, n] = count(lab); return `<div class="tile"><div class="k"><span class="sw" style="background:${css(COL[lab])}"></span>${lab} 적합</div><div class="v">${ok}<small>/ ${n} 시험</small></div><div class="d">${d}</div></div>`; });
+    const tiles = [['GFL', '계통추종, PLL 대역폭 20 Hz'], ['GFM', '계통형성, VSM H 4 s']].map(([lab, d]) => { const [ok, n] = count(lab); return `<div class="tile"><div class="k"><span class="sw" style="background:${css(COL[lab])}"></span>${lab} 적합</div><div class="v">${ok}<small>/ ${n} 시험</small></div><div class="d">${d}</div></div>`; });
     tiles.push(`<div class="tile"><div class="k">해석 시간 간격</div><div class="v">${M.dt_us}<small>µs</small></div><div class="d">RK4 고정 스텝, 기록 100 µs</div></div>`);
     tiles.push(`<div class="tile"><div class="k">스위칭</div><div class="v">${M.f_sw / 1000}<small>kHz</small></div><div class="d">2레벨 SVPWM, 샘플링 ${M.f_samp / 1000} kHz</div></div>`);
     document.getElementById('tiles').innerHTML = tiles.join('');
@@ -262,7 +262,7 @@ const DATA = /*REPORT_DATA_START*/{"meta":{"dt_us":2.0,"f_sw":5000.0,"f_samp":10
     tests.forEach((t) => { h += `<tr><td style="color:${css('--ink-2')}">${esc(t.group)}</td><td><a href="#${t.id}"><b>${t.id}</b> ${esc(t.title)}</a></td>${labs.map((l) => `<td>${t.labels.includes(l) ? badge(t.verdict[l]) : '<span style="color:var(--muted)">—</span>'}</td>`).join('')}</tr>`; });
     document.getElementById('matrix').innerHTML = h + '</tbody>';
     // 조건
-    const kv = [['해석', `RK4 고정 스텝, dt = ${M.dt_us} µs`], ['컨버터', `2레벨 VSC, 스위칭 ${M.f_sw / 1000} kHz, min-max 영상분 주입(SVPWM 등가)`], ['제어 샘플링', `${M.f_samp / 1000} kHz (반송파 꼭짓점 동기), 1샘플 계산 지연`], ['전압 기준', `DC 링크 ${M.V_dc_pu} pu, 최대 출력 전압 ${M.V_conv_max} pu (SVPWM 선형영역, 모든 전기량 pu 표기)`], ['필터·변압기', `Lf ${M.Lf}, Cf ${M.Cf}, Rd ${M.Rd}, Lt ${M.Lt} pu`], ['전류', `한계 ${M.I_max} pu, 전류제어 대역 ${M.f_cc} Hz`], ['GFL', `SRF-PLL ${M.f_pll} Hz, FRT 고정 무효전류`], ['GFM', `VSM H ${M.H} s, 드룹 ${M.droop * 100} %, 가상 임피던스 ${M.Rv} + j${M.Xv} pu`]];
+    const kv = [['해석', `RK4 고정 스텝, dt = ${M.dt_us} µs, 계통 60 Hz`], ['컨버터', `2레벨 VSC, 스위칭 ${M.f_sw / 1000} kHz, min-max 영상분 주입(SVPWM 등가)`], ['제어 샘플링', `${M.f_samp / 1000} kHz (반송파 꼭짓점 동기), 1샘플 계산 지연`], ['전압 기준', `DC 링크 ${M.V_dc_pu} pu, 최대 출력 전압 ${M.V_conv_max} pu (SVPWM 선형영역, 모든 전기량 pu 표기)`], ['필터·변압기', `Lf ${M.Lf}, Cf ${M.Cf}, Rd ${M.Rd}, Lt ${M.Lt} pu`], ['전류', `한계 ${M.I_max} pu, 전류제어 대역 ${M.f_cc} Hz`], ['GFL', `SRF-PLL 대역폭 ${M.f_pll} Hz, FRT 고정 무효전류`], ['GFM', `VSM H ${M.H} s, 드룹 ${M.droop * 100} %, 가상 임피던스 ${M.Rv} + j${M.Xv} pu`]];
     document.getElementById('meta').innerHTML = kv.map(([k, v]) => `<dt>${k}</dt><dd>${esc(v)}</dd>`).join('');
     // 스위칭 파형
     const t7 = tests.find((t) => t.hires);
