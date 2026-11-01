@@ -177,6 +177,12 @@ def damped(r, a):
     return ok
 
 
+def movavg(x, n=200):
+    """20 ms 이동평균 (기록 100 µs). 스위칭 에일리어싱 잡음 제거용."""
+    x = np.asarray(x)
+    return np.convolve(x, np.ones(n) / n, mode="valid") if len(x) > n else x
+
+
 def crit(name, ref, threshold, values, passes, note=""):
     return dict(name=name, ref=ref, threshold=threshold, values=values, passes=passes, note=note)
 
@@ -196,11 +202,12 @@ def eval_lsm(td, R):
     c.append(crit("분리 후 안정 운전", "NERC·AEMO 공통", "진동이 감쇠하고 발산하지 않을 것", vals, ok))
     vals, ok = {}, {}
     for L in labs:
-        f = win(R[L], "freq", 1.0, 99)
-        fmin, fmax = win(R[L], "freq", 0.3, 99).min(), win(R[L], "freq", 0.3, 99).max()
+        f = movavg(win(R[L], "freq", 1.0, 99))
+        fw = movavg(win(R[L], "freq", 0.3, 99))
+        fmin, fmax = fw.min(), fw.max()
         vals[L] = f"{f.mean():.2f} Hz (범위 {fmin:.1f}~{fmax:.1f})"
         ok[L] = bool(58.8 <= fmin and fmax <= 61.2)
-    c.append(crit("주파수 유지", "본 보고서 기준", "분리 0.3 s 후 58.8~61.2 Hz (±2 %)", vals, ok))
+    c.append(crit("주파수 유지", "본 보고서 기준", "분리 0.3 s 후 58.8~61.2 Hz (±2 %, 20 ms 이동평균)", vals, ok))
     if td["id"] == "T03":
         vals, ok = {}, {}
         for L in labs:

@@ -227,8 +227,14 @@ def is_stable(r, a=0.8):
         return False
     t = arr(r, "t") - T_EV
     ok, _ = oscillation_check(t, arr(r, "P"), a)
-    f = window(r, "freq", a, 99)
+    f = movavg(window(r, "freq", a, 99))
     return ok and bool(np.all(np.abs(f - 60.0) < 1.5))
+
+
+def movavg(x, n=200):
+    """20 ms 이동평균 (기록 간격 100 µs 기준). 스위칭 에일리어싱 잡음 제거용."""
+    x = np.asarray(x)
+    return np.convolve(x, np.ones(n) / n, mode="valid") if len(x) > n else x
 
 
 def osc_desc(r, a):

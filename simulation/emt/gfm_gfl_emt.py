@@ -180,6 +180,7 @@ class Inverter:
         self.vpole = 1 + 0j                     # 현재 스위치 상태가 만드는 컨버터 전압 (αβ, pu)
         self.next_sample = 0.0
         self.duty = (0.0, 0.0, 0.0)
+        self.th_hold = 0.0                      # 샘플 시점의 제어 각 (dq 변환은 이 각으로)
         # 출력 버퍼
         self.aux: dict = {}
 
@@ -237,6 +238,7 @@ class Inverter:
         """반송파 꼭짓점에서 측정을 샘플-홀드하고, 지령을 계산해 다음 샘플에 적용 (1샘플 지연)."""
         net = self.network(t, x)
         self.meas = (net[1], net[2], complex(x[IF_RE], x[IF_IM]))
+        self.th_hold = x[TH_C]
         self.v_applied = self.v_pending
         self.deriv(t, x)
         self.v_pending = self.aux["v_cmd"]
@@ -275,7 +277,9 @@ class Inverter:
 
         dx = [0.0] * N_STATES
         th_c = x[TH_C]
-        rot = cmath.exp(-1j * th_c)
+        # 디지털 제어: 샘플-홀드된 측정은 샘플 시점의 각으로 dq 변환한다
+        th_ctl = self.th_hold if self.sw else th_c
+        rot = cmath.exp(-1j * th_ctl)
         i_dq = i_m * rot
         v_dq = v_m * rot
         # 전류제어 피드포워드용 전압: dq 좌표에서 LPF (f_vff <= 0 이면 순시값)
@@ -366,7 +370,9 @@ class Inverter:
         else:
             d_cc = self.ki_c * err
             dx[XCC_RE], dx[XCC_IM] = d_cc.real, d_cc.imag
-        v_cmd = v_conv_dq * cmath.exp(1j * th_c)
+        # 출력: 샘플 시점 각 + 지연 보상(1.5 샘플 동안 회전할 각)으로 αβ 지령 생성
+        th_out = th_ctl + (1.5 * self.Ts * wb * w_c if self.sw else 0.0)
+        v_cmd = v_conv_dq * cmath.exp(1j * th_out)
         if self.sw:
             # 스위치 상태가 만든 극전압 (스텝 시작 시 결정, 스텝 동안 일정)
             v_conv = self.vpole
@@ -433,6 +439,7 @@ def simulate(mode: str, p: Params, sc: Scenario, dt: float = DT_DEFAULT,
         if x0 is not None:  # 웜스타트: 홀드 값을 현재 상태로 초기화
             net = inv.network(0.0, x)
             inv.meas = (net[1], net[2], complex(x[IF_RE], x[IF_IM]))
+            inv.th_hold = x[TH_C]
             inv.deriv(0.0, x)
             inv.v_pending = inv.v_applied = inv.aux["v_cmd"]
         eps = 0.25 * dt
