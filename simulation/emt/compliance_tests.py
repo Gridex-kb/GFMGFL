@@ -339,8 +339,14 @@ def eval_phase60(td, R):
         okk = (not r["diverged"]) and np.abs(dd).max() < 180 and abs(((end - d0) + 180) % 360 - 180) < 10 \
             and abs(tail - P0) < 0.1 * P0 and damped(r, 0.5)
         ok[L] = bool(okk)
-        vals[L] = f"최대 이탈 {np.abs(dd).max():.0f}°, 최대 |i| {win(r, 'I', 0, 0.3).max():.2f} pu" + ("" if okk else ", 동기 상실/미복귀")
-    c.append(crit("60° 점프 후 동기 유지", "GB GC0137 Withstand", "극 미끄럼 없음(최대 이탈 < 180°), 진동 감쇠, 마지막 0.2 s 위상 ±10°·P ±10 %", vals, ok))
+        i_end = win(r, "I", A(r, "t")[-1] - 0.2, 99).mean()
+        stuck = i_end >= 0.98 * r["I_max"]
+        why = "" if okk else (f", 전류 제한 고착(끝까지 |i| {i_end:.2f} pu, P {tail:.2f} pu, 위상 {end - d0:+.0f}°)" if stuck else ", 미복귀")
+        vals[L] = f"최대 이탈 {np.abs(dd).max():.0f}°, 최대 |i| {win(r, 'I', 0, 0.3).max():.2f} pu" + why
+    c.append(crit("60° 점프 후 동기 유지", "GB GC0137 Withstand", "극 미끄럼 없음(최대 이탈 < 180°), 진동 감쇠, 마지막 0.2 s 위상 ±10°·P ±10 %", vals, ok,
+                  "GFM 부적합 원인: 전류 제한 중 VSM 가속을 멈추는 보정(gfm_limit_freeze)이 재동기에 필요한 위상 이동까지 막아, "
+                  "지속되는 60° 위상차에서 전류 제한 상태에 갇힌다. 고장(T12)은 전압 회복으로 풀리지만 위상 차는 스스로 풀리지 않는다. "
+                  "과도 가상 임피던스 등 제한 중에도 전력-위상 관계를 유지하는 방식이 필요하다."))
     return c
 
 
@@ -530,7 +536,7 @@ def main():
         out_tests.append(item)
         print(td["id"], td["title"], {L: ("적합" if v else ("부적합" if v is False else "-")) for L, v in verdict.items()}, flush=True)
     p = Params()
-    meta = dict(dt_us=dt * 1e6, f_sw=p.f_sw, f_samp=2 * p.f_sw, V_dc=p.V_dc, V_ac_ll=p.V_ac_ll,
+    meta = dict(dt_us=dt * 1e6, f_sw=p.f_sw, f_samp=2 * p.f_sw, V_dc_pu=round(p.V_dc / p.V_base_peak, 3),
                 V_conv_max=round(p.V_conv_max, 3), Lf=p.Lf, Cf=p.Cf, Rd=p.Rd, Lt=p.Lt, I_max=p.I_max,
                 f_cc=p.f_cc, f_pll=p.f_pll, H=p.H, droop=p.droop, Xv=p.Xv, Rv=p.Rv, converter=p.converter)
     data = dict(meta=meta, tests=out_tests)
