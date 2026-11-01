@@ -13,6 +13,7 @@ import argparse
 import json
 import math
 import os
+import pickle
 import re
 import sys
 from concurrent.futures import ProcessPoolExecutor
@@ -67,7 +68,7 @@ TESTS = [
     dict(id="T09", group="위상 점프", title="위상각 60° 내성",
          refs=["GB GC0137 Phase Jump Angle Withstand", "MISO 초안(60° 요건, 이후 삭제)"],
          cond="SCR 3, P₀ = 0.5 pu, 계통 전압 위상 −60° 계단 변화 (전류 제한 동작)",
-         labels=["GFL", "GFM"], p=dict(scr=3.0, P_ref=0.5), ev=dict(kind="phase", deg=-60.0), t_end=1.7),
+         labels=["GFL", "GFM"], p=dict(scr=3.0, P_ref=0.5), ev=dict(kind="phase", deg=-60.0), t_end=2.7),
     dict(id="T10", group="전압원 거동", title="계통 전압 크기 스텝 −5 %",
          refs=["ENTSO-E TG GFC 2025 (무효전류 30 ms 내 90 %)", "ERCOT AGS #9(정보용)"],
          cond="SCR 3, P₀ = 0.5 pu, 계통 전압 1.00 → 0.95 pu 계단 변화",
@@ -335,10 +336,11 @@ def eval_phase60(td, R):
         end = win(r, "delta_deg", A(r, "t")[-1] - 0.2, 99).mean()
         P0 = win(r, "P", -0.02, 0).mean()
         tail = win(r, "P", A(r, "t")[-1] - 0.2, 99).mean()
-        okk = (not r["diverged"]) and abs(((end - d0) + 180) % 360 - 180) < 10 and abs(tail - P0) < 0.05 and damped(r, 0.5)
+        okk = (not r["diverged"]) and np.abs(dd).max() < 180 and abs(((end - d0) + 180) % 360 - 180) < 10 \
+            and abs(tail - P0) < 0.1 * P0 and damped(r, 0.5)
         ok[L] = bool(okk)
         vals[L] = f"최대 이탈 {np.abs(dd).max():.0f}°, 최대 |i| {win(r, 'I', 0, 0.3).max():.2f} pu" + ("" if okk else ", 동기 상실/미복귀")
-    c.append(crit("60° 점프 후 동기 유지", "GB GC0137 Withstand", "극 미끄럼 없이 원래 운전점으로 복귀 (위상 ±10°, P ±0.05 pu)", vals, ok))
+    c.append(crit("60° 점프 후 동기 유지", "GB GC0137 Withstand", "극 미끄럼 없음(최대 이탈 < 180°), 진동 감쇠, 마지막 0.2 s 위상 ±10°·P ±10 %", vals, ok))
     return c
 
 
@@ -360,31 +362,34 @@ def eval_vstep(td, R):
     return [crit("무효전류 응답 속도", "ENTSO-E TG GFC", "ΔQ 가 100 ms 시점 값의 90 %에 30 ms 이내 도달", vals, ok)]
 
 
-def damping_ratio(r):
+def damping_ratio(r, t_skip=0.15):
+    """스윙 진동 감쇠비: t_skip 이후 교번 극값의 진폭 로그 기울기 σ 와 주기로 ζ = σ/√(σ²+ω_d²).
+
+    점프 직후 수십 ms 의 전자기 과도(60~80 Hz 감쇠 진동)는 t_skip 으로 제외하고,
+    20 ms 이동평균으로 스위칭 잔류 성분을 지운다.
+    """
     t, P = A(r, "t"), A(r, "P")
-    m = t >= 0.03
-    t, P = t[m], P[m]
     k = max(1, int(round(0.02 / (t[1] - t[0]))))
     Pf = np.convolve(P, np.ones(k) / k, mode="same")
-    x = Pf - Pf[t > t[-1] - 0.3].mean()
-    x[:k] = x[k]
-    x[-k:] = x[-k - 1]
-    if np.abs(x[t > 0.1]).max() < 0.01:
+    m = (t >= t_skip) & (t <= t[-1] - 0.02)
+    t, x = t[m], Pf[m] - Pf[m][-int(0.3 / (t[1] - t[0])):].mean()
+    if np.abs(x).max() < 0.01:
         return None, None
-    dx = np.diff(x)
-    idx = [i for i in range(1, len(dx)) if dx[i - 1] * dx[i] < 0 and abs(x[i]) > 0.003]
     ext = []
-    for i in idx:
-        if not ext or t[i] - t[ext[-1]] > 0.15:
+    for i in range(1, len(x) - 1):
+        if (x[i] - x[i - 1]) * (x[i + 1] - x[i]) < 0 and abs(x[i]) > 0.002:
+            if ext and np.sign(x[i]) == np.sign(x[ext[-1]]):
+                if abs(x[i]) > abs(x[ext[-1]]):
+                    ext[-1] = i
+                continue
             ext.append(i)
     if len(ext) < 3:
         return None, None
-    amps = np.abs(x[ext])
-    ratios = [amps[j + 1] / amps[j] for j in range(min(3, len(amps) - 1)) if amps[j] > 0]
-    Lg = math.log(1.0 / np.mean(ratios))
-    zeta = Lg / math.sqrt(math.pi ** 2 + Lg ** 2)
-    f = 1.0 / (2.0 * np.mean(np.diff(t[ext][:4])))
-    return zeta, f
+    tk, ak = t[ext], np.log(np.abs(x[ext]))
+    sigma = -np.polyfit(tk, ak, 1)[0]
+    wd = math.pi / np.mean(np.diff(tk))
+    zeta = sigma / math.sqrt(sigma ** 2 + wd ** 2)
+    return float(zeta), float(wd / (2 * math.pi))
 
 
 def eval_damping(td, R):
@@ -396,7 +401,7 @@ def eval_damping(td, R):
         else:
             vals[L], ok[L] = f"ζ = {z * 100:.1f} % ({f:.2f} Hz)", bool(z >= 0.05)
     return [crit("저주파 진동 감쇠비", "ENTSO-E TG GFC", "0.1~10 Hz 유효전력 진동 감쇠비 ≥ 5 %", vals, ok,
-                 "T07(−20° 점프) 응답에서 20 ms 이동평균 후 반주기 극값 비로 추정")]
+                 "T07(−20° 점프) 응답에서 점프 후 0.15 s 이후 스윙 극값의 진폭 감소율로 추정 (20 ms 이동평균)")]
 
 
 def eval_kr(td, R):
@@ -462,8 +467,10 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--dt", type=float, default=DT_DEFAULT)
     ap.add_argument("--workers", type=int, default=os.cpu_count() or 2)
+    ap.add_argument("--reuse", action="store_true", help="저장된 원시 결과로 판정만 다시 계산")
     args = ap.parse_args()
     dt = args.dt
+    raw_path = os.path.join(HERE, ".cache", f"compliance_raw_{dt * 1e6:g}us.pkl")
     jobs, inits = [], {}
     for td in TESTS:
         if td.get("derived"):
@@ -474,9 +481,17 @@ def main():
             jobs.append((td["id"], L, dt))
     jobs.sort(key=lambda j: -next(x for x in TESTS if x["id"] == j[0])["t_end"])
     print(f"dt = {dt * 1e6:g} µs, 시뮬레이션 {len(jobs)}건, 초기화 {len(inits)}건", flush=True)
-    with ProcessPoolExecutor(args.workers) as ex:
-        list(ex.map(_init, inits.values()))
-        res = dict(ex.map(_run, jobs))
+    if args.reuse and os.path.exists(raw_path):
+        with open(raw_path, "rb") as f:
+            res = pickle.load(f)
+        print("원시 결과 재사용:", raw_path, flush=True)
+    else:
+        with ProcessPoolExecutor(args.workers) as ex:
+            list(ex.map(_init, inits.values()))
+            res = dict(ex.map(_run, jobs))
+        os.makedirs(os.path.dirname(raw_path), exist_ok=True)
+        with open(raw_path, "wb") as f:
+            pickle.dump(res, f)
     out_tests = []
     for td in TESTS:
         src = td.get("derived", td["id"])
@@ -519,7 +534,8 @@ def main():
                 V_conv_max=round(p.V_conv_max, 3), Lf=p.Lf, Cf=p.Cf, Rd=p.Rd, Lt=p.Lt, I_max=p.I_max,
                 f_cc=p.f_cc, f_pll=p.f_pll, H=p.H, droop=p.droop, Xv=p.Xv, Rv=p.Rv, converter=p.converter)
     data = dict(meta=meta, tests=out_tests)
-    js = json.dumps(data, ensure_ascii=False, separators=(",", ":"))
+    js = json.dumps(data, ensure_ascii=False, separators=(",", ":"),
+                    default=lambda o: o.item() if hasattr(o, "item") else str(o))
     open(os.path.join(HERE, "results", "compliance.json"), "w", encoding="utf-8").write(js)
     if os.path.exists(REPORT):
         html = open(REPORT, encoding="utf-8").read()

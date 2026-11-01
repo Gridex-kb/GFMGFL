@@ -310,14 +310,14 @@ def main():
     data["rocof"] = {m: downsample(r, ["grid_freq", "P", "freq"], -0.1, 1.6) for m, r in rc.items()}
 
     # 3) 약계통 (선로 트립 SCR 5 → 1.5) ------------------------------------
-    wg = run_jobs([(m, dict(scr=5.0, P_ref=0.8, f_pll=35.0, gfl_frt_enter=0.5), dict(kind="scr_step", scr1=1.5, t_end=1.6), m)
+    wg = run_jobs([(m, dict(scr=5.0, P_ref=0.8, f_pll=50.0, gfl_frt_enter=0.5), dict(kind="scr_step", scr1=1.5, t_end=1.6), m)
                    for m in ("GFL", "GFM")], args.workers)
     # 웜스타트 파라미터는 SCR 5, 시나리오가 1.5로 바꾼다
     stacked(plt, wg, [("P", "P [pu]"), ("V", "|V_PCC| [pu]"), ("I", "|i| [pu]")],
-            "선로 트립: SCR 5 → 1.5 (P = 0.8 pu, GFL PLL 35 Hz)", "fig04_weak_grid.png", xlim=(-0.05, 1.4))
+            "선로 트립: SCR 5 → 1.5 (P = 0.8 pu, GFL PLL 50 Hz)", "fig04_weak_grid.png", xlim=(-0.05, 1.4))
     for m, r in wg.items():
         d = osc_desc(r, 0.6)
-        summary.append(("SCR 5→1.5 (PLL 35 Hz)", m, "안정" if is_stable(r, 0.6) else "불안정(지속 진동)",
+        summary.append(("SCR 5→1.5 (PLL 50 Hz)", m, "안정" if is_stable(r, 0.6) else "불안정(지속 진동)",
                         f"5~300 Hz 진동 {d['osc_amp']:.4f} pu @ {d['osc_f']:.0f} Hz, 저주파 스윙 {d['swing_std']:.4f} pu"))
     data["weak_grid"] = {m: downsample(r, ["P", "V", "I"], t1=1.4, n=1600) for m, r in wg.items()}
 
