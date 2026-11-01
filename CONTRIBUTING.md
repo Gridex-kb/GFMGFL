@@ -14,6 +14,8 @@ docs/
   07-시험-검증/       모델링, HIL, 성능시험
   08-부록/            용어집, 참고문헌, FAQ
 templates/            문서 템플릿
+simulation/emt/       GFM/GFL 평균값 EMT 시뮬레이터 (Python)
+slides/               HTML 발표 자료 (EMT 데이터 내장)
 ```
 
 - 폴더 번호는 읽는 순서입니다. 새 폴더를 추가할 때는 번호를 이어서 붙이고 README 목차를 갱신합니다.
@@ -48,7 +50,12 @@ templates/            문서 템플릿
 - 수식은 GitHub가 렌더링하는 `$...$` / `$$...$$` LaTeX를 씁니다.
 - 블록도는 Mermaid(````mermaid`) 또는 ASCII로 그립니다. 외부 이미지는 `docs/_assets/`에 넣고 출처를 적습니다.
 
-## 6. 변경 절차
+## 6. 시뮬레이션·슬라이드 갱신
+
+- 모델이나 시나리오를 바꾸면 `simulation/emt`에서 `python test_emt.py`로 회귀 테스트를 통과시킨 뒤 `python run_scenarios.py`를 실행합니다.
+- `run_scenarios.py`는 그래프, `results/summary.md`, 슬라이드에 내장된 EMT 데이터를 함께 갱신합니다. 슬라이드 수치 문구는 `summary.md`와 맞는지 확인합니다.
+
+## 7. 변경 절차
 
 1. 브랜치를 만들고 수정합니다.
 2. 커밋 메시지는 `docs: GFM 제어기법에 dVOC 추가`처럼 `docs:` 접두어를 씁니다.

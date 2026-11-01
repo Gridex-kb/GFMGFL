@@ -227,13 +227,13 @@ def sync_kept(r, p0):
     return bool(np.abs(dd).max() < 90 and abs(P_end - p0) < 0.1 * p0)
 
 
-def downsample(r, keys, t0=-0.05, t1=None, n=360):
+def downsample(r, keys, t0=-0.05, t1=None, n=1000):
     t = arr(r, "t") - T_EV
     t1 = t[-1] if t1 is None else t1
     grid = np.linspace(t0, t1, n)
     d = {"t": np.round(grid, 4).tolist()}
     for k in keys:
-        d[k] = np.round(np.interp(grid, t, arr(r, k)), 4).tolist()
+        d[k] = np.round(np.interp(grid, t, arr(r, k)), 3).tolist()
     return d
 
 
@@ -259,7 +259,7 @@ def main():
         summary.append(("위상 점프 −20°", m, f"10 ms 내 ΔP 최대 {dP:+.2f} pu",
                         f"최대 전류 {window(r, 'I', 0, 0.5).max():.2f} pu"))
     data["phase_jump"] = {m: downsample(r, ["P", "Q", "I", "freq"], t1=1.0) for m, r in pj.items()}
-    data["phase_jump_wave"] = {m: downsample(r, ["ia", "ib", "ic"], -0.03, 0.06, 450) for m, r in pj.items()}
+    data["phase_jump_wave"] = {m: downsample(r, ["ia", "ib", "ic"], -0.03, 0.06, 500) for m, r in pj.items()}
 
     # 2) RoCoF -------------------------------------------------------------
     jobs = [("GFL", dict(scr=5.0, P_ref=0.3, gfl_droop=True), dict(kind="rocof", t_end=2.0), "GFL"),
@@ -287,7 +287,7 @@ def main():
     for m, r in wg.items():
         summary.append(("SCR 5→1.5 (PLL 35 Hz)", m, "안정" if is_stable(r, 0.6) else "불안정(지속 진동)",
                         f"P 표준편차(1.0 s~) {window(r, 'P', 1.0, 99).std():.3f} pu"))
-    data["weak_grid"] = {m: downsample(r, ["P", "V", "I"], t1=1.4) for m, r in wg.items()}
+    data["weak_grid"] = {m: downsample(r, ["P", "V", "I"], t1=1.4, n=1600) for m, r in wg.items()}
 
     # 4) 안정도 맵 ---------------------------------------------------------
     scrs = [5.0, 3.0, 2.0, 1.5, 1.3, 1.2] if not args.quick else [3.0, 1.5]
@@ -328,7 +328,8 @@ def main():
     data["fault"] = {m: downsample(r, ["V", "I", "P", "Q", "delta_deg"], t1=1.2) for m, r in ft.items()}
 
     # 6) 단독운전 (최후 동기원 상실) ----------------------------------------
-    jobs = [(m, dict(scr=3.0, P_ref=0.5, P_load=0.8), dict(kind="island", t_end=1.5), m)
+    # FRT 진입을 0.5 pu 로 낮춰 FRT 모드 순환과 '기준 전압 상실'을 분리
+    jobs = [(m, dict(scr=3.0, P_ref=0.5, P_load=0.8, gfl_frt_enter=0.5), dict(kind="island", t_end=1.5), m)
             for m in ("GFL", "GFM")]
     il = run_jobs(jobs, args.workers)
     stacked(plt, il, [("V", "|V_PCC| [pu]"), ("freq", "인버터 주파수 [Hz]"), ("P", "P [pu]")],
