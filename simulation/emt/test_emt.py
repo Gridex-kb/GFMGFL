@@ -1,7 +1,8 @@
 """
-EMT 모델 회귀 테스트 (pytest 또는 `python test_emt.py` 로 실행, 약 15초)
+EMT 모델 회귀 테스트 (pytest 또는 `python test_emt.py` 로 실행, 약 1분)
 
 물리적으로 반드시 성립해야 하는 성질만 검사한다.
+속도를 위해 dt = 10 µs 로 돌린다. 1 µs 결과와의 차이는 convergence.py 로 확인한다.
 """
 import math
 import os
@@ -13,11 +14,12 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from gfm_gfl_emt import Params, Scenario, simulate, steady_state  # noqa: E402
 
 T_EV = 0.2
+DT = 10e-6
 
 
 def _run(mode, p, **ev):
-    x0 = steady_state(mode, p)
-    r = simulate(mode, p, Scenario(**ev), x0=x0)
+    x0 = steady_state(mode, p, dt=DT)
+    r = simulate(mode, p, Scenario(**ev), x0=x0, dt=DT)
     t = np.asarray(r["t"]) - T_EV
     return t, {k: np.asarray(v) for k, v in r.items() if isinstance(v, list)}
 

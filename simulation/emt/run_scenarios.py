@@ -27,7 +27,7 @@ import numpy as np
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
-from gfm_gfl_emt import Params, Scenario, simulate, steady_state  # noqa: E402
+from gfm_gfl_emt import DT_DEFAULT, Params, Scenario, simulate, steady_state  # noqa: E402
 
 RES = os.path.join(HERE, "results")
 SLIDES = os.path.normpath(os.path.join(HERE, "..", "..", "slides", "gfm-gfl-slides.html"))
@@ -76,16 +76,28 @@ def arr(r, k):
 # ---------------------------------------------------------------------------
 # 시뮬레이션 실행 헬퍼 (프로세스 풀용 최상위 함수)
 # ---------------------------------------------------------------------------
+DT = DT_DEFAULT  # main() 에서 --dt 로 바꿀 수 있음 (자식 프로세스에는 job 으로 전달)
+
+
+def _init(args):
+    mode, pkw, dt = args
+    try:
+        steady_state(mode, Params(**pkw), dt=dt)
+    except RuntimeError:
+        pass
+    return True
+
+
 def _run(job):
-    mode, pkw, skw, label = job
+    mode, pkw, skw, label, dt = job
     p = Params(**pkw)
     try:
-        x0 = steady_state(mode, p)
+        x0 = steady_state(mode, p, dt=dt)
     except RuntimeError:
         return label, None
     events = make_events(**skw)
     sc = Scenario(**events)
-    r = simulate(mode, p, sc, x0=x0)
+    r = simulate(mode, p, sc, x0=x0, dt=dt)
     r.pop("x_final", None)
     return label, r
 
@@ -111,10 +123,16 @@ def make_events(kind, t_end=1.2, **kw):
     return ev
 
 
-def run_jobs(jobs, workers):
+def run_jobs(jobs, workers, dt=None):
+    """같은 초기 상태를 쓰는 작업이 많으므로 정상상태를 먼저 병렬 계산(캐시)한 뒤 외란을 돌린다."""
+    dt = dt or DT
+    uniq = {}
+    for mode, pkw, _, _ in jobs:
+        uniq[(mode, tuple(sorted(pkw.items())))] = (mode, pkw, dt)
     out = {}
     with ProcessPoolExecutor(max_workers=workers) as ex:
-        for label, r in ex.map(_run, jobs):
+        list(ex.map(_init, uniq.values()))
+        for label, r in ex.map(_run, [(*j, dt) for j in jobs]):
             out[label] = r
     return out
 
@@ -243,7 +261,11 @@ def main():
     ap.add_argument("--quick", action="store_true")
     ap.add_argument("--no-slides", action="store_true")
     ap.add_argument("--workers", type=int, default=os.cpu_count() or 2)
+    ap.add_argument("--dt", type=float, default=DT_DEFAULT, help="해석 시간 간격 [s] (기본 1e-6)")
     args = ap.parse_args()
+    global DT
+    DT = args.dt
+    print(f"해석 시간 간격 dt = {DT * 1e6:g} µs", flush=True)
     os.makedirs(RES, exist_ok=True)
     plt = setup_mpl()
     summary, data = [], {}
@@ -322,7 +344,7 @@ def main():
         outside = np.where((t_all > 0.15) & ((P_all < 0.72) | (P_all > 0.88)))[0]
         rec = (t_all[outside[-1]] - 0.15) if len(outside) and outside[-1] < len(t_all) - 1 else float("nan")
         summary.append(("고장 0.3 pu·150 ms", m,
-                        f"최대 전류 {window(r, 'I', 0, 0.15).max():.2f} pu, 최저 V {window(r, 'V', 0, 0.15).min():.2f} pu",
+                        f"최대 전류 {window(r, 'I', 0, 0.15).max():.2f} pu, 고장 중 평균 V {window(r, 'V', 0, 0.15).mean():.2f} pu",
                         ("동기 유지" if sync_kept(r, 0.8) else "동기 이탈") +
                         (f", P ±10 % 정착 {rec*1000:.0f} ms" if not math.isnan(rec) else "")))
     data["fault"] = {m: downsample(r, ["V", "I", "P", "Q", "delta_deg"], t1=1.2) for m, r in ft.items()}
@@ -343,7 +365,8 @@ def main():
 
     # 요약 ------------------------------------------------------------------
     lines = ["# EMT 시뮬레이션 결과 요약", "",
-             "`python run_scenarios.py` 로 생성. 모델·가정은 [README](../README.md) 참고.", "",
+             f"`python run_scenarios.py` 로 생성. 해석 시간 간격 dt = {DT * 1e6:g} µs (RK4), 기록 간격 100 µs. "
+             "모델·가정은 [README](../README.md) 참고.", "",
              "| 시나리오 | 방식 | 지표 1 | 지표 2 |", "|---|---|---|---|"]
     lines += [f"| {a} | {b} | {c} | {d} |" for a, b, c, d in summary]
     lines += ["", "## 약계통 안정도 맵", "",

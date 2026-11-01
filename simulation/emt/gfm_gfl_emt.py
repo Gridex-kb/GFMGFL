@@ -10,18 +10,24 @@ GFM / GFL 인버터 평균값 EMT 시뮬레이터 (교육·비교용)
     * GFL : SRF-PLL → P/Q(또는 V) 지령 → dq 전류 지령 (+선택: 합성관성)
     * GFM : VSM(가상동기기, 관성 H·댐핑 D) → 내부 기전력 E∠θ →
             동적 가상 인덕턴스(가상 어드미턴스) → 전류 지령 (원형 전류제한)
-- 고정 스텝 RK4 적분, 기본 dt = 50 µs. 단위는 인버터 정격 기준 pu, 시간은 초.
+- 고정 스텝 RK4 적분, 기본 해석 시간 간격(solution time step) dt = 1 µs, 기록 간격 100 µs.
+  단위는 인버터 정격 기준 pu, 시간은 초.
 
 이 모델은 개념 검증·교육용이다. 계통연계 검토에는 제조사 EMT 모델(PSCAD 등)을 써야 한다.
 """
 from __future__ import annotations
 
 import cmath
+import hashlib
 import math
-from dataclasses import dataclass, field, replace
+import os
+import pickle
+from dataclasses import asdict, dataclass, field, replace
 from typing import Callable
 
 TWO_PI = 2.0 * math.pi
+DT_DEFAULT = 1e-6        # 해석 시간 간격 [s]
+RECORD_DT_DEFAULT = 1e-4 # 결과 기록 간격 [s]
 
 
 # ----------------------------------------------------------------------------
@@ -97,6 +103,7 @@ class Scenario:
     scr: Callable[[float], float] | None = None                # 단락비 (None 이면 Params.scr)
     breaker_closed: Callable[[float], bool] = lambda t: True   # 계통 차단기
     p_ref: Callable[[float], float] | None = None              # 유효전력 지령
+    pcc_fault_g: Callable[[float], float] | None = None        # PCC 지락(3상) 고장 컨덕턴스 [pu], 0 이면 없음
 
 
 def ramp_p(p_final: float, t_ramp: float = 0.25):
@@ -165,8 +172,9 @@ class Inverter:
         # PCC 절점 전압 (Rd 직렬 커패시터 + 저항 부하)
         if not closed:
             i_g = 0j
-        v_p = (v_cap + p.Rd * (i_f - i_g)) / (1.0 + p.Rd * self.G_L)
-        i_load = self.G_L * v_p
+        G = self.G_L + (sc.pcc_fault_g(t) if sc.pcc_fault_g else 0.0)
+        v_p = (v_cap + p.Rd * (i_f - i_g)) / (1.0 + p.Rd * G)
+        i_load = G * v_p  # 부하 + 고장 전류
 
         # 계통 전원
         e_g = sc.grid_v(t) * cmath.exp(1j * (x[TH_G] + sc.grid_phase(t)))
@@ -309,13 +317,16 @@ class Inverter:
 # ----------------------------------------------------------------------------
 # 적분기
 # ----------------------------------------------------------------------------
-def simulate(mode: str, p: Params, sc: Scenario, dt: float = 50e-6,
-             record_every: int = 2, x0: list[float] | None = None) -> dict:
+def simulate(mode: str, p: Params, sc: Scenario, dt: float = DT_DEFAULT,
+             record_every: int | None = None, x0: list[float] | None = None,
+             record_dt: float = RECORD_DT_DEFAULT) -> dict:
     """RK4 고정 스텝. 결과는 리스트 dict (numpy 변환은 호출측).
 
     x0 를 주면 그 상태에서 이어서 시작한다(웜스타트). 결과의 'x_final' 을 다음 x0 로 쓸 수 있다.
     """
     inv = Inverter(mode, p, sc)
+    if record_every is None:
+        record_every = max(1, int(round(record_dt / dt)))
     if x0 is not None:
         x = list(x0)
         x[TH_G] = x[TH_G] % TWO_PI
@@ -380,13 +391,29 @@ def simulate(mode: str, p: Params, sc: Scenario, dt: float = 50e-6,
     return out
 
 
-def steady_state(mode: str, p: Params, t_init: float = 2.5, dt: float = 50e-6) -> list[float]:
-    """P_ref 를 램프로 올린 뒤 정상상태까지 돌린 상태벡터를 돌려준다."""
+CACHE_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), ".cache")
+
+
+def steady_state(mode: str, p: Params, t_init: float = 2.5, dt: float = DT_DEFAULT,
+                 cache: bool = True) -> list[float]:
+    """P_ref 를 램프로 올린 뒤 정상상태까지 돌린 상태벡터를 돌려준다.
+
+    같은 (mode, 파라미터, dt) 조합은 .cache/ 에 저장해 재사용한다 (1 µs 계산 시간 절약).
+    """
+    key = hashlib.sha1(repr((mode, sorted(asdict(p).items()), t_init, dt, N_STATES)).encode()).hexdigest()[:16]
+    path = os.path.join(CACHE_DIR, f"ss_{key}.pkl")
+    if cache and os.path.exists(path):
+        with open(path, "rb") as f:
+            return pickle.load(f)
     sc = Scenario(name="init", t_end=t_init, p_ref=ramp_p(p.P_ref, 0.3))
-    r = simulate(mode, p, sc, dt=dt, record_every=1000)
+    r = simulate(mode, p, sc, dt=dt, record_dt=0.01)
     if "diverged_at" in r:
         raise RuntimeError(f"{mode} 초기화 발산 (SCR={p.scr}, P={p.P_ref})")
+    if cache:
+        os.makedirs(CACHE_DIR, exist_ok=True)
+        with open(path, "wb") as f:
+            pickle.dump(r["x_final"], f)
     return r["x_final"]
 
 
-__all__ = ["Params", "Scenario", "simulate", "steady_state", "ramp_p", "replace"]
+__all__ = ["Params", "Scenario", "simulate", "steady_state", "ramp_p", "replace", "DT_DEFAULT"]
