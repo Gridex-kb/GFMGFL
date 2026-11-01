@@ -4,8 +4,10 @@ GFM / GFL 인버터 평균값 EMT 시뮬레이터 (교육·비교용)
 
 - 3상 순시값을 복소 αβ 공간벡터로 다룬다 (x = xα + j·xβ, 진폭 불변 변환).
   |v| = 1 pu 이면 상전압 진폭이 정격이다. P = Re(v·i*), Q = Im(v·i*).
-- 2레벨 전압형 컨버터(VSC) + LCL 필터(커패시터 직렬 댐핑저항) + 변압기 +
-  테브난 등가 계통(SCR, X/R) + PCC 국부 부하 + 계통 차단기.
+- 2레벨 전압형 컨버터(VSC) + LC 필터(커패시터 직렬 댐핑저항) + 변압기 + PCC(변압기 고압측) 모선
+  + 테브난 등가 계통(SCR, X/R) + 계통 차단기. 국부 부하와 PCC 고장은 PCC 모선에 연결한다.
+- 측정: 제어용 P, Q, V 와 PLL·가상 어드미턴스 전압은 변압기 전류와 PCC 전압으로 측정한다.
+  전류 제어·전류 제한만 컨버터측 전류(Lf)를 쓴다. 스위칭 리플이 큰 Lf 전류로 전력을 재지 않기 위함이다.
   * converter="switching"(기본): 5 kHz 삼각파 PWM(min-max 영상분 주입 = SVPWM 등가),
     DC 700 V / AC 380 V, 반송파 꼭짓점 동기 샘플링(10 kHz, 2회 갱신), 1샘플 계산 지연.
   * converter="average": 스위칭 평균화 + 1차 지연 근사 (빠른 검토·회귀 테스트용).
@@ -54,6 +56,7 @@ class Params:
     Rt: float = 0.005
     # 국부 부하 (PCC, 저항성). 0 이면 부하 없음.
     P_load: float = 0.0
+    G_bus: float = 0.03           # PCC 모선 상시 저항성 분로 [pu] (보조 부하·손실 등가, 수치 안정용)
     # 공통 내부 전류제어
     f_cc: float = 800.0           # 전류제어 대역폭 [Hz]
     I_max: float = 1.2            # 전류 한계 [pu]
@@ -136,9 +139,9 @@ def ramp_p(p_final: float, t_ramp: float = 0.25):
 # ----------------------------------------------------------------------------
 # 상태 인덱스
 # ----------------------------------------------------------------------------
-IF_RE, IF_IM, VC_RE, VC_IM, IG_RE, IG_IM = range(6)
-TH_G, TH_C, X_W, XCC_RE, XCC_IM, PF, QF, VF, X_V, IV_RE, IV_IM, F_MEAS, VFF_D, VFF_Q, DFDT, VD_RE, VD_IM = range(6, 23)
-N_STATES = 23
+IF_RE, IF_IM, VC_RE, VC_IM, IG_RE, IG_IM = range(6)   # IG = 변압기 전류
+TH_G, TH_C, X_W, XCC_RE, XCC_IM, PF, QF, VF, X_V, IV_RE, IV_IM, F_MEAS, VFF_D, VFF_Q, DFDT, VD_RE, VD_IM, IS_RE, IS_IM = range(6, 25)
+N_STATES = 25   # IS = 계통(테브난) 지로 전류
 
 
 class Inverter:
@@ -171,7 +174,7 @@ class Inverter:
         self.Ts = 1.0 / (2.0 * p.f_sw)          # 샘플링 주기 (반송파 꼭짓점)
         self.Tc = 1.0 / p.f_sw                  # 반송파 주기
         self.vdc = p.V_dc / p.V_base_peak       # DC 전압 [pu]
-        self.meas = (1 + 0j, 0j)                # 샘플-홀드된 (v_pcc, i_f)
+        self.meas = (1 + 0j, 0j, 0j)            # 샘플-홀드된 (v_pcc, i_변압기, i_f)
         self.v_pending = 1 + 0j                 # 이번 샘플에서 계산된 전압 지령 (다음 샘플에 적용)
         self.v_applied = 1 + 0j                 # 현재 PWM 에 적용 중인 지령 (αβ, pu)
         self.vpole = 1 + 0j                     # 현재 스위치 상태가 만드는 컨버터 전압 (αβ, pu)
@@ -195,15 +198,45 @@ class Inverter:
                 self.frt = False
 
     # ---- 디지털 제어 샘플링과 PWM ----
-    def pcc_voltage(self, t: float, x: list[float]) -> complex:
+    G_MIN = 1e-6  # G_bus 를 0 으로 두면 변압기·계통을 직렬로 처리
+
+    def network(self, t: float, x: list[float]):
+        """필터 단자 전압, PCC 전압, 변압기·계통 지로 전류와 그 미분을 계산한다."""
+        p, sc, wb = self.p, self.sc, self.p.wb
         i_f = complex(x[IF_RE], x[IF_IM])
-        i_g = complex(x[IG_RE], x[IG_IM]) if self.sc.breaker_closed(t) else 0j
-        G = self.G_L + (self.sc.pcc_fault_g(t) if self.sc.pcc_fault_g else 0.0)
-        return (complex(x[VC_RE], x[VC_IM]) + self.p.Rd * (i_f - i_g)) / (1.0 + self.p.Rd * G)
+        i_t = complex(x[IG_RE], x[IG_IM])
+        i_s = complex(x[IS_RE], x[IS_IM])
+        closed = sc.breaker_closed(t)
+        v_term = complex(x[VC_RE], x[VC_IM]) + p.Rd * (i_f - i_t)    # 필터 커패시터 단자 (변압기 저압측)
+        G = p.G_bus + self.G_L + (sc.pcc_fault_g(t) if sc.pcc_fault_g else 0.0)
+        Xth, Rth = self.grid_impedance(t)
+        e_g = sc.grid_v(t) * cmath.exp(1j * (x[TH_G] + sc.grid_phase(t)))
+        if not closed:
+            i_s = 0j
+            if G >= self.G_MIN:
+                v_pcc = i_t / G
+                di_t = (v_term - p.Rt * i_t - v_pcc) * (wb / p.Lt)
+            else:
+                v_pcc, di_t, i_t = v_term, 0j, 0j
+            di_s = 0j
+        elif G >= self.G_MIN:
+            v_pcc = (i_t - i_s) / G
+            di_t = (v_term - p.Rt * i_t - v_pcc) * (wb / p.Lt)
+            di_s = (v_pcc - Rth * i_s - e_g) * (wb / Xth)
+        else:  # 부하·고장 없음: 변압기와 계통이 직렬, i_s = i_t
+            di_t = (v_term - (p.Rt + Rth) * i_t - e_g) * (wb / (p.Lt + Xth))
+            v_pcc = e_g + Rth * i_t + di_t * (Xth / wb)
+            di_s = di_t
+            i_s = i_t
+        return v_term, v_pcc, i_t, i_s, di_t, di_s, G, e_g, closed
+
+    def pcc_voltage(self, t: float, x: list[float]) -> complex:
+        return self.network(t, x)[1]
 
     def sample(self, t: float, x: list[float]) -> None:
         """반송파 꼭짓점에서 측정을 샘플-홀드하고, 지령을 계산해 다음 샘플에 적용 (1샘플 지연)."""
-        self.meas = (self.pcc_voltage(t, x), complex(x[IF_RE], x[IF_IM]))
+        net = self.network(t, x)
+        self.meas = (net[1], net[2], complex(x[IF_RE], x[IF_IM]))
         self.v_applied = self.v_pending
         self.deriv(t, x)
         self.v_pending = self.aux["v_cmd"]
@@ -229,29 +262,15 @@ class Inverter:
     def deriv(self, t: float, x: list[float]) -> list[float]:
         p, sc, wb = self.p, self.sc, self.p.wb
         i_f = complex(x[IF_RE], x[IF_IM])
-        v_cap = complex(x[VC_RE], x[VC_IM])
-        i_g = complex(x[IG_RE], x[IG_IM])
-        closed = sc.breaker_closed(t)
-
-        # PCC 절점 전압 (Rd 직렬 커패시터 + 저항 부하)
-        if not closed:
-            i_g = 0j
-        G = self.G_L + (sc.pcc_fault_g(t) if sc.pcc_fault_g else 0.0)
-        v_p = (v_cap + p.Rd * (i_f - i_g)) / (1.0 + p.Rd * G)
-        i_load = G * v_p  # 부하 + 고장 전류
-
-        # 계통 전원
-        e_g = sc.grid_v(t) * cmath.exp(1j * (x[TH_G] + sc.grid_phase(t)))
-        Xth, Rth = self.grid_impedance(t)
-        L_tot = p.Lt + Xth
-        R_tot = p.Rt + Rth
+        v_term, v_pcc, i_t, i_s, di_t, di_s, G, e_g, closed = self.network(t, x)
 
         # 측정: 스위칭 모델은 샘플-홀드 값, 평균 모델은 순시값을 제어기에 넣는다
-        v_m, i_m = self.meas if self.sw else (v_p, i_f)
-        s_m = v_m * i_m.conjugate()
+        #   전력·전압·위상 = PCC 전압 × 변압기 전류, 전류제어 = 컨버터측 전류
+        v_m, it_m, i_m = self.meas if self.sw else (v_pcc, i_t, i_f)
+        s_m = v_m * it_m.conjugate()
         P, Q = s_m.real, s_m.imag
         Vmag = abs(v_m)
-        s_inst = v_p * i_f.conjugate()
+        s_inst = v_pcc * i_t.conjugate()
         P_ref = sc.p_ref(t) if sc.p_ref else p.P_ref
 
         dx = [0.0] * N_STATES
@@ -360,15 +379,12 @@ class Inverter:
             v_conv = v_cmd
 
         # --- 플랜트 ---
-        di_f = (v_conv - p.Rf * i_f - v_p) * (wb / p.Lf)
-        dv_c = (i_f - i_g - i_load) * (wb / p.Cf)
-        if closed:
-            di_g = (v_p - R_tot * i_g - e_g) * (wb / L_tot)
-        else:
-            di_g = 0j
+        di_f = (v_conv - p.Rf * i_f - v_term) * (wb / p.Lf)
+        dv_c = (i_f - i_t) * (wb / p.Cf)
         dx[IF_RE], dx[IF_IM] = di_f.real, di_f.imag
         dx[VC_RE], dx[VC_IM] = dv_c.real, dv_c.imag
-        dx[IG_RE], dx[IG_IM] = di_g.real, di_g.imag
+        dx[IG_RE], dx[IG_IM] = di_t.real, di_t.imag
+        dx[IS_RE], dx[IS_IM] = di_s.real, di_s.imag
         dx[TH_G] = wb * sc.grid_f(t)
         # 측정 필터
         dx[PF] = self.w_meas * (P - x[PF])
@@ -378,7 +394,7 @@ class Inverter:
         d_vff = self.w_vff * (v_dq - v_ff) if p.f_vff > 0 else 0j
         dx[VFF_D], dx[VFF_Q] = d_vff.real, d_vff.imag
 
-        self.aux.update(P=s_inst.real, Q=s_inst.imag, V=abs(v_p), v_p=v_p, i_f=i_f, i_g=i_g, e_g=e_g,
+        self.aux.update(P=s_inst.real, Q=s_inst.imag, V=abs(v_pcc), v_p=v_pcc, v_term=v_term, i_f=i_f, i_g=i_t, e_g=e_g,
                         i_ref=i_ref, saturated=saturated, closed=closed, v_cmd=v_cmd, v_conv=v_conv)
         return dx
 
@@ -415,7 +431,8 @@ def simulate(mode: str, p: Params, sc: Scenario, dt: float = DT_DEFAULT,
     hires_out = {k: [] for k in ("t", "ia", "ib", "ic", "va", "vb", "vc")} if hires else None
     if inv.sw:
         if x0 is not None:  # 웜스타트: 홀드 값을 현재 상태로 초기화
-            inv.meas = (inv.pcc_voltage(0.0, x), complex(x[IF_RE], x[IF_IM]))
+            net = inv.network(0.0, x)
+            inv.meas = (net[1], net[2], complex(x[IF_RE], x[IF_IM]))
             inv.deriv(0.0, x)
             inv.v_pending = inv.v_applied = inv.aux["v_cmd"]
         eps = 0.25 * dt
@@ -469,7 +486,7 @@ def simulate(mode: str, p: Params, sc: Scenario, dt: float = DT_DEFAULT,
         x = [xi + dt / 6.0 * (a1 + 2 * a2 + 2 * a3 + a4)
              for xi, a1, a2, a3, a4 in zip(x, k1, k2, k3, k4)]
         if not sc.breaker_closed(t + dt):
-            x[IG_RE] = x[IG_IM] = 0.0
+            x[IS_RE] = x[IS_IM] = 0.0   # 차단기 개방: 계통 지로 전류만 0 (변압기 전류는 PCC 부하로 계속 흐름)
         inv.post_step(t + dt, x)
         # 발산 감지 (수치 폭주 방지)
         if abs(x[IF_RE]) > 50 or abs(x[VC_RE]) > 50:
@@ -481,6 +498,42 @@ def simulate(mode: str, p: Params, sc: Scenario, dt: float = DT_DEFAULT,
     if hires_out is not None:
         out["hires"] = hires_out
     return out
+
+
+def _band_peak(t, x, fmin=5.0, fmax=300.0):
+    """fmin~fmax 대역 최대 진폭 [pu]과 주파수. 스위칭 에일리어싱(360 Hz 배수 ±6 Hz)은 제외."""
+    import numpy as np
+    x = np.asarray(x) - np.mean(x)
+    dt = t[1] - t[0]
+    F = np.abs(np.fft.rfft(x * np.hanning(len(x)))) * 4.0 / len(x)   # 해닝 창 진폭 보정
+    f = np.fft.rfftfreq(len(x), dt)
+    m = (f >= fmin) & (f <= fmax) & (np.abs(((f + 180.0) % 360.0) - 180.0) > 6.0)
+    if not m.any():
+        return 0.0, 0.0
+    i = np.argmax(np.where(m, F, 0.0))
+    return float(F[i]), float(f[i])
+
+
+def oscillation_check(t, P, a, b=None, osc_tol=0.005, swing_tol=0.01):
+    """외란 후 [a, b] 구간을 반으로 나눠 진동이 작거나 감쇠 중인지 판정한다.
+
+    - 5~300 Hz 대역(제어 상호작용) 최대 진폭: 뒤 구간 < osc_tol 이거나 앞 구간의 70 % 미만
+    - 20 ms 이동평균(저주파 스윙) 표준편차: 뒤 구간 < swing_tol 이거나 앞 구간의 70 % 미만
+    반환: (안정 여부, 설명 dict)
+    """
+    import numpy as np
+    t, P = np.asarray(t), np.asarray(P)
+    b = t[-1] if b is None else b
+    mid = a + 0.5 * (b - a)
+    m1, m2 = (t >= a) & (t < mid), (t >= mid) & (t <= b)
+    o1, _ = _band_peak(t[m1], P[m1])
+    o2, fo = _band_peak(t[m2], P[m2])
+    k = max(1, int(round(0.02 / (t[1] - t[0]))))
+    Pl = np.convolve(P, np.ones(k) / k, mode="same")
+    s1, s2 = Pl[m1][k:-k].std() if m1.sum() > 2 * k else 0.0, Pl[m2][k:-k].std() if m2.sum() > 2 * k else 0.0
+    osc_ok = o2 < osc_tol or o2 < 0.7 * o1
+    swing_ok = s2 < swing_tol or s2 < 0.7 * s1
+    return bool(osc_ok and swing_ok), dict(osc_amp=o2, osc_f=fo, swing_std=s2, osc_ok=osc_ok, swing_ok=swing_ok)
 
 
 CACHE_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), ".cache")
@@ -508,4 +561,4 @@ def steady_state(mode: str, p: Params, t_init: float = 2.5, dt: float = DT_DEFAU
     return r["x_final"]
 
 
-__all__ = ["Params", "Scenario", "simulate", "steady_state", "ramp_p", "replace", "DT_DEFAULT"]
+__all__ = ["Params", "Scenario", "simulate", "steady_state", "ramp_p", "replace", "DT_DEFAULT", "oscillation_check"]

@@ -27,7 +27,7 @@ import numpy as np
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
-from gfm_gfl_emt import DT_DEFAULT, Params, Scenario, simulate, steady_state  # noqa: E402
+from gfm_gfl_emt import DT_DEFAULT, Params, Scenario, oscillation_check, simulate, steady_state  # noqa: E402
 
 RES = os.path.join(HERE, "results")
 SLIDES = os.path.normpath(os.path.join(HERE, "..", "..", "slides", "gfm-gfl-slides.html"))
@@ -222,16 +222,19 @@ def window(r, key, a, b):
 
 
 def is_stable(r, a=0.8):
-    """a 이후를 두 구간으로 나눠 진동이 작거나 감쇠 중이면 안정으로 본다."""
+    """a 이후 진동이 작거나 감쇠 중이고 주파수가 정상 범위면 안정 (스위칭 잡음·에일리어싱 제외)."""
     if r is None or "diverged_at" in r:
         return False
-    t_end = arr(r, "t")[-1] - T_EV
-    mid = a + 0.5 * (t_end - a)
-    s1 = window(r, "P", a, mid).std()
-    s2 = window(r, "P", mid, 99).std()
+    t = arr(r, "t") - T_EV
+    ok, _ = oscillation_check(t, arr(r, "P"), a)
     f = window(r, "freq", a, 99)
-    damped = s2 < 0.005 or (s2 < 0.03 and s2 < 0.7 * s1)
-    return damped and bool(np.all(np.abs(f - 60.0) < 1.5))
+    return ok and bool(np.all(np.abs(f - 60.0) < 1.5))
+
+
+def osc_desc(r, a):
+    t = arr(r, "t") - T_EV
+    _, d = oscillation_check(t, arr(r, "P"), a)
+    return d
 
 
 def sync_kept(r, p0):
@@ -307,8 +310,9 @@ def main():
     stacked(plt, wg, [("P", "P [pu]"), ("V", "|V_PCC| [pu]"), ("I", "|i| [pu]")],
             "선로 트립: SCR 5 → 1.5 (P = 0.8 pu, GFL PLL 35 Hz)", "fig04_weak_grid.png", xlim=(-0.05, 1.4))
     for m, r in wg.items():
+        d = osc_desc(r, 0.6)
         summary.append(("SCR 5→1.5 (PLL 35 Hz)", m, "안정" if is_stable(r, 0.6) else "불안정(지속 진동)",
-                        f"P 표준편차(1.0 s~) {window(r, 'P', 1.0, 99).std():.3f} pu"))
+                        f"5~300 Hz 진동 {d['osc_amp']:.4f} pu @ {d['osc_f']:.0f} Hz, 저주파 스윙 {d['swing_std']:.4f} pu"))
     data["weak_grid"] = {m: downsample(r, ["P", "V", "I"], t1=1.4, n=1600) for m, r in wg.items()}
 
     # 4) 안정도 맵 ---------------------------------------------------------

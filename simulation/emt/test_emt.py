@@ -37,12 +37,13 @@ def test_steady_state_tracks_reference():
 
 
 def test_power_flow_matches_phasor_theory():
-    """GFL 정상상태 PCC–계통 위상차가 P = V²/X·sin δ 와 일치 (X = Lt + 1/SCR)."""
+    """GFL 정상상태 PCC–계통 위상차가 P = V²/X·sin δ 와 일치 (X = 1/SCR, PCC 분로 G_bus 소비분 제외)."""
     p = Params(P_ref=0.6, scr=3.0)
     t, r = _run("GFL", p, t_end=0.3)
-    X = p.Lt + 1.0 / p.scr
-    delta_theory = math.degrees(math.asin(0.6 * X / 1.0))
-    # delta_deg 는 컨트롤러(PLL) 각 - 계통 각 = PCC 전압각 - 계통 각
+    X = 1.0 / p.scr
+    P_grid = r["P"].mean() - p.G_bus * r["V"].mean() ** 2
+    delta_theory = math.degrees(math.asin(P_grid * X / 1.0))
+    # delta_deg 는 컨트롤러(PLL) 각 - 계통 각 = PCC 전압각 - 계통 각 (PLL 은 PCC 전압에 동기)
     assert abs(r["delta_deg"].mean() - delta_theory) < 2.0
 
 

@@ -21,7 +21,7 @@ import numpy as np
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
-from gfm_gfl_emt import DT_DEFAULT, Params, Scenario, simulate, steady_state  # noqa: E402
+from gfm_gfl_emt import DT_DEFAULT, Params, Scenario, oscillation_check, simulate, steady_state  # noqa: E402
 
 REPORT = os.path.normpath(os.path.join(HERE, "..", "..", "reports", "gfm-gfl-test-report.html"))
 T = 0.2  # 외란 시각 (웜스타트 이후)
@@ -170,11 +170,11 @@ def at(r, k, tt):
 
 
 def damped(r, a):
-    """a 이후 두 구간의 P 진동을 비교: 작거나 감쇠 중이면 True."""
-    t_end = A(r, "t")[-1]
-    mid = a + 0.5 * (t_end - a)
-    s1, s2 = win(r, "P", a, mid).std(), win(r, "P", mid, 99).std()
-    return (not r["diverged"]) and (s2 < 0.01 or (s2 < 0.03 and s2 < 0.7 * s1))
+    """a 이후 진동이 작거나 감쇠 중이면 True (스위칭 에일리어싱 제외, gfm_gfl_emt.oscillation_check)."""
+    if r["diverged"]:
+        return False
+    ok, _ = oscillation_check(A(r, "t"), A(r, "P"), a)
+    return ok
 
 
 def crit(name, ref, threshold, values, passes, note=""):
