@@ -55,7 +55,7 @@ def main():
     head = "| 시나리오 | 방식 | 지표 | " + " | ".join(f"{dt * 1e6:g} µs" for dt in DTS) + " |"
     rows = [head, "|---|---|---|" + "---|" * len(DTS)]
     spec = [("phase", "위상 점프 −20°", [("dP10", "10 ms 내 ΔP 최대 [pu]")]),
-            ("weak", "SCR 5→1.5 (PLL 35 Hz)", [("Pstd", "P 표준편차 1.0 s~ [pu]")]),
+            ("weak", "SCR 5→1.5 (PLL 대역폭 35 Hz)", [("Pstd", "P 표준편차 1.0 s~ [pu]")]),
             ("fault", "고장 0.3 pu·150 ms", [("Imax", "최대 전류 [pu]"), ("Vmean", "고장 중 평균 V [pu]"),
                                             ("Vmin", "고장 중 순간 최저 V [pu]")])]
     for case, name, keys in spec:
