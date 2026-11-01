@@ -34,7 +34,7 @@ ax.plot(hexv.real, hexv.imag, color=BLUE, lw=1.0, label="유효 벡터를 잇는
 r = VDC / np.sqrt(3)
 th = np.linspace(0, 2 * np.pi, 300)
 ax.plot(r * np.cos(th), r * np.sin(th), color=AQUA, lw=1.0, ls="--",
-        label="내접원 반지름 $V_{dc}/\\sqrt{3}$ ≈ 1.302 pu")
+        label="내접원 반지름 $V_{dc}/\\sqrt{3}$ ≈ 1.303 pu")
 for k, s in enumerate(order):
     v = ab(*s)
     ax.annotate("", xy=(v.real, v.imag), xytext=(0, 0),

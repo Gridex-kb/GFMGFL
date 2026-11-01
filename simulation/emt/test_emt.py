@@ -87,7 +87,7 @@ def test_gfm_current_limit_during_fault():
 def test_switching_model_steady_state_and_ripple():
     """5 kHz 스위칭 모델: 샘플 평균은 지령을 추종하고, 순시 전류에는 스위칭 리플이 있다."""
     p = Params(P_ref=0.5, scr=3.0)                       # 기본 converter="switching"
-    assert abs(p.V_conv_max - 700 / math.sqrt(3) / (380 * math.sqrt(2 / 3))) < 1e-9   # 1.302 pu
+    assert abs(p.V_conv_max - 700 / math.sqrt(3) / (380 * math.sqrt(2 / 3))) < 1e-9   # 1.303 pu
     for mode in ("GFL", "GFM"):
         r = simulate(mode, p, Scenario(t_end=1.0, p_ref=lambda t: 0.5 * min(1.0, t / 0.3)),
                      dt=2e-6, hires=(0.95, 0.97))

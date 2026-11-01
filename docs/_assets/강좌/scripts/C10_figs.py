@@ -54,8 +54,8 @@ def tms(r):
 
 
 def fig_scr_step(plt):
-    cases = [("GFM (VSM)", "GFM", 20, BLUE, "-"), ("GFL · PLL 20 Hz", "GFL", 20, ORANGE, "-"),
-             ("GFL · PLL 50 Hz", "GFL", 50, AQUA, "-")]
+    cases = [("GFM (VSM)", "GFM", 20, BLUE, "-"), ("GFL · PLL 대역폭 20 Hz", "GFL", 20, ORANGE, "-"),
+             ("GFL · PLL 대역폭 50 Hz", "GFL", 50, AQUA, "-")]
     res = [(lab, run_scr(m, fp, 1.5, 0.8), c, ls) for lab, m, fp, c, ls in cases]
     fig, ax = plt.subplots(figsize=(8.4, 3.0))
     for lab, r, c, ls in res:
@@ -75,10 +75,10 @@ def fig_osc_types(plt):
     r2 = run_scr("GFL", 50, 1.5, 0.8)
     fig, ax = plt.subplots(1, 2, figsize=(8.4, 3.0))
     ax[0].plot(tms(r1), r1["P"], color=ORANGE)
-    ax[0].set_title("① 동기화 상실형: PLL 10 Hz, SCR 1.3")
+    ax[0].set_title("① 동기화 상실형: PLL 대역폭 10 Hz, SCR 1.3")
     ax[0].set_xlim(-50, 600)
     ax[1].plot(tms(r2), r2["P"], color=AQUA)
-    ax[1].set_title("② 상호작용형: PLL 50 Hz, SCR 1.5")
+    ax[1].set_title("② 상호작용형: PLL 대역폭 50 Hz, SCR 1.5")
     ax[1].set_xlim(400, 460)
     ax[1].set_ylim(0.72, 0.88)
     for a in ax:

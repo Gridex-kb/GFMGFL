@@ -34,7 +34,7 @@ def cls(v):
     return "large"
 
 style = {"large": (BLUE, f"대벡터 6개 (|V| = 2/3·$V_{{dc}}$ = {2*VDC/3:.3f} pu)"),
-         "medium": (ORANGE, "중벡터 6개 (|V| = $V_{dc}/\\sqrt{3}$ ≈ 1.302 pu)"),
+         "medium": (ORANGE, "중벡터 6개 (|V| = $V_{dc}/\\sqrt{3}$ ≈ 1.303 pu)"),
          "small": (AQUA, f"소벡터 6개 × 상태 2개 (|V| = $V_{{dc}}$/3 = {VDC/3:.3f} pu)"),
          "zero": (GRAY, "영벡터 1개 × 상태 3개")}
 fig, ax = plt.subplots(figsize=(7.0, 6.6))

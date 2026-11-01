@@ -104,7 +104,7 @@ class Params:
 
     @property
     def V_conv_max(self) -> float:
-        """선형 변조 영역에서 컨버터가 낼 수 있는 최대 상전압 진폭 [pu] (700 V/380 V, SVPWM → 1.302)."""
+        """선형 변조 영역에서 컨버터가 낼 수 있는 최대 상전압 진폭 [pu] (700 V/380 V, SVPWM → 1.303)."""
         vmax = self.V_dc / math.sqrt(3.0) if self.modulation == "svpwm" else self.V_dc / 2.0
         return vmax / self.V_base_peak
 

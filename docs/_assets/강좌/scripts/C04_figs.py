@@ -23,7 +23,7 @@ def minmax(ref):
     return -0.5 * (ref.max(axis=1) + ref.min(axis=1))
 
 
-# ---- 그림 1: 영상분 주입 변조파 (상전압 지령 진폭 1.302 pu) ----
+# ---- 그림 1: 영상분 주입 변조파 (상전압 지령 진폭 1.303 pu) ----
 t = np.linspace(0, 1 / f0, 2001)
 vm = VDC / np.sqrt(3)
 ref = np.stack([vm * np.cos(2 * np.pi * f0 * t - k * 2 * np.pi / 3) for k in range(3)], axis=1)
@@ -33,7 +33,7 @@ fig, axs = plt.subplots(3, 1, figsize=(7.2, 6.6), sharex=True)
 for k, (nm, c) in enumerate(zip("abc", (BLUE, ORANGE, AQUA))):
     axs[0].plot(tm, ref[:, k], color=c, label=f"{nm}상 지령")
 axs[0].set_ylabel("상전압 지령 [pu]")
-axs[0].set_title("지령 진폭 1.302 pu: 사인 그대로는 ±1.128 pu(= ±$V_{dc}$/2)를 넘는다", fontsize=10)
+axs[0].set_title("지령 진폭 1.303 pu: 사인 그대로는 ±1.128 pu(= ±$V_{dc}$/2)를 넘는다", fontsize=10)
 axs[1].plot(tm, v0, color=GRAY, label="$v_0 = -(\\max+\\min)/2$")
 axs[1].set_ylabel("영상분 [pu]")
 axs[1].set_title("min-max 영상분 (3배 주파수 삼각파 모양)", fontsize=10)
@@ -51,7 +51,7 @@ for a in axs:
     a.grid(alpha=0.25, lw=0.5)
     a.legend(loc="upper right", fontsize=8, ncol=3, frameon=False)
 for a in (axs[0], axs[2]):
-    a.annotate("-1.302", xy=(8.33, -1.302), xytext=(9.6, -1.52), fontsize=8, color=BLUE,
+    a.annotate("-1.303", xy=(8.33, -1.303), xytext=(9.6, -1.52), fontsize=8, color=BLUE,
                arrowprops=dict(arrowstyle="-", color=BLUE, lw=0.6))
 axs[1].set_ylim(-0.5, 0.6); axs[1].set_yticks([-0.2, 0, 0.2]); axs[1].set_yticklabels(["-0.2", "0", "0.2"])
 fig.tight_layout()

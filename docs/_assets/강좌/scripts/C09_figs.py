@@ -82,7 +82,7 @@ def fig_phase_jump(plt):
     for mode, c in (("GFM", BLUE), ("GFL", ORANGE)):
         r = res[mode]
         t = (np.asarray(r["t"]) - t_ev) * 1e3
-        lab = "GFM (VSM)" if mode == "GFM" else "GFL (PLL 20 Hz)"
+        lab = "GFM (VSM)" if mode == "GFM" else "GFL (PLL 대역폭 20 Hz)"
         ax[0].plot(t, r["P"], color=c, label=lab)
         ax[1].plot(t, r["freq"], color=c, label=lab)
     ax[0].axvspan(0, 10, color=GRID, alpha=0.6, lw=0)

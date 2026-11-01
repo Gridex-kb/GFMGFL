@@ -178,7 +178,7 @@ axs[1].axhline(60.0, color=GRAY, lw=0.7, ls=":")
 axs[1].set_ylabel("PLL 측정 주파수 [Hz]")
 axs[1].set_xlabel("시간 [ms] (5 ms 이동평균)")
 axs[1].set_ylim(59.5, 62.0)
-axs[1].set_title(f"EMT 모델, PLL 50 Hz: 오프셋 ≈ kp·ω·Ts/2 = {off_hz:.2f} Hz (계통은 60 Hz)", fontsize=10)
+axs[1].set_title(f"EMT 모델, PLL 대역폭 50 Hz: 오프셋 ≈ kp·ω·Ts/2 = {off_hz:.2f} Hz (계통은 60 Hz)", fontsize=10)
 axs[1].legend(loc="upper right", fontsize=8, frameon=False)
 for a in axs:
     a.grid(alpha=0.25, lw=0.5)

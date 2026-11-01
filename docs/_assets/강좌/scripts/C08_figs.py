@@ -94,7 +94,7 @@ def fig_phase_jump(plt):
     ax[0].legend(loc="center right")
     ax[1].plot(t, r["freq"], color=ORANGE)
     ax[1].axhline(54, color=GREY, lw=0.8, ls=":")
-    ax[1].set_title("PLL 측정 주파수 (PLL 20 Hz)")
+    ax[1].set_title("PLL 측정 주파수 (PLL 대역폭 20 Hz)")
     ax[1].set_ylabel("Hz")
     for a in ax:
         a.set_xlabel("위상 점프(−20°) 후 시간 [ms]")
