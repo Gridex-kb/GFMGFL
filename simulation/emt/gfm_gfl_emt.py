@@ -1,0 +1,392 @@
+"""
+GFM / GFL 인버터 평균값 EMT 시뮬레이터 (교육·비교용)
+=====================================================
+
+- 3상 순시값을 복소 αβ 공간벡터로 다룬다 (x = xα + j·xβ, 진폭 불변 변환).
+  |v| = 1 pu 이면 상전압 진폭이 정격이다. P = Re(v·i*), Q = Im(v·i*).
+- 스위칭을 평균화한 전압형 컨버터(VSC) + LCL 필터(커패시터 직렬 댐핑저항) +
+  변압기 + 테브난 등가 계통(SCR, X/R) + PCC 국부 부하 + 계통 차단기.
+- 같은 하드웨어·같은 내부 전류제어기에 외부 루프만 바꿔 GFL / GFM 을 비교한다.
+    * GFL : SRF-PLL → P/Q(또는 V) 지령 → dq 전류 지령 (+선택: 합성관성)
+    * GFM : VSM(가상동기기, 관성 H·댐핑 D) → 내부 기전력 E∠θ →
+            동적 가상 인덕턴스(가상 어드미턴스) → 전류 지령 (원형 전류제한)
+- 고정 스텝 RK4 적분, 기본 dt = 50 µs. 단위는 인버터 정격 기준 pu, 시간은 초.
+
+이 모델은 개념 검증·교육용이다. 계통연계 검토에는 제조사 EMT 모델(PSCAD 등)을 써야 한다.
+"""
+from __future__ import annotations
+
+import cmath
+import math
+from dataclasses import dataclass, field, replace
+from typing import Callable
+
+TWO_PI = 2.0 * math.pi
+
+
+# ----------------------------------------------------------------------------
+# 파라미터
+# ----------------------------------------------------------------------------
+@dataclass
+class Params:
+    # 계통
+    f0: float = 60.0              # 정격 주파수 [Hz] (한국 60 Hz)
+    scr: float = 3.0              # 단락비 (인버터 정격 기준)
+    xr: float = 10.0              # 계통 X/R
+    # 필터·변압기 [pu]
+    Lf: float = 0.15
+    Rf: float = 0.005
+    Cf: float = 0.05              # 커패시터 서셉턴스 [pu]
+    Rd: float = 2.0               # 커패시터 직렬 댐핑 저항 [pu]
+    Lt: float = 0.10              # 변압기 누설 리액턴스 [pu]
+    Rt: float = 0.005
+    # 국부 부하 (PCC, 저항성). 0 이면 부하 없음.
+    P_load: float = 0.0
+    # 공통 내부 전류제어
+    f_cc: float = 800.0           # 전류제어 대역폭 [Hz]
+    I_max: float = 1.2            # 전류 한계 [pu]
+    V_conv_max: float = 1.4       # 컨버터 출력 전압 한계 (DC링크) [pu]
+    t_delay: float = 150e-6       # 계산·PWM 지연 (1차 지연 근사, 10 kHz 샘플 × 1.5) [s]. 0 이면 없음
+    # 공통 지령
+    P_ref: float = 0.5
+    V_ref: float = 1.0
+    droop: float = 0.02           # P-f 드룹 (2 % → D = 50 pu)
+    # GFL
+    f_pll: float = 20.0           # PLL 고유주파수 [Hz]
+    pll_zeta: float = 0.707
+    pll_dw_max: float = 0.1       # PLL 주파수 제한 [pu]
+    gfl_vctrl_ki: float = 20.0    # PCC 전압 → Q 지령 적분이득 [pu/s/pu]
+    gfl_q_max: float = 0.6
+    gfl_droop: bool = False       # GFL P-f 드룹 (PLL 측정 주파수 기반). RoCoF 시나리오에서만 켬
+    gfl_H_syn: float = 0.0        # 합성관성 상수 [s] (0 이면 사용 안 함)
+    gfl_fmeas_hz: float = 2.0     # 드룹·합성관성용 주파수 측정 필터 [Hz] (5 Hz 이상이면 합성관성 루프 불안정)
+    gfl_dfdt_hz: float = 2.0      # 합성관성 df/dt 추가 필터 [Hz]
+    gfl_frt_enter: float = 0.85   # FRT 진입 전압 [pu]
+    gfl_frt_exit: float = 0.92    # FRT 해제 전압 [pu] (히스테리시스)
+    gfl_frt_hold: float = 0.03    # FRT 최소 유지시간 [s]
+    gfl_frt_iq: float = 0.95      # FRT 중 무효전류 = gfl_frt_iq × I_max (고정, 측정전압 되먹임 없음)
+    # GFM (VSM)
+    H: float = 4.0                # 가상 관성상수 [s]
+    Xv: float = 0.30              # 가상 리액턴스 [pu]
+    Rv: float = 0.05              # 가상 저항 [pu]
+    gfm_vctrl_ki: float = 5.0     # PCC 전압 → E 적분이득 [pu/s/pu]
+    gfm_limit_freeze: bool = True # 전류제한 중 VSM 가속 억제(동기 유지 보정)
+    # 측정 필터
+    f_meas: float = 20.0          # P, Q, |V| 측정 LPF [Hz]
+    ff_gain: float = 0.0          # 전류제어 전압 피드포워드 이득. 지연이 있는 약계통에서 순시 피드포워드는
+                                  # 공통 내부루프 불안정(100~200 Hz)을 일으키므로 기본은 끔 (README 참고)
+    f_vff: float = 100.0          # 전압 피드포워드 LPF (dq 좌표) [Hz]. 0 이면 순시값
+
+    @property
+    def wb(self) -> float:
+        return TWO_PI * self.f0
+
+    @property
+    def D(self) -> float:
+        return 1.0 / self.droop
+
+
+@dataclass
+class Scenario:
+    """시간 함수로 주어지는 외란. 기본값은 '아무 일도 없음'."""
+    name: str = "base"
+    t_end: float = 2.0
+    grid_f: Callable[[float], float] = lambda t: 1.0           # 계통 주파수 [pu]
+    grid_phase: Callable[[float], float] = lambda t: 0.0       # 계통 위상 오프셋 [rad]
+    grid_v: Callable[[float], float] = lambda t: 1.0           # 계통 전압 크기 [pu]
+    scr: Callable[[float], float] | None = None                # 단락비 (None 이면 Params.scr)
+    breaker_closed: Callable[[float], bool] = lambda t: True   # 계통 차단기
+    p_ref: Callable[[float], float] | None = None              # 유효전력 지령
+
+
+def ramp_p(p_final: float, t_ramp: float = 0.25):
+    """초기화용: 0 → p_final 로 t_ramp 동안 램프."""
+    return lambda t: p_final * min(1.0, t / t_ramp)
+
+
+# ----------------------------------------------------------------------------
+# 상태 인덱스
+# ----------------------------------------------------------------------------
+IF_RE, IF_IM, VC_RE, VC_IM, IG_RE, IG_IM = range(6)
+TH_G, TH_C, X_W, XCC_RE, XCC_IM, PF, QF, VF, X_V, IV_RE, IV_IM, F_MEAS, VFF_D, VFF_Q, DFDT, VD_RE, VD_IM = range(6, 23)
+N_STATES = 23
+
+
+class Inverter:
+    """mode = 'GFL' 또는 'GFM'."""
+
+    def __init__(self, mode: str, p: Params, sc: Scenario):
+        if mode not in ("GFL", "GFM"):
+            raise ValueError(mode)
+        self.mode = mode
+        self.p = p
+        self.sc = sc
+        wb = p.wb
+        # 전류제어 PI (dq): Kp = ωcc·L/ωb, Ki = Kp·ωcc/5
+        wcc = TWO_PI * p.f_cc
+        self.kp_c = wcc * p.Lf / wb
+        self.ki_c = self.kp_c * wcc / 5.0
+        # PLL PI
+        wn = TWO_PI * p.f_pll
+        self.kp_pll = 2.0 * p.pll_zeta * wn / wb
+        self.ki_pll = wn * wn / wb
+        self.w_meas = TWO_PI * p.f_meas
+        self.w_fm = TWO_PI * p.gfl_fmeas_hz
+        self.w_vff = TWO_PI * p.f_vff
+        self.w_dfdt = TWO_PI * p.gfl_dfdt_hz
+        self.frt = False  # GFL FRT 모드 (스텝마다 갱신되는 이산 상태)
+        self.t_frt = -1.0
+        self.G_L = p.P_load  # 저항 부하 컨덕턴스 (1 pu 전압에서 P_load)
+        # 출력 버퍼
+        self.aux: dict = {}
+
+    # ---- 계통 파라미터 ----
+    def grid_impedance(self, t: float) -> tuple[float, float]:
+        scr = self.sc.scr(t) if self.sc.scr else self.p.scr
+        X = 1.0 / scr
+        return X, X / self.p.xr
+
+    # ---- 스텝 후 이산 상태 갱신 ----
+    def post_step(self, t: float, x: list[float]) -> None:
+        if self.mode == "GFL":
+            if not self.frt and x[VF] < self.p.gfl_frt_enter:
+                self.frt, self.t_frt = True, t
+            elif self.frt and x[VF] > self.p.gfl_frt_exit and t - self.t_frt > self.p.gfl_frt_hold:
+                self.frt = False
+
+    # ---- 미분방정식 ----
+    def deriv(self, t: float, x: list[float]) -> list[float]:
+        p, sc, wb = self.p, self.sc, self.p.wb
+        i_f = complex(x[IF_RE], x[IF_IM])
+        v_cap = complex(x[VC_RE], x[VC_IM])
+        i_g = complex(x[IG_RE], x[IG_IM])
+        closed = sc.breaker_closed(t)
+
+        # PCC 절점 전압 (Rd 직렬 커패시터 + 저항 부하)
+        if not closed:
+            i_g = 0j
+        v_p = (v_cap + p.Rd * (i_f - i_g)) / (1.0 + p.Rd * self.G_L)
+        i_load = self.G_L * v_p
+
+        # 계통 전원
+        e_g = sc.grid_v(t) * cmath.exp(1j * (x[TH_G] + sc.grid_phase(t)))
+        Xth, Rth = self.grid_impedance(t)
+        L_tot = p.Lt + Xth
+        R_tot = p.Rt + Rth
+
+        # 측정
+        s = v_p * i_f.conjugate()
+        P, Q = s.real, s.imag
+        Vmag = abs(v_p)
+        P_ref = sc.p_ref(t) if sc.p_ref else p.P_ref
+
+        dx = [0.0] * N_STATES
+        th_c = x[TH_C]
+        rot = cmath.exp(-1j * th_c)
+        i_dq = i_f * rot
+        v_dq = v_p * rot
+        # 전류제어 피드포워드용 전압: dq 좌표에서 LPF (f_vff <= 0 이면 순시값)
+        v_ff = complex(x[VFF_D], x[VFF_Q]) if p.f_vff > 0 else v_dq
+        saturated = False
+
+        if self.mode == "GFL":
+            # --- SRF-PLL ---
+            vq = v_dq.imag
+            dw = self.kp_pll * vq + x[X_W]
+            if dw > p.pll_dw_max:
+                dw = p.pll_dw_max
+            elif dw < -p.pll_dw_max:
+                dw = -p.pll_dw_max
+            dx[X_W] = self.ki_pll * vq
+            if (x[X_W] >= p.pll_dw_max and vq > 0) or (x[X_W] <= -p.pll_dw_max and vq < 0):
+                dx[X_W] = 0.0  # 적분기 anti-windup
+            w_c = 1.0 + dw
+            dx[TH_C] = wb * w_c
+            # 주파수 측정 필터 (드룹·합성관성)
+            dx[F_MEAS] = self.w_fm * (dw - x[F_MEAS])
+            p_cmd = P_ref
+            if p.gfl_droop:
+                p_cmd += -p.D * x[F_MEAS]
+            # 합성관성: 필터된 측정 주파수의 미분을 한 번 더 필터 (측정 기반 → 지연 존재)
+            dx[DFDT] = self.w_dfdt * (dx[F_MEAS] - x[DFDT])
+            if p.gfl_H_syn > 0:
+                p_cmd += -2.0 * p.gfl_H_syn * x[DFDT]
+            # --- 전압 제어 → Q 지령 ---
+            dx[X_V] = p.gfl_vctrl_ki * (p.V_ref - x[VF])
+            q_cmd = max(-p.gfl_q_max, min(p.gfl_q_max, x[X_V]))
+            if (x[X_V] >= p.gfl_q_max and dx[X_V] > 0) or (x[X_V] <= -p.gfl_q_max and dx[X_V] < 0):
+                dx[X_V] = 0.0
+            vd = max(x[VF], 0.3)
+            id_ref = p_cmd / vd
+            iq_ref = -q_cmd / vd
+            # --- FRT: 저전압 시 무효전류 우선 (고정 주입) ---
+            if self.frt:
+                iq_ref = -p.gfl_frt_iq * p.I_max
+                id_room = math.sqrt(max(p.I_max ** 2 - iq_ref ** 2, 0.0))
+                id_ref = max(-id_room, min(id_room, id_ref))
+                saturated = True
+            else:
+                mag = math.hypot(id_ref, iq_ref)
+                if mag > p.I_max:  # 유효전류 우선
+                    id_ref = max(-p.I_max, min(p.I_max, id_ref))
+                    iq_room = math.sqrt(max(p.I_max ** 2 - id_ref ** 2, 0.0))
+                    iq_ref = max(-iq_room, min(iq_room, iq_ref))
+                    saturated = True
+            i_ref = complex(id_ref, iq_ref)
+            self.aux = dict(w_c=w_c, E=float("nan"))
+        else:
+            # --- VSM: 2H dΔω/dt = P* - P - D·Δω ---
+            dw = x[X_W]
+            w_c = 1.0 + dw
+            dx[TH_C] = wb * w_c
+            # --- 전압 제어 → 내부 기전력 E ---
+            dx[X_V] = p.gfm_vctrl_ki * (p.V_ref - x[VF])
+            E = 1.0 + max(-0.3, min(0.3, x[X_V]))
+            # --- 동적 가상 인덕턴스 (θ 회전좌표) ---
+            #   (Xv/ωb) di/dt = E - v - Rv·i - j·ω·Xv·i
+            i_v = complex(x[IV_RE], x[IV_IM])
+            di_v = (E - v_dq - p.Rv * i_v - 1j * w_c * p.Xv * i_v) * (wb / p.Xv)
+            mag = abs(i_v)
+            if mag > p.I_max:
+                i_ref = i_v * (p.I_max / mag)
+                saturated = True
+                # anti-windup: 한계 밖으로 커지는 방향 성분 제거
+                radial = (di_v * i_v.conjugate()).real / mag
+                if radial > 0:
+                    di_v -= radial * i_v / mag
+            else:
+                i_ref = i_v
+            dx[IV_RE], dx[IV_IM] = di_v.real, di_v.imag
+            p_err = P_ref - x[PF]
+            if saturated and p.gfm_limit_freeze and p_err > 0:
+                p_err = 0.0  # 전류제한 중 가속(위상 이탈) 억제
+            dx[X_W] = (p_err - p.D * dw) / (2.0 * p.H)
+            self.aux = dict(w_c=w_c, E=E)
+
+        # --- 공통 내부 전류제어 (θ_c 좌표) ---
+        err = i_ref - i_dq
+        x_cc = complex(x[XCC_RE], x[XCC_IM])
+        v_conv_dq = p.ff_gain * v_ff + self.kp_c * err + x_cc + 1j * w_c * p.Lf * i_dq
+        vm = abs(v_conv_dq)
+        if vm > p.V_conv_max:
+            v_conv_dq *= p.V_conv_max / vm
+        else:
+            d_cc = self.ki_c * err
+            dx[XCC_RE], dx[XCC_IM] = d_cc.real, d_cc.imag
+        v_cmd = v_conv_dq * cmath.exp(1j * th_c)
+        # 계산·PWM 지연 (1차 지연): 실제 컨버터 출력은 지령을 늦게 따라간다
+        if p.t_delay > 0:
+            v_conv = complex(x[VD_RE], x[VD_IM])
+            d_vd = (v_cmd - v_conv) / p.t_delay
+            dx[VD_RE], dx[VD_IM] = d_vd.real, d_vd.imag
+        else:
+            v_conv = v_cmd
+
+        # --- 플랜트 ---
+        di_f = (v_conv - p.Rf * i_f - v_p) * (wb / p.Lf)
+        dv_c = (i_f - i_g - i_load) * (wb / p.Cf)
+        if closed:
+            di_g = (v_p - R_tot * i_g - e_g) * (wb / L_tot)
+        else:
+            di_g = 0j
+        dx[IF_RE], dx[IF_IM] = di_f.real, di_f.imag
+        dx[VC_RE], dx[VC_IM] = dv_c.real, dv_c.imag
+        dx[IG_RE], dx[IG_IM] = di_g.real, di_g.imag
+        dx[TH_G] = wb * sc.grid_f(t)
+        # 측정 필터
+        dx[PF] = self.w_meas * (P - x[PF])
+        dx[QF] = self.w_meas * (Q - x[QF])
+        dx[VF] = self.w_meas * (Vmag - x[VF])
+        # dq 전압 필터 (회전좌표: 좌표 회전에 따른 항 포함 없이 dq 값 자체를 필터)
+        d_vff = self.w_vff * (v_dq - v_ff) if p.f_vff > 0 else 0j
+        dx[VFF_D], dx[VFF_Q] = d_vff.real, d_vff.imag
+
+        self.aux.update(P=P, Q=Q, V=Vmag, v_p=v_p, i_f=i_f, i_g=i_g, e_g=e_g,
+                        i_ref=i_ref, saturated=saturated, closed=closed)
+        return dx
+
+
+# ----------------------------------------------------------------------------
+# 적분기
+# ----------------------------------------------------------------------------
+def simulate(mode: str, p: Params, sc: Scenario, dt: float = 50e-6,
+             record_every: int = 2, x0: list[float] | None = None) -> dict:
+    """RK4 고정 스텝. 결과는 리스트 dict (numpy 변환은 호출측).
+
+    x0 를 주면 그 상태에서 이어서 시작한다(웜스타트). 결과의 'x_final' 을 다음 x0 로 쓸 수 있다.
+    """
+    inv = Inverter(mode, p, sc)
+    if x0 is not None:
+        x = list(x0)
+        x[TH_G] = x[TH_G] % TWO_PI
+        x[TH_C] = x[TH_G] + ((x0[TH_C] - x0[TH_G] + math.pi) % TWO_PI - math.pi)
+    else:
+        x = [0.0] * N_STATES
+        x[VC_RE] = 1.0      # 커패시터 전압 = 계통 전압으로 초기화
+        x[VF] = 1.0
+        x[VFF_D] = 1.0
+        x[VD_RE] = 1.0
+    out = {k: [] for k in (
+        "t", "P", "Q", "V", "I", "freq", "grid_freq", "delta_deg", "E",
+        "ia", "ib", "ic", "va", "vb", "vc", "sat", "id_ref_mag")}
+    n = int(round(sc.t_end / dt))
+    a120 = cmath.exp(-1j * TWO_PI / 3)
+    for k in range(n + 1):
+        t = k * dt
+        if k % record_every == 0:
+            inv.deriv(t, x)
+            a = inv.aux
+            v_p, i_f = a["v_p"], a["i_f"]
+            out["t"].append(t)
+            out["P"].append(a["P"])
+            out["Q"].append(a["Q"])
+            out["V"].append(a["V"])
+            out["I"].append(abs(i_f))
+            out["freq"].append(a["w_c"] * p.f0)
+            out["grid_freq"].append(sc.grid_f(t) * p.f0)
+            d = (x[TH_C] - x[TH_G] - sc.grid_phase(t) + math.pi) % TWO_PI - math.pi
+            out["delta_deg"].append(math.degrees(d))
+            out["E"].append(a["E"])
+            # 순시 상값 (진폭 불변: a상 = Re, b/c 는 회전)
+            out["ia"].append(i_f.real)
+            out["ib"].append((i_f * a120).real)
+            out["ic"].append((i_f * a120.conjugate()).real)
+            out["va"].append(v_p.real)
+            out["vb"].append((v_p * a120).real)
+            out["vc"].append((v_p * a120.conjugate()).real)
+            out["sat"].append(1.0 if a["saturated"] else 0.0)
+            out["id_ref_mag"].append(abs(a["i_ref"]))
+        if k == n:
+            break
+        k1 = inv.deriv(t, x)
+        x2 = [xi + 0.5 * dt * ki for xi, ki in zip(x, k1)]
+        k2 = inv.deriv(t + 0.5 * dt, x2)
+        x3 = [xi + 0.5 * dt * ki for xi, ki in zip(x, k2)]
+        k3 = inv.deriv(t + 0.5 * dt, x3)
+        x4 = [xi + dt * ki for xi, ki in zip(x, k3)]
+        k4 = inv.deriv(t + dt, x4)
+        x = [xi + dt / 6.0 * (a1 + 2 * a2 + 2 * a3 + a4)
+             for xi, a1, a2, a3, a4 in zip(x, k1, k2, k3, k4)]
+        if not sc.breaker_closed(t + dt):
+            x[IG_RE] = x[IG_IM] = 0.0
+        inv.post_step(t + dt, x)
+        # 발산 감지 (수치 폭주 방지)
+        if abs(x[IF_RE]) > 50 or abs(x[VC_RE]) > 50:
+            out["diverged_at"] = t
+            break
+    out["mode"] = mode
+    out["scenario"] = sc.name
+    out["x_final"] = x
+    return out
+
+
+def steady_state(mode: str, p: Params, t_init: float = 2.5, dt: float = 50e-6) -> list[float]:
+    """P_ref 를 램프로 올린 뒤 정상상태까지 돌린 상태벡터를 돌려준다."""
+    sc = Scenario(name="init", t_end=t_init, p_ref=ramp_p(p.P_ref, 0.3))
+    r = simulate(mode, p, sc, dt=dt, record_every=1000)
+    if "diverged_at" in r:
+        raise RuntimeError(f"{mode} 초기화 발산 (SCR={p.scr}, P={p.P_ref})")
+    return r["x_final"]
+
+
+__all__ = ["Params", "Scenario", "simulate", "steady_state", "ramp_p", "replace"]
