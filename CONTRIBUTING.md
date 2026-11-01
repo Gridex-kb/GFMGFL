@@ -13,7 +13,11 @@ docs/
   06-실증-사례/       프로젝트, 제조사, 교훈
   07-시험-검증/       모델링, HIL, 성능시험
   08-부록/            용어집, 참고문헌, FAQ
-templates/            문서 템플릿
+  09-강좌-3상컨버터에서-GFM까지/  강의 노트 C00~C13 (Obsidian 위키링크)
+  10-MMC/             MMC 지식창고 (하위 폴더 00~08, 계획 단계)
+  11-강좌-MMC/        MMC 강의 노트 M00~M15 (계획 단계)
+plans/                강좌 계획 노트 (Obsidian)
+templates/            문서·강의 템플릿
 simulation/emt/       GFM/GFL 평균값 EMT 시뮬레이터 (Python)
 slides/               HTML 발표 자료 (EMT 데이터 내장)
 ```

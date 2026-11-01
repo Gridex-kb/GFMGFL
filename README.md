@@ -24,6 +24,7 @@
 | 시험·검증은 어떻게 하나 | [07-시험-검증/01-시험-검증-방법](docs/07-시험-검증/01-시험-검증-방법.md) |
 | 용어가 헷갈린다 | [08-부록/01-용어집](docs/08-부록/01-용어집.md) |
 | 3상 컨버터부터 차근차근 배우고 싶다 | [plans/3상컨버터부터-GFM-GFL-설명계획](plans/3상컨버터부터-GFM-GFL-설명계획.md) (Obsidian으로 열기 권장) |
+| MMC(모듈형 멀티레벨 컨버터)를 배우고 싶다 | [plans/MMC-지식창고-및-강좌-계획](plans/MMC-지식창고-및-강좌-계획.md) → [docs/11-강좌-MMC/00-강좌-목차](docs/11-강좌-MMC/00-강좌-목차.md) (계획 단계) |
 | 발표용으로 한 번에 보고 싶다 | [slides/gfm-gfl-slides.html](slides/gfm-gfl-slides.html) (브라우저로 열기) |
 | GFM과 GFL이 실제로 어떻게 다르게 움직이는지 보고 싶다 | [simulation/emt](simulation/emt/README.md) EMT 시뮬레이션 |
 
@@ -72,6 +73,11 @@
 
 ### 11. 계획
 - [3상 컨버터부터 GFM·GFL까지 설명 계획](plans/3상컨버터부터-GFM-GFL-설명계획.md) — Obsidian 노트, 강의 13편 구성·체크리스트
+- [MMC 지식창고 및 강좌 계획](plans/MMC-지식창고-및-강좌-계획.md) — Obsidian 노트, 지식창고 9개 절·강의 15편 구성·기준 설비·체크리스트
+
+### 12. MMC (Modular Multilevel Converter) — 계획 단계
+- [MMC 지식창고 목차](docs/10-MMC/00-MMC-지식창고-목차.md) — 개요·구조·동작원리·변조·제어·고장·응용·표준·부록 (문서는 작성 예정)
+- [MMC 강좌 목차 — 서브모듈에서 GFM HVDC까지](docs/11-강좌-MMC/00-강좌-목차.md) — 강의 15편 (작성 예정)
 
 ### 10. 발표 자료
 - [HTML 슬라이드 (17장)](slides/gfm-gfl-slides.html) — 개념·표준·국내 요건·실증·EMT 결과. 사용법은 [slides/README.md](slides/README.md)
