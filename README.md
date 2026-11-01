@@ -23,6 +23,7 @@
 | 실제 어디에 설치돼 있고 성과는 어땠나 | [06-실증-사례](docs/06-실증-사례/) |
 | 시험·검증은 어떻게 하나 | [07-시험-검증/01-시험-검증-방법](docs/07-시험-검증/01-시험-검증-방법.md) |
 | 용어가 헷갈린다 | [08-부록/01-용어집](docs/08-부록/01-용어집.md) |
+| 3상 컨버터부터 차근차근 배우고 싶다 | [plans/3상컨버터부터-GFM-GFL-설명계획](plans/3상컨버터부터-GFM-GFL-설명계획.md) (Obsidian으로 열기 권장) |
 | 발표용으로 한 번에 보고 싶다 | [slides/gfm-gfl-slides.html](slides/gfm-gfl-slides.html) (브라우저로 열기) |
 | GFM과 GFL이 실제로 어떻게 다르게 움직이는지 보고 싶다 | [simulation/emt](simulation/emt/README.md) EMT 시뮬레이션 |
 
@@ -68,6 +69,9 @@
 ### 09. EMT 시뮬레이션
 - [GFM vs GFL 평균값 EMT 시뮬레이션](simulation/emt/README.md) — 위상 점프, RoCoF, 약계통 안정도 맵, 3상 고장, 단독운전
 - [결과 요약](simulation/emt/results/summary.md)
+
+### 11. 계획
+- [3상 컨버터부터 GFM·GFL까지 설명 계획](plans/3상컨버터부터-GFM-GFL-설명계획.md) — Obsidian 노트, 강의 13편 구성·체크리스트
 
 ### 10. 발표 자료
 - [HTML 슬라이드 (17장)](slides/gfm-gfl-slides.html) — 개념·표준·국내 요건·실증·EMT 결과. 사용법은 [slides/README.md](slides/README.md)
