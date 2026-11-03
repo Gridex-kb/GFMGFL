@@ -1,0 +1,29 @@
+<section id="firmware" data-transition="fade" style="background:#fbfcfd;color:#45546b;font-family:'Pretendard Variable', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:36px">
+<div style="position:absolute;left:0;top:0;width:1920px;height:12px;background:linear-gradient(90deg, #2463c8 0%, #8bc22c 100%)"></div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;color:#037673">4 · 예제와 실습 · FAQ</p>
+<h2 style="font-size:56px;font-weight:800;line-height:1.15;letter-spacing:-1px;color:#013364">펌웨어만 바꾸면 GFM이 되나? 하드웨어가 약속을 지켜야 한다</h2>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:24px">
+<div style="background:#ffffff;border:2px solid #dae3ec;border-radius:20px;padding:28px 32px;display:flex;flex-direction:column;gap:8px">
+<p style="font-size:26px;font-weight:700;color:#2463c8">전압 여유 (2강)</p>
+<p style="font-size:27px;line-height:1.45;color:#013364">최대 1.303 pu에서 필터·변압기 강하를 빼고도 E를 키울 여유. 변조 한계에 붙으면 전압원 특성이 사라진다</p>
+</div>
+<div style="background:#ffffff;border:2px solid #dae3ec;border-radius:20px;padding:28px 32px;display:flex;flex-direction:column;gap:8px">
+<p style="font-size:26px;font-weight:700;color:#2463c8">과부하 정격</p>
+<p style="font-size:27px;line-height:1.45;color:#013364">위상 점프에 0.5 → 1.1 pu. 운전점 0.8이면 1.2 pu 한계에 닿는다. 수 초의 과부하 여유(1.2~1.5 pu)와 열 설계</p>
+</div>
+<div style="background:#ffffff;border:2px solid #dae3ec;border-radius:20px;padding:28px 32px;display:flex;flex-direction:column;gap:8px">
+<p style="font-size:26px;font-weight:700;color:#2463c8">전류 제한 중 동기 유지 (9강)</p>
+<p style="font-size:27px;line-height:1.45;color:#013364">전류가 포화되면 전압원이 전류원이 되어 동기화 토크가 사라진다. 제한 중 VSM 가속 정지 보정이 필요했다</p>
+</div>
+<div style="background:#ffffff;border:2px solid #dae3ec;border-radius:20px;padding:28px 32px;display:flex;flex-direction:column;gap:8px">
+<p style="font-size:26px;font-weight:700;color:#2463c8">에너지 버퍼</p>
+<p style="font-size:27px;line-height:1.45;color:#013364">상향 응답에는 즉시 꺼낼 에너지. ESS는 유리, PV 단독은 출력 여유가 있어야</p>
+</div>
+</div>
+<p style="font-size:30px;line-height:1.45">조건을 만족하면 펌웨어 전환이 가능하다. 아니면 <b style="color:#013364">“GFM 알고리즘을 얹은 GFL 하드웨어”</b>가 되어 필요한 순간 한계에 걸린다</p>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#7d8ca2">7강 · GFM: 위상을 만들기</p>
+<p style="position:absolute;left:1592px;bottom:64px;width:200px;font-size:24px;color:#7d8ca2;text-align:right">27 / 29</p>
+<aside>자주 받는 질문입니다. 제어 알고리즘, 오늘 본 외부 루프는 소프트웨어입니다. 그러면 펌웨어만 바꾸면 GFM이 될까요. GFM이 약속하는 응답을 실제로 내려면 하드웨어 네 가지가 받쳐 줘야 합니다. 첫째, 전압 여유입니다. 전류를 지령 대신 회로가 정하는 순간 응답을 내려면 컨버터 출력 전압에 여유가 있어야 합니다. 2강의 최대 출력 1.303 pu에서 필터와 변압기 전압강하를 빼고도 E를 키울 여유가 남아야 하고, 변조 한계에 붙으면 전압원 특성이 사라집니다. 둘째, 과부하 정격입니다. 위상 점프에서 전력이 0.5에서 약 1.1 pu로 올랐습니다. 운전점이 0.8이었다면 같은 점프에 전류 한계 1.2 pu에 닿습니다. 관성과 위상 점프 응답에는 수 초 단위의 과부하 여유, 문헌상 1.2에서 1.5 pu와 그에 맞는 열 설계가 필요합니다. 셋째, 전류 제한 중 동기 유지입니다. 전류가 포화되면 전압원이 전류원이 되어 동기화 토크가 사라집니다. 이 모델도 제한 중 VSM 가속을 멈추는 보정이 없으면 고장 중 위상 이탈이 커졌습니다. 9강에서 다룹니다. 넷째, 에너지 버퍼입니다. 상향 응답에는 즉시 꺼낼 에너지가 필요해서 ESS는 유리하고 PV 단독은 출력 여유가 있어야 합니다. 결론은 하드웨어가 이 조건을 만족하면 펌웨어 전환이 가능하고, 아니면 GFM 알고리즘을 얹은 GFL 하드웨어가 되어 정작 필요한 순간에 한계에 걸린다는 것입니다.</aside>
+</section>

@@ -1,0 +1,24 @@
+<section id="ex1a" data-transition="fade" style="background:#fbfcfd;color:#45546b;font-family:'Pretendard Variable', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:32px">
+<div style="position:absolute;left:0;top:0;width:1920px;height:12px;background:linear-gradient(90deg, #2463c8 0%, #8bc22c 100%)"></div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;color:#3aa150">예제 · 풀이</p>
+<h2 style="font-size:56px;font-weight:800;line-height:1.15;letter-spacing:-1px;color:#013364">ΔP ≈ 0.33 pu · 정상상태 0.25 pu, m<span style="color:#2463c8">p</span> 2 %, 1.0 Hz</h2>
+</div>
+<div style="background:#ffffff;border-left:8px solid #2463c8;border-radius:8px;padding:20px 28px;align-self:flex-start">
+<img src="/_blob/43fb27a3f5acf15c8ecf5cfd26a51ebb" alt="X = 0.3 + 1/5 = 0.5, δ0 = arcsin(0.5×0.5) ≈ 14.5°, ΔP ≈ (sin 24.5° − sin 14.5°)/0.5 = (0.414 − 0.250)/0.5 ≈ 0.33 pu" style="width:1600px;height:77px;object-fit:contain">
+</div>
+<div style="background:#ffffff;border-left:8px solid #3aa150;border-radius:8px;padding:20px 28px;align-self:flex-start">
+<img src="/_blob/70a6d71651a6832c08443ccaa47ff188" alt="ΔP = D Δf/f0 = 50 × 0.3/60 = 0.25 pu, m_p = 1/D = 2 %, ω_c = D/2H = 6.25 rad/s ≈ 1.0 Hz" style="width:1500px;height:94px;object-fit:contain">
+</div>
+<div style="display:flex;gap:24px">
+<div style="flex:1;background:#e9f0f6;border-radius:16px;padding:22px 28px">
+<p style="font-size:27px;line-height:1.45"><b style="color:#013364">(1)</b> 실제 순간 최대값은 전자기 과도 때문에 이보다 조금 크다</p>
+</div>
+<div style="flex:2;background:#e9f0f6;border-radius:16px;padding:22px 28px">
+<p style="font-size:27px;line-height:1.45"><b style="color:#013364">(3)</b> 점프 순간 v(θ 좌표)가 바뀌면 (X<b>v</b>/ω<b>b</b>)·di<b>v</b>/dt = E − v − …의 우변이 <b>즉시</b> 바뀌어 i<b>v</b>가 회로처럼 변한다. θ와 E는 그대로. 측정 P<b>f</b>는 θ를 수백 ms에 걸쳐 다시 맞출 때만 쓰인다</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#7d8ca2">7강 · GFM: 위상을 만들기</p>
+<p style="position:absolute;left:1592px;bottom:64px;width:200px;font-size:24px;color:#7d8ca2;text-align:right">25 / 29</p>
+<aside>풀이입니다. 1번, X는 0.3 더하기 5분의 1, 0.5 pu입니다. 운전점 δ_0은 아크사인 0.5 곱하기 0.5, 약 14.5도입니다. 점프 뒤 24.5도이니 ΔP는 사인 24.5도 빼기 사인 14.5도 나누기 0.5, 0.414 빼기 0.250 나누기 0.5, 약 0.33 pu입니다. 실제 순간 최대값은 전자기 과도 때문에 이보다 조금 큽니다. 2번, 정상상태 ΔP는 D 곱하기 Δf 나누기 f_0, 50 곱하기 0.3 나누기 60, 0.25 pu 증가입니다. 드룹 계수는 1 나누기 D, 2 %이고 필터 차단주파수는 D 나누기 2H, 50 나누기 8, 6.25 rad/s, 약 1.0 Hz입니다. 3번, 위상 점프 순간 θ 좌표의 PCC 전압 v가 바뀌면 가상 인덕턴스 식의 우변이 즉시 바뀌어 전류 지령 i_v가 회로처럼 변합니다. 그 순간 θ와 E는 그대로입니다. 측정한 P_f는 스윙 방정식에 들어가 θ를 수백 ms에 걸쳐 다시 맞추는 데만 쓰입니다. 첫 응답은 측정 필터를 기다리지 않는다는 뜻입니다. GFL은 반대로 PLL이 θ를 바꾸고 그다음 지령이 바뀌어야 전력이 움직입니다.</aside>
+</section>

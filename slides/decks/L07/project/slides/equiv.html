@@ -1,0 +1,22 @@
+<section id="equiv" data-transition="fade" style="background:#fbfcfd;color:#45546b;font-family:'Pretendard Variable', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:28px">
+<div style="position:absolute;left:0;top:0;width:1920px;height:12px;background:linear-gradient(90deg, #2463c8 0%, #8bc22c 100%)"></div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;color:#037673">3 · 가상 인덕턴스와 위상 점프</p>
+<h2 style="font-size:56px;font-weight:800;line-height:1.15;letter-spacing:-1px;color:#013364">계통에서 보면 가상 임피던스 뒤의 전압원이다</h2>
+</div>
+<img src="/_blob/53562065eb8d1e1089cea85361580f81" alt="등가 회로: 내부 기전력 E∠θ — 가상 Rv 0.05 + Xv 0.3 (계산 속, 점선 상자) — i_v = i* — PCC v — Xg = 1/SCR — 계통 eg∠θg. P–δ의 X = Xv + Xg = 0.633 (SCR 3). 미분식이라 시정수 Xv/(ωb Rv) ≈ 16 ms의 전자기 과도" style="width:1300px;height:420px;object-fit:contain;background:#ffffff;border:2px solid #dae3ec;border-radius:16px;align-self:center">
+<div style="display:flex;gap:24px">
+<div style="flex:1;background:#ffffff;border-left:8px solid #eb6834;border-radius:8px;padding:16px 24px">
+<p style="font-size:26px;line-height:1.45"><b style="color:#013364">점선 안은 계산</b> 실제 하드웨어는 L<b>f</b>·C<b>f</b>·변압기(3강)뿐. 가상 임피던스는 제어가 흉내 낸다</p>
+</div>
+<div style="flex:1;background:#ffffff;border-left:8px solid #2463c8;border-radius:8px;padding:16px 24px">
+<p style="font-size:26px;line-height:1.45"><b style="color:#013364">측정점</b> v는 PCC 전압, P<b>f</b>·|v|<b>f</b>는 PCC 전압 × 변압기 전류. 위상은 측정하지 않는다</p>
+</div>
+<div style="flex:1;background:#ffffff;border-left:8px solid #7d8ca2;border-radius:8px;padding:16px 24px">
+<p style="font-size:26px;line-height:1.45"><b style="color:#013364">전압 루프 없음</b> 캐스케이드 전압·전류 루프는 여러 구현 중 하나. 이 모델은 가상 인덕턴스 → 전류 루프</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#7d8ca2">7강 · GFM: 위상을 만들기</p>
+<p style="position:absolute;left:1592px;bottom:64px;width:200px;font-size:24px;color:#7d8ca2;text-align:right">20 / 29</p>
+<aside>등가 회로로 정리합니다. 내부 기전력 E∠θ 뒤에 가상 저항 0.05와 가상 리액턴스 0.3이 있고, 그 끝이 PCC입니다. 점선 상자 안은 전부 계산 속에 있습니다. 실제 하드웨어는 3강의 L_f, C_f, 변압기뿐이고, 가상 임피던스는 제어가 흉내 냅니다. 가상 인덕터에 흐를 전류 i_v를 실제 컨버터가 흘리니, 계통에서 보면 임피던스 뒤의 전압원입니다. 그래서 1부 P–δ 곡선의 X가 가상 리액턴스와 계통 리액턴스의 합이 됩니다. 측정점은 3강에서 정한 대로 PCC 전압과 변압기 전류이고, GFM도 측정은 하지만 위상은 측정하지 않습니다. 하나 더, 이 모델에는 전압 루프가 없습니다. GFM이면 전압 루프와 전류 루프가 모두 따로 있어야 한다고 생각하기 쉬운데, 캐스케이드 전압·전류 루프는 여러 구현 중 하나입니다. 이 모델은 가상 인덕턴스에서 바로 전류 지령을 만들어 GFL과 같은 전류 루프에 넘기고, 그래서 전류 제한도 같은 자리에서 합니다.</aside>
+</section>

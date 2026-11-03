@@ -47,8 +47,8 @@
 | 4 | C06 | 디지털 제어와 지연 | 완료 (25장) | https://claude.ai/artifact/93NgxzEDhLFhZjYDUHwGq4 |
 | 5 | C07 | 전류 제어 | 완료 (29장) | https://claude.ai/artifact/51RKpHpVQLEsiGdpo3kbC6 |
 | 6 | C08 | GFL: PLL로 따라가기 | 완료 (29장) | https://claude.ai/artifact/Wo9iBotEeCnNRCn85mqMUf |
-| 7 | C09 | GFM: 위상을 만들기 | **다음** | — |
-| 8 | C10 | 약계통과 제어 상호작용 (GFM vs GFL) | 예정 · **필수** | — |
+| 7 | C09 | GFM: 위상을 만들기 | 완료 (29장) | https://claude.ai/artifact/XMojcAmfAh8qbCC4zxSXFw |
+| 8 | C10 | 약계통과 제어 상호작용 (GFM vs GFL) | **다음** · 필수 | — |
 | 9 | C11 | 전류 제한과 고장 (GFM vs GFL) | 예정 · **필수** | — |
 | 10 | C12 | 표준 시험으로 비교 (GFM 12/14, GFL 3/14) | 예정 · **필수** | — |
 | 11 | C13 | EMT 모델링 실습 | 이후 | — |
@@ -169,6 +169,12 @@ python3 sheet.py ../lecture-figs/L05 <scratchpad>/sheet.png "M*.png"   # 밀착 
 - 확인한 수치: 점프 직후 Δf0 −4.8/−9.7/−24.2 Hz, 20 Hz PLL 54.00 Hz·정착 47 ms, ΔP +0.007 pu; FRT 0.85 → |v| 0.37~1.28, 54~66 Hz; 진입 0.5 → 최저 0.74, 1.00 pu 유지. 교재와 일치.
 - 덱 29장, 실습 `practice/lec06_gfl_pll.py` 전부 `[OK]`.
 - figlib 라벨 문자열은 JS 문자열이므로 `\,`, `\approx`처럼 역슬래시를 두 번 쓴다(한 번 쓰면 KaTeX 오류·공백).
+
+## 7c. 7강(GFM, C09) 완료 메모
+
+- 그림 `slides/figs-src/L07/G01~G07`(GFM 구조, P–δ, VSM 블록, 위상 점프 GFM/GFL EMT, 등가 회로, 주파수 계단 H 1/4/8, 동기화 루프), 수식 `E01~E12`, `_common.js`에 P–δ·Ks 계산. 데이터 `_data.py`(평균값, 약 90 s).
+- 확인한 수치: 위상 점프 GFM +0.636(10 ms)/+0.498(10~30 ms 평균), 페이저 0.482, GFL +0.007; 주파수 계단 정상상태 +0.169(드룹 0.167), 최대 0.184/0.287/0.397 (H 1/4/8). 교재와 일치.
+- 덱 29장, 실습 `practice/lec07_gfm_vsm.py` 전부 `[OK]`.
 
 ## 8. 6강 이후 메모
 

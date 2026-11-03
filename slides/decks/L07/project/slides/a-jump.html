@@ -1,0 +1,28 @@
+<section id="a-jump" data-transition="fade" style="background:#fbfcfd;color:#45546b;font-family:'Pretendard Variable', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<div style="position:absolute;left:0;top:0;width:1920px;height:12px;background:linear-gradient(90deg, #2463c8 0%, #8bc22c 100%)"></div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;color:#3aa150">답</p>
+<h2 style="font-size:56px;font-weight:800;line-height:1.15;letter-spacing:-1px;color:#013364">B: 계통이 느려지면 δ가 벌어지고, 전력이 회로 법칙으로 바뀐다</h2>
+</div>
+<div style="display:flex;gap:28px">
+<div style="flex:1;background:#ffffff;border:2px solid #dae3ec;border-radius:20px;padding:36px;display:flex;flex-direction:column;gap:14px">
+<p style="font-size:64px;font-weight:800;color:#2463c8;line-height:1">δ ↑</p>
+<h3 style="font-size:34px;font-weight:800;color:#013364">위상차가 먼저</h3>
+<p style="font-size:28px;line-height:1.45">내 θ는 60 Hz로 돌고 계통은 59.8 Hz. 차이만큼 δ가 커진다</p>
+</div>
+<div style="flex:1;background:#ffffff;border:2px solid #dae3ec;border-radius:20px;padding:36px;display:flex;flex-direction:column;gap:14px">
+<p style="font-size:64px;font-weight:800;color:#eb6834;line-height:1">P ↑</p>
+<h3 style="font-size:34px;font-weight:800;color:#013364">전력은 그 순간</h3>
+<p style="font-size:28px;line-height:1.45">P = (EV/X) sin δ. 측정 필터를 기다리지 않는다. 동기기와 같다</p>
+</div>
+<div style="flex:1;background:#013364;border-radius:20px;padding:36px;display:flex;flex-direction:column;gap:14px">
+<p style="font-size:64px;font-weight:800;color:#8bc22c;line-height:1">θ ↓</p>
+<h3 style="font-size:34px;font-weight:800;color:#ffffff">제어기는 그 뒤에</h3>
+<p style="font-size:28px;line-height:1.45;color:#c6d4e6">P &gt; P*면 스윙식이 θ를 늦춘다. 정상상태: 드룹 2 %만큼 더 내며 59.8 Hz로 동기</p>
+</div>
+</div>
+<p style="font-size:30px;line-height:1.45">GFM은 P와 V를 측정한다. 측정하지 않는 것은 <b style="color:#013364">위상</b>이고, 첫 응답은 측정을 기다리지 않는다</p>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#7d8ca2">7강 · GFM: 위상을 만들기</p>
+<p style="position:absolute;left:1592px;bottom:64px;width:200px;font-size:24px;color:#7d8ca2;text-align:right">5 / 29</p>
+<aside>정답은 B입니다. 내 내부 기전력의 θ는 60 Hz로 돌고 있는데 계통이 59.8 Hz로 느려지면, 차이만큼 위상차 δ가 점점 벌어집니다. 위상차가 벌어지면 전력은 그 순간 회로 법칙, P = EV/X sin δ로 바뀝니다. 측정 필터를 기다리지 않습니다. 동기발전기가 계통이 느려질 때 자동으로 더 많은 전력을 내는 것과 같은 원리입니다. 제어기는 그 뒤에 움직입니다. 측정한 전력이 지령보다 크면 스윙 방정식이 θ를 늦춰서 결국 59.8 Hz로 같이 돌게 되고, 정상상태에서는 드룹 2 %만큼 더 내면서 동기를 유지합니다. 오해하지 말아야 할 것은 GFM이 아무것도 측정하지 않는 것은 아니라는 점입니다. 전력과 전압은 측정합니다. 측정하지 않는 것은 위상이고, 첫 응답이 측정을 기다리지 않는다는 것이 핵심입니다. 그래서 A는 틀렸습니다.</aside>
+</section>

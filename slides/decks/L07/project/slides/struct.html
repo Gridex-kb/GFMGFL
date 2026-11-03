@@ -1,0 +1,22 @@
+<section id="struct" data-transition="fade" style="background:#fbfcfd;color:#45546b;font-family:'Pretendard Variable', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:28px">
+<div style="position:absolute;left:0;top:0;width:1920px;height:12px;background:linear-gradient(90deg, #2463c8 0%, #8bc22c 100%)"></div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;color:#037673">1 · 위상을 만든다</p>
+<h2 style="font-size:56px;font-weight:800;line-height:1.15;letter-spacing:-1px;color:#013364">GFM 제어 구조: VSM → θ, Q–V → E, 가상 인덕턴스 → i*</h2>
+</div>
+<img src="/_blob/81b6628105f6f9a52f43a0b8352ddbdf" alt="GFM 제어 구조 블록선도. P_f(20 Hz 필터) → VSM 스윙식(H 4 s, D 50) → θ. |v|_f → Q–V 적분 → E. PCC 전압 v와 E가 동적 가상 인덕턴스(Xv 0.3, Rv 0.05)에 들어가 i_v → 원형 제한 1.2 pu + AW → 전류 PI(5강) → PWM. θ로 dq 변환, PLL 없음" style="width:1600px;height:560px;object-fit:contain;background:#ffffff;border:2px solid #dae3ec;border-radius:16px;align-self:center">
+<div style="display:flex;gap:24px">
+<div style="flex:1;background:#ffffff;border-left:8px solid #eb6834;border-radius:8px;padding:16px 24px">
+<p style="font-size:26px;line-height:1.45"><b style="color:#013364">VSM</b> 측정한 P<b>f</b>로 θ를 만든다 (2부)</p>
+</div>
+<div style="flex:1;background:#ffffff;border-left:8px solid #2463c8;border-radius:8px;padding:16px 24px">
+<p style="font-size:26px;line-height:1.45"><b style="color:#013364">가상 인덕턴스</b> E − v에서 전류 지령을 회로처럼 만든다 (3부)</p>
+</div>
+<div style="flex:1;background:#ffffff;border-left:8px solid #7d8ca2;border-radius:8px;padding:16px 24px">
+<p style="font-size:26px;line-height:1.45"><b style="color:#013364">같은 자리</b> 전류 제한 1.2 pu와 5강 전류 PI는 GFL과 동일</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#7d8ca2">7강 · GFM: 위상을 만들기</p>
+<p style="position:absolute;left:1592px;bottom:64px;width:200px;font-size:24px;color:#7d8ca2;text-align:right">10 / 29</p>
+<aside>GFM 제어 구조 전체입니다. 6강 GFL 그림과 나란히 놓고 보세요. 위 경로, 주황색 VSM 스윙식이 20 Hz로 필터한 유효전력 P_f를 받아 θ를 만듭니다. 6강의 PLL 자리에 이것이 들어왔습니다. 가운데 경로, Q–V 적분기가 PCC 전압 크기를 1 pu로 맞추는 내부 기전력 E를 만듭니다. GFL에서는 Q 지령을 만들었지만 GFM은 전압원의 크기를 직접 정합니다. 파란 상자, 동적 가상 인덕턴스가 E와 PCC 전압 v의 차이에서 전류 i_v를 회로처럼 만들고, 그것이 전류 지령이 됩니다. 그다음은 GFL과 똑같습니다. 1.2 pu 원형 제한과 anti-windup, 5강의 전류 PI, PWM입니다. 측정 전류와 전압은 VSM이 만든 θ로 dq 변환합니다. PLL은 없습니다. 그래서 계통에서 보면 가상 임피던스 뒤의 전압원 E∠θ입니다. 2부에서 VSM, 3부에서 가상 인덕턴스를 뜯어봅니다.</aside>
+</section>

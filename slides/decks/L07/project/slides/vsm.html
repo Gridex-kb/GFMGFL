@@ -1,0 +1,19 @@
+<section id="vsm" data-transition="fade" style="background:#fbfcfd;color:#45546b;font-family:'Pretendard Variable', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:28px">
+<div style="position:absolute;left:0;top:0;width:1920px;height:12px;background:linear-gradient(90deg, #2463c8 0%, #8bc22c 100%)"></div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;color:#037673">2 · VSM: 관성과 댐핑</p>
+<h2 style="font-size:56px;font-weight:800;line-height:1.15;letter-spacing:-1px;color:#013364">스윙 방정식: 동기기 회전자를 제어기가 대신한다</h2>
+</div>
+<img src="/_blob/4d9a4eab607f74a54aaa913e2012569e" alt="VSM 블록선도: P* − P_f → 1/(2Hs + D) → Δω → +1 → ωb/s → θ. θ → 회로 δ → P → 측정 20 Hz 필터 → P_f 되먹임. 정상상태 Δω = (P* − P)/D → 드룹 2 %" style="width:1400px;height:440px;object-fit:contain;background:#ffffff;border:2px solid #dae3ec;border-radius:16px;align-self:center">
+<div style="display:flex;gap:24px;align-items:center">
+<div style="background:#ffffff;border-left:8px solid #2463c8;border-radius:8px;padding:16px 24px">
+<img src="/_blob/dea5ae2c02fb63da0df0e477ad5e298a" alt="2H dΔω/dt = P* − P_f − D Δω, H = 4 s, D = 50" style="width:820px;height:84px;object-fit:contain">
+</div>
+<div style="flex:1;background:#e9f0f6;border-radius:16px;padding:18px 26px">
+<p style="font-size:26px;line-height:1.45"><b style="color:#013364">H</b>: 주파수 변화에 대한 관성 · <b style="color:#013364">D</b>: 정상상태 드룹과 스윙 감쇠 · P<b>f</b>는 PCC 전압 × 변압기 전류를 20 Hz로 필터</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#7d8ca2">7강 · GFM: 위상을 만들기</p>
+<p style="position:absolute;left:1592px;bottom:64px;width:200px;font-size:24px;color:#7d8ca2;text-align:right">13 / 29</p>
+<aside>이 모델은 가상동기기, VSM의 스윙 방정식을 씁니다. 2H 곱하기 Δω의 미분은 P* 빼기 P_f 빼기 D Δω입니다. 동기발전기의 회전자 운동방정식과 같은 꼴입니다. 블록선도로 보면 전력 오차가 1 나누기 2Hs 더하기 D를 거쳐 Δω가 되고, 1을 더해 ω_b로 적분하면 θ입니다. θ가 회로를 통해 δ와 P를 정하고, 그것을 20 Hz로 필터한 P_f가 되먹임됩니다. H는 주파수 변화에 대한 관성이고, 모델은 4초입니다. D는 정상상태 드룹과 스윙의 감쇠를 정하고, 모델은 50입니다. P_f는 3강에서 정한 대로 PCC 전압과 변압기 전류로 계산해 20 Hz로 필터한 값입니다. 아래 주황 띠를 보세요. 정상상태에서 미분이 0이면 Δω는 P* 빼기 P 나누기 D입니다. 이것이 곧 드룹입니다. 다음 장에서 이 식을 선형화해서 스윙 모드를 구하고, 그다음 장에서 드룹과의 등가를 봅니다.</aside>
+</section>

@@ -1,0 +1,26 @@
+<section id="jump" data-transition="fade" style="background:#fbfcfd;color:#45546b;font-family:'Pretendard Variable', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:24px">
+<div style="position:absolute;left:0;top:0;width:1920px;height:12px;background:linear-gradient(90deg, #2463c8 0%, #8bc22c 100%)"></div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;color:#037673">3 · 가상 인덕턴스와 위상 점프 · EMT</p>
+<h2 style="font-size:56px;font-weight:800;line-height:1.15;letter-spacing:-1px;color:#013364">위상 점프 −20°: GFM은 10 ms 안에 +0.64 pu, GFL은 +0.007</h2>
+</div>
+<div style="display:flex;gap:40px;align-items:center">
+<img src="/_blob/66428268af4445c41cbb75b03272332d" alt="평균값 EMT, SCR 3, P* 0.5, −20° 위상 점프. 위: GFM 유효전력은 처음 10 ms 안에 최대 +0.64 pu(10~30 ms 평균 +0.50, 페이저 추정 0.48)로 오르고 전자기 과도와 1.3 Hz 스윙을 거쳐 0.5로 돌아온다. GFL은 +0.007 pu. 아래: GFM 내부 주파수는 59.7 Hz까지 천천히 내려갔다 돌아오고(관성), GFL PLL 측정 주파수는 54 Hz 한계에 붙는다" style="width:990px;height:657px;object-fit:contain;background:#ffffff;border:2px solid #dae3ec;border-radius:16px">
+<div style="flex:1;display:flex;flex-direction:column;gap:18px">
+<div style="background:#ffffff;border-left:8px solid #2463c8;border-radius:8px;padding:14px 22px">
+<img src="/_blob/eeefa87b51a25e325270b258f9438ea1" alt="ΔP ≈ (EV/X)[sin(δ0 + 20°) − sin δ0] ≈ 0.48 pu (SCR 3, δ0 = 18.5°)" style="width:560px;height:43px;object-fit:contain">
+</div>
+<div style="background:#ffffff;border-left:8px solid #eb6834;border-radius:8px;padding:14px 22px">
+<h3 style="font-size:28px;font-weight:800;color:#013364">최대 0.64 &gt; 페이저 0.48</h3>
+<p style="font-size:25px;line-height:1.45">16~20 ms 시정수의 전자기 과도(60~80 Hz 감쇠 진동) 때문. 10~30 ms 평균은 0.50</p>
+</div>
+<div style="background:#ffffff;border-left:8px solid #7d8ca2;border-radius:8px;padding:14px 22px">
+<h3 style="font-size:28px;font-weight:800;color:#013364">계통코드의 ‘위상 점프 전력’</h3>
+<p style="font-size:25px;line-height:1.45">측정 없는 응답. 이후 1.3 Hz VSM 스윙으로 복귀. 내부 주파수는 59.7 Hz까지만</p>
+</div>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#7d8ca2">7강 · GFM: 위상을 만들기</p>
+<p style="position:absolute;left:1592px;bottom:64px;width:200px;font-size:24px;color:#7d8ca2;text-align:right">21 / 29</p>
+<aside>6강 도입에서 미리 본 숫자를 이제 설명할 수 있습니다. 평균값 EMT, SCR 3, 유효전력 0.5 pu에서 계통 위상이 −20도 뜁니다. 파란색 GFM은 처음 10 ms 안에 최대 0.64 pu까지 올라가고, 10에서 30 ms 평균은 0.50 pu입니다. 1부 P–δ 곡선의 페이저 추정은 0.48이었습니다. 평균값이 추정과 거의 맞고, 최대값이 더 큰 것은 가상 인덕턴스의 미분식이 만드는 16에서 20 ms 시정수의 전자기 과도, 60에서 80 Hz 감쇠 진동 때문입니다. 그 뒤 1.3 Hz VSM 스윙을 거쳐 원래 출력으로 돌아옵니다. 주황 점선 GFL은 0.007 pu, 거의 0입니다. 아래 그림의 내부 주파수를 보세요. GFM의 VSM 주파수는 59.7 Hz까지 천천히 내려갔다 돌아옵니다. 관성입니다. GFL의 PLL 측정 주파수는 54 Hz 한계에 붙습니다. 이 GFM 응답이 계통코드가 말하는 위상 점프 전력입니다. 측정 없이, 회로 법칙으로 나오는 응답입니다.</aside>
+</section>

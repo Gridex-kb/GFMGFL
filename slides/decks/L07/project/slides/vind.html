@@ -1,0 +1,30 @@
+<section id="vind" data-transition="fade" style="background:#fbfcfd;color:#45546b;font-family:'Pretendard Variable', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:28px">
+<div style="position:absolute;left:0;top:0;width:1920px;height:12px;background:linear-gradient(90deg, #2463c8 0%, #8bc22c 100%)"></div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;color:#037673">3 · 가상 인덕턴스와 위상 점프 · 칠판 유도</p>
+<h2 style="font-size:56px;font-weight:800;line-height:1.15;letter-spacing:-1px;color:#013364">계산 속 인덕터에 흐를 전류를 실제 컨버터가 흘린다</h2>
+</div>
+<div style="background:#ffffff;border:2px solid #dae3ec;border-radius:20px;padding:24px 36px;display:flex;flex-direction:column;gap:18px">
+<div style="display:flex;gap:28px;align-items:center">
+<p style="font-size:30px;font-weight:800;color:#2463c8;width:48px">①</p>
+<img src="/_blob/d9c6e19cdbf3fd7532d6d55051fa79ee" alt="(Xv/ωb) di_v/dt = E − v − Rv i_v − j ω Xv i_v, i* = i_v (Xv = 0.3, Rv = 0.05)" style="width:1400px;height:110px;object-fit:contain">
+</div>
+<div style="display:flex;gap:28px;align-items:center">
+<p style="font-size:30px;font-weight:800;color:#2463c8;width:48px">②</p>
+<img src="/_blob/d04a85baf360acdc53fd56b8be07759a" alt="E = 1 + ∫ k_E (V* − |v|_f) dt, k_E = 5, E = 1 ± 0.3" style="width:1000px;height:104px;object-fit:contain">
+</div>
+</div>
+<div style="display:flex;gap:24px">
+<div style="flex:1;background:#e9f0f6;border-radius:16px;padding:22px 28px">
+<p style="font-size:27px;line-height:1.45"><b style="color:#013364">①</b> 5강 플랜트 식과 같은 꼴 (θ 좌표). −jωX<b>v</b>i는 회전좌표의 결합 항. 대수식 (E − v)/(R<b>v</b> + jX<b>v</b>) 대신 미분식</p>
+</div>
+<div style="flex:1;background:#e9f0f6;border-radius:16px;padding:22px 28px">
+<p style="font-size:27px;line-height:1.45"><b style="color:#013364">왜 미분식</b> 실제 인덕터처럼 고주파를 거른다. 대신 시정수 X<b>v</b>/(ω<b>b</b>R<b>v</b>) ≈ 16 ms의 전자기 과도 (직류 옵셋에 해당)</p>
+</div>
+<div style="flex:1;background:#013364;border-radius:16px;padding:22px 28px">
+<p style="font-size:27px;line-height:1.45;color:#ffffff"><b style="color:#b9f179">②</b> E는 전압원의 <b>크기</b>. 빠른 전압 지지는 적분기가 아니라 E − v 차이에서 즉시, 적분기는 정상상태만</p>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#7d8ca2">7강 · GFM: 위상을 만들기</p>
+<p style="position:absolute;left:1592px;bottom:64px;width:200px;font-size:24px;color:#7d8ca2;text-align:right">19 / 29</p>
+<aside>GFM 외부 루프의 출력은 전압 E∠θ인데 5강의 내부 루프는 전류 지령을 받습니다. 둘 사이를 잇는 것이 동적 가상 인덕턴스, 가상 어드미턴스입니다. ①번 식을 보세요. θ로 회전하는 dq 좌표에서 X_v 나누기 ω_b 곱하기 가상 전류의 미분은 E 빼기 v 빼기 R_v i_v 빼기 jωX_v i_v입니다. 5강 플랜트 식과 똑같은 꼴입니다. 5강 유도 그대로 αβ의 인덕터 식에 i = i_v e의 jθ를 넣으면 회전좌표의 결합 항 −jωX_v i가 나옵니다. v는 PCC 전압이고, 이 식의 해 i_v가 그대로 전류 지령 i*가 됩니다. 계산 속의 가상 인덕터에 흐를 전류를 실제 컨버터가 흘리게 하는 것입니다. 대수식 E 빼기 v 나누기 R_v 더하기 jX_v, 즉 정적 가상 임피던스 대신 미분식을 쓰는 이유는, 가상 인덕터가 실제 인덕터처럼 고주파 전압 변동을 걸러 주기 때문입니다. 대신 시정수 X_v 나누기 ω_b R_v, 약 16 ms의 전자기 과도가 생깁니다. 동기기의 직류 옵셋에 해당합니다. ②번, 내부 기전력 크기 E는 PCC 전압을 1 pu로 맞추는 적분 제어로 만들고 1 ± 0.3으로 제한합니다. GFL의 전압 제어는 Q 지령을 만들었지만 GFM은 전압원의 크기를 직접 정합니다. 빠른 전압 지지는 적분기가 아니라 E 빼기 v 차이에서 즉시 나오고, 적분기는 정상상태 전압만 맞춥니다.</aside>
+</section>

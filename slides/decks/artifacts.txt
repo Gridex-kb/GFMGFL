@@ -4,3 +4,4 @@ L03 https://claude.ai/artifact/DX9a9RYjLDDG6ttdoBMWWL
 L04 https://claude.ai/artifact/93NgxzEDhLFhZjYDUHwGq4
 L05 https://claude.ai/artifact/51RKpHpVQLEsiGdpo3kbC6
 L06 https://claude.ai/artifact/Wo9iBotEeCnNRCn85mqMUf
+L07 https://claude.ai/artifact/XMojcAmfAh8qbCC4zxSXFw

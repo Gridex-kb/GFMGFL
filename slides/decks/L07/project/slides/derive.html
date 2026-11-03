@@ -1,0 +1,31 @@
+<section id="derive" data-transition="fade" style="background:#fbfcfd;color:#45546b;font-family:'Pretendard Variable', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:32px">
+<div style="position:absolute;left:0;top:0;width:1920px;height:12px;background:linear-gradient(90deg, #2463c8 0%, #8bc22c 100%)"></div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;color:#037673">1 · 위상을 만든다 · 칠판 유도</p>
+<h2 style="font-size:56px;font-weight:800;line-height:1.15;letter-spacing:-1px;color:#013364">P = (EV/X) sin δ는 어디서 오는가</h2>
+</div>
+<div style="background:#ffffff;border:2px solid #dae3ec;border-radius:20px;padding:28px 36px;display:flex;flex-direction:column;gap:20px">
+<div style="display:flex;gap:28px;align-items:center">
+<p style="font-size:30px;font-weight:800;color:#2463c8;width:48px">①</p>
+<img src="/_blob/f72ff1417d55b3982f2a186e96ba2765" alt="I = (E e^(jδ) − V)/(jX), S = V I* = EV sin δ/X + j (EV cos δ − V²)/X" style="width:1219px;height:128px;object-fit:contain">
+</div>
+<div style="display:flex;gap:28px;align-items:center">
+<p style="font-size:30px;font-weight:800;color:#2463c8;width:48px">②</p>
+<img src="/_blob/013071ff08e42bf7068b61324c4b6b0f" alt="P ≈ (EV/X) sin δ, Ks = (EV/X) cos δ0" style="width:1414px;height:112px;object-fit:contain">
+</div>
+</div>
+<div style="display:flex;gap:24px">
+<div style="flex:1;background:#e9f0f6;border-radius:16px;padding:24px 28px">
+<p style="font-size:27px;line-height:1.45"><b style="color:#013364">실수부</b>가 P, <b style="color:#013364">허수부</b>가 Q. 저항을 무시했으니 송전단·수전단 P가 같다</p>
+</div>
+<div style="flex:1;background:#e9f0f6;border-radius:16px;padding:24px 28px">
+<p style="font-size:27px;line-height:1.45">Q = (EV cos δ − V²)/X: <b style="color:#013364">E를 키우면 Q가 는다</b> → 3부의 Q–V 제어</p>
+</div>
+<div style="flex:1;background:#013364;border-radius:16px;padding:24px 28px">
+<p style="font-size:27px;line-height:1.45;color:#ffffff">실제 모델엔 R<b>v</b> 0.05와 계통 X/R = 10의 저항이 있어 약간 어긋난다</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#7d8ca2">7강 · GFM: 위상을 만들기</p>
+<p style="position:absolute;left:1592px;bottom:64px;width:200px;font-size:24px;color:#7d8ca2;text-align:right">9 / 29</p>
+<aside>칠판에서 유도합니다. 기전력 E e의 jδ와 계통 전압 V 사이에 리액턴스 jX가 있으면 전류는 둘의 차를 jX로 나눈 것입니다. 계통측 복소전력 S는 V 곱하기 전류의 켤레입니다. 켤레를 취하면 분모가 마이너스 jX가 되고, 분자에 j를 올려 정리하면 EV 사인 δ 나누기 X가 실수부, EV 코사인 δ 빼기 V 제곱 나누기 X가 허수부입니다. ①번입니다. 실수부가 유효전력 P, 허수부가 무효전력 Q입니다. 저항을 무시했으니 송전단과 수전단의 P가 같습니다. ②번, P를 δ로 미분하면 동기화 토크 K_s입니다. 허수부도 눈여겨보세요. E를 키우면 Q가 늘어납니다. 이것이 3부에서 E를 PCC 전압 제어로 만드는 이유입니다. 실제 모델에는 가상 저항 0.05와 계통 X/R 10의 저항이 있어서 이 식과 약간 어긋나지만, 설계 직관으로는 충분합니다.</aside>
+</section>

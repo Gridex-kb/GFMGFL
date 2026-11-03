@@ -1,0 +1,31 @@
+<section id="droop" data-transition="fade" style="background:#fbfcfd;color:#45546b;font-family:'Pretendard Variable', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:28px">
+<div style="position:absolute;left:0;top:0;width:1920px;height:12px;background:linear-gradient(90deg, #2463c8 0%, #8bc22c 100%)"></div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;color:#037673">2 · VSM: 관성과 댐핑 · 칠판 유도</p>
+<h2 style="font-size:56px;font-weight:800;line-height:1.15;letter-spacing:-1px;color:#013364">VSM = 드룹 2 % + 전력 저역통과 필터 1 Hz</h2>
+</div>
+<div style="background:#ffffff;border:2px solid #dae3ec;border-radius:20px;padding:24px 36px;display:flex;flex-direction:column;gap:18px">
+<div style="display:flex;gap:28px;align-items:center">
+<p style="font-size:30px;font-weight:800;color:#2463c8;width:48px">①</p>
+<img src="/_blob/a0eca8dd4b73d5c2129f26d589e85dd0" alt="Δω̇ = 0 ⇒ Δω = (P* − P)/D = m_p (P* − P), m_p = 1/D = 0.02" style="width:1200px;height:98px;object-fit:contain">
+</div>
+<div style="display:flex;gap:28px;align-items:center">
+<p style="font-size:30px;font-weight:800;color:#2463c8;width:48px">②</p>
+<img src="/_blob/a1bb5108f96595e59220dce30c3c6531" alt="드룹 Δω = m_p(P* − P_f), LPF Ṗ_f = ω_c(P − P_f) ⇒ (1/(m_p ω_c)) Δω̇ = P* − P − (1/m_p)Δω ⇔ 2H = 1/(m_p ω_c), D = 1/m_p" style="width:1500px;height:88px;object-fit:contain">
+</div>
+</div>
+<div style="display:flex;gap:24px">
+<div style="flex:1;background:#e9f0f6;border-radius:16px;padding:22px 28px">
+<p style="font-size:27px;line-height:1.45"><b style="color:#013364">①</b> D = 50은 P–f 드룹 <b>2 %</b>. 정격만큼 더 내면 주파수 2 % 아래서 멈춘다</p>
+</div>
+<div style="flex:1;background:#e9f0f6;border-radius:16px;padding:22px 28px">
+<p style="font-size:27px;line-height:1.45"><b style="color:#013364">②</b> 모델 H 4 s, D 50 = m<b>p</b> 2 %, ω<b>c</b> = D/2H = 6.25 rad/s ≈ <b>1 Hz</b>인 드룹+LPF</p>
+</div>
+<div style="flex:1;background:#013364;border-radius:16px;padding:22px 28px">
+<p style="font-size:27px;line-height:1.45;color:#ffffff">차이는 <b style="color:#b9f179">매개변수화</b>뿐: VSM은 H·D, 드룹은 m<b>p</b>·ω<b>c</b>를 따로 정한다</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#7d8ca2">7강 · GFM: 위상을 만들기</p>
+<p style="position:absolute;left:1592px;bottom:64px;width:200px;font-size:24px;color:#7d8ca2;text-align:right">15 / 29</p>
+<aside>드룹과의 등가를 칠판에서 봅니다. ①번, 정상상태에서 스윙식의 미분이 0이면 Δω는 P* 빼기 P 나누기 D입니다. 1 나누기 D를 m_p라 하면 바로 P–f 드룹 식이고, D가 50이면 m_p는 0.02, 2 % 드룹입니다. 정격 출력만큼 더 내면 주파수가 2 % 내려간 곳에서 멈춥니다. ②번은 반대 방향입니다. 드룹 제어에 전력 측정 저역통과 필터를 붙이면, 필터 상태 P_f를 소거했을 때 1 나누기 m_p ω_c 곱하기 Δω의 미분이 P* 빼기 P 빼기 1/m_p Δω가 됩니다. VSM 식과 비교하면 2H가 1 나누기 m_p ω_c, D가 1 나누기 m_p입니다. 즉 드룹 더하기 LPF는 VSM과 수학적으로 같습니다. 모델의 H 4초, D 50은 드룹 2 %에 차단주파수 D 나누기 2H, 6.25 rad/s, 약 1 Hz인 LPF와 같습니다. 차이는 어떤 매개변수를 직접 정하느냐뿐입니다. VSM은 H와 D를, 드룹은 m_p와 ω_c를 정합니다. 그래서 VSM과 드룹은 전혀 다른 제어라는 말은 오해입니다.</aside>
+</section>

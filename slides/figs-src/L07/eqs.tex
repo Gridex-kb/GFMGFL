@@ -1,0 +1,25 @@
+% 7강 수식
+%% E01-위상생성
+\frac{d\theta}{dt} = \omega_b\,\bigl(1 + \Delta\omega\bigr),\qquad \Delta\omega = f(P^* - P)\quad(\text{PLL 없음})
+%% E02-P델타
+P \approx \frac{EV}{X}\sin\delta,\qquad K_s = \frac{\partial P}{\partial\delta} = \frac{EV}{X}\cos\delta_0\qquad(X = X_v + 1/\mathrm{SCR})
+%% E03-유도
+I = \frac{E e^{j\delta} - V}{jX},\quad S = V I^* = \frac{EV\sin\delta}{X} + j\,\frac{EV\cos\delta - V^2}{X}
+%% E04-VSM
+2H\,\frac{d\Delta\omega}{dt} = P^* - P_f - D\,\Delta\omega,\qquad H = 4\ \mathrm{s},\ D = 50
+%% E05-스윙모드
+2H\,\ddot{\Delta\delta} + D\,\dot{\Delta\delta} + \omega_b K_s\,\Delta\delta = 0 \;\Rightarrow\; \omega_n = \sqrt{\frac{\omega_b K_s}{2H}},\quad \zeta = \frac{D}{4H\,\omega_n}
+%% E06-드룹
+\dot{\Delta\omega} = 0 \;\Rightarrow\; \Delta\omega = \frac{P^* - P}{D} = m_p\,(P^* - P),\qquad m_p = \frac{1}{D} = 0.02
+%% E07-드룹LPF
+\Delta\omega = m_p(P^* - P_f),\ \dot P_f = \omega_c(P - P_f) \;\Rightarrow\; \frac{1}{m_p\omega_c}\dot{\Delta\omega} = P^* - P - \frac{1}{m_p}\Delta\omega \;\Leftrightarrow\; 2H = \frac{1}{m_p\omega_c},\ D = \frac{1}{m_p}
+%% E08-가상인덕턴스
+\frac{X_v}{\omega_b}\,\frac{di_v}{dt} = E - v - R_v\,i_v - j\,\omega X_v\,i_v,\qquad i^* = i_v\quad(X_v = 0.3,\ R_v = 0.05)
+%% E09-기전력
+E = 1 + \int k_E\,\bigl(V^* - |v|_f\bigr)\,dt,\qquad k_E = 5,\ E = 1 \pm 0.3
+%% E10-점프추정
+\Delta P \approx \frac{EV}{X}\bigl[\sin(\delta_0 + 20^\circ) - \sin\delta_0\bigr] \approx 0.48\ \mathrm{pu}\qquad(\mathrm{SCR}\ 3,\ \delta_0 = 18.5^\circ)
+%% E11-예제1
+X = 0.3 + \tfrac{1}{5} = 0.5,\quad \delta_0 = \arcsin(0.5 \times 0.5) \approx 14.5^\circ,\quad \Delta P \approx \frac{\sin 24.5^\circ - \sin 14.5^\circ}{0.5} = \frac{0.414 - 0.250}{0.5} \approx 0.33\ \mathrm{pu}
+%% E12-예제2
+\Delta P = D\,\frac{\Delta f}{f_0} = 50 \times \frac{0.3}{60} = 0.25\ \mathrm{pu},\qquad m_p = \frac{1}{D} = 2\,\%,\quad \omega_c = \frac{D}{2H} = 6.25\ \mathrm{rad/s} \approx 1.0\ \mathrm{Hz}

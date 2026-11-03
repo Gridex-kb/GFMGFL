@@ -1,0 +1,19 @@
+<section id="compare" data-transition="fade" style="background:#fbfcfd;color:#45546b;font-family:'Pretendard Variable', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<div style="position:absolute;left:0;top:0;width:1920px;height:12px;background:linear-gradient(90deg, #2463c8 0%, #8bc22c 100%)"></div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;color:#037673">4 · 예제와 실습 · 정리</p>
+<h2 style="font-size:56px;font-weight:800;line-height:1.15;letter-spacing:-1px;color:#013364">GFM 기법 비교: 전력 동기화 루프의 모양만 다르다</h2>
+</div>
+<table style="font-size:28px;color:#45546b">
+<tr><th style="width:16%">기법</th><th style="width:38%">위상 생성 (요지)</th><th style="width:16%">관성</th><th style="width:30%">특징</th></tr>
+<tr><td><b>P–f 드룹</b></td><td>ω = 1 + m<b>p</b>(P* − P<b>f</b>)</td><td>LPF가 간접 제공</td><td>단순, 병렬운전에 오래 쓰임</td></tr>
+<tr style="background:#e9f0f6"><td><b>VSM / VSG</b> (이 강좌)</td><td>2H·Δω̇ = P* − P − DΔω</td><td>H로 명시</td><td>H, D를 따로 설정, 계통코드 대응 쉬움</td></tr>
+<tr><td><b>dVOC</b></td><td>비선형 진동자 동역학</td><td>암묵적</td><td>대신호 안정성 증명, 상용 초기</td></tr>
+<tr><td><b>PSC</b></td><td>θ̇ = ω<b>b</b>[1 + k<b>p</b>(P* − P)] + 고장 시 PLL 전환</td><td>작음</td><td>HVDC 약계통 연계에서 출발</td></tr>
+<tr><td><b>Matching</b></td><td>θ̇ ∝ v<b>dc</b></td><td>DC 커패시터</td><td>하드웨어 에너지와 일관, DC 전압 변동 필요</td></tr>
+</table>
+<p style="font-size:30px;line-height:1.45">공통점: θ를 <b style="color:#013364">측정하지 않고 만든다</b>. 차이는 Δω = f(P* − P)의 f와 관성을 어디서 가져오느냐</p>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#7d8ca2">7강 · GFM: 위상을 만들기</p>
+<p style="position:absolute;left:1592px;bottom:64px;width:200px;font-size:24px;color:#7d8ca2;text-align:right">28 / 29</p>
+<aside>이 강좌의 모델은 VSM이지만 다른 GFM 기법들도 전력 동기화 루프의 모양만 다릅니다. P–f 드룹은 가장 단순하고 병렬운전에 오래 쓰였으며, 관성은 전력 필터가 간접 제공합니다. VSM 또는 VSG는 H와 D를 따로 설정할 수 있어 계통코드 대응이 쉽습니다. dVOC는 비선형 진동자 동역학으로 위상을 만들고 대신호 안정성 증명이 가능하지만 상용은 초기입니다. PSC, 전력 동기화 제어는 HVDC 약계통 연계에서 출발했고 고장 시 PLL로 전환합니다. Matching은 DC 링크 전압으로 θ를 돌려서 하드웨어 에너지와 일관되지만 DC 전압 변동을 허용해야 합니다. 공통점은 θ를 측정하지 않고 만든다는 것이고, 차이는 Δω를 만드는 함수 f와 관성을 어디서 가져오느냐입니다.</aside>
+</section>

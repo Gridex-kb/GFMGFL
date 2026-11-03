@@ -1,0 +1,27 @@
+<section id="fstep" data-transition="fade" style="background:#fbfcfd;color:#45546b;font-family:'Pretendard Variable', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:28px">
+<div style="position:absolute;left:0;top:0;width:1920px;height:12px;background:linear-gradient(90deg, #2463c8 0%, #8bc22c 100%)"></div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;color:#037673">2 · VSM: 관성과 댐핑 · EMT</p>
+<h2 style="font-size:56px;font-weight:800;line-height:1.15;letter-spacing:-1px;color:#013364">주파수 −0.2 Hz 계단: 정상상태는 드룹이, 오버슈트는 관성이</h2>
+</div>
+<div style="display:flex;gap:40px;align-items:center">
+<img src="/_blob/00862cbc57221e886a946c0ba77e0aa4" alt="계통 주파수 −0.2 Hz 계단에 대한 GFM 유효전력, H = 1/4/8 s. 정상상태는 드룹 예측 0.5 + 0.167 pu로 같고, 최대 ΔP는 H = 1 s 0.18, 4 s 0.29, 8 s 0.40 pu로 관성이 클수록 크다" style="width:1045px;height:570px;object-fit:contain;background:#ffffff;border:2px solid #dae3ec;border-radius:16px">
+<div style="flex:1;display:flex;flex-direction:column;gap:20px">
+<div style="background:#ffffff;border-left:8px solid #2463c8;border-radius:8px;padding:16px 22px">
+<h3 style="font-size:28px;font-weight:800;color:#013364">정상상태 = 드룹</h3>
+<p style="font-size:25px;line-height:1.45">ΔP = D·Δf/f<b>0</b> = 50 × 0.2/60 = <b>+0.167 pu</b>. 모델 +0.169 (H 4 s)</p>
+</div>
+<div style="background:#ffffff;border-left:8px solid #eb6834;border-radius:8px;padding:16px 22px">
+<h3 style="font-size:28px;font-weight:800;color:#013364">과도 = 관성</h3>
+<p style="font-size:25px;line-height:1.45">H가 클수록 θ가 느리게 따라가 δ가 더 벌어진다 → 최대 ΔP 0.18 / 0.29 / 0.40</p>
+</div>
+<div style="background:#ffffff;border-left:8px solid #7d8ca2;border-radius:8px;padding:16px 22px">
+<h3 style="font-size:28px;font-weight:800;color:#013364">스윙 주파수</h3>
+<p style="font-size:25px;line-height:1.45">ω<b>n</b> ∝ 1/√H: H 8 s는 느리고 덜 감쇠, H 1 s는 빠르고 잘 감쇠</p>
+</div>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#7d8ca2">7강 · GFM: 위상을 만들기</p>
+<p style="position:absolute;left:1592px;bottom:64px;width:200px;font-size:24px;color:#7d8ca2;text-align:right">16 / 29</p>
+<aside>평균값 EMT 모델로 계통 주파수를 60에서 59.8 Hz로 계단처럼 내려 봅니다. 도입 질문의 상황입니다. 파란색이 모델 기본 H 4초입니다. 유효전력이 0.5에서 올라가 1초 남짓 스윙한 뒤 0.669 pu에 정착합니다. 드룹 예측 D 곱하기 Δf 나누기 f_0, 50 곱하기 0.2 나누기 60은 0.167 pu이고, 모델은 0.169로 거의 정확히 맞습니다. 정상상태는 드룹이 정합니다. 청록 점선 H 1초와 주황 H 8초를 비교하면 정상상태는 같은 곳으로 가지만 과도가 다릅니다. H가 클수록 θ가 느리게 따라가서 δ가 더 벌어지고, 최대 ΔP가 0.18, 0.29, 0.40 pu로 커집니다. 관성이 클수록 처음에 더 많이 내놓는 것입니다. 스윙 주파수는 루트 H에 반비례하니 H 8초는 느리고 덜 감쇠하고, H 1초는 빠르고 잘 감쇠합니다. 앞 장의 ω_n, ζ 식 그대로입니다. 실습 2에서 H를 바꿔 가며 직접 확인합니다.</aside>
+</section>

@@ -1,0 +1,22 @@
+// 계통에서 본 GFM: 전압원 E∠θ — Rv + jXv (가상) — PCC v — Xg = 1/SCR — 계통 eg. 전류 i_v = (E − v)/(Rv + jXv)의 동적 버전
+const F = Fig(1300, 420), C = FC, y = 160;
+F.source(120, y, 40); F.label(120, y + 70, "$E\\angle\\theta$", { size: 30, color: C.orange, weight: 800 });
+F.label(120, y - 66, "내부 기전력", { size: 22, color: C.orange });
+F.wire([[160, y], [240, y]], { color: C.orange });
+F.resistor(240, y, 360, { color: C.orange }); F.label(300, y - 44, "$R_v$ 0.05", { size: 26, color: C.orange, weight: 700 });
+F.wire([[360, y], [400, y]], { color: C.orange });
+F.inductor(400, y, 540, { n: 4, color: C.orange }); F.label(470, y - 44, "$X_v$ 0.3", { size: 26, color: C.orange, weight: 700 });
+F.rect(200, y - 80, 380, 160, { r: 16, color: C.orange, width: 2.5, dash: "10 8" });
+F.label(390, y + 62, "가상 (계산 속)", { size: 22, color: C.orange });
+F.wire([[540, y], [660, y]], { color: C.orange });
+F.node(660, y, { r: 9 }); F.label(660, y - 44, "PCC $v$", { size: 28, color: C.navy, weight: 800 });
+F.arrow(600, y - 24, 640, y - 24, { color: C.blue, width: 3.5, head: 14 });
+F.label(620, y - 56, "$i_v = i^*$", { anchor: "b", size: 26, color: C.blue, weight: 700 });
+F.wire([[660, y], [760, y]]);
+F.inductor(760, y, 900, { n: 4 }); F.label(830, y - 44, "$X_g = 1/\\mathrm{SCR}$", { size: 26, color: C.navy });
+F.wire([[900, y], [1020, y], [1020, 200]]); F.source(1020, 230, 30); F.wire([[1020, 260], [1020, 300]]); F.ground(1020, 300);
+F.label(1065, 230, "$e_g\\angle\\theta_g$ (계통)", { anchor: "l", size: 26, color: C.navy, weight: 700 });
+F.rect(60, 320, 1180, 86, { r: 14, fill: "#e9f0f6" });
+F.label(650, 346, "가상 인덕터에 흐를 전류 $i_v$를 실제 컨버터가 흘린다 → 계통에서 보면 <b>임피던스 뒤의 전압원</b>", { size: 24, color: C.navy, weight: 700 });
+F.label(650, 384, "P–δ의 $X = X_v + X_g$ = 0.633 (SCR 3) · 미분식이라 시정수 $X_v/(\\omega_b R_v)$ ≈ 16 ms의 전자기 과도가 생긴다", { size: 22, color: C.slate });
+F.done();

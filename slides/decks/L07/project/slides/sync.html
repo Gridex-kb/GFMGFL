@@ -1,0 +1,15 @@
+<section id="sync" data-transition="fade" style="background:#fbfcfd;color:#45546b;font-family:'Pretendard Variable', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:32px">
+<div style="position:absolute;left:0;top:0;width:1920px;height:12px;background:linear-gradient(90deg, #2463c8 0%, #8bc22c 100%)"></div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;color:#037673">1 · 위상을 만든다</p>
+<h2 style="font-size:56px;font-weight:800;line-height:1.15;letter-spacing:-1px;color:#013364">전력 동기화: 유효전력 균형이 θ를 움직인다</h2>
+</div>
+<div style="background:#ffffff;border-left:8px solid #2463c8;border-radius:8px;padding:20px 28px;align-self:flex-start">
+<img src="/_blob/489018b720cc9f0273ee29247edc799b" alt="dθ/dt = ωb(1 + Δω), Δω = f(P* − P) (PLL 없음)" style="width:1164px;height:112px;object-fit:contain">
+</div>
+<img src="/_blob/afc9ced65636c1493806c2b723cdb219" alt="음의 되먹임 사슬: 계통이 더 끌어감 P > P* → 스윙식 Δω < 0 → θ가 뒤처짐 → 위상차 감소 → 회로 법칙으로 P 감소 → 되돌아온다. 계통 위상·주파수가 바뀌면 δ가 먼저 바뀌고 전력은 그 순간 회로 법칙으로 바뀐다" style="width:1500px;height:330px;object-fit:contain;background:#ffffff;border:2px solid #dae3ec;border-radius:16px;align-self:center">
+<p style="font-size:30px;line-height:1.45">동기발전기의 <b style="color:#013364">회전자</b>가 하는 일을 제어기가 대신한다. 음의 되먹임이라 PLL 없이도 계통과 같은 속도로 돈다</p>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#7d8ca2">7강 · GFM: 위상을 만들기</p>
+<p style="position:absolute;left:1592px;bottom:64px;width:200px;font-size:24px;color:#7d8ca2;text-align:right">7 / 29</p>
+<aside>GFM은 내부 기전력 E∠θ를 만들고 그 θ를 유효전력 균형으로 움직입니다. θ의 미분은 ω_b 곱하기 1 더하기 Δω이고, Δω는 P*와 P의 차이의 함수입니다. 6강 PLL 식과 모양이 비슷하지만 입력이 v_q가 아니라 전력 오차입니다. 그림의 사슬을 따라가 보세요. 계통이 더 많이 끌어가서 P가 P*보다 크면, 스윙식이 Δω를 음수로 만들고, θ가 뒤처지고, 위상차 δ가 줄고, 회로 법칙으로 P가 줄어듭니다. 되돌아오는 음의 되먹임입니다. 반대 방향도 같습니다. 그래서 PLL 없이도 계통과 같은 속도로 돕니다. 동기발전기의 회전자가 하는 일을 제어기가 대신하는 것입니다. 중요한 순서가 있습니다. 계통 위상이나 주파수가 바뀌면 δ가 먼저 바뀌고, 전력은 그 순간 회로 법칙으로 바뀝니다. 제어기는 그 뒤에 θ를 천천히 맞춥니다. 이 순서가 GFL과 정반대입니다.</aside>
+</section>
