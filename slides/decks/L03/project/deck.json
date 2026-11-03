@@ -1,0 +1,22 @@
+{
+  "v": 4,
+  "createdOnFiles": {"v": 1, "at": "2026-11-03T11:00:00Z"},
+  "lists": "css",
+  "title": "3강 · 필터 · 변압기 · 측정점",
+  "cover": "cover",
+  "order": ["cover", "goals", "outline", "q-ripple", "a-ripple", "sec1", "lcl", "bode", "resonance", "derive", "weak", "sec2", "damping", "ripplebound", "ripplederive", "ripplemeas", "sum1", "sec3", "xfmr", "meas", "msg", "case", "sec4", "ex1q", "ex1a", "code", "compare", "wrap"],
+  "sections": {
+    "s0": {"description": "도입 — 학습 목표, 목차, PWM 펄스가 어떻게 매끈한 전류가 되고 어디서 재야 하는지 묻는 질문", "start": "cover"},
+    "s1": {"description": "1. L에서 LCL로 — 필터 구성, 주파수 응답, 공진 주파수와 약계통에서의 이동", "start": "sec1"},
+    "s2": {"description": "2. 댐핑과 리플 — 수동 댐핑 Rd의 득실, 스위칭 리플 상한과 실제 측정값", "start": "sec2"},
+    "s3": {"description": "3. 변압기와 측정점 — 변압기의 세 역할, 용도별 측정점, 측정점이 안정도 판정을 바꾼 사례", "start": "sec3"},
+    "s4": {"description": "4. 예제와 실습 — 약계통 공진과 리플 손 계산, Python 확인, 필터 비교와 정리", "start": "sec4"}
+  },
+  "faces": {
+    "pretendard-variable": {"family": "Pretendard Variable", "src": "project/ds/gridex/fonts/PretendardVariable.woff2"},
+    "jetbrains-mono": {"family": "JetBrains Mono", "href": "https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&display=swap"}
+  },
+  "designSystems": [
+    {"title": "GriDeX 디자인 베이스", "namespace": "gridex", "artifact": "https://claude.ai/artifact/DHKyReZeUdghmptteJUFVb", "version": null, "copiedAt": "2026-11-03T11:00:00Z"}
+  ]
+}

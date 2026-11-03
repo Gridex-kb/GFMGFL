@@ -1,0 +1,24 @@
+<section id="case" data-transition="fade" style="background:#fbfcfd;color:#45546b;font-family:'Pretendard Variable', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:28px">
+<div style="position:absolute;left:0;top:0;width:1920px;height:12px;background:linear-gradient(90deg, #2463c8 0%, #8bc22c 100%)"></div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;color:#037673">3 · 변압기와 측정점 · 프로젝트 사례</p>
+<h2 style="font-size:56px;font-weight:800;line-height:1.15;letter-spacing:-1px;color:#013364">측정점 하나가 안정도 판정을 바꿨다</h2>
+</div>
+<div style="display:flex;gap:40px;align-items:center">
+<img src="/_blob/b3b8c1efa1ec2eb3aa2abd0c82f25b34" alt="같은 샘플 시점에서 두 측정점으로 계산한 P. 위: 시간 파형, Lf·필터 단자 σ 0.0063, 변압기·PCC σ 0.0032. 아래: 스펙트럼, Lf 측정은 360 Hz 배수에 봉우리" style="width:1100px;height:640px;object-fit:contain;background:#ffffff;border:2px solid #dae3ec;border-radius:16px">
+<div style="flex:1;display:flex;flex-direction:column;gap:20px">
+<div style="background:#ffffff;border-left:8px solid #eb6834;border-radius:8px;padding:18px 22px">
+<h3 style="font-size:28px;font-weight:800;color:#013364">처음: L<span style="color:#eb6834">f</span> 전류로 측정</h3>
+<p style="font-size:25px;line-height:1.45">360 Hz 배수 잡음이 섞여 안정한 강계통 GFM을 <b>불안정</b>으로 판정</p>
+</div>
+<div style="background:#ffffff;border-left:8px solid #2463c8;border-radius:8px;padding:18px 22px">
+<h3 style="font-size:28px;font-weight:800;color:#013364">변경: 변압기 · PCC</h3>
+<p style="font-size:25px;line-height:1.45">잡음이 절반으로 줄고 판정이 바로잡혔다</p>
+</div>
+<p style="font-size:26px;line-height:1.45;color:#013364"><b>교훈</b>: 안정도를 논하기 전에 측정이 무엇을 보는지 먼저 확인</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#7d8ca2">3강 · 필터 · 변압기 · 측정점</p>
+<p style="position:absolute;left:1592px;bottom:64px;width:200px;font-size:24px;color:#7d8ca2;text-align:right">22 / 28</p>
+<aside>이 강좌의 EMT 모델을 만들면서 실제로 겪은 일입니다. 처음에는 L_f 전류와 필터 단자 전압으로 전력을 쟀습니다. 그랬더니 360, 720, 1080 Hz의 잡음이 측정 전력에 섞였고, 진동 판정 함수가 이 잡음을 제어 진동으로 읽어서, 실제로는 안정한 강계통 GFM을 불안정으로 판정했습니다. 왜 360 Hz 배수일까요? 반송파 꼭짓점에서 샘플링하면 리플의 평균은 잡지만, 스위칭 주파수 두 배, 10 kHz 주변의 측대파가 10 kHz 샘플링에서 낮은 주파수로 접혀 들어옵니다. 이것이 에일리어싱입니다. 측정을 변압기 전류와 PCC 전압으로 옮기자 잡음이 크게 줄고 판정이 바로잡혔습니다. 그림은 지금 모델로 다시 잰 비교입니다. 같은 운전점, 같은 샘플 시점인데 측정점만 다릅니다. 표준편차가 0.0063 대 0.0032 pu로 절반이고, 아래 스펙트럼에서 주황색, L_f 측정이 360 Hz 배수에 봉우리를 세웁니다. 당시 기록은 0.010 대 0.004로 절대값은 다르지만 경향은 같습니다. 그리고 이 잡음은 판정만 흔드는 게 아니라 실제 제어 루프로도 들어갑니다. 교훈은, 제어 안정도를 논하기 전에 측정이 무엇을 보고 있는지 먼저 확인하라는 것입니다.</aside>
+</section>

@@ -1,0 +1,16 @@
+<section id="meas" data-transition="fade" style="background:#fbfcfd;color:#45546b;font-family:'Pretendard Variable', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:28px">
+<div style="position:absolute;left:0;top:0;width:1920px;height:12px;background:linear-gradient(90deg, #2463c8 0%, #8bc22c 100%)"></div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;color:#037673">3 · 변압기와 측정점</p>
+<h2 style="font-size:56px;font-weight:800;line-height:1.15;letter-spacing:-1px;color:#013364">측정점은 용도마다 정한다</h2>
+</div>
+<table style="font-size:30px;color:#45546b">
+<tr><th style="width:20%">측정</th><th style="width:18%">위치</th><th style="width:30%">쓰는 곳</th><th style="width:32%">이유</th></tr>
+<tr><td><b style="color:#eb6834">컨버터측 전류 i_f</b></td><td>L<b>f</b></td><td>전류 제어, 전류 제한만</td><td>컨버터가 직접 움직이고 소자에 흐르는 전류</td></tr>
+<tr><td><b style="color:#2463c8">변압기 전류 i_t</b></td><td>변압기</td><td>P, Q 계산</td><td>LCL을 지나 리플·에일리어싱이 작다</td></tr>
+<tr><td><b style="color:#2463c8">PCC 전압 v_pcc</b></td><td>변압기 고압측</td><td>P, Q, |V|, PLL, GFM 가상 어드미턴스</td><td>계통이 보는 곳, 외부 루프 목표가 PCC 기준</td></tr>
+</table>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#7d8ca2">3강 · 필터 · 변압기 · 측정점</p>
+<p style="position:absolute;left:1592px;bottom:64px;width:200px;font-size:24px;color:#7d8ca2;text-align:right">20 / 28</p>
+<aside>같은 회로에도 측정할 수 있는 곳이 여럿입니다. 이 강좌의 모델은 용도에 따라 나눕니다. 첫째, 컨버터측 전류 i_f는 전류 제어와 전류 제한에만 씁니다. 컨버터 전압이 직접 움직이는 상태가 이 전류이고, 반도체 소자에 실제로 흐르는 전류도 이것이니, 과전류로부터 소자를 지키려면 반드시 이걸 재서 제한해야 합니다. 둘째, 변압기 전류 i_t는 유효전력과 무효전력 계산에 씁니다. LCL을 지난 전류라 리플과 에일리어싱 잡음이 훨씬 작습니다. 셋째, PCC 전압은 전력, 전압 크기, GFL의 PLL, GFM의 가상 어드미턴스 입력에 씁니다. 외부 루프의 목표, 예를 들어 P, Q 지령 추종이나 PCC 전압 지지가 모두 PCC 기준이니, 측정도 그곳에서 하는 것이 자연스럽습니다. 왜 i_f로 전력을 재면 안 되는지는 다음 두 장에서 실제 사례로 보겠습니다.</aside>
+</section>

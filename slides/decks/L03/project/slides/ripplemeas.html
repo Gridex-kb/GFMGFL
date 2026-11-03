@@ -1,0 +1,23 @@
+<section id="ripplemeas" data-transition="fade" style="background:#fbfcfd;color:#45546b;font-family:'Pretendard Variable', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:48px">
+<div style="position:absolute;left:0;top:0;width:1920px;height:12px;background:linear-gradient(90deg, #2463c8 0%, #8bc22c 100%)"></div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;color:#037673">2 · 댐핑과 리플</p>
+<h2 style="font-size:56px;font-weight:800;line-height:1.15;letter-spacing:-1px;color:#013364">상한은 상한일 뿐: 실제 3상 리플은 절반</h2>
+</div>
+<div style="display:flex;gap:28px;align-items:stretch">
+<div style="flex:1;background:#ffffff;border:2px solid #dae3ec;border-radius:20px;padding:40px;display:flex;flex-direction:column;gap:12px">
+<p style="font-size:120px;font-weight:800;color:#7d8ca2;line-height:1">0.21</p>
+<h3 style="font-size:32px;font-weight:800;color:#013364">설계용 상한 [pu p-p]</h3>
+<p style="font-size:27px;line-height:1.45">단상 하프브리지, 듀티 0.5, 반대편 전압 일정: 가장 나쁜 조건</p>
+</div>
+<div style="flex:1;background:#013364;border-radius:20px;padding:40px;display:flex;flex-direction:column;gap:12px">
+<p style="font-size:120px;font-weight:800;color:#8bc22c;line-height:1">0.11</p>
+<h3 style="font-size:32px;font-weight:800;color:#ffffff">EMT 실측 [pu p-p]</h3>
+<p style="font-size:27px;line-height:1.45;color:#c6d4e6">GFM, SCR 10, 2 µs 스위칭 모델. 반송파 한 주기 이동평균을 뺀 값</p>
+</div>
+</div>
+<p style="font-size:30px;line-height:1.45">이유: 3상에서는 <b style="color:#013364">중성점이 극전압의 공통 성분을 흡수</b>해 인덕터에 걸리는 펄스가 더 잘게 쪼개진다 (2강의 5단 상전압)</p>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#7d8ca2">3강 · 필터 · 변압기 · 측정점</p>
+<p style="position:absolute;left:1592px;bottom:64px;width:200px;font-size:24px;color:#7d8ca2;text-align:right">16 / 28</p>
+<aside>그런데 EMT 모델에서 실제로 잰 리플은 0.11 pu 피크-피크로, 상한의 절반 정도입니다. 왜일까요? 상한 식은 단상 하프브리지, 듀티 0.5, 인덕터 반대편 전압이 일정하다는 가장 나쁜 조건의 값입니다. 3상에서는 2강에서 본 것처럼 부하 중성점이 극전압의 공통 성분, 즉 영상분을 흡수합니다. 그래서 인덕터에 실제로 걸리는 상전압 펄스는 극전압 펄스보다 작고 잘게 쪼개진 다섯 단 계단입니다. 리플도 그만큼 작아집니다. 결론은, 상한 식은 이보다 크지는 않다는 설계 여유를 잡는 데 쓰고, 실제 값은 EMT로 확인한다는 것입니다. 측정 방법도 말씀드리면, L_f 전류에서 반송파 한 주기인 200 마이크로초 이동평균을 빼서 남은 성분의 최대-최소를 쟀습니다.</aside>
+</section>

@@ -1,0 +1,28 @@
+<section id="derive" data-transition="fade" style="background:#fbfcfd;color:#45546b;font-family:'Pretendard Variable', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:32px">
+<div style="position:absolute;left:0;top:0;width:1920px;height:12px;background:linear-gradient(90deg, #2463c8 0%, #8bc22c 100%)"></div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;color:#037673">1 · L에서 LCL로 · 칠판 유도</p>
+<h2 style="font-size:56px;font-weight:800;line-height:1.15;letter-spacing:-1px;color:#013364">SI 식에서 pu 식으로: 기준 임피던스가 지워진다</h2>
+</div>
+<div style="background:#ffffff;border:2px solid #dae3ec;border-radius:20px;padding:28px 36px;display:flex;flex-direction:column;gap:20px">
+<div style="display:flex;gap:28px;align-items:center">
+<p style="font-size:30px;font-weight:800;color:#2463c8;width:48px">①</p>
+<img src="/_blob/1fb2eb6849474bff60fe624eb865efa9" alt="i_g/v_c = 1/(s³ Lf Lg C + s(Lf + Lg)), 분모 0에서 ω_res² = (Lf + Lg)/(Lf Lg C)" style="width:1057px;height:125px;object-fit:contain">
+</div>
+<div style="display:flex;gap:28px;align-items:center">
+<p style="font-size:30px;font-weight:800;color:#2463c8;width:48px">②</p>
+<img src="/_blob/23f7f1c67394910b88fb1026c9317954" alt="L = X Zb/ωb, C = B/(ωb Zb) 대입하면 ω_res² = ωb² (Xf + Xg)/(Xf Xg B)" style="width:1003px;height:125px;object-fit:contain">
+</div>
+</div>
+<div style="display:flex;gap:24px">
+<div style="flex:1;background:#e9f0f6;border-radius:16px;padding:24px 28px">
+<p style="font-size:28px;line-height:1.45">조건: 계통 전압 단락, 저항 무시 (공진 위치만 볼 때)</p>
+</div>
+<div style="flex:1;background:#e9f0f6;border-radius:16px;padding:24px 28px">
+<p style="font-size:28px;line-height:1.45">Z<b>b</b>가 분자·분모에서 모두 지워져 <b style="color:#013364">pu 값 그대로</b> 쓴다</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#7d8ca2">3강 · 필터 · 변압기 · 측정점</p>
+<p style="position:absolute;left:1592px;bottom:64px;width:200px;font-size:24px;color:#7d8ca2;text-align:right">10 / 28</p>
+<aside>이 장은 칠판에서 같이 합니다. 첫째, 계통 전압을 단락하고 저항을 무시해서 컨버터 전압에서 계통측 전류까지의 전달함수를 구합니다. 커패시터와 계통측 인덕터가 병렬, 그 앞에 컨버터측 인덕터가 직렬입니다. 정리하면 분모가 s세제곱 L_f L_g C 더하기 s 곱하기 L_f + L_g입니다. 분모가 0이 되는 s = jω에서 공진이고, ω_res 제곱은 L_f + L_g를 L_f L_g C로 나눈 것입니다. 여기의 L과 C는 헨리와 패럿입니다. 둘째, pu 리액턴스는 ω_b L을 Z_b로 나눈 것, pu 서셉턴스는 ω_b C Z_b입니다. 이것을 L과 C에 대해 풀어 대입하면, Z_b가 분자와 분모에서 정확히 지워지고 ω_b 제곱만 남습니다. 양변을 2π로 나누면 앞 장의 식, f_0 곱하기 루트가 됩니다. 이 강좌가 pu만 쓰는 이유가 이런 데서 드러납니다. 기준 전압과 용량을 몰라도 공진 주파수가 나옵니다.</aside>
+</section>

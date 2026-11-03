@@ -1,0 +1,22 @@
+<section id="resonance" data-transition="fade" style="background:#fbfcfd;color:#45546b;font-family:'Pretendard Variable', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:32px">
+<div style="position:absolute;left:0;top:0;width:1920px;height:12px;background:linear-gradient(90deg, #2463c8 0%, #8bc22c 100%)"></div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;color:#037673">1 · L에서 LCL로</p>
+<h2 style="font-size:56px;font-weight:800;line-height:1.15;letter-spacing:-1px;color:#013364">공진 주파수는 pu 값만으로 계산된다</h2>
+</div>
+<div style="background:#ffffff;border-left:8px solid #2463c8;border-radius:8px;padding:24px 32px;align-self:flex-start">
+<img src="/_blob/63ea6a1e376bab3ca2374fc8b8820526" alt="f_res = f0 √((Lf + Lg)/(Lf Lg Cf)), pu 리액턴스와 서셉턴스" style="width:1055px;height:159px;object-fit:contain">
+</div>
+<div style="display:flex;gap:40px;align-items:center">
+<div style="background:#ffffff;border-left:8px solid #3aa150;border-radius:8px;padding:24px 32px">
+<img src="/_blob/14fc83ce4f5009dd1adcd21f7f4478a1" alt="f_res = 60 √(0.3/(0.2 × 0.1 × 0.05)) ≈ 1039 Hz" style="width:825px;height:130px;object-fit:contain">
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:16px">
+<p style="font-size:28px;line-height:1.45">L, C는 <b style="color:#013364">60 Hz에서 잰 pu 값</b>을 그대로</p>
+<p style="font-size:28px;line-height:1.45">읽는 법: L<b>f</b> ∥ L<b>g</b>와 C<b>f</b>의 리액턴스가 같아지는 고조파 차수 ≈ 17</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#7d8ca2">3강 · 필터 · 변압기 · 측정점</p>
+<p style="position:absolute;left:1592px;bottom:64px;width:200px;font-size:24px;color:#7d8ca2;text-align:right">9 / 28</p>
+<aside>공진 주파수는 pu 값만으로 바로 계산됩니다. 인덕터는 정격 주파수에서 잰 pu 리액턴스, 커패시터는 pu 서셉턴스를 그대로 넣고 앞에 60 Hz를 곱하면 됩니다. 우리 설비로 L_f 0.2, L_g 0.1, C_f 0.05를 넣으면 루트 안이 300, 그래서 60 곱하기 17.3, 약 1039 Hz입니다. 이 식을 읽는 방법이 하나 더 있습니다. 공진은 두 인덕터를 병렬로 본 리액턴스와 커패시터 리액턴스가 같아지는 주파수입니다. 정격 주파수에서 두 인덕터의 병렬 리액턴스는 0.067, 커패시터 리액턴스는 20인데, 주파수를 h배 하면 인덕터는 h배, 커패시터는 1/h배가 되니 h제곱이 300일 때 같아집니다. h는 약 17.3, 17차 고조파 근처입니다. SI 단위 식에서 pu 식으로 가는 유도는 다음 장에서 칠판으로 하겠습니다.</aside>
+</section>

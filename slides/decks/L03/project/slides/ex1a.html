@@ -1,0 +1,20 @@
+<section id="ex1a" data-transition="fade" style="background:#fbfcfd;color:#45546b;font-family:'Pretendard Variable', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:32px">
+<div style="position:absolute;left:0;top:0;width:1920px;height:12px;background:linear-gradient(90deg, #2463c8 0%, #8bc22c 100%)"></div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;color:#3aa150">예제 · 풀이</p>
+<h2 style="font-size:56px;font-weight:800;line-height:1.15;letter-spacing:-1px;color:#013364">SCR 2에서 693 Hz — 제어 대역 아래로 들어온다</h2>
+</div>
+<div style="background:#ffffff;border-left:8px solid #2463c8;border-radius:8px;padding:20px 28px;align-self:flex-start">
+<img src="/_blob/832050ca0821a2761a8f5848294437a4" alt="Lg = 0.6일 때 f_res = 60 √(0.8/(0.2 × 0.6 × 0.05)) ≈ 693 Hz" style="width:1069px;height:130px;object-fit:contain">
+</div>
+<table style="font-size:30px;color:#45546b">
+<tr><th style="width:34%">경우</th><th style="width:22%">공진 [Hz]</th><th style="width:22%">리플 상한 [pu]</th><th style="width:22%">비고</th></tr>
+<tr><td>기준 (L<b>f</b> 0.2, 강계통)</td><td>1039</td><td>0.21</td><td>—</td></tr>
+<tr style="background:#e9f0f6"><td><b>(1) 기준, SCR 2</b></td><td><b>693</b></td><td>0.21</td><td>800 Hz 아래</td></tr>
+<tr><td><b>(2)(3) Lf 0.3, 강계통</b></td><td><b>980</b></td><td><b>0.14</b></td><td>리플 2/3</td></tr>
+</table>
+<p style="font-size:28px;line-height:1.45">L<b>f</b>를 키운 대가: 기본파 전압강하가 커져 1.303 pu 여유를 더 먹는다</p>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#7d8ca2">3강 · 필터 · 변압기 · 측정점</p>
+<p style="position:absolute;left:1592px;bottom:64px;width:200px;font-size:24px;color:#7d8ca2;text-align:right">25 / 28</p>
+<aside>풀이입니다. 1번, SCR 2면 계통 리액턴스가 0.5이니 L_g는 0.6 pu입니다. 식에 넣으면 루트 안이 0.8을 0.006으로 나눈 133.3, 루트가 11.5, 60을 곱하면 약 693 Hz입니다. 전류 제어 대역 800 Hz보다 낮아졌습니다. 전류 제어기가 공진 근처를 건드릴 수 있다는 경고입니다. 2번, 리플 상한은 L_f에 반비례하니 0.21 곱하기 0.2/0.3, 약 0.14 pu입니다. 3번, 강한 계통에서 L_f 0.3이면 루트 안이 0.4를 0.0015로 나눈 266.7, 루트가 16.3, 공진은 약 980 Hz로 조금 내려갑니다. 그렇다면 L_f를 키우면 좋기만 할까요? 대가가 있습니다. 기본파 전류가 흐를 때 인덕터 전압강하가 커지므로, 컨버터가 내야 할 전압이 커집니다. 2강에서 본 1.303 pu 한계까지의 여유를 더 먹는 셈입니다. 인덕터는 비싸고 무겁기도 합니다.</aside>
+</section>

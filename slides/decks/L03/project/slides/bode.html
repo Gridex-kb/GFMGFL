@@ -1,0 +1,27 @@
+<section id="bode" data-transition="fade" style="background:#fbfcfd;color:#45546b;font-family:'Pretendard Variable', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:28px">
+<div style="position:absolute;left:0;top:0;width:1920px;height:12px;background:linear-gradient(90deg, #2463c8 0%, #8bc22c 100%)"></div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;color:#037673">1 · L에서 LCL로</p>
+<h2 style="font-size:56px;font-weight:800;line-height:1.15;letter-spacing:-1px;color:#013364">LCL은 공진 위에서 −60 dB/dec로 꺾인다</h2>
+</div>
+<div style="display:flex;gap:40px;align-items:center">
+<img src="/_blob/28713e62b2911326562d51f45505e934" alt="컨버터 전압에서 변압기 전류까지 이득의 보드 선도: L 필터 점선 −20 dB/dec, LCL Rd 0 주황은 1039 Hz에서 공진 봉우리 후 급감, LCL Rd 2 파랑은 봉우리 없음. 5 kHz에서 L −28, Rd 2 −37, Rd 0 −55 dB" style="width:1080px;height:600px;object-fit:contain;background:#ffffff;border:2px solid #dae3ec;border-radius:16px">
+<div style="flex:1;display:flex;flex-direction:column;gap:18px">
+<div style="background:#ffffff;border-left:8px solid #7d8ca2;border-radius:8px;padding:18px 22px">
+<h3 style="font-size:28px;font-weight:800;color:#013364">L 필터</h3>
+<p style="font-size:26px;line-height:1.45">−20 dB/dec. 5 kHz에서 −28 dB</p>
+</div>
+<div style="background:#ffffff;border-left:8px solid #eb6834;border-radius:8px;padding:18px 22px">
+<h3 style="font-size:28px;font-weight:800;color:#013364">LCL, 댐핑 없음</h3>
+<p style="font-size:26px;line-height:1.45">1039 Hz에서 봉우리, 위로는 −60 dB/dec. −55 dB</p>
+</div>
+<div style="background:#ffffff;border-left:8px solid #2463c8;border-radius:8px;padding:18px 22px">
+<h3 style="font-size:28px;font-weight:800;color:#013364">LCL, R<span style="color:#2463c8">d</span> 2 (모델)</h3>
+<p style="font-size:26px;line-height:1.45">봉우리 없음, 대신 −37 dB</p>
+</div>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#7d8ca2">3강 · 필터 · 변압기 · 측정점</p>
+<p style="position:absolute;left:1592px;bottom:64px;width:200px;font-size:24px;color:#7d8ca2;text-align:right">8 / 28</p>
+<aside>컨버터 전압에서 변압기 전류까지의 이득을 주파수별로 그렸습니다. 강한 계통 조건입니다. 회색 점선이 L 필터로, 같은 총 인덕턴스 0.3 pu를 인덕터 하나로 쓴 경우입니다. 10배 주파수마다 20 dB씩 일정하게 떨어지고, 5 kHz에서 −28 dB입니다. 주황색이 LCL에서 댐핑이 없는 경우입니다. 낮은 주파수에서는 L 필터와 거의 같다가, 1039 Hz에서 봉우리가 솟고, 그 위로는 10배마다 60 dB씩 급하게 떨어져 5 kHz에서 −55 dB입니다. 같은 인덕턴스로 리플을 훨씬 많이 줄이는 대신, 공진이라는 대가를 치르는 것입니다. 파란색이 우리 모델로, R_d 2 pu를 넣어 봉우리를 없앴습니다. 대신 5 kHz 감쇠가 −37 dB로 18 dB 줄었습니다. 이 득실이 2부의 주제입니다.</aside>
+</section>

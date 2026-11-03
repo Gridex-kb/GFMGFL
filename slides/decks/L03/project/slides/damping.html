@@ -1,0 +1,30 @@
+<section id="damping" data-transition="fade" style="background:#fbfcfd;color:#45546b;font-family:'Pretendard Variable', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:32px">
+<div style="position:absolute;left:0;top:0;width:1920px;height:12px;background:linear-gradient(90deg, #2463c8 0%, #8bc22c 100%)"></div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;color:#037673">2 · 댐핑과 리플</p>
+<h2 style="font-size:56px;font-weight:800;line-height:1.15;letter-spacing:-1px;color:#013364">R<span style="color:#2463c8">d</span>는 공진을 누르고, 고주파 감쇠를 내준다</h2>
+</div>
+<div style="background:#ffffff;border-left:8px solid #2463c8;border-radius:8px;padding:20px 28px;align-self:flex-start">
+<img src="/_blob/9b3a41b1740c242457330bc602479c8e" alt="공진 주파수에서 커패시터 리액턴스 1/(h_res B) = 1/(17.3 × 0.05) ≈ 1.15 pu < Rd = 2.0" style="width:954px;height:116px;object-fit:contain">
+</div>
+<div style="display:flex;gap:24px">
+<div style="flex:1;background:#ffffff;border:2px solid #dae3ec;border-radius:20px;padding:32px;display:flex;flex-direction:column;gap:12px">
+<p style="font-size:26px;font-weight:700;color:#3aa150">효과</p>
+<h3 style="font-size:32px;font-weight:800;color:#013364">봉우리가 사라진다</h3>
+<p style="font-size:27px;line-height:1.45">공진에서 C<b>f</b> 리액턴스 1.15보다 큰 저항 → 커패시터 가지가 저항처럼 보인다</p>
+</div>
+<div style="flex:1;background:#ffffff;border:2px solid #dae3ec;border-radius:20px;padding:32px;display:flex;flex-direction:column;gap:12px">
+<p style="font-size:26px;font-weight:700;color:#eb6834">대가</p>
+<h3 style="font-size:32px;font-weight:800;color:#013364">5 kHz −55 → −37 dB</h3>
+<p style="font-size:27px;line-height:1.45">공진 위 기울기가 −60에서 −40 dB/dec 쪽으로 완만해진다. 손실도 는다</p>
+</div>
+<div style="flex:1;background:#013364;border-radius:20px;padding:32px;display:flex;flex-direction:column;gap:12px">
+<p style="font-size:26px;font-weight:700;color:#b9f179">이 프로젝트에서</p>
+<h3 style="font-size:32px;font-weight:800;color:#ffffff">1 pu → 2 pu</h3>
+<p style="font-size:27px;line-height:1.45;color:#c6d4e6">GFM에 순시 PCC 전압을 넣자 R<b>d</b> 1에서 약 500 Hz 불안정 → 2로 해결</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#7d8ca2">3강 · 필터 · 변압기 · 측정점</p>
+<p style="position:absolute;left:1592px;bottom:64px;width:200px;font-size:24px;color:#7d8ca2;text-align:right">13 / 28</p>
+<aside>공진을 누르는 가장 단순한 방법이 커패시터에 직렬로 저항을 넣는 수동 댐핑입니다. 얼마나 커야 할까요? 공진 주파수, 즉 17.3차에서 커패시터의 리액턴스는 1/(17.3 × 0.05), 약 1.15 pu입니다. 우리 모델의 R_d 2 pu는 이보다 크니, 공진 근처에서 커패시터 가지가 거의 저항처럼 보이고 봉우리가 사라집니다. 대가도 있습니다. 공진 위에서 커패시터가 리플을 깨끗하게 단락시키지 못하므로 감쇠 기울기가 완만해지고, 5 kHz 감쇠가 −55에서 −37 dB로 줄어듭니다. 커패시터 가지로 흐르는 리플 전류만큼 저항 손실도 생깁니다. 그러니 댐핑 저항은 클수록 좋은 게 아니라 절충입니다. 이 프로젝트에서 2 pu를 고른 데는 사연이 있습니다. GFM의 가상 어드미턴스에 순시 PCC 전압을 넣었더니 R_d 1 pu에서 약 500 Hz로 불안정해졌고, 2 pu로 키워서 해결했습니다. EMT README의 교훈 5입니다. 제어로 가상 저항을 만드는 능동 댐핑도 있지만 이 강좌에서는 다루지 않습니다.</aside>
+</section>

@@ -1,0 +1,23 @@
+<section id="a-ripple" data-transition="fade" style="background:#fbfcfd;color:#45546b;font-family:'Pretendard Variable', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<div style="position:absolute;left:0;top:0;width:1920px;height:12px;background:linear-gradient(90deg, #2463c8 0%, #8bc22c 100%)"></div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;color:#3aa150">답 (미리 보기)</p>
+<h2 style="font-size:56px;font-weight:800;line-height:1.15;letter-spacing:-1px;color:#013364">리플은 커패시터로 빠지고, 측정은 용도마다 다르다</h2>
+</div>
+<div style="display:flex;gap:28px">
+<div style="flex:1;background:#ffffff;border:2px solid #dae3ec;border-radius:20px;padding:40px;display:flex;flex-direction:column;gap:16px">
+<p style="font-size:26px;font-weight:700;color:#2463c8">① 필터</p>
+<h3 style="font-size:38px;font-weight:800;color:#013364">5 kHz는 C<span style="color:#2463c8">f</span>로 우회한다</h3>
+<p style="font-size:30px;line-height:1.45">고주파에서 커패시터는 거의 단락, 변압기 쪽 인덕터는 거의 개방. 리플 전류가 커패시터로 돈다</p>
+</div>
+<div style="flex:1;background:#013364;border-radius:20px;padding:40px;display:flex;flex-direction:column;gap:16px">
+<p style="font-size:26px;font-weight:700;color:#b9f179">② 측정점</p>
+<h3 style="font-size:38px;font-weight:800;color:#ffffff">지키는 곳과 보는 곳</h3>
+<p style="font-size:30px;line-height:1.45;color:#c6d4e6">소자를 지키는 전류 제한은 L<b>f</b> 전류로, 계통이 보는 전력은 변압기 전류와 PCC 전압으로</p>
+</div>
+</div>
+<p style="font-size:30px;line-height:1.45">오늘은 이 두 문장을 <b style="color:#013364">숫자로</b> 확인한다: 공진 1039 Hz, 리플 0.11 pu, 잡음 0.006 → 0.003 pu</p>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#7d8ca2">3강 · 필터 · 변압기 · 측정점</p>
+<p style="position:absolute;left:1592px;bottom:64px;width:200px;font-size:24px;color:#7d8ca2;text-align:right">5 / 28</p>
+<aside>답을 먼저 짧게 말하고, 오늘 강의에서 숫자로 확인하겠습니다. 첫째, 리플은 필터 커패시터로 빠집니다. 5 kHz에서 커패시터의 임피던스는 아주 작고, 변압기 쪽 인덕터의 임피던스는 아주 큽니다. 그래서 리플 전류는 커패시터로 돌아 버리고 변압기까지 거의 가지 않습니다. 이것이 LCL 필터입니다. 둘째, 측정점은 용도마다 다릅니다. 반도체 소자를 과전류에서 지키려면 소자에 실제로 흐르는 L_f 전류를 재서 제한해야 합니다. 반면 계통에 보내는 전력, PCC 전압, 위상은 계통이 보는 곳, 리플이 걸러진 곳에서 재야 합니다. 오늘 이 두 문장을 공진 주파수 1039 Hz, 리플 0.11 pu, 측정 잡음 0.006에서 0.003 pu라는 숫자로 확인합니다.</aside>
+</section>

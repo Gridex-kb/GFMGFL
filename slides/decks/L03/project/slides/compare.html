@@ -1,0 +1,18 @@
+<section id="compare" data-transition="fade" style="background:#fbfcfd;color:#45546b;font-family:'Pretendard Variable', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<div style="position:absolute;left:0;top:0;width:1920px;height:12px;background:linear-gradient(90deg, #2463c8 0%, #8bc22c 100%)"></div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;color:#037673">4 · 예제와 실습 · 정리</p>
+<h2 style="font-size:56px;font-weight:800;line-height:1.15;letter-spacing:-1px;color:#013364">세 가지 필터 한눈에</h2>
+</div>
+<table style="font-size:30px;color:#45546b">
+<tr><th style="width:22%"> </th><th style="width:26%">L 필터 (0.3 pu)</th><th style="width:26%">LCL, R<span>d</span> = 0</th><th style="width:26%">LCL, R<span>d</span> = 2 (모델)</th></tr>
+<tr><td><b>고주파 기울기</b></td><td>−20 dB/dec</td><td>−60 dB/dec</td><td>−40 dB/dec 쪽</td></tr>
+<tr><td><b>공진</b></td><td>없음</td><td>1039 Hz 봉우리</td><td>봉우리 없음</td></tr>
+<tr><td><b>5 kHz 감쇠</b></td><td>−28 dB</td><td>−55 dB</td><td>−37 dB</td></tr>
+<tr><td><b>약점</b></td><td>큰 인덕터, 큰 전압강하</td><td>공진이 제어와 엮인다</td><td>감쇠 일부와 저항 손실</td></tr>
+</table>
+<p style="font-size:32px;line-height:1.45">모든 선택은 <b style="color:#013364">리플 감쇠 · 공진 · 손실 · 전압 여유</b> 사이의 절충이다</p>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#7d8ca2">3강 · 필터 · 변압기 · 측정점</p>
+<p style="position:absolute;left:1592px;bottom:64px;width:200px;font-size:24px;color:#7d8ca2;text-align:right">27 / 28</p>
+<aside>오늘 본 세 필터를 표로 정리합니다. L 필터는 공진이 없어 다루기 쉽지만 기울기가 −20 dB/dec뿐이라 리플을 줄이려면 인덕터가 커지고 전압강하도 커집니다. 댐핑 없는 LCL은 기울기가 −60 dB/dec로 감쇠는 가장 좋지만, 1039 Hz 봉우리가 제어와 엮일 위험이 있습니다. 우리 모델의 LCL은 R_d 2 pu로 봉우리를 없앤 대신 감쇠 일부와 저항 손실을 내줬습니다. 어느 것도 공짜가 아니고, 리플 감쇠, 공진, 손실, 전압 여유 사이의 절충입니다.</aside>
+</section>

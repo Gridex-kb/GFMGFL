@@ -1,0 +1,21 @@
+<section id="weak" data-transition="fade" style="background:#fbfcfd;color:#45546b;font-family:'Pretendard Variable', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:28px">
+<div style="position:absolute;left:0;top:0;width:1920px;height:12px;background:linear-gradient(90deg, #2463c8 0%, #8bc22c 100%)"></div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;color:#037673">1 · L에서 LCL로</p>
+<h2 style="font-size:56px;font-weight:800;line-height:1.15;letter-spacing:-1px;color:#013364">계통이 약할수록 공진이 제어 대역으로 내려온다</h2>
+</div>
+<div style="display:flex;gap:48px;align-items:center">
+<img src="/_blob/d07b8ef53aac9d6949dd0c3b7a62cfcd" alt="SCR에 따른 LCL 공진 주파수: 강한 계통 1039 Hz에서 SCR 3 725 Hz, SCR 2 693 Hz로 내려가 전류 제어 대역 800 Hz보다 낮아진다" style="width:780px;height:520px;object-fit:contain;background:#ffffff;border:2px solid #dae3ec;border-radius:16px">
+<div style="flex:1;display:flex;flex-direction:column;gap:24px">
+<div style="background:#ffffff;border-left:8px solid #2463c8;border-radius:8px;padding:18px 28px;align-self:flex-start">
+<img src="/_blob/27ba86cdc2efb7bca73f645aea3983e1" alt="Lg = Lt + 1/SCR" style="width:353px;height:109px;object-fit:contain">
+</div>
+<p style="font-size:30px;line-height:1.45">계통 리액턴스가 L<b>g</b>에 <b style="color:#013364">더해진다</b></p>
+<p style="font-size:30px;line-height:1.45">SCR 3 → 725 Hz, SCR 2 → 693 Hz: 전류 제어 대역 <b style="color:#eb6834">800 Hz 아래</b></p>
+<p style="font-size:30px;line-height:1.45">공진은 부품만의 값이 아니다 → 설계는 <b style="color:#013364">운전할 SCR 전 범위</b>에서 확인</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#7d8ca2">3강 · 필터 · 변압기 · 측정점</p>
+<p style="position:absolute;left:1592px;bottom:64px;width:200px;font-size:24px;color:#7d8ca2;text-align:right">11 / 28</p>
+<aside>여기서 흔한 오해 하나를 짚겠습니다. LCL 공진 주파수는 필터 부품으로 정해지는 고정값이 아닙니다. 계통측 인덕터 자리에는 변압기만 있는 게 아니라 그 너머 계통 리액턴스도 직렬로 이어지기 때문입니다. 계통 리액턴스는 SCR의 역수이니, L_g는 0.1 더하기 1/SCR이 됩니다. 그래프는 SCR에 따른 공진 주파수입니다. 강한 계통에서 1039 Hz였던 것이 SCR 3에서 725 Hz, SCR 2에서 693 Hz까지 내려옵니다. 주황색 선이 다음 다음 강의에서 설계할 전류 제어 대역 800 Hz입니다. 계통이 약해지면 공진이 이 대역 아래로 들어옵니다. 전류 제어기가 공진을 건드리기 쉬워진다는 뜻이고, 이것이 8강에서 다룰 약계통 고주파 상호작용의 한 뿌리입니다. 그래서 필터는 운전할 SCR 범위 전체에서 확인해야 합니다.</aside>
+</section>

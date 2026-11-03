@@ -1,0 +1,27 @@
+<section id="ripplederive" data-transition="fade" style="background:#fbfcfd;color:#45546b;font-family:'Pretendard Variable', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:32px">
+<div style="position:absolute;left:0;top:0;width:1920px;height:12px;background:linear-gradient(90deg, #2463c8 0%, #8bc22c 100%)"></div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;color:#037673">2 · 댐핑과 리플 · 칠판 유도</p>
+<h2 style="font-size:56px;font-weight:800;line-height:1.15;letter-spacing:-1px;color:#013364">리플은 (1 − m²)에 비례하고 m = 0에서 최대</h2>
+</div>
+<div style="background:#ffffff;border:2px solid #dae3ec;border-radius:20px;padding:32px 36px">
+<img src="/_blob/1073c9b5f0e4f79ccfae9477d8097294" alt="Δi = (V_dc/2 − v) D/(L f_sw), D = (1 + m)/2 이므로 Δi = V_dc/(4 L f_sw) (1 − m²)" style="width:1300px;height:124px;object-fit:contain">
+</div>
+<div style="display:flex;gap:24px">
+<div style="flex:1;background:#ffffff;border:2px solid #dae3ec;border-radius:16px;padding:28px;display:flex;flex-direction:column;gap:10px">
+<p style="font-size:26px;font-weight:700;color:#2463c8">①</p>
+<p style="font-size:28px;line-height:1.45">상승 구간(듀티 D): 인덕터 전압 = V<b>dc</b>/2 − v</p>
+</div>
+<div style="flex:1;background:#ffffff;border:2px solid #dae3ec;border-radius:16px;padding:28px;display:flex;flex-direction:column;gap:10px">
+<p style="font-size:26px;font-weight:700;color:#2463c8">②</p>
+<p style="font-size:28px;line-height:1.45">평균 관계 v = (2D − 1) V<b>dc</b>/2, 변조 지수 m = v/(V<b>dc</b>/2)</p>
+</div>
+<div style="flex:1;background:#013364;border-radius:16px;padding:28px;display:flex;flex-direction:column;gap:10px">
+<p style="font-size:26px;font-weight:700;color:#b9f179">③</p>
+<p style="font-size:28px;line-height:1.45;color:#ffffff">m = 0 (듀티 0.5)에서 최대 V<b>dc</b>/(4 L f<b>sw</b>)</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#7d8ca2">3강 · 필터 · 변압기 · 측정점</p>
+<p style="position:absolute;left:1592px;bottom:64px;width:200px;font-size:24px;color:#7d8ca2;text-align:right">15 / 28</p>
+<aside>칠판에서 유도합니다. 극전압이 플러스 V_dc/2인 구간, 즉 한 주기 중 듀티 D만큼의 시간 동안 인덕터 양단 전압은 V_dc/2 빼기 출력 평균 전압 v입니다. 전압을 인덕턴스로 나눈 기울기에 시간 D/f_sw를 곱하면 한 주기의 전류 증가분이 나옵니다. 그런데 평균 전압과 듀티 사이에는 v = (2D − 1) V_dc/2라는 관계가 있습니다. 변조 지수 m을 v를 V_dc/2로 나눈 것으로 두면 D는 (1 + m)/2입니다. 이것을 대입하고 정리하면 Δi는 V_dc/(4 L f_sw) 곱하기 1 − m제곱이 됩니다. m이 0, 즉 듀티 0.5에서 최대이고, 그것이 앞 장의 상한입니다. 실제 운전에서 m은 계속 변하므로 리플도 한 주기 안에서 커졌다 작아졌다 합니다.</aside>
+</section>

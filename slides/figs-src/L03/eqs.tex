@@ -1,0 +1,21 @@
+% 3강 수식
+%% E01-공진
+f_{res} = f_0\sqrt{\frac{L_f + L_g}{L_f\,L_g\,C_f}}\qquad(\text{pu 리액턴스, 서셉턴스})
+%% E02-공진값
+f_{res} = 60\sqrt{\frac{0.2 + 0.1}{0.2\times 0.1\times 0.05}} \approx 1039\ \mathrm{Hz}
+%% E03-전달함수
+\frac{i_g}{v_c} = \frac{1}{s^3 L_f L_g C + s\,(L_f + L_g)}\;\Rightarrow\;\omega_{res}^2 = \frac{L_f + L_g}{L_f L_g C}
+%% E04-pu치환
+L = \frac{X Z_b}{\omega_b},\quad C = \frac{B}{\omega_b Z_b}\;\Rightarrow\;\omega_{res}^2 = \omega_b^2\,\frac{X_f + X_g}{X_f X_g B}
+%% E05-약계통
+L_g = L_t + \frac{1}{\mathrm{SCR}}
+%% E06-리플상한
+\Delta i_{pp} \le \frac{V_{dc}}{4\,L\,f_{sw}},\qquad L = \frac{L_{f,\mathrm{pu}}}{\omega_b}\ [\mathrm{s}]
+%% E07-리플값
+\Delta i_{pp} \le \frac{2.256}{4\times(0.2/377)\times 5000} \approx 0.21\ \mathrm{pu}
+%% E08-리플유도
+\Delta i = \frac{(V_{dc}/2 - v)\,D}{L f_{sw}},\quad D = \frac{1+m}{2}\;\Rightarrow\;\Delta i = \frac{V_{dc}}{4 L f_{sw}}\,(1 - m^2)
+%% E09-Rd비교
+\frac{1}{h_{res}\,B} = \frac{1}{17.3\times 0.05} \approx 1.15\ \mathrm{pu}\; <\; R_d = 2.0
+%% E10-SCR2
+L_g = 0.6:\quad f_{res} = 60\sqrt{\frac{0.8}{0.2\times 0.6\times 0.05}} \approx 693\ \mathrm{Hz}

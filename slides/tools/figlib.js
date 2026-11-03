@@ -268,8 +268,10 @@
       d.dataset.name = it.name;
       d.style.fontSize = (it.size || 40) + "px";
       d.style.color = it.color || C.navy;
-      katex.render(it.tex, d, { displayMode: true, throwOnError: true, strict: false, trust: false,
-        macros: { "\\vv": "\\vec{#1}", "\\pu": "\\,\\mathrm{pu}" } });
+      try {
+        katex.render(it.tex, d, { displayMode: true, throwOnError: true, strict: false, trust: false,
+          macros: { "\\vv": "\\vec{#1}", "\\pu": "\\,\\mathrm{pu}" } });
+      } catch (e) { console.error(`${it.name}: ${e.message}`); d.textContent = "ERROR " + it.name; }
       wrap.appendChild(d);
     });
     document.fonts.ready.then(() => { window.FIG_READY = true; });
