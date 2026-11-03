@@ -2,7 +2,7 @@
 <div style="position:absolute;left:0;top:0;width:1920px;height:12px;background:linear-gradient(90deg, #2463c8 0%, #8bc22c 100%)"></div>
 <div style="display:flex;flex-direction:column;gap:10px">
 <p style="font-size:24px;font-weight:700;letter-spacing:4px;color:#037673">2 · 극전압 · 상전압 · 영상분</p>
-<h2 style="font-size:56px;font-weight:800;line-height:1.15;letter-spacing:-1px;color:#013364">극전압 2단에서 영상분을 빼면 상전압 5단</h2>
+<h2 style="font-size:56px;font-weight:800;line-height:1.15;letter-spacing:-1px;color:#013364">극전압 2단에서 영상분을 빼면 상전압은 최대 5단</h2>
 </div>
 <div style="display:flex;gap:40px;align-items:center">
 <img src="/_blob/b7fa48835f9baa925bdbd71b1b5436ff" alt="6스텝 순서에서 위: 극전압 ±1.128, 가운데: 영상분 ±0.376, 아래: a상 전압 5단 계단(0, ±0.752, ±1.504)과 진폭 1.436의 기본파 점선" style="width:1150px;height:630px;object-fit:contain;background:#ffffff;border:2px solid #dae3ec;border-radius:16px">
@@ -14,11 +14,11 @@
 <tr><td>선간전압</td><td>0, ±2.256</td></tr>
 <tr style="background:#e9f0f6"><td><b>상전압</b></td><td><b>0, ±0.752, ±1.504</b></td></tr>
 </table>
-<p style="font-size:26px;line-height:1.45">6스텝: 꼭짓점을 60°씩 그대로 도는 극단적인 경우</p>
+<p style="font-size:26px;line-height:1.45">6스텝은 영벡터를 안 써서 0이 없다: ±0.752, ±1.504 네 값</p>
 <img src="/_blob/1d7c696f86b6137ba22443822eb1a5a4" alt="6스텝 기본파 진폭 = (2/π) V_dc = 1.436 pu" style="width:470px;height:88px;object-fit:contain">
 </div>
 </div>
 <p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#7d8ca2">2강 · 2레벨 전압형 컨버터(VSC)</p>
 <p style="position:absolute;left:1592px;bottom:64px;width:200px;font-size:24px;color:#7d8ca2;text-align:right">11 / 28</p>
-<aside>그림은 가장 단순한 운전, 6스텝입니다. 상태를 100, 110, 010 순서로 60도마다 하나씩 바꿉니다. 맨 위가 극전압으로, a상 진한 파랑은 플러스마이너스 1.128을 오가는 구형파입니다. 가운데는 세 극전압의 평균, 즉 영상분입니다. 60도마다 플러스마이너스 0.376으로 뒤집히고 주파수는 기본파의 세 배입니다. 맨 아래가 극전압에서 영상분을 뺀 상전압입니다. 0, 플러스마이너스 0.752, 플러스마이너스 1.504, 다섯 값의 계단이 됩니다. 점선은 이 계단파의 기본파로 진폭이 2/π 곱하기 V_dc, 1.436 pu입니다. 오늘 뒤에서 구할 선형 한계 1.303보다 크지만, 대신 5차, 7차 같은 저차 고조파가 섞여 있습니다. 12강 변조의 과변조에서 다시 만납니다.</aside>
+<aside>그림은 가장 단순한 운전, 6스텝입니다. 상태를 100, 110, 010 순서로 60도마다 하나씩 바꿉니다. 맨 위가 극전압으로, a상 진한 파랑은 플러스마이너스 1.128을 오가는 구형파입니다. 가운데는 세 극전압의 평균, 즉 영상분입니다. 60도마다 플러스마이너스 0.376으로 뒤집히고 주파수는 기본파의 세 배입니다. 맨 아래가 극전압에서 영상분을 뺀 상전압입니다. 플러스마이너스 0.752와 플러스마이너스 1.504의 계단입니다. 6스텝은 영벡터를 쓰지 않으니 0 단계가 없습니다. 영벡터를 섞는 일반 PWM에서는 0까지 더해 다섯 값이 나옵니다. 표의 상전압 칸이 그 다섯 값입니다. 점선은 이 계단파의 기본파로 진폭이 2/π 곱하기 V_dc, 1.436 pu입니다. 오늘 뒤에서 구할 선형 한계 1.303보다 크지만, 대신 5차, 7차 같은 저차 고조파가 섞여 있습니다. 12강 변조의 과변조에서 다시 만납니다.</aside>
 </section>
