@@ -1,0 +1,23 @@
+% 2강 수식
+%% E01-극전압
+v_{x0} = (2S_x - 1)\,\frac{V_{dc}}{2} = \pm 1.128\ \mathrm{pu},\qquad x\in\{a,b,c\}
+%% E02-상전압
+v_{n0} = \frac{v_{a0} + v_{b0} + v_{c0}}{3},\qquad v_{xn} = v_{x0} - v_{n0}
+%% E03-중성점유도
+\begin{aligned} v_{x0} &= Z\,i_x + v_{n0}\qquad (x = a, b, c)\\[2pt] v_{a0}+v_{b0}+v_{c0} &= Z\,\underbrace{(i_a+i_b+i_c)}_{=\,0} + 3\,v_{n0} \end{aligned}
+%% E04-상태벡터
+\vec v = \frac{2}{3}\left(v_{a0} + a\,v_{b0} + a^2 v_{c0}\right) = \frac{2}{3}V_{dc}\left(S_a + a\,S_b + a^2 S_c\right)
+%% E05-공통소거
+\frac{2}{3}\left(k + a\,k + a^2 k\right) = \frac{2}{3}\,k\,\underbrace{\left(1 + a + a^2\right)}_{=\,0} = 0
+%% E06-예제110
+\vec v_{110} = \frac{2}{3}V_{dc}\,(1 + a) = \frac{2}{3}V_{dc}\,e^{\,j60^\circ} = 1.504\,\angle 60^\circ
+%% E07-최대
+\hat V_{\max} = \frac{2}{3}V_{dc}\cos 30^\circ = \frac{V_{dc}}{\sqrt{3}} = 1.303\ \mathrm{pu}
+%% E08-전압시간
+\bar{\vec v}\,T_s = \vec V_1\, t_1 + \vec V_2\, t_2 + \vec V_0\, t_0,\qquad t_1 + t_2 + t_0 = T_s
+%% E09-DC전력
+p_{dc} = V_{dc}\, i_{dc} = p_{ac} \quad(\text{무손실})
+%% E10-6스텝
+\hat V_{1,\,\text{6스텝}} = \frac{2}{\pi}\,V_{dc} = 1.436\ \mathrm{pu}
+%% E11-예제110값
+\begin{aligned} (v_{a0}, v_{b0}, v_{c0}) &= (+1.128,\ +1.128,\ -1.128)\\ v_{n0} &= +0.376\\ (v_{an}, v_{bn}, v_{cn}) &= (+0.752,\ +0.752,\ -1.504) \end{aligned}

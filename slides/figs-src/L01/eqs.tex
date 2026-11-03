@@ -1,0 +1,39 @@
+% 1강 수식. 각 항목은 "%% 이름 [size=..]" 줄로 시작한다. 기본 크기 40px(KaTeX가 1.21배로 조판).
+%% E00-오일러 size=34
+e^{j\theta} = \cos\theta + j\sin\theta
+%% E01-상전압
+\begin{aligned} v_a &= \hat V\cos(\omega t)\\ v_b &= \hat V\cos\!\left(\omega t - \tfrac{2\pi}{3}\right)\\ v_c &= \hat V\cos\!\left(\omega t + \tfrac{2\pi}{3}\right) \end{aligned}
+%% E02-선간
+\begin{aligned} v_{ab} &= v_a - v_b = \sqrt{3}\,\hat V\cos(\omega t + 30^\circ)\\ V_{\mathrm{rms}} &= \hat V/\sqrt{2} \end{aligned}
+%% E03-순시전력
+p(t) = v_a i_a + v_b i_b + v_c i_c = \frac{3}{2}\,\hat V \hat I\cos\varphi
+%% E04-공간벡터
+\vec x = \frac{2}{3}\left(x_a + a\,x_b + a^2 x_c\right),\qquad a = e^{\,j2\pi/3}
+%% E05-회전
+\vec v = \hat V e^{\,j\omega t}
+%% E06-Clarke
+\begin{bmatrix} x_\alpha\\ x_\beta\\ x_0 \end{bmatrix} = \frac{2}{3}\begin{bmatrix} 1 & -\frac{1}{2} & -\frac{1}{2}\\[4pt] 0 & \frac{\sqrt{3}}{2} & -\frac{\sqrt{3}}{2}\\[4pt] \frac{1}{2} & \frac{1}{2} & \frac{1}{2} \end{bmatrix}\begin{bmatrix} x_a\\ x_b\\ x_c \end{bmatrix}
+%% E07-전력-SI
+p = \frac{3}{2}\,\mathrm{Re}\{\vec v\,\vec i^{\,*}\},\qquad q = \frac{3}{2}\,\mathrm{Im}\{\vec v\,\vec i^{\,*}\}
+%% E07-전력-pu
+P = \mathrm{Re}\{\vec v\,\vec i^{\,*}\},\qquad Q = \mathrm{Im}\{\vec v\,\vec i^{\,*}\}
+%% E08-Park
+x_{dq} = x_d + j\,x_q = \vec x\,e^{-j\theta}
+%% E09a-abc
+\vec v = \frac{x_L}{\omega_b}\frac{d\vec i}{dt} + \vec e
+%% E09b-치환
+\vec i = i_{dq}\,e^{j\theta}\;\Rightarrow\;\frac{d\vec i}{dt} = \left(\frac{di_{dq}}{dt} + j\,\omega_b\,\omega\, i_{dq}\right)e^{j\theta}
+%% E09c-dq
+v_{dq} = \frac{x_L}{\omega_b}\frac{di_{dq}}{dt} + \textcolor{#eb6834}{j\,\omega x_L\, i_{dq}} + e_{dq}
+%% E09d-성분
+\begin{aligned} v_d &= \frac{x_L}{\omega_b}\frac{di_d}{dt} \textcolor{#eb6834}{\,-\,\omega x_L\, i_q} + e_d\\[4pt] v_q &= \frac{x_L}{\omega_b}\frac{di_q}{dt} \textcolor{#eb6834}{\,+\,\omega x_L\, i_d} + e_q \end{aligned}
+%% E10-dq전력
+\begin{aligned} P &= v_d\, i_d + v_q\, i_q\\ Q &= v_q\, i_d - v_d\, i_q \end{aligned}
+%% E10-d정렬
+v_q = 0\;\Rightarrow\; P = v_d\, i_d,\qquad Q = -\,v_d\, i_q
+%% E11-예제
+\begin{aligned} \vec i &= e^{\,j(\omega t - 30^\circ)}\\ i_{dq} &= \vec i\,e^{-j\omega t} = e^{-j30^\circ} = 0.866 - j\,0.5 \end{aligned}
+%% E12-회전자 size=34
+e^{-j\theta}
+%% E06b-복소
+\vec x = x_\alpha + j\,x_\beta

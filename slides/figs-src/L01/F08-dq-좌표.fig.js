@@ -1,0 +1,23 @@
+// αβ 정지 좌표 위에서 θ만큼 돌아간 d·q 축과 벡터 v의 성분
+const F = Fig(600, 470), C = FC, P = F.plane(250, 392, 230), pol = P.pol;
+P.axis(0, 1.32, "$\\alpha$", { color: C.axis, back: 0.2, size: 32 });
+P.axis(90, 1.18, "$\\beta$", { color: C.axis, back: 0.2, size: 32 });
+const th = 35, vang = 62;
+P.axis(th, 1.3, "$d$", { color: C.blue, width: 3.5, size: 34, back: 0.15 });
+P.axis(th + 90, 0.95, "$q$", { color: C.orange, width: 3.5, size: 34, back: 0.15 });
+const v = pol(1, vang), vd = Math.cos(((vang - th) * Math.PI) / 180), vq = Math.sin(((vang - th) * Math.PI) / 180);
+const pd = pol(vd, th), pq = pol(vq, th + 90);
+const [ox, oy] = P.xy([0, 0]), [dx, dy] = P.xy(pd), [qx, qy] = P.xy(pq), [vx, vy] = P.xy(v);
+F.line(ox, oy, dx, dy, { color: C.blue, width: 14, opacity: 0.3 });
+F.line(ox, oy, qx, qy, { color: C.orange, width: 14, opacity: 0.3 });
+F.line(vx, vy, dx, dy, { color: C.muted, width: 2.5, dash: "8 7" });
+F.line(vx, vy, qx, qy, { color: C.muted, width: 2.5, dash: "8 7" });
+P.vec(v, { color: C.navy, width: 7, head: 26 });
+P.label(pol(1.1, vang + 2), "$\\vec v$", { color: C.navy, size: 36, weight: 700 });
+P.label([pd[0] * 0.78 + 0.08, pd[1] * 0.78 - 0.12], "$v_d$", { color: C.blue, size: 32, weight: 700 });
+P.label([pq[0] * 0.55 - 0.1, pq[1] * 0.55 - 0.02], "$v_q$", { color: C.orange, size: 32, weight: 700 });
+P.arc(0.3, 0, th, { color: C.slate, width: 3 });
+P.label(pol(0.4, th / 2), "$\\theta$", { size: 30 });
+P.arc(1.15, th + 4, th + 24, { color: C.blue, width: 3, arrow: true });
+P.label(pol(1.3, th + 18), "$\\omega$", { color: C.blue, size: 30 });
+F.done();
