@@ -1,0 +1,23 @@
+<section id="code" data-transition="fade" style="background:#fbfcfd;color:#45546b;font-family:'Pretendard Variable', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:32px">
+<div style="position:absolute;left:0;top:0;width:1920px;height:12px;background:linear-gradient(90deg, #2463c8 0%, #8bc22c 100%)"></div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;color:#037673">4 · 예제와 실습 · Python</p>
+<h2 style="font-size:56px;font-weight:800;line-height:1.15;letter-spacing:-1px;color:#013364">보정 유무와 전류 정격을 평균값 모델로 돌려 본다</h2>
+</div>
+<div style="display:flex;gap:36px;align-items:stretch">
+<div style="flex:1;background:#0f233f;border-radius:20px;padding:36px 40px">
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:26px;line-height:1.6;color:#e6edf5">sc = Scenario(t_end=1.7, grid_v=lambda t: 0.3 if 0.2 &lt;= t &lt; 0.35 else 1.0)<br>for freeze in (True, False):   <span style="color:#f2a07b"># H=2.0 도 넣어 보기</span><br>&#160;&#160;&#160;&#160;p = Params(converter="average", P_ref=0.8, scr=3.0, gfm_limit_freeze=freeze)<br>&#160;&#160;&#160;&#160;r = simulate("GFM", p, sc, dt=1e-5, x0=steady_state("GFM", p, dt=1e-5))<br>&#160;&#160;&#160;&#160;...  <span style="color:#8fa6c4"># delta_deg 최대, sat 지속, P ±10 % 회복</span><br><br>sc2 = Scenario(t_end=0.6, pcc_fault_g=lambda t: 20.0 if 0.2 &lt;= t &lt; 0.4 else 0.0)<br>for mode, imax in product(("GFL", "GFM"), (1.2, 2.0)):<br>&#160;&#160;&#160;&#160;Params(converter="average", P_ref=0.8, scr=3.0, I_max=imax)   <span style="color:#8fa6c4"># |i| ≥ 1.98 지속</span></p>
+</div>
+<div style="width:560px;display:flex;flex-direction:column;gap:20px">
+<div style="background:#013364;border-radius:20px;padding:28px 32px;display:flex;flex-direction:column;gap:8px">
+<p style="font-size:24px;font-weight:700;color:#b9f179">출력 (--emt)</p>
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:23px;line-height:1.6;color:#ffffff">보정   : 위상 7°, 포화 1 ms, 회복 457<br>보정 없음: 13°, 214 ms, 659 ms<br>GFL    : 회복 108 ms<br>I_max 2.0: 2.0 pu 199/197 ms [OK]</p>
+</div>
+<p style="font-size:26px;line-height:1.45"><b style="color:#013364">해 보기</b>  H = 2 s면 회복은? 고장 컨덕턴스 3 pu면 1.2 사양이 한계 안에 머무나?</p>
+<p style="font-size:24px;line-height:1.45;color:#037673"><b>실습 파일</b> practice/lec09_current_limit.py<br>--plot · --emt · --answers</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#7d8ca2">9강 · 전류 제한과 고장</p>
+<p style="position:absolute;left:1592px;bottom:64px;width:200px;font-size:24px;color:#7d8ca2;text-align:right">27 / 29</p>
+<aside>실습 파일입니다. practice 폴더의 lec09 파일에 실습이 다섯 개 있습니다. 1번은 고장 시 가상 임피던스 전류, 2번은 원형 포화와 전력 상한, 3번은 평형점 조건, 4번은 2.0 pu 고장전류의 전압 여유 검산입니다. 5번이 --emt 옵션으로 평균값 모델을 돌리는 실습입니다. 화면 위 코드처럼 계통 전압 0.3 pu 150 ms 고장을 보정 유무로 돌려 최대 위상 이탈, 제거 후 포화 지속, 유효전력 회복 시간을 비교하고 GFL과도 비교합니다. 아래 코드는 PCC 지락 200 ms에 전류 한계 1.2와 2.0을 넣어 2.0 pu 이상 지속 시간을 셉니다. 약 2분 걸립니다. 해 볼 것으로, 관성 H를 4에서 2초로 줄이면 회복 시간이 어떻게 바뀌고 고장 후 스윙이 커지는지, 고장 컨덕턴스를 20에서 3 pu로 낮춰 고장 저항이 커지면 1.2 사양의 전류가 한계 안에 머무는 조건을 찾아보세요. 그 경우 GFM은 전압원 그대로입니다. 또 전압 제어 이득을 5에서 1로 낮춰 고장 후 과전압이 줄어드는지도 확인해 보세요.</aside>
+</section>

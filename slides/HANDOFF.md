@@ -49,8 +49,8 @@
 | 6 | C08 | GFL: PLL로 따라가기 | 완료 (29장) | https://claude.ai/artifact/Wo9iBotEeCnNRCn85mqMUf |
 | 7 | C09 | GFM: 위상을 만들기 | 완료 (29장) | https://claude.ai/artifact/XMojcAmfAh8qbCC4zxSXFw |
 | 8 | C10 | 약계통과 제어 상호작용 (GFM vs GFL) | 완료 (28장) | https://claude.ai/artifact/GAKAsMUvmpBb1fWr5w9YLb |
-| 9 | C11 | 전류 제한과 고장 (GFM vs GFL) | **다음** · 필수 | — |
-| 10 | C12 | 표준 시험으로 비교 (GFM 12/14, GFL 3/14) | 예정 · **필수** | — |
+| 9 | C11 | 전류 제한과 고장 (GFM vs GFL) | 완료 (29장) | https://claude.ai/artifact/6pZwVFcUrHAZppsTyyVhnm |
+| 10 | C12 | 표준 시험으로 비교 (GFM 12/14, GFL 3/14) | **다음** · 필수 | — |
 | 11 | C13 | EMT 모델링 실습 | 이후 | — |
 | 12 | C04 | 변조 SPWM·SVPWM (맨 마지막) | 이후 | — |
 
@@ -181,6 +181,12 @@ python3 sheet.py ../lecture-figs/L05 <scratchpad>/sheet.png "M*.png"   # 밀착 
 - 그림 `slides/figs-src/L08/W01~W06`(PLL 되먹임 루프, 유효 이득 cos δ, SCR 급변 EMT, 진동 두 유형, 안정도 맵(summary.md 값), GFM 감쇠비 vs SCR), 수식 `E01~E10`. `_common.js`에 `zetaOf`, `pllGain`. 데이터 `_data.py`(평균값, 약 90 s).
 - 확인한 수치(평균값 모델): GFL 50 Hz → SCR 1.5 불안정 0.043 pu @ 90 Hz, GFL 10 Hz → 1.3 불안정 0.478 @ 10 Hz, GFL 20 Hz → 1.5 안정, GFL 50 → 2.0 안정, GFM → 1.3 안정. 교재 실습 표와 일치. 스위칭 안정도 맵은 `simulation/emt/results/summary.md`에서 가져왔다.
 - 덱 28장. `_common.js`에서 전역 이름 `D`를 쓰면 그림 파일의 `D = DATA`와 충돌한다(`H_VSM`, `D_VSM`으로 바꿈).
+
+## 7e. 9강(전류 제한·고장, C11) 완료 메모
+
+- 그림 `slides/figs-src/L09/F01~F05`(포화와 상한 두 패널, 고장 0.3 pu·150 ms 응답 세 패널(보정/보정 없음/GFL), PCC 지락 200 ms 전류 정격 1.2/2.0, anti-windup 블록, GFL·GFM FRT 흐름), 수식 `E01~E10`. `_common.js`에 `blkRow`, `harrow`, `shade`(음영 opacity 0.4, 곡선 위에 그려도 가리지 않게). 데이터 `_data.py`(평균값 10 µs, 약 3 분).
+- 확인한 수치(평균값 모델): 고장 0.3 pu·150 ms → GFM 보정 위상 7.1°/제거 후 포화 1 ms/회복 457 ms, 보정 없음 12.6°/214 ms/659 ms, GFL 108 ms, 고장 중 평균 PCC 전압 GFL 0.69 / GFM 0.60 pu, 진입 피크 1.34 pu. PCC 지락(g 20 pu) 200 ms → 한계 2.0 사양 GFM 199 / GFL 197 ms 동안 2.0 pu 유지(기준안 140 ms), 한계 1.2 사양 최대 1.54/1.24, 고장 중 V 0.15~0.18, 제거 직후 GFL 2.0 피크 2.6 pu, GFM 적분기 와인드업 과전압 1.14 pu. 교재(스위칭 2 µs: 회복 0.1/0.48/0.95 s, V 0.71/0.63)와 같은 경향. 슬라이드에는 평균값 수치를 쓰고 노트에서 스위칭 수치를 언급.
+- 덱 29장, 실습 `practice/lec09_current_limit.py` 전부 `[OK]`(EMT 실습 5는 약 2 분).
 
 ## 8. 6강 이후 메모
 

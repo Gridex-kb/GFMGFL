@@ -1,0 +1,21 @@
+% 9강 수식
+%% E01-고장전류
+|i^*| \approx \frac{|E - v|}{|Z_v|} = \frac{1 - 0.15}{0.304} \approx 2.8\ \mathrm{pu}\qquad(E = 1,\ |Z_v| = \sqrt{0.05^2 + 0.3^2},\ |v| = 0.15)
+%% E02-정상상태
+\frac{di_v}{dt} = 0,\ \omega \approx 1 \;\Rightarrow\; i_v = \frac{E - v}{R_v + jX_v}
+%% E03-원형포화
+i_{ref} = \begin{cases} i_v & |i_v| \le I_{max} \\[4pt] i_v\,\dfrac{I_{max}}{|i_v|} & |i_v| > I_{max} \end{cases}
+%% E04-안티와인드업
+\dot r = \frac{\mathrm{Re}\bigl(\dot i_v\,\overline{i_v}\bigr)}{|i_v|},\qquad \dot r > 0 \;\Rightarrow\; \dot i_v \leftarrow \dot i_v - \dot r\,\frac{i_v}{|i_v|}
+%% E05-전력상한
+P \le |v|\, I_{max}\qquad(|v| = 0.3 \sim 0.6 \;\Rightarrow\; P \le 0.36 \sim 0.72 < P^* = 0.8)
+%% E06-동결
+2H\,\dot{\Delta\omega} = \begin{cases} \min(P^* - P,\ 0) - D\,\Delta\omega & \text{전류 포화 중} \\[4pt] P^* - P - D\,\Delta\omega & \text{그 외} \end{cases}
+%% E07-평형점
+P(\delta) = \frac{E V_g}{X}\sin\delta,\quad \text{평형점 조건 } \frac{E V_g}{X} \ge P^*:\quad X = 0.733 \;\Rightarrow\; V_g = 1: 1.36 \ge 0.8,\quad V_g = 0.3: 0.41 < 0.8
+%% E08-전압여유
+|v_{conv}| \approx |v + jX_{L_f + L_t}\, i| \lesssim 0.15 + 0.3 \times 2.0 = 0.75 < 1.303\ \mathrm{pu}
+%% E09-기준안
+I_{max} \ge 2.0\ \mathrm{pu}\quad(\text{지속} \ge 140\ \mathrm{ms})\qquad\text{+ 고장 시 전압원 동작}
+%% E10-예제1
+|i^*| \approx \frac{1.0 - 0.4}{0.3} = 2.0 > 1.2 \;\Rightarrow\; \text{포화},\qquad P \le 0.4 \times 1.2 = 0.48 < P^* = 0.8 \;\Rightarrow\; \text{보정 없으면 가속}

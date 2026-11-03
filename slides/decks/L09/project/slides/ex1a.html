@@ -1,0 +1,22 @@
+<section id="ex1a" data-transition="fade" style="background:#fbfcfd;color:#45546b;font-family:'Pretendard Variable', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:32px">
+<div style="position:absolute;left:0;top:0;width:1920px;height:12px;background:linear-gradient(90deg, #2463c8 0%, #8bc22c 100%)"></div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;color:#3aa150">예제 · 풀이</p>
+<h2 style="font-size:56px;font-weight:800;line-height:1.15;letter-spacing:-1px;color:#013364">2.0 pu → 포화, 상한 0.48 · 가속 입력만 0 · 크기는 되고 전압원은 안 된다</h2>
+</div>
+<div style="background:#ffffff;border-left:8px solid #2463c8;border-radius:8px;padding:20px 28px;align-self:flex-start">
+<img src="/_blob/b8739caae1915f047f0a066c94985f31" alt="|i*| ≈ (1.0 − 0.4)/0.3 = 2.0 > 1.2 ⇒ 포화, P ≤ 0.4 × 1.2 = 0.48 < P* = 0.8 ⇒ 보정 없으면 가속" style="width:1500px;height:79px;object-fit:contain">
+</div>
+<div style="display:flex;gap:24px">
+<div style="flex:1;background:#e9f0f6;border-radius:16px;padding:24px 28px">
+<p style="font-size:27px;line-height:1.45"><b style="color:#013364">(2)</b> 전류 포화 중이고 P* − P &gt; 0일 때만 가속 입력을 0으로 둔다. 제한 중 위상이 탈조 방향으로 벌어지는 것만 막는 것이 목적. 감속 입력(P &gt; P*)과 댐핑 D·Δω는 평형점 쪽으로 되돌리는 방향이라 남긴다</p>
+</div>
+<div style="flex:1;background:#e9f0f6;border-radius:16px;padding:24px 28px">
+<p style="font-size:27px;line-height:1.45"><b style="color:#013364">(3)</b> “2.0 pu 이상 140 ms”는 충족할 수 있다. 전류 크기는 정격이 정한다(평균값 모델 약 197 ms). “고장 시 전압원 동작”은 충족하지 못한다. GFL은 PLL이 잰 위상에 전류를 주입하는 전류원이므로 정격과 관계없이 구조적으로 전압원이 아니다</p>
+</div>
+</div>
+<p style="font-size:30px;line-height:1.45"><b style="color:#013364">(1)</b> 2.0 pu로 한계를 넘어 1.2로 잘린다. 그동안 GFM은 크기 고정 전류원, 전력 상한 0.48 &lt; 0.8 → 보정 없이는 VSM 가속</p>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#7d8ca2">9강 · 전류 제한과 고장</p>
+<p style="position:absolute;left:1592px;bottom:64px;width:200px;font-size:24px;color:#7d8ca2;text-align:right">26 / 29</p>
+<aside>풀이입니다. 1번, 전류 지령 크기는 1.0 빼기 0.4 나누기 0.3, 2.0 pu로 한계 1.2를 넘어 원형 포화가 걸려 1.2로 잘립니다. 이 동안 GFM은 크기가 고정된 전류원이고, 유효전력 상한은 0.4 곱하기 1.2, 0.48 pu입니다. 지령이 0.8이면 보정 없이는 VSM이 가속합니다. 2번, freeze 보정은 전류 포화 중이고 P* 빼기 P가 양수일 때만 가속 입력을 0으로 둡니다. 제한 중 위상이 탈조 방향으로 벌어지는 것만 막는 것이 목적이고, 감속 입력이나 댐핑 항은 위상을 평형점 쪽으로 되돌리는 방향이므로 남겨 둡니다. 3번, 순시 고장전류 2.0 pu 이상 140 ms는 충족할 수 있습니다. 전류 크기는 정격이 정하고, 평균값 모델에서 약 197 ms였습니다. 그러나 고장 시 전압원 동작은 충족하지 못합니다. GFL은 PLL이 잰 위상에 전류를 주입하는 전류원이므로 정격과 관계없이 구조적으로 전압원이 아닙니다.</aside>
+</section>

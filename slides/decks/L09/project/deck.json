@@ -1,0 +1,22 @@
+{
+  "v": 4,
+  "createdOnFiles": {"v": 1, "at": "2026-11-03T06:00:00Z"},
+  "lists": "css",
+  "title": "9강 · 전류 제한과 고장",
+  "cover": "cover",
+  "order": ["cover", "goals", "outline", "q-fault", "a-fault", "sec1", "demand", "methods", "sat", "aw", "sum1", "sec2", "cap", "freeze", "case", "recover", "msg", "sum2", "sec3", "gfl", "flow", "rating", "pccfault", "sec4", "ex1q", "ex1a", "code", "compare", "wrap"],
+  "sections": {
+    "s0": {"description": "도입 — 학습 목표, 목차, 전압원 GFM이 고장에서 몇 pu를 요구하는지 묻는 질문", "start": "cover"},
+    "s1": {"description": "1. 전압원은 고장에서 전류를 묻지 않는다 — |i*| ≈ |E − v|/|Zv|, 제한 기법 세 가지, 원형 포화와 anti-windup", "start": "sec1"},
+    "s2": {"description": "2. 제한 중 동기 유지 — 전력 상한 P ≤ |v|·Imax, VSM 가속과 freeze 보정, 고장 응답 EMT, 재동기와 회복", "start": "sec2"},
+    "s3": {"description": "3. GFL의 FRT와 한국 연계기준안 — 고정 무효전류, 2.0 pu·140 ms는 전류 정격, 전압원 동작은 제어 구조", "start": "sec3"},
+    "s4": {"description": "4. 예제와 실습 — 고장 전류·전력 상한 손 계산, Python 실습, 고장 중 GFL·GFM 비교표", "start": "sec4"}
+  },
+  "faces": {
+    "pretendard-variable": {"family": "Pretendard Variable", "src": "project/ds/gridex/fonts/PretendardVariable.woff2"},
+    "jetbrains-mono": {"family": "JetBrains Mono", "href": "https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&display=swap"}
+  },
+  "designSystems": [
+    {"title": "GriDeX 디자인 베이스", "namespace": "gridex", "artifact": "https://claude.ai/artifact/DHKyReZeUdghmptteJUFVb", "version": null, "copiedAt": "2026-11-03T06:00:00Z"}
+  ]
+}

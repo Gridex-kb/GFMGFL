@@ -1,0 +1,19 @@
+<section id="sat" data-transition="fade" style="background:#fbfcfd;color:#45546b;font-family:'Pretendard Variable', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:28px">
+<div style="position:absolute;left:0;top:0;width:1920px;height:12px;background:linear-gradient(90deg, #2463c8 0%, #8bc22c 100%)"></div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;color:#037673">1 · 전압원은 전류를 묻지 않는다</p>
+<h2 style="font-size:56px;font-weight:800;line-height:1.15;letter-spacing:-1px;color:#013364">원형 포화: 원 위로 끌어내리고, 고장 중엔 전력이 P*에 못 미친다</h2>
+</div>
+<img src="/_blob/b79c53ffb236b3e4add436f3dc3fcd98" alt="왼쪽: 원형 포화, 고장 시 수 pu의 요구 전류를 |i| = 1.2 원 위로 각도를 유지한 채 끌어내린다. 오른쪽: 전달 가능 전력 P(δ) = (E·Vg/X) sin δ, X = 0.733. 계통 전압 1.0이면 최대 1.36 pu로 P* 0.8을 넘지만 고장 0.3이면 최대 0.41로 어떤 δ에서도 P*에 못 미쳐 평형점이 없고 δ가 가속한다" style="width:1500px;height:560px;object-fit:contain;background:#ffffff;border:2px solid #dae3ec;border-radius:16px;align-self:center">
+<div style="display:flex;gap:24px;align-items:center">
+<div style="background:#ffffff;border-left:8px solid #2463c8;border-radius:8px;padding:12px 24px">
+<img src="/_blob/f8f1b5257594315cfbc2302b9dc43472" alt="i_ref = i_v (|i_v| ≤ I_max), i_v·I_max/|i_v| (|i_v| > I_max)" style="width:340px;height:118px;object-fit:contain">
+</div>
+<div style="flex:1;background:#e9f0f6;border-radius:16px;padding:20px 28px">
+<p style="font-size:26px;line-height:1.45">왼쪽: 자르기만 하면 가상 인덕턴스 상태 i<b>v</b>가 한계 밖으로 계속 자란다(와인드업) → 다음 장. 오른쪽: 고장 중에는 어떤 위상차에서도 전달 가능 전력이 P*에 못 미친다 → 2부 VSM 가속의 원인</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#7d8ca2">9강 · 전류 제한과 고장</p>
+<p style="position:absolute;left:1592px;bottom:64px;width:200px;font-size:24px;color:#7d8ca2;text-align:right">9 / 29</p>
+<aside>원형 포화를 그림으로 봅니다. 왼쪽, 고장 시 수 pu의 요구 전류 벡터를 반지름 1.2의 원 위로 끌어내립니다. 식처럼 크기가 한계 이하면 그대로, 넘으면 크기만 1.2로 줄이고 각도는 유지합니다. 5강에서 본 GFM의 방향 유지 방식입니다. 그런데 자르기만 하면 문제가 생깁니다. 가상 인덕턴스의 상태 변수 i_v는 한계 밖으로 계속 자라서, 고장이 끝나도 i_v가 한계 안으로 돌아올 때까지 포화가 이어집니다. 5강의 적분 와인드업과 같은 현상이고 다음 장에서 다룹니다. 오른쪽 그림은 2부의 예고입니다. 내부 기전력과 계통 사이의 합성 리액턴스가 0.733이면 계통 전압이 1.0일 때 전달 가능 전력의 최대는 1.36 pu로 지령 0.8을 충분히 넘습니다. 그런데 고장으로 계통 전압이 0.3이 되면 최대가 0.41로 어떤 위상차에서도 P*에 못 미칩니다. 평형점이 없으니 δ가 계속 커집니다. 이것이 2부에서 볼 VSM 가속의 원인입니다.</aside>
+</section>

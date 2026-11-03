@@ -1,0 +1,36 @@
+<section id="wrap" data-transition="fade" style="background:#013364;color:#ffffff;font-family:'Pretendard Variable', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<div style="position:absolute;left:0;right:0;bottom:0;height:24px;background:linear-gradient(90deg, #2463c8 0%, #8bc22c 100%)"></div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;color:#b9f179">마무리</p>
+<h2 style="font-size:56px;font-weight:800;line-height:1.15;letter-spacing:-1px;color:#ffffff">오늘 가져갈 세 가지</h2>
+</div>
+<div style="display:flex;gap:24px">
+<div style="flex:1;background:#0f233f;border-radius:20px;padding:32px;display:flex;flex-direction:column;gap:10px">
+<p style="font-size:40px;font-weight:800;color:#8bc22c">1</p>
+<p style="font-size:30px;line-height:1.45;color:#ffffff">전압원은 고장에서 |E − v|/|Z<b style="color:#8bc22c">v</b>| ≈ <b>2.8 pu</b>를 요구한다. 반도체 1.2 → 원형 포화 + anti-windup</p>
+</div>
+<div style="flex:1;background:#0f233f;border-radius:20px;padding:32px;display:flex;flex-direction:column;gap:10px">
+<p style="font-size:40px;font-weight:800;color:#8bc22c">2</p>
+<p style="font-size:30px;line-height:1.45;color:#ffffff">제한 중 P ≤ |v|·I<b style="color:#8bc22c">max</b> &lt; P* → VSM 가속. <b>freeze</b>로 막는다 (위상 13° → 7°, 회복 0.66 → 0.46 s)</p>
+</div>
+<div style="flex:1;background:#0f233f;border-radius:20px;padding:32px;display:flex;flex-direction:column;gap:10px">
+<p style="font-size:40px;font-weight:800;color:#8bc22c">3</p>
+<p style="font-size:30px;line-height:1.45;color:#ffffff"><b>2.0 pu·140 ms</b>는 전류 정격(GFL도 가능), <b>전압원 동작</b>은 구조(GFL 불가). 크기는 정격이, 시점은 방식이 정한다</p>
+</div>
+</div>
+<div style="display:flex;gap:24px">
+<div style="flex:3;border:2px solid #2d5a8a;border-radius:20px;padding:32px;display:flex;flex-direction:column;gap:14px">
+<p style="font-size:26px;font-weight:700;color:#b9f179">확인 퀴즈</p>
+<p style="font-size:28px;line-height:1.45;color:#c6d4e6">Q1. 고장 중 GFM의 PCC 전압이 GFL보다 낮았다. GFM이 전압원인데 왜 그런가?</p>
+<p style="font-size:28px;line-height:1.45;color:#c6d4e6">Q2. freeze 보정이 오히려 해가 되는 상황은? (10강 T09 예고)</p>
+</div>
+<div style="flex:2;background:#8bc22c;border-radius:20px;padding:32px;display:flex;flex-direction:column;gap:10px">
+<p style="font-size:26px;font-weight:700;color:#013364">다음 강의 · 10강</p>
+<p style="font-size:34px;font-weight:800;line-height:1.3;color:#013364">표준 시험으로 비교</p>
+<p style="font-size:26px;color:#013364">교재 C12 · GFM 12/14, GFL 3/14</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#c6d4e6">9강 · 전류 제한과 고장</p>
+<p style="position:absolute;left:1592px;bottom:64px;width:200px;font-size:24px;color:#c6d4e6;text-align:right">29 / 29</p>
+<aside>오늘 가져갈 것은 세 가지입니다. 첫째, 전압원은 고장에서 E 빼기 v 나누기 가상 임피던스, 약 2.8 pu를 요구하지만 반도체는 1.2 pu까지라 원형 포화와 anti-windup으로 막습니다. 둘째, 제한 중 전력 상한이 지령에 못 미쳐 VSM이 가속하고, freeze 보정으로 막으면 위상 이탈과 회복이 거의 절반이 됩니다. 셋째, 연계기준안의 2.0 pu 140 ms는 전류 정격 요건이라 GFL도 가능하지만, 전압원 동작은 구조 요건이라 GFL은 불가입니다. 고장전류의 크기는 정격이 정하고, 시점은 방식이 정합니다. 퀴즈 답입니다. 1번, 전류 제한 중에는 GFM도 크기가 고정된 전류원이라 전압 지지는 전류의 크기와 각도가 정합니다. GFL은 무효전류 1.14를 우선 넣었고 GFM은 가상 임피던스가 정한 각도를 유지해 유효분이 더 섞여 있어서 전압이 낮았습니다. 2번, 60도 위상 점프처럼 큰 위상차가 지속되는 상황입니다. freeze가 재동기에 필요한 각도 이동까지 막아 전류 제한 상태에 갇힙니다. 다음 10강에서 표준 시험 T09로 그 사례를 보고, 13개 시험 전체로 GFM 12 대 14, GFL 3 대 14라는 결과를 하나씩 뜯어봅니다.</aside>
+</section>

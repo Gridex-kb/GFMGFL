@@ -1,0 +1,27 @@
+<section id="pccfault" data-transition="fade" style="background:#fbfcfd;color:#45546b;font-family:'Pretendard Variable', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:24px">
+<div style="position:absolute;left:0;top:0;width:1920px;height:12px;background:linear-gradient(90deg, #2463c8 0%, #8bc22c 100%)"></div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;color:#037673">3 · GFL의 FRT와 연계기준안 · EMT</p>
+<h2 style="font-size:56px;font-weight:800;line-height:1.15;letter-spacing:-1px;color:#013364">PCC 지락 200 ms: 정격이 결과를 정한다, 1.2는 못 닿고 2.0은 둘 다 통과</h2>
+</div>
+<div style="display:flex;gap:40px;align-items:center">
+<img src="/_blob/245aa79eab28deb4d7780e957bd5b7ec" alt="PCC 3상 지락(컨덕턴스 20 pu) × 200 ms, 전류 한계 1.2 / 2.0, GFM / GFL, 평균값 10 µs. 위: 컨버터측 전류, 한계 2.0 사양은 GFM 199 ms, GFL 197 ms 동안 2.0 pu 유지(기준안 140 ms 이상), 한계 1.2 사양은 2.0에 못 닿음, 제거 직후 GFL 2.0은 2.6 pu 피크. 아래: PCC 전압은 고장 중 네 경우 모두 0.15~0.18 pu, GFM은 제거 후 적분기 와인드업으로 과전압" style="width:990px;height:657px;object-fit:contain;background:#ffffff;border:2px solid #dae3ec;border-radius:16px">
+<div style="flex:1;display:flex;flex-direction:column;gap:16px">
+<div style="background:#ffffff;border-left:8px solid #037673;border-radius:8px;padding:14px 22px">
+<h3 style="font-size:28px;font-weight:800;color:#013364">한계 2.0: GFM 199 / GFL 197 ms</h3>
+<p style="font-size:25px;line-height:1.45">둘 다 고장 내내 2.0 pu 유지 → 140 ms 조건 이상. 한계 1.2는 둘 다 못 닿는다</p>
+</div>
+<div style="background:#ffffff;border-left:8px solid #eb6834;border-radius:8px;padding:14px 22px">
+<h3 style="font-size:28px;font-weight:800;color:#013364">고장 중 전압 0.15~0.18 pu</h3>
+<p style="font-size:25px;line-height:1.45">네 경우 비슷. 지락 저항이 작아 PCC 전압이 전류 크기에 거의 비례</p>
+</div>
+<div style="background:#ffffff;border-left:8px solid #7d8ca2;border-radius:8px;padding:14px 22px">
+<h3 style="font-size:28px;font-weight:800;color:#013364">제거 직후가 더 위험</h3>
+<p style="font-size:25px;line-height:1.45">GFL 2.0은 전류 2.6 pu 피크(전류 루프가 못 따라감). GFM은 적분기 와인드업으로 1.14 pu 과전압 1 s</p>
+</div>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#7d8ca2">9강 · 전류 제한과 고장</p>
+<p style="position:absolute;left:1592px;bottom:64px;width:200px;font-size:24px;color:#7d8ca2;text-align:right">23 / 29</p>
+<aside>PCC 3상 지락, 고장 컨덕턴스 20 pu를 200 ms 동안 주고 전류 한계 1.2와 2.0 사양을 GFM과 GFL로 비교했습니다. 위 그림, 한계 2.0 사양은 GFM이 199 ms, GFL이 197 ms 동안 2.0 pu를 유지해서 둘 다 140 ms 조건을 넘습니다. 한계 1.2 사양은 둘 다 2.0에 닿지 못합니다. 정격이 결과를 정합니다. 아래 그림, 고장 중 PCC 전압은 네 경우 모두 0.15에서 0.18 pu로 비슷합니다. 지락 저항이 작아서 PCC 전압이 전류 크기에 거의 비례하기 때문입니다. 제거 직후가 오히려 더 위험합니다. GFL 2.0 사양은 전압이 돌아오는 순간 전류 루프가 따라가지 못해 2.6 pu까지 튑니다. 정격과 보호 정정은 이 구간까지 포함해 정해야 합니다. GFM은 고장 중 전압 제어 적분기가 와인드업해서 기전력이 상한 1.3에 붙어 있다가 천천히 풀리는 바람에 제거 후 PCC 전압이 1.14 pu로 1초 가까이 머뭅니다. 2부에서 말한 적분기 처리가 필요한 실제 사례입니다. 제거 순간 전압 기록에 큰 스파이크가 한 점 찍히는데, PCC 모선에 커패시턴스 없이 저항성 분로만 있는 모델 특성이지 물리적 과전압이 아닙니다.</aside>
+</section>

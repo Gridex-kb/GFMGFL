@@ -1,0 +1,22 @@
+<section id="flow" data-transition="fade" style="background:#fbfcfd;color:#45546b;font-family:'Pretendard Variable', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:32px">
+<div style="position:absolute;left:0;top:0;width:1920px;height:12px;background:linear-gradient(90deg, #2463c8 0%, #8bc22c 100%)"></div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;color:#037673">3 · GFL의 FRT와 연계기준안</p>
+<h2 style="font-size:56px;font-weight:800;line-height:1.15;letter-spacing:-1px;color:#013364">고장 중 두 방식의 흐름: 끝은 둘 다 크기 고정 전류원</h2>
+</div>
+<img src="/_blob/9322aa502c6b668866b33f5195fd1859" alt="GFL: 전압 < 0.85 FRT 진입 → 무효 1.14 고정, 유효는 여유 0.37 안 → PLL이 계속 추종, 가속 문제 없음 → 회복 ≈ 0.1 s. GFM: 전압원 E − v가 |i*| ≈ 2.8 pu 요구 → 원형 포화 1.2, 크기 고정 전류원 → P ≤ |v|·1.2 < P*, VSM 가속 → freeze → 회복 ≈ 0.5 s 관성 스윙. 제한에 걸린 순간 둘 다 크기 고정 전류원, 전압 지지는 전류의 크기와 각도가 정한다" style="width:1500px;height:420px;object-fit:contain;background:#ffffff;border:2px solid #dae3ec;border-radius:16px;align-self:center">
+<div style="display:flex;gap:24px">
+<div style="flex:1;background:#ffffff;border-left:8px solid #eb6834;border-radius:8px;padding:16px 24px">
+<p style="font-size:26px;line-height:1.45"><b style="color:#013364">GFL</b> 측정 → 판단(FRT) → 지령. 회복이 빠르고 가속 문제가 없다</p>
+</div>
+<div style="flex:1;background:#ffffff;border-left:8px solid #2463c8;border-radius:8px;padding:16px 24px">
+<p style="font-size:26px;line-height:1.45"><b style="color:#013364">GFM</b> 회로가 먼저 전류를 내고(서브사이클), 포화 뒤에는 위상 루프 관리가 숙제</p>
+</div>
+<div style="flex:1;background:#ffffff;border-left:8px solid #7d8ca2;border-radius:8px;padding:16px 24px">
+<p style="font-size:26px;line-height:1.45"><b style="color:#013364">오해</b> “GFM이 고장전류를 더 많이 낸다” — 크기는 정격이 정한다. 차이는 응답 시점</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#7d8ca2">9강 · 전류 제한과 고장</p>
+<p style="position:absolute;left:1592px;bottom:64px;width:200px;font-size:24px;color:#7d8ca2;text-align:right">21 / 29</p>
+<aside>두 방식의 고장 중 흐름을 나란히 놓습니다. GFL은 전압이 0.85 아래로 떨어지면 FRT에 들어가 무효전류 1.14를 고정하고, PLL이 위상을 계속 따라가니 가속 문제가 없으며, 약 0.1초에 회복합니다. 측정하고 판단하고 지령을 바꾸는 순서입니다. GFM은 전압원이라 E 빼기 v로 2.8 pu를 요구하고, 원형 포화로 1.2에 묶여 크기 고정 전류원이 되며, 전력 상한이 지령에 못 미쳐 VSM이 가속하니 freeze로 막고, 약 0.5초에 관성 스윙으로 회복합니다. 회로가 먼저 전류를 내고 포화 뒤에는 위상 루프 관리가 숙제입니다. 제한에 걸린 순간 둘 다 크기 고정 전류원이라는 점이 핵심이고, 그래서 GFM이 고장전류를 더 많이 낸다는 말은 오해입니다. 고장전류의 크기는 전류 한계, 즉 정격이 정합니다. 같은 1.2 pu면 둘 다 1.2 pu입니다. GFM의 장점은 크기가 아니라 응답 시점입니다. 측정이나 판단 없이 회로 법칙으로 서브사이클 안에 전류가 나옵니다.</aside>
+</section>

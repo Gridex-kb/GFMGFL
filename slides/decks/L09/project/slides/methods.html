@@ -1,0 +1,24 @@
+<section id="methods" data-transition="fade" style="background:#fbfcfd;color:#45546b;font-family:'Pretendard Variable', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<div style="position:absolute;left:0;top:0;width:1920px;height:12px;background:linear-gradient(90deg, #2463c8 0%, #8bc22c 100%)"></div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;color:#037673">1 · 전압원은 전류를 묻지 않는다</p>
+<h2 style="font-size:56px;font-weight:800;line-height:1.15;letter-spacing:-1px;color:#013364">제한 기법 세 가지: 무엇을 지키고 무엇을 버리는가</h2>
+</div>
+<table style="font-size:28px;color:#45546b">
+<tr><th style="width:26%">기법</th><th style="width:34%">동작</th><th style="width:22%">전압원 특성</th><th style="width:18%">이 모델</th></tr>
+<tr style="background:#e9f0f6"><td><b>전류 기준 원형 포화 + anti-windup</b></td><td>|i*|를 I<b>max</b>로 자르고 각도는 유지</td><td>제한 중에는 잃음</td><td><b>사용</b> (GFM)</td></tr>
+<tr><td><b>가상 임피던스 증대</b> (threshold virtual impedance)</td><td>전류가 임계를 넘으면 Z<b>v</b>를 키워 전류를 줄임: Z<b>v</b> = Z<b>v0</b> + k<b>vi</b>·max(0, |i| − I<b>th</b>)</td><td>유지</td><td>없음</td></tr>
+<tr><td><b>모드 전환</b> (GFM → 전류원)</td><td>고장 동안 전압 루프를 끄고 전류 지령으로 운전</td><td>잃음, 재동기 로직 필요</td><td>없음</td></tr>
+</table>
+<div style="display:flex;gap:24px">
+<div style="flex:1;background:#ffffff;border-left:8px solid #2463c8;border-radius:8px;padding:16px 24px">
+<p style="font-size:26px;line-height:1.45"><b style="color:#013364">원형 포화</b>는 완전한 상한. 5강 GFL 전류 제한과 같은 자리에서 한다</p>
+</div>
+<div style="flex:1;background:#ffffff;border-left:8px solid #eb6834;border-radius:8px;padding:16px 24px">
+<p style="font-size:26px;line-height:1.45"><b style="color:#013364">가상 임피던스 증대</b>는 전압원 모양을 지키지만 완전한 상한이 아니라 보통 포화와 함께 쓴다</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#7d8ca2">9강 · 전류 제한과 고장</p>
+<p style="position:absolute;left:1592px;bottom:64px;width:200px;font-size:24px;color:#7d8ca2;text-align:right">8 / 29</p>
+<aside>제한 기법은 크게 세 가지입니다. 첫째, 전류 기준 원형 포화와 anti-windup입니다. 전류 지령의 크기를 한계로 자르고 각도는 유지합니다. 제한 중에는 전압원 특성을 잃지만 완전한 상한이고, 이 모델이 GFM에 쓰는 방법입니다. 5강에서 본 GFL의 전류 제한과 같은 자리에서 합니다. 둘째, 가상 임피던스 증대입니다. 전류가 임계를 넘으면 가상 임피던스를 키워서 전류를 줄입니다. 전압원 모양을 지키는 장점이 있지만 완전한 상한이 아니어서 실제 제품은 보통 포화와 함께 씁니다. 셋째, 모드 전환입니다. 고장 동안 전압 루프를 끄고 전류 지령으로 운전하는 것인데 전압원 특성을 잃고 재동기 로직이 필요합니다. 이 모델에는 둘째와 셋째가 없습니다. 다음 장부터 원형 포화를 자세히 봅니다.</aside>
+</section>

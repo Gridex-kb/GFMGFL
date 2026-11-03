@@ -1,0 +1,19 @@
+<section id="compare" data-transition="fade" style="background:#fbfcfd;color:#45546b;font-family:'Pretendard Variable', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<div style="position:absolute;left:0;top:0;width:1920px;height:12px;background:linear-gradient(90deg, #2463c8 0%, #8bc22c 100%)"></div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;color:#037673">4 · 예제와 실습 · 정리</p>
+<h2 style="font-size:56px;font-weight:800;line-height:1.15;letter-spacing:-1px;color:#013364">고장 중 GFL과 GFM: 같은 전류 한계, 다른 시점과 회복</h2>
+</div>
+<table style="font-size:28px;color:#45546b">
+<tr><th style="width:22%">항목</th><th style="width:39%">GFL</th><th style="width:39%">GFM (VSM + 원형 포화)</th></tr>
+<tr><td><b>고장 순간 응답</b></td><td>측정 → FRT 판단 → 지령 (수십 ms)</td><td>회로 법칙으로 서브사이클 안에 전류</td></tr>
+<tr><td><b>제한 중 모습</b></td><td>전류원 (무효 1.14 고정, 유효 0.37 이내)</td><td>크기 고정 전류원 (각도 유지) — 전압원 성질 잃음</td></tr>
+<tr><td><b>동기</b></td><td>PLL이 계속 추종, 가속 문제 없음</td><td>P ≤ |v|·I<b>max</b> &lt; P* → VSM 가속 → freeze 보정</td></tr>
+<tr><td><b>회복 (0.3 pu·150 ms)</b></td><td>≈ 0.1 s</td><td>≈ 0.5 s (관성), 보정 없으면 0.66 s</td></tr>
+<tr><td><b>고장 중 PCC 전압</b></td><td>0.69~0.71 pu</td><td>0.60~0.63 pu (전류 각도 차이)</td></tr>
+<tr style="background:#e9f0f6"><td><b>연계기준안</b></td><td>2.0 pu 정격이면 크기 OK, 전압원 동작은 구조적으로 불가</td><td>2.0 pu 정격이면 둘 다 충족 (1.2 pu 정격은 부적합)</td></tr>
+</table>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#7d8ca2">9강 · 전류 제한과 고장</p>
+<p style="position:absolute;left:1592px;bottom:64px;width:200px;font-size:24px;color:#7d8ca2;text-align:right">28 / 29</p>
+<aside>오늘의 비교표입니다. 고장 순간 응답은 GFL이 측정과 FRT 판단을 거쳐 수십 ms, GFM은 회로 법칙으로 서브사이클 안입니다. 제한 중 모습은 GFL이 무효 1.14 고정의 전류원, GFM은 각도를 유지한 크기 고정 전류원으로 전압원 성질을 잃습니다. 동기는 GFL이 PLL로 계속 추종해 가속 문제가 없고, GFM은 전력 상한 때문에 VSM이 가속해서 freeze 보정이 필요합니다. 회복은 0.3 pu 150 ms 고장에서 GFL 약 0.1초, GFM 약 0.5초, 보정 없으면 0.66초입니다. 고장 중 PCC 전압은 GFL 0.69에서 0.71, GFM 0.60에서 0.63으로 전류 각도 차이 때문에 GFL이 높았습니다. 연계기준안은 GFL이 2.0 pu 정격이면 크기 조건은 되지만 전압원 동작은 구조적으로 불가이고, GFM은 2.0 pu 정격이면 둘 다 충족하되 1.2 pu 정격은 부적합입니다. 10강에서 이 판정을 표준 시험 전체로 넓힙니다.</aside>
+</section>

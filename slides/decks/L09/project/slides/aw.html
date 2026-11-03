@@ -1,0 +1,26 @@
+<section id="aw" data-transition="fade" style="background:#fbfcfd;color:#45546b;font-family:'Pretendard Variable', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:28px">
+<div style="position:absolute;left:0;top:0;width:1920px;height:12px;background:linear-gradient(90deg, #2463c8 0%, #8bc22c 100%)"></div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;color:#037673">1 · 전압원은 전류를 묻지 않는다 · 칠판 유도</p>
+<h2 style="font-size:56px;font-weight:800;line-height:1.15;letter-spacing:-1px;color:#013364">anti-windup: 바깥 방향 성분만 지우고 접선 성분은 남긴다</h2>
+</div>
+<div style="display:flex;gap:40px;align-items:center">
+<img src="/_blob/d1153d3b69cb94a67df871d3a666bbc3" alt="dq 평면: 포화된 가상 전류 i_v가 |i| = 1.2 원 위에 있고, 원래 미분 벡터를 반지름 성분(주황, 지운다)과 접선 성분(초록, 남긴다)으로 나눈다. 안쪽으로 줄어드는 변화는 그대로 두어 고장이 끝나면 곧바로 원 안으로" style="width:620px;height:510px;object-fit:contain;background:#ffffff;border:2px solid #dae3ec;border-radius:16px">
+<div style="flex:1;display:flex;flex-direction:column;gap:18px">
+<div style="background:#ffffff;border-left:8px solid #2463c8;border-radius:8px;padding:16px 22px">
+<img src="/_blob/50e595ef5785fdc943c8809f259bd3a3" alt="ṙ = Re(i̇_v ī_v)/|i_v|, ṙ > 0 ⇒ i̇_v ← i̇_v − ṙ i_v/|i_v|" style="width:860px;height:124px;object-fit:contain">
+</div>
+<div style="background:#ffffff;border:2px solid #dae3ec;border-radius:16px;padding:22px 28px;display:flex;flex-direction:column;gap:8px">
+<p style="font-size:26px;font-weight:700;color:#2463c8">① 반지름 성분</p>
+<p style="font-size:27px;line-height:1.45">미분 i̇<b>v</b>를 단위 반지름 방향 i<b>v</b>/|i<b>v</b>|에 사영. 양수(바깥으로 커지는 중)면 그만큼 뺀다</p>
+</div>
+<div style="background:#ffffff;border:2px solid #dae3ec;border-radius:16px;padding:22px 28px;display:flex;flex-direction:column;gap:8px">
+<p style="font-size:26px;font-weight:700;color:#3aa150">② 남는 것은 접선뿐</p>
+<p style="font-size:27px;line-height:1.45">|i<b>v</b>|는 더 커지지 않고, 벡터는 원 위에서 계속 돌 수 있다. 안쪽 변화(ṙ &lt; 0)는 그대로 → 고장 끝나면 곧바로 복귀</p>
+</div>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#7d8ca2">9강 · 전류 제한과 고장</p>
+<p style="position:absolute;left:1592px;bottom:64px;width:200px;font-size:24px;color:#7d8ca2;text-align:right">10 / 29</p>
+<aside>anti-windup을 칠판에서 유도합니다. 포화 중 가상 전류 i_v의 단위 반지름 방향은 i_v 나누기 크기입니다. 미분 i_v 도트의 반지름 성분 r 도트는 i_v 도트 곱하기 i_v 켤레의 실수부를 크기로 나눈 것입니다. 복소수 내적입니다. 이것이 양수면 벡터가 바깥으로 커지는 중이니, 미분에서 그 성분을 뺍니다. 그러면 남는 것은 접선 성분뿐이라 크기는 더 커지지 않고, 전류 벡터는 원 위에서 계속 움직일 수 있습니다. 그림에서 주황색이 지우는 반지름 성분, 초록색이 남기는 접선 성분입니다. 중요한 것은 안쪽으로 줄어드는 변화, r 도트가 음수인 경우는 그대로 둔다는 점입니다. 그래서 고장이 끝나 E 빼기 v가 줄면 곧바로 원 안으로 돌아옵니다. 5강에서 전류 PI 적분기에 쓴 조건부 적분의 벡터 버전이라고 보시면 됩니다.</aside>
+</section>

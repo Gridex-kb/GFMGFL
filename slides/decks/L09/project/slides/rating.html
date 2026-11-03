@@ -1,0 +1,37 @@
+<section id="rating" data-transition="fade" style="background:#fbfcfd;color:#45546b;font-family:'Pretendard Variable', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:32px">
+<div style="position:absolute;left:0;top:0;width:1920px;height:12px;background:linear-gradient(90deg, #2463c8 0%, #8bc22c 100%)"></div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;color:#037673">3 · GFL의 FRT와 연계기준안 · 칠판 유도</p>
+<h2 style="font-size:56px;font-weight:800;line-height:1.15;letter-spacing:-1px;color:#013364">한국 연계기준안(초안): 2.0 pu·140 ms는 전류 정격, 전압원 동작은 구조</h2>
+</div>
+<div style="background:#ffffff;border:2px solid #dae3ec;border-radius:20px;padding:24px 36px;display:flex;flex-direction:column;gap:18px">
+<div style="display:flex;gap:28px;align-items:center">
+<p style="font-size:30px;font-weight:800;color:#2463c8;width:48px">①</p>
+<img src="/_blob/adc355b35c8e5270f9e21661d814d684" alt="I_max ≥ 2.0 pu (지속 ≥ 140 ms) + 고장 시 전압원 동작" style="width:1265px;height:73px;object-fit:contain">
+</div>
+<div style="display:flex;gap:28px;align-items:center">
+<p style="font-size:30px;font-weight:800;color:#2463c8;width:48px">②</p>
+<img src="/_blob/a4ab70978f5e01704df65164a99fd7a9" alt="|v_conv| ≈ |v + jX_(Lf+Lt) i| ≲ 0.15 + 0.3 × 2.0 = 0.75 < 1.303 pu" style="width:1292px;height:73px;object-fit:contain">
+</div>
+</div>
+<div style="display:flex;gap:24px">
+<div style="flex:1;background:#ffffff;border:2px solid #dae3ec;border-radius:20px;padding:28px 32px;display:flex;flex-direction:column;gap:8px">
+<p style="font-size:26px;font-weight:700;color:#eb6834">항목 2 · 2.0 pu 이상 140 ms</p>
+<h3 style="font-size:32px;font-weight:800;color:#013364">하드웨어 전류 정격</h3>
+<p style="font-size:27px;line-height:1.45">반도체·필터 인덕터·보호 정정이 2.0 pu를 140 ms 견뎌야. 1.1~1.5 pu 설계보다 큰 PCS. GFL도 정격을 키우면 크기 조건은 충족</p>
+</div>
+<div style="flex:1;background:#ffffff;border:2px solid #dae3ec;border-radius:20px;padding:28px 32px;display:flex;flex-direction:column;gap:8px">
+<p style="font-size:26px;font-weight:700;color:#2463c8">② 전압 여유는 남는다</p>
+<h3 style="font-size:32px;font-weight:800;color:#013364">0.75 &lt; 1.303 pu</h3>
+<p style="font-size:27px;line-height:1.45">고장 중 |v| 0.15, 2.0 pu 전류, L<b>f</b> + L<b>t</b> 0.3이면 컨버터 전압 0.75. 부담은 전압이 아니라 전류(열) 정격. 제거 직후 회복 구간은 예외</p>
+</div>
+<div style="flex:1;background:#013364;border-radius:20px;padding:28px 32px;display:flex;flex-direction:column;gap:8px">
+<p style="font-size:26px;font-weight:700;color:#b9f179">항목 1 · 고장 시 전압원 동작</p>
+<h3 style="font-size:32px;font-weight:800;color:#ffffff">제어 구조 요건</h3>
+<p style="font-size:27px;line-height:1.45;color:#c6d4e6">GFL은 PLL로 잰 위상에 전류를 주입하는 정의상 전류원 → 정격과 무관하게 <b style="color:#ffffff">구조적으로</b> 충족 불가. 표준 시험 T13도 구조로 판정</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#7d8ca2">9강 · 전류 제한과 고장</p>
+<p style="position:absolute;left:1592px;bottom:64px;width:200px;font-size:24px;color:#7d8ca2;text-align:right">22 / 29</p>
+<aside>2026년 4월 전력전자학회 포럼에서 한전이 발표한 연계기준안 초안에는 고장 관련 항목이 둘 있습니다. 고장 시 전압원으로 동작할 것, 그리고 순시 고장전류 2.0 pu 이상을 140 ms 이상 유지할 것입니다. 두 번째 항목은 제어 알고리즘보다 하드웨어 전류 정격의 문제입니다. 반도체, 필터 인덕터, 차단·보호 정정이 2.0 pu를 최소 140 ms 견뎌야 하니, 일반적인 1.1에서 1.5 pu 설계보다 전류 용량을 키운 PCS가 필요합니다. ②번으로 전압 여유를 검산해 봅시다. 컨버터 출력 전압은 대략 PCC 전압 더하기 필터와 변압기 리액턴스 곱하기 전류입니다. 고장 중 전압 0.15, 전류 2.0, 리액턴스 0.3이면 0.75 pu로 최대 1.303보다 작습니다. 변조 여유는 남으니 부담은 전압이 아니라 전류, 즉 열 정격 쪽입니다. 고장 제거 직후 전압이 회복될 때는 예외이고 이 구간에서 전류가 한계를 넘기 쉽습니다. GFL도 전류 정격을 2.0 pu로 키우면 크기 조건은 충족할 수 있습니다. 그러나 첫 번째 항목, 전압원 동작은 GFL에서 구조적으로 충족할 수 없습니다. PLL로 잰 위상에 전류를 주입하는 것이 GFL의 정의이기 때문입니다. 10강의 표준 시험 T13도 이 항목을 시뮬레이션 지표가 아니라 제어 구조로 판정합니다. 다음 장에서 정격 1.2와 2.0을 실제로 비교합니다.</aside>
+</section>

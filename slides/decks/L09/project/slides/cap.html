@@ -1,0 +1,31 @@
+<section id="cap" data-transition="fade" style="background:#fbfcfd;color:#45546b;font-family:'Pretendard Variable', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:32px">
+<div style="position:absolute;left:0;top:0;width:1920px;height:12px;background:linear-gradient(90deg, #2463c8 0%, #8bc22c 100%)"></div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;color:#037673">2 · 제한 중 동기 유지 · 칠판 유도</p>
+<h2 style="font-size:56px;font-weight:800;line-height:1.15;letter-spacing:-1px;color:#013364">전류가 묶이면 전력도 묶인다: P ≤ |v|·I<span style="color:#2463c8">max</span> &lt; P*</h2>
+</div>
+<div style="background:#ffffff;border:2px solid #dae3ec;border-radius:20px;padding:28px 36px;display:flex;flex-direction:column;gap:20px">
+<div style="display:flex;gap:28px;align-items:center">
+<p style="font-size:30px;font-weight:800;color:#2463c8;width:48px">①</p>
+<img src="/_blob/8b68588f2241512b5844a58bb979c65c" alt="P ≤ |v| I_max (|v| = 0.3~0.6 ⇒ P ≤ 0.36~0.72 < P* = 0.8)" style="width:1402px;height:73px;object-fit:contain">
+</div>
+<div style="display:flex;gap:28px;align-items:center">
+<p style="font-size:30px;font-weight:800;color:#2463c8;width:48px">②</p>
+<img src="/_blob/2320bbdc9f8d56d0c88f59308474e2e7" alt="P(δ) = (E V_g/X) sin δ, 평형점 조건 E V_g/X ≥ P*: X = 0.733 ⇒ V_g = 1: 1.36 ≥ 0.8, V_g = 0.3: 0.41 < 0.8" style="width:1500px;height:75px;object-fit:contain">
+</div>
+</div>
+<div style="display:flex;gap:24px">
+<div style="flex:1;background:#e9f0f6;border-radius:16px;padding:22px 28px">
+<p style="font-size:27px;line-height:1.45"><b style="color:#013364">①</b> 고장으로 |v|가 0.3~0.6이면 상한 0.36~0.72가 지령 0.8보다 작다</p>
+</div>
+<div style="flex:1;background:#e9f0f6;border-radius:16px;padding:22px 28px">
+<p style="font-size:27px;line-height:1.45"><b style="color:#013364">②</b> 고장 중 P(δ)가 어디서도 P*에 안 닿으면 평형점이 없다. 전류 제한은 상한을 한 번 더 낮춘다</p>
+</div>
+<div style="flex:1;background:#013364;border-radius:16px;padding:22px 28px">
+<p style="font-size:27px;line-height:1.45;color:#ffffff">스윙식 2H·Δω̇ = P* − P − DΔω는 이 차이를 <b style="color:#b9f179">“가속할 이유”</b>로 받아들인다 → θ가 앞서 나간다 (동기기 탈조와 같은 메커니즘)</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#7d8ca2">9강 · 전류 제한과 고장</p>
+<p style="position:absolute;left:1592px;bottom:64px;width:200px;font-size:24px;color:#7d8ca2;text-align:right">13 / 29</p>
+<aside>전류가 한계에 묶이면 인버터가 낼 수 있는 유효전력에도 상한이 생깁니다. ①번, P는 전압 크기 곱하기 전류 한계 이하입니다. 고장으로 PCC 전압이 0.3에서 0.6으로 떨어지면 상한은 0.36에서 0.72 pu로, 지령 0.8보다 작습니다. ②번은 1부 그림에서 본 평형점 조건입니다. 전달 전력 곡선 최대값 E V_g 나누기 X가 P* 이상이어야 평형점이 있습니다. 합성 리액턴스 0.733에서 계통 전압 1이면 1.36으로 충분하지만, 0.3이면 0.41로 0.8에 못 미칩니다. 전류 제한은 상한을 한 번 더 낮춥니다. 문제는 7강의 VSM 스윙 방정식이 이 차이를 관성이 가속해야 할 이유로 받아들인다는 것입니다. P* 빼기 P가 계속 양수이니 Δω 미분이 양수로 이어지고, 내부 위상 θ가 계통보다 앞서 나갑니다. 동기발전기의 탈조와 같은 메커니즘입니다. 고장이 길거나 깊으면 동기를 잃을 수 있습니다.</aside>
+</section>

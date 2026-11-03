@@ -1,0 +1,24 @@
+// PCC 3상 지락(컨덕턴스 20 pu) × 200 ms, 전류 한계 1.2 / 2.0 pu, GFM / GFL (평균값 10 µs): |i| 와 PCC 전압
+const F = Fig(1100, 730), C = FC, D = DATA, xl = [-30, 400];
+const A = F.frame([120, 60, 760, 260], xl, [0, 2.8]).axes({ xticks: [0, 100, 200, 300, 400], yticks: [0, 1.0, 2.0], tick: 22, xfmt: () => "", ylabel: "컨버터측 전류 |i| [pu]" });
+shade(F, A, 0, 200);
+A.hline(2.0, { color: C.red, width: 2, dash: "6 6" });
+A.plot(D["GFL_1.2"].t, D["GFL_1.2"].I, { color: C.orange, width: 3 });
+A.plot(D["GFM_1.2"].t, D["GFM_1.2"].I, { color: C.blue, width: 3.5 });
+A.plot(D["GFL_2.0"].t, D["GFL_2.0"].I, { color: C.purple, width: 3, dash: "10 8" });
+A.plot(D["GFM_2.0"].t, D["GFM_2.0"].I, { color: C.teal, width: 3.5, dash: "10 8" });
+F.arrow(A.x(0), A.y(2.5), A.x(140), A.y(2.5), { color: C.navy, width: 3, head: 14, both: true });
+A.label(70, 2.56, "기준안: 2.0 pu 이상 140 ms", { anchor: "b", size: 22, color: C.navy, weight: 700 });
+F.label(895, A.y(2.1), `한계 2.0: ${D["GFM_2.0"].dur_ms.toFixed(0)} / ${D["GFL_2.0"].dur_ms.toFixed(0)} ms<br>(GFM / GFL)`, { anchor: "l", size: 20, color: C.teal, weight: 700 });
+F.label(895, A.y(1.2), "한계 1.2: 2.0에 못 닿음", { anchor: "l", size: 20, color: C.blue, weight: 700 });
+F.label(895, A.y(0.4), `제거 직후 GFL 2.0<br>피크 ${D["GFL_2.0"].Ipk_after.toFixed(1)} pu`, { anchor: "l", size: 20, color: C.purple, weight: 700 });
+const B = F.frame([120, 380, 760, 240], xl, [0, 1.5]).axes({ xticks: [0, 100, 200, 300, 400], yticks: [0, 0.5, 1.0, 1.5], tick: 22, xlabel: "고장 시작 후 시간 [ms] (음영: PCC 지락)", ylabel: "PCC 전압 [pu]" });
+shade(F, B, 0, 200);
+B.plot(D["GFL_1.2"].t, D["GFL_1.2"].V, { color: C.orange, width: 3 });
+B.plot(D["GFM_1.2"].t, D["GFM_1.2"].V, { color: C.blue, width: 3.5 });
+B.plot(D["GFL_2.0"].t, D["GFL_2.0"].V, { color: C.purple, width: 3, dash: "10 8" });
+B.plot(D["GFM_2.0"].t, D["GFM_2.0"].V, { color: C.teal, width: 3.5, dash: "10 8" });
+F.label(895, B.y(1.25), "GFM: 제거 후 과전압<br>(적분기 와인드업)", { anchor: "l", size: 20, color: C.blue, weight: 700 });
+F.label(895, B.y(0.55), "고장 중 0.15~0.18 pu<br>네 경우 비슷", { anchor: "l", size: 20, color: C.slate });
+F.label(895, B.y(0.15), "제거 순간 스파이크는<br>모델 특성 (축 밖)", { anchor: "l", size: 18, color: C.muted });
+F.done();

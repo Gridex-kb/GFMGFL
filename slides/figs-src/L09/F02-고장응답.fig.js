@@ -1,0 +1,25 @@
+// 계통 전압 0.3 pu × 150 ms, SCR 3, P* 0.8 (평균값 10 µs): GFM 보정 / 보정 없음 / GFL — |i|, P, GFM Δδ
+const F = Fig(1100, 800), C = FC, D = DATA, xl = [-50, 1300];
+const A = F.frame([120, 60, 760, 170], xl, [0, 1.5]).axes({ xticks: [0, 250, 500, 750, 1000, 1250], yticks: [0, 0.5, 1.0, 1.5], tick: 22, xfmt: () => "", ylabel: "컨버터측 전류 |i| [pu]" });
+shade(F, A, 0, 150);
+A.hline(1.2, { color: C.red, width: 2, dash: "6 6" });
+A.plot(D.GFL.t, D.GFL.I, { color: C.orange, width: 3 });
+A.plot(D.nofreeze.t, D.nofreeze.I, { color: C.purple, width: 3, dash: "10 8" });
+A.plot(D.freeze.t, D.freeze.I, { color: C.blue, width: 3.5 });
+F.label(895, A.y(1.2), "한계 1.2 pu", { anchor: "l", size: 22, color: C.red, weight: 700 });
+F.label(895, A.y(0.5), `피크 ${D.freeze.Ipk.toFixed(2)} pu<br>(루프 지연)`, { anchor: "l", size: 20, color: C.slate });
+const B = F.frame([120, 290, 760, 170], xl, [-0.2, 1.2]).axes({ xticks: [0, 250, 500, 750, 1000, 1250], yticks: [0, 0.4, 0.8, 1.2], tick: 22, xfmt: () => "", ylabel: "유효전력 $P$ [pu]" });
+shade(F, B, 0, 150);
+B.plot(D.GFL.t, D.GFL.P, { color: C.orange, width: 3 });
+B.plot(D.nofreeze.t, D.nofreeze.P, { color: C.purple, width: 3, dash: "10 8" });
+B.plot(D.freeze.t, D.freeze.P, { color: C.blue, width: 3.5 });
+F.label(895, B.y(1.05), `GFL: 회복 ${D.GFL.rec_ms.toFixed(0)} ms`, { anchor: "l", size: 22, color: C.orange, weight: 700 });
+F.label(895, B.y(0.6), `GFM 보정: ${D.freeze.rec_ms.toFixed(0)} ms`, { anchor: "l", size: 22, color: C.blue, weight: 700 });
+F.label(895, B.y(0.15), `보정 없음: ${D.nofreeze.rec_ms.toFixed(0)} ms`, { anchor: "l", size: 22, color: C.purple, weight: 700 });
+const G = F.frame([120, 520, 760, 170], xl, [-5, 16]).axes({ xticks: [0, 250, 500, 750, 1000, 1250], yticks: [0, 5, 10, 15], tick: 22, xlabel: "고장 시작 후 시간 [ms] (음영: 계통 전압 0.3 pu 구간)", ylabel: "GFM 내부 위상 변화 Δδ [°]" });
+shade(F, G, 0, 150);
+G.plot(D.nofreeze.t, D.nofreeze.dd, { color: C.purple, width: 3, dash: "10 8" });
+G.plot(D.freeze.t, D.freeze.dd, { color: C.blue, width: 3.5 });
+F.label(895, G.y(12), `보정 없음: 최대 ${D.nofreeze.ddmax.toFixed(1)}°<br>제거 후 포화 ${D.nofreeze.sat_end_ms.toFixed(0)} ms`, { anchor: "l", size: 20, color: C.purple, weight: 700 });
+F.label(895, G.y(3), `보정: 최대 ${D.freeze.ddmax.toFixed(1)}°<br>제거 후 포화 ${D.freeze.sat_end_ms.toFixed(0)} ms`, { anchor: "l", size: 20, color: C.blue, weight: 700 });
+F.done();

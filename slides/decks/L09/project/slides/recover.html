@@ -1,0 +1,28 @@
+<section id="recover" data-transition="fade" style="background:#fbfcfd;color:#45546b;font-family:'Pretendard Variable', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<div style="position:absolute;left:0;top:0;width:1920px;height:12px;background:linear-gradient(90deg, #2463c8 0%, #8bc22c 100%)"></div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;color:#037673">2 · 제한 중 동기 유지</p>
+<h2 style="font-size:56px;font-weight:800;line-height:1.15;letter-spacing:-1px;color:#013364">고장 제거 뒤 확인할 세 가지: 포화 해제, 위상 복귀, 적분기</h2>
+</div>
+<div style="display:flex;gap:28px">
+<div style="flex:1;background:#ffffff;border:2px solid #dae3ec;border-radius:20px;padding:36px;display:flex;flex-direction:column;gap:14px">
+<p style="font-size:26px;font-weight:700;color:#2463c8">① 포화 해제</p>
+<h3 style="font-size:34px;font-weight:800;color:#013364">와인드업이 남아 있나</h3>
+<p style="font-size:28px;line-height:1.45">남아 있으면 고장 후에도 전류가 한계에 붙어 있다. anti-windup과 freeze가 이를 막는다 (보정 없음: 214 ms)</p>
+</div>
+<div style="flex:1;background:#ffffff;border:2px solid #dae3ec;border-radius:20px;padding:36px;display:flex;flex-direction:column;gap:14px">
+<p style="font-size:26px;font-weight:700;color:#2463c8">② 위상 복귀</p>
+<h3 style="font-size:34px;font-weight:800;color:#013364">관성 모드 약 1 Hz</h3>
+<p style="font-size:28px;line-height:1.45">제한 중 벌어진 δ를 VSM이 스윙 방정식으로만 되돌린다 → GFL보다 느리다. 회복 시간 요건과 H의 절충</p>
+</div>
+<div style="flex:1;background:#013364;border-radius:20px;padding:36px;display:flex;flex-direction:column;gap:14px">
+<p style="font-size:26px;font-weight:700;color:#b9f179">③ 전압 루프 적분기</p>
+<h3 style="font-size:34px;font-weight:800;color:#ffffff">고장 후 과전압</h3>
+<p style="font-size:28px;line-height:1.45;color:#c6d4e6">고장 중 전압 오차를 계속 적분한 적분기는 제거 후 과전압을 만든다 (PCC 지락 후 1.14 pu, 1 s). 초기화·제한이 필요</p>
+</div>
+</div>
+<p style="font-size:30px;line-height:1.45">GFM의 유효전력 회복은 <b style="color:#013364">관성 때문에 GFL보다 느리다</b>. 계통코드의 회복 시간(예: 수백 ms 안에 90 %)과 H 설정 사이의 절충</p>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#7d8ca2">9강 · 전류 제한과 고장</p>
+<p style="position:absolute;left:1592px;bottom:64px;width:200px;font-size:24px;color:#7d8ca2;text-align:right">16 / 29</p>
+<aside>고장이 제거되면 PCC 전압이 돌아오고 위상이 튑니다. 이때 확인할 점은 세 가지입니다. 첫째, 포화 해제입니다. 와인드업이 남아 있으면 고장 후에도 전류가 한계에 붙어 있습니다. 앞 장의 보정 없음에서 214 ms가 그것이고, anti-windup과 freeze가 이를 막습니다. 둘째, 위상 복귀입니다. 제한 중 벌어진 위상차를 VSM이 약 1 Hz 관성 모드로 되돌리는데, 스윙 방정식으로만 되돌리므로 GFL보다 느립니다. 셋째, 전압 루프 적분기입니다. 고장 중 PCC 전압 오차를 계속 적분한 적분기는 고장 후 과전압을 만듭니다. 3부에서 볼 PCC 지락에서 제거 후 전압이 1.14 pu로 1초 가까이 머물렀습니다. 실제 설계에서는 적분기 초기화나 제한을 둡니다. 정리하면 GFM의 유효전력 회복은 관성 때문에 GFL보다 느리고, 계통코드가 요구하는 회복 시간과 관성 H 설정 사이에서 절충이 필요합니다.</aside>
+</section>

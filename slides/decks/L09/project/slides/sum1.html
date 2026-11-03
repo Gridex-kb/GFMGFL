@@ -1,0 +1,17 @@
+<section id="sum1" data-transition="fade" style="background:#fbfcfd;color:#45546b;font-family:'Pretendard Variable', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<div style="position:absolute;left:0;top:0;width:1920px;height:12px;background:linear-gradient(90deg, #2463c8 0%, #8bc22c 100%)"></div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;color:#037673">1 · 전압원은 전류를 묻지 않는다</p>
+<h2 style="font-size:56px;font-weight:800;line-height:1.15;letter-spacing:-1px;color:#013364">1부 정리</h2>
+</div>
+<div style="border:3px solid #013364;border-radius:20px;padding:48px;display:flex;flex-direction:column;gap:28px;background:#ffffff">
+<p style="font-size:36px;line-height:1.45;color:#013364"><b style="color:#2463c8">①</b>  고장 직후 E는 그대로, v만 떨어진다 → |i*| ≈ |E − v|/|Z<span style="color:#2463c8">v</span>| ≈ <b>2.8 pu</b> (PCC 0.15)</p>
+<p style="font-size:36px;line-height:1.45;color:#013364"><b style="color:#2463c8">②</b>  반도체는 1.1~1.5 pu(모델 1.2) → GFM도 고장에서는 <b>전류원</b>이 되어야 한다</p>
+<p style="font-size:36px;line-height:1.45;color:#013364"><b style="color:#2463c8">③</b>  기법: 원형 포화 + anti-windup(모델) · 가상 임피던스 증대 · 모드 전환</p>
+<p style="font-size:36px;line-height:1.45;color:#013364"><b style="color:#2463c8">④</b>  anti-windup = 바깥 방향 성분만 제거. 각도는 유지, 고장 끝나면 <b>곧바로</b> 원 안으로</p>
+</div>
+<p style="font-size:30px;line-height:1.45">다음: 전류가 1.2 pu에 묶이면 낼 수 있는 전력도 묶인다. VSM은 그 차이를 어떻게 받아들이나?</p>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#7d8ca2">9강 · 전류 제한과 고장</p>
+<p style="position:absolute;left:1592px;bottom:64px;width:200px;font-size:24px;color:#7d8ca2;text-align:right">11 / 29</p>
+<aside>1부를 정리합니다. 고장 직후 내부 기전력은 그대로이고 PCC 전압만 떨어지니, 가상 임피던스가 요구하는 전류는 E 빼기 v 나누기 임피던스 크기로 PCC 0.15 pu에서 약 2.8 pu입니다. 반도체는 1.1에서 1.5 pu, 모델은 1.2 pu까지라 GFM도 고장에서는 전류원이 되어야 합니다. 기법은 원형 포화와 anti-windup, 가상 임피던스 증대, 모드 전환이 있고, 모델은 첫째를 씁니다. anti-windup은 바깥 방향 성분만 지워 각도는 유지하고 고장이 끝나면 곧바로 원 안으로 돌아오게 합니다. 2부의 질문입니다. 전류가 1.2 pu에 묶이면 낼 수 있는 전력도 묶입니다. VSM은 지령과의 차이를 어떻게 받아들일까요.</aside>
+</section>

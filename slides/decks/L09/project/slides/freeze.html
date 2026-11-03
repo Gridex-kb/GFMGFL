@@ -1,0 +1,30 @@
+<section id="freeze" data-transition="fade" style="background:#fbfcfd;color:#45546b;font-family:'Pretendard Variable', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:36px">
+<div style="position:absolute;left:0;top:0;width:1920px;height:12px;background:linear-gradient(90deg, #2463c8 0%, #8bc22c 100%)"></div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;color:#037673">2 · 제한 중 동기 유지</p>
+<h2 style="font-size:56px;font-weight:800;line-height:1.15;letter-spacing:-1px;color:#013364">모델의 보정: 포화 중이고 P* − P &gt; 0이면 가속 입력을 0으로</h2>
+</div>
+<div style="background:#ffffff;border-left:8px solid #2463c8;border-radius:8px;padding:24px 32px;align-self:flex-start">
+<img src="/_blob/fc0e7457c60fa6c44ebb8523bbfd4e03" alt="2H Δω̇ = min(P* − P, 0) − D Δω (전류 포화 중), P* − P − D Δω (그 외)" style="width:1104px;height:171px;object-fit:contain">
+</div>
+<div style="display:flex;gap:24px">
+<div style="flex:1;background:#ffffff;border:2px solid #dae3ec;border-radius:20px;padding:32px;display:flex;flex-direction:column;gap:10px">
+<p style="font-size:26px;font-weight:700;color:#2463c8">무엇을 막나</p>
+<h3 style="font-size:32px;font-weight:800;color:#013364">앞으로 벌어지는 것만</h3>
+<p style="font-size:27px;line-height:1.45">제한 중 위상이 탈조 방향으로 벌어지는 것만 막는다. gfm_limit_freeze = True (기본값)</p>
+</div>
+<div style="flex:1;background:#ffffff;border:2px solid #dae3ec;border-radius:20px;padding:32px;display:flex;flex-direction:column;gap:10px">
+<p style="font-size:26px;font-weight:700;color:#2463c8">무엇을 남기나</p>
+<h3 style="font-size:32px;font-weight:800;color:#013364">감속 입력과 댐핑</h3>
+<p style="font-size:27px;line-height:1.45">P &gt; P*인 감속 입력과 D·Δω는 위상을 평형점 쪽으로 되돌리는 방향이라 남긴다</p>
+</div>
+<div style="flex:1;background:#013364;border-radius:20px;padding:32px;display:flex;flex-direction:column;gap:10px">
+<p style="font-size:26px;font-weight:700;color:#b9f179">다른 보정</p>
+<h3 style="font-size:32px;font-weight:800;color:#ffffff">P* 낮추기 · D 키우기 · 보조 PLL</h3>
+<p style="font-size:27px;line-height:1.45;color:#c6d4e6">제한 중 P*를 낼 수 있는 값으로, 댐핑 증대, 보조 PLL 추종 등. 60° 점프에서는 freeze가 재동기를 막기도 (10강 T09)</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#7d8ca2">9강 · 전류 제한과 고장</p>
+<p style="position:absolute;left:1592px;bottom:64px;width:200px;font-size:24px;color:#7d8ca2;text-align:right">14 / 29</p>
+<aside>이 모델의 보정은 단순합니다. 전류가 포화 중이고 P* 빼기 P가 양수이면 가속 입력을 0으로 둡니다. 식으로 쓰면 포화 중에는 min(P* − P, 0) 빼기 DΔω입니다. 제한 중 위상이 탈조 방향으로 벌어지는 것만 막는 것이 목적입니다. 감속 입력, 즉 P가 P*보다 큰 경우와 댐핑 항은 위상을 평형점 쪽으로 되돌리는 방향이므로 남겨 둡니다. 파라미터 이름은 gfm_limit_freeze이고 기본값이 True입니다. 다른 보정도 있습니다. 제한 중 P*를 낼 수 있는 값으로 낮추기, 댐핑 D 키우기, 보조 PLL로 추종하기 등입니다. 한 가지 미리 말씀드리면, 이 freeze 보정은 고장 회복을 빠르게 하지만 60도 위상 점프처럼 위상차가 지속되는 상황에서는 재동기에 필요한 각도 이동까지 막아 전류 제한에 갇히게 하기도 합니다. 10강의 표준 시험 T09에서 그 사례를 봅니다. 다음 장에서 보정 유무를 EMT로 비교합니다.</aside>
+</section>

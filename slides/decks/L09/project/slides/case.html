@@ -1,0 +1,28 @@
+<section id="case" data-transition="fade" style="background:#fbfcfd;color:#45546b;font-family:'Pretendard Variable', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:24px">
+<div style="position:absolute;left:0;top:0;width:1920px;height:12px;background:linear-gradient(90deg, #2463c8 0%, #8bc22c 100%)"></div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;color:#037673">2 · 제한 중 동기 유지 · EMT</p>
+<h2 style="font-size:56px;font-weight:800;line-height:1.15;letter-spacing:-1px;color:#013364">고장 0.3 pu × 150 ms: 보정이 위상 이탈과 회복을 반으로</h2>
+</div>
+<div style="display:flex;gap:40px;align-items:center">
+<img src="/_blob/f93ee6e1c5d7cb15dd4e4b41d5e91e32" alt="계통 전압 0.3 pu × 150 ms, SCR 3, P* 0.8, 평균값 10 µs. 위: 컨버터측 전류, 세 경우 모두 고장 중 1.2 pu에 묶이고 진입 피크 1.34. 가운데: 유효전력, GFL 회복 108 ms, GFM 보정 457 ms, 보정 없음 659 ms. 아래: GFM 내부 위상 변화, 보정 없음 최대 12.6°에 제거 후 포화 214 ms, 보정은 최대 7.1°에 포화 1 ms" style="width:905px;height:658px;object-fit:contain;background:#ffffff;border:2px solid #dae3ec;border-radius:16px">
+<div style="flex:1;display:flex;flex-direction:column;gap:16px">
+<div style="background:#ffffff;border-left:8px solid #7b4fc0;border-radius:8px;padding:14px 22px">
+<h3 style="font-size:28px;font-weight:800;color:#013364">보정 없음</h3>
+<p style="font-size:25px;line-height:1.45">고장 중 위상 +12.6°까지 → 제거 후 포화 214 ms 지속, P 회복 659 ms</p>
+</div>
+<div style="background:#ffffff;border-left:8px solid #2463c8;border-radius:8px;padding:14px 22px">
+<h3 style="font-size:28px;font-weight:800;color:#013364">보정 있음</h3>
+<p style="font-size:25px;line-height:1.45">고장 중 위상 거의 그대로, 제거와 함께 포화 해제, 회복 457 ms (관성 스윙)</p>
+</div>
+<div style="background:#ffffff;border-left:8px solid #eb6834;border-radius:8px;padding:14px 22px">
+<h3 style="font-size:28px;font-weight:800;color:#013364">GFL</h3>
+<p style="font-size:25px;line-height:1.45">회복 108 ms. 고장 중 평균 PCC 전압 GFL 0.69 / GFM 0.60 pu: 제한 중엔 <b>전류의 크기·각도</b>가 전압을 정한다</p>
+</div>
+<p style="font-size:22px;line-height:1.4;color:#7d8ca2">평균값 모델 10 µs. 진입 피크 1.33~1.34 pu는 루프 지연, 실제는 하드웨어 보호가 맡는다</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#7d8ca2">9강 · 전류 제한과 고장</p>
+<p style="position:absolute;left:1592px;bottom:64px;width:200px;font-size:24px;color:#7d8ca2;text-align:right">15 / 29</p>
+<aside>평균값 EMT로 계통 전압 0.3 pu 150 ms 고장을 돌렸습니다. SCR 3, 유효전력 0.8 pu입니다. 위 그림, 세 경우 모두 고장 중 전류가 1.2 pu에 묶입니다. 진입 순간 피크 1.33에서 1.34 pu는 내부 전류 루프의 지연 때문이고, 실제 설비는 하드웨어 과전류 보호가 이 구간을 맡습니다. 아래 그림의 보라색 점선, 보정 없음을 보세요. 고장 중 위상이 앞으로 12.6도까지 벌어지고, 그 결과 고장이 제거된 뒤에도 포화가 214 ms 이어지며, 유효전력이 ±10 % 안에 들기까지 659 ms 걸립니다. 파란색 보정 있음은 고장 중 위상이 거의 움직이지 않고, 포화가 제거와 함께 풀리며, 회복은 457 ms입니다. 주황색 GFL은 108 ms 만에 회복합니다. GFM보다 훨씬 빠릅니다. 하나 더, 고장 중 평균 PCC 전압이 GFL 0.69, GFM 0.60으로 이 실행에서는 GFL이 더 높았습니다. 전류 제한 중에는 GFM도 크기가 고정된 전류원이라서, 전압 지지는 방식이 아니라 전류의 크기와 각도가 정합니다. GFL은 무효전류 1.14를 우선 넣고, GFM은 가상 임피던스가 정한 각도를 유지해 유효분이 더 섞여 있었습니다. 2 µs 스위칭 결과는 0.71 대 0.63으로 같은 경향입니다.</aside>
+</section>

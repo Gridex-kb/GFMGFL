@@ -1,0 +1,28 @@
+<section id="gfl" data-transition="fade" style="background:#fbfcfd;color:#45546b;font-family:'Pretendard Variable', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<div style="position:absolute;left:0;top:0;width:1920px;height:12px;background:linear-gradient(90deg, #2463c8 0%, #8bc22c 100%)"></div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;color:#037673">3 · GFL의 FRT와 연계기준안</p>
+<h2 style="font-size:56px;font-weight:800;line-height:1.15;letter-spacing:-1px;color:#013364">GFL은 처음부터 전류원: 제한은 지령을 자르는 문제일 뿐</h2>
+</div>
+<div style="display:flex;gap:28px">
+<div style="flex:1;background:#ffffff;border:2px solid #dae3ec;border-radius:20px;padding:36px;display:flex;flex-direction:column;gap:14px">
+<p style="font-size:26px;font-weight:700;color:#eb6834">FRT 로직 (6강)</p>
+<h3 style="font-size:34px;font-weight:800;color:#013364">0.85 진입 · 0.92 + 30 ms 해제</h3>
+<p style="font-size:28px;line-height:1.45">무효전류 0.95·I<b>max</b> = 1.14 pu <b>고정</b> 주입, 유효전류는 여유 √(1.2² − 1.14²) ≈ 0.37 안으로</p>
+</div>
+<div style="flex:1;background:#ffffff;border:2px solid #dae3ec;border-radius:20px;padding:36px;display:flex;flex-direction:column;gap:14px">
+<p style="font-size:26px;font-weight:700;color:#eb6834">왜 고정값</p>
+<h3 style="font-size:34px;font-weight:800;color:#013364">k-factor는 약계통에서 진동</h3>
+<p style="font-size:28px;line-height:1.45">측정 전압에 비례하는 무효전류는 약계통에서 루프 이득이 1을 넘어 진동했다 (EMT 교훈 4)</p>
+</div>
+<div style="flex:1;background:#013364;border-radius:20px;padding:36px;display:flex;flex-direction:column;gap:14px">
+<p style="font-size:26px;font-weight:700;color:#b9f179">장단점</p>
+<h3 style="font-size:34px;font-weight:800;color:#ffffff">가속 문제 없음, 회복 빠름</h3>
+<p style="font-size:28px;line-height:1.45;color:#c6d4e6">PLL이 위상을 계속 따라간다. 대신 고장 순간 전압을 받치는 응답은 측정·제어를 거친 뒤에 나온다</p>
+</div>
+</div>
+<p style="font-size:30px;line-height:1.45">6강 FRT 모드 순환(약계통)과 5강 무효 우선 제한이 여기서 합쳐진다</p>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#7d8ca2">9강 · 전류 제한과 고장</p>
+<p style="position:absolute;left:1592px;bottom:64px;width:200px;font-size:24px;color:#7d8ca2;text-align:right">20 / 29</p>
+<aside>GFL은 처음부터 전류원이므로 제한은 지령을 자르는 문제일 뿐입니다. 6강에서 본 FRT 로직을 다시 봅니다. 측정 전압이 0.85 미만이면 진입하고, 0.92를 넘고 30 ms가 지나면 해제합니다. FRT 중에는 무효전류 0.95 곱하기 1.2, 1.14 pu를 고정 주입하고 유효전류는 남은 여유 약 0.37 안으로 자릅니다. 5강의 무효 우선입니다. 왜 고정값이냐면, 측정 전압에 비례하는 무효전류, k-factor 방식은 약계통에서 루프 이득이 1을 넘어 진동했기 때문입니다. EMT 모델링 교훈 4입니다. GFL은 PLL이 위상을 계속 따라가므로 제한 중 가속 문제가 없고 고장 제거 후 회복도 빠릅니다. 대신 고장 순간 전압을 받쳐 주는 응답은 측정과 제어를 거친 뒤에 나옵니다. 6강의 약계통 FRT 모드 순환과 5강의 무효 우선 제한이 여기서 합쳐집니다.</aside>
+</section>

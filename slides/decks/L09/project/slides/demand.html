@@ -1,0 +1,31 @@
+<section id="demand" data-transition="fade" style="background:#fbfcfd;color:#45546b;font-family:'Pretendard Variable', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:32px">
+<div style="position:absolute;left:0;top:0;width:1920px;height:12px;background:linear-gradient(90deg, #2463c8 0%, #8bc22c 100%)"></div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;color:#037673">1 · 전압원은 전류를 묻지 않는다 · 칠판 유도</p>
+<h2 style="font-size:56px;font-weight:800;line-height:1.15;letter-spacing:-1px;color:#013364">고장 직후 E는 그대로, v만 떨어진다: |i*| ≈ |E − v|/|Z<span style="color:#2463c8">v</span>|</h2>
+</div>
+<div style="background:#ffffff;border:2px solid #dae3ec;border-radius:20px;padding:28px 36px;display:flex;flex-direction:column;gap:20px">
+<div style="display:flex;gap:28px;align-items:center">
+<p style="font-size:30px;font-weight:800;color:#2463c8;width:48px">①</p>
+<img src="/_blob/b05711529f7c4bb3274bdf48cae08af4" alt="di_v/dt = 0, ω ≈ 1 ⇒ i_v = (E − v)/(R_v + jX_v)" style="width:750px;height:121px;object-fit:contain">
+</div>
+<div style="display:flex;gap:28px;align-items:center">
+<p style="font-size:30px;font-weight:800;color:#2463c8;width:48px">②</p>
+<img src="/_blob/be956969ee84ff6ec0f27bb1eea26abf" alt="|i*| ≈ |E − v|/|Z_v| = (1 − 0.15)/0.304 ≈ 2.8 pu (E = 1, |Z_v| = √(0.05² + 0.3²), |v| = 0.15)" style="width:1500px;height:110px;object-fit:contain">
+</div>
+</div>
+<div style="display:flex;gap:24px">
+<div style="flex:1;background:#e9f0f6;border-radius:16px;padding:22px 28px">
+<p style="font-size:27px;line-height:1.45"><b style="color:#013364">①</b> 7강 동적 가상 인덕턴스 식의 정상상태. 고장 직후 E는 전압 제어 적분기(이득 5)가 느려 거의 그대로</p>
+</div>
+<div style="flex:1;background:#e9f0f6;border-radius:16px;padding:22px 28px">
+<p style="font-size:27px;line-height:1.45"><b style="color:#013364">측정점</b> v는 PCC(변압기 고압측) 전압. PCC 지락이면 |v|가 0.15 pu까지 떨어진다</p>
+</div>
+<div style="flex:1;background:#013364;border-radius:16px;padding:22px 28px">
+<p style="font-size:27px;line-height:1.45;color:#ffffff">반도체 열 한계 <b style="color:#b9f179">1.1~1.5 pu</b> (일반론). 모델 1.2 pu → 2.8은 2배 이상 초과</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#7d8ca2">9강 · 전류 제한과 고장</p>
+<p style="position:absolute;left:1592px;bottom:64px;width:200px;font-size:24px;color:#7d8ca2;text-align:right">7 / 29</p>
+<aside>칠판에서 유도합니다. 7강의 동적 가상 인덕턴스 식은 X_v 나누기 ω_b 곱하기 di_v/dt가 E 빼기 v 빼기 R_v i_v 빼기 jωX_v i_v였습니다. 정상상태에서 미분이 0이고 ω가 약 1이면 i_v는 E 빼기 v 나누기 R_v 더하기 jX_v입니다. ①번입니다. 고장 직후 E는 어떨까요. E를 만드는 전압 제어 적분기는 이득이 5 pu/s/pu로 느려서 E는 거의 그대로이고, v만 급히 떨어집니다. 측정점은 3강에서 정한 대로 PCC 전압이고, PCC 지락이면 0.15 pu까지 떨어집니다. 그러면 ②번, 전류 크기는 0.85 나누기 0.304, 약 2.8 pu입니다. 반도체 열 한계는 일반적으로 1.1에서 1.5 pu이고 이 모델은 1.2 pu이니 두 배 이상 초과입니다. 그래서 어떤 방식으로든 막아야 합니다. 다음 장에서 세 가지 방법을 비교합니다.</aside>
+</section>
