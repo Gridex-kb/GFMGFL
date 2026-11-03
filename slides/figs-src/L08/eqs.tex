@@ -1,0 +1,21 @@
+% 8강 수식
+%% E01-SCR
+\mathrm{SCR} = \frac{S_{sc}}{S_{rated}} \;\Rightarrow\; Z_g = \frac{1}{\mathrm{SCR}}\ \mathrm{pu}\qquad(X_g = 1/\mathrm{SCR},\ X/R = 10)
+%% E02-WSCR
+\mathrm{WSCR} = \frac{\sum_i S_{sc,i}\,P_i}{\bigl(\sum_i P_i\bigr)^2}
+%% E03-PCC
+v_{pcc} = e_g + Z_g\, i
+%% E04-유효이득
+v_{pcc} = V_g e^{-j\delta} + jX_g(i_d + j i_q) \;\Rightarrow\; v_q = -V_g\sin\delta + X_g\, i_d,\qquad \frac{\partial v_q}{\partial \delta} = -V_g\cos\delta
+%% E05-음저항
+\Delta i_q \approx \frac{I_d}{V}\,H_{pll}(s)\,\Delta v_q \;\Rightarrow\; R_{eq} \approx -\frac{V}{I_d} = -\frac{V^2}{P}\quad(\text{PLL 대역 안})
+%% E06-Ks
+K_s = \frac{EV}{X_v + X_g}\cos\delta_0 \;\xrightarrow{X_g \to 0}\; \frac{EV}{X_v}\cos\delta_0
+%% E07-감쇠비
+\zeta = \frac{D}{4H\,\omega_n} = \frac{D}{4H}\sqrt{\frac{2H}{\omega_b K_s}}:\quad X_v = 0.3:\ \zeta_{\mathrm{SCR}\,3} \approx 0.36,\ \zeta_{\mathrm{SCR}\,20} \approx 0.27;\quad X_v = 0.03:\ \zeta_{\mathrm{SCR}\,20} \approx 0.13
+%% E08-측대파
+\text{dq에서 } f_{osc} \;\Rightarrow\; \text{상전류에서 } f_0 \pm f_{osc}
+%% E09-예제1
+|Z_g| = \tfrac{1}{1.5} \approx 0.667,\quad X_g \approx 0.663,\ R_g \approx 0.066\ \mathrm{pu};\qquad \text{같은 용량 한 대 더: } \mathrm{SCR} = \tfrac{1.5}{2} = 0.75
+%% E10-예제3
+K_s \approx \frac{1}{X_v + 1/\mathrm{SCR}}:\ \frac{1}{0.35} \approx 2.9 \;\to\; \frac{1}{0.08} = 12.5\ (4.4\text{배}),\qquad \zeta \propto \frac{1}{\sqrt{K_s}} \;\Rightarrow\; 0.27 \to 0.13

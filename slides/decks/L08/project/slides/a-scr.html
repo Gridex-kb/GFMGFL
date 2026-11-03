@@ -1,0 +1,28 @@
+<section id="a-scr" data-transition="fade" style="background:#fbfcfd;color:#45546b;font-family:'Pretendard Variable', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<div style="position:absolute;left:0;top:0;width:1920px;height:12px;background:linear-gradient(90deg, #2463c8 0%, #8bc22c 100%)"></div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;color:#3aa150">답</p>
+<h2 style="font-size:56px;font-weight:800;line-height:1.15;letter-spacing:-1px;color:#013364">B만 진동한다: 빠른 PLL이 90 Hz 지속 진동에 빠진다</h2>
+</div>
+<div style="display:flex;gap:28px">
+<div style="flex:1;background:#ffffff;border:2px solid #dae3ec;border-radius:20px;padding:36px;display:flex;flex-direction:column;gap:14px">
+<p style="font-size:56px;font-weight:800;color:#eb6834;line-height:1">안정</p>
+<h3 style="font-size:34px;font-weight:800;color:#013364">GFL 20 Hz</h3>
+<p style="font-size:28px;line-height:1.45">짧은 과도 후 정착. 그러나 SCR 1.3이면 무너진다</p>
+</div>
+<div style="flex:1;background:#013364;border-radius:20px;padding:36px;display:flex;flex-direction:column;gap:14px">
+<p style="font-size:56px;font-weight:800;color:#eb6834;line-height:1">불안정</p>
+<h3 style="font-size:34px;font-weight:800;color:#ffffff">GFL 50 Hz</h3>
+<p style="font-size:28px;line-height:1.45;color:#c6d4e6">약 90 Hz, 진폭 0.04 pu의 지속 진동. PLL·전류 루프·계통 임피던스의 상호작용</p>
+</div>
+<div style="flex:1;background:#ffffff;border:2px solid #dae3ec;border-radius:20px;padding:36px;display:flex;flex-direction:column;gap:14px">
+<p style="font-size:56px;font-weight:800;color:#2463c8;line-height:1">안정</p>
+<h3 style="font-size:34px;font-weight:800;color:#013364">GFM</h3>
+<p style="font-size:28px;line-height:1.45">전력이 순간 크게 줄었다가 VSM 스윙으로 회복. SCR 1.2까지 안정</p>
+</div>
+</div>
+<p style="font-size:30px;line-height:1.45">“빠를수록 좋다”가 아니었던 6강의 PLL과, PLL이 없는 7강의 GFM이 <b style="color:#013364">같은 사건</b>에서 갈린다</p>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#7d8ca2">8강 · 약계통과 제어 상호작용</p>
+<p style="position:absolute;left:1592px;bottom:64px;width:200px;font-size:24px;color:#7d8ca2;text-align:right">5 / 28</p>
+<aside>정답은 B만입니다. PLL 50 Hz GFL은 약 90 Hz, 진폭 0.04 pu의 지속 진동에 빠집니다. PLL과 전류 루프와 계통 임피던스가 상호작용한 결과입니다. PLL 20 Hz GFL은 짧은 과도 후 정착합니다. 하지만 SCR을 1.3까지 더 낮추면 이것도 무너집니다. GFM은 임피던스가 커진 만큼 전력이 순간 크게 줄었다가 VSM 동특성으로 회복하고, SCR 1.2까지 안정합니다. 6강에서 PLL은 빠를수록 좋은 것이 아니라고 했고, 7강에서 GFM은 PLL이 없다고 했습니다. 그 둘이 같은 사건에서 이렇게 갈립니다. 오늘은 왜 그런지를 메커니즘으로 설명합니다.</aside>
+</section>

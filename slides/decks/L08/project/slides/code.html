@@ -1,0 +1,23 @@
+<section id="code" data-transition="fade" style="background:#fbfcfd;color:#45546b;font-family:'Pretendard Variable', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:32px">
+<div style="position:absolute;left:0;top:0;width:1920px;height:12px;background:linear-gradient(90deg, #2463c8 0%, #8bc22c 100%)"></div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;color:#037673">4 · 예제와 실습 · Python</p>
+<h2 style="font-size:56px;font-weight:800;line-height:1.15;letter-spacing:-1px;color:#013364">선로 트립을 돌려 진동 여부와 주파수를 판정한다</h2>
+</div>
+<div style="display:flex;gap:36px;align-items:stretch">
+<div style="flex:1;background:#0f233f;border-radius:20px;padding:36px 40px">
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:26px;line-height:1.6;color:#e6edf5">def scr_step(mode, f_pll, scr_after):<br>&#160;&#160;&#160;&#160;p = Params(converter="average", scr=5.0, P_ref=0.8,<br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;f_pll=f_pll, gfl_frt_enter=0.5)  <span style="color:#8fa6c4"># FRT 순환 배제</span><br>&#160;&#160;&#160;&#160;sc = Scenario(t_end=1.0, scr=lambda t: 5.0 if t &lt; 0.2 else scr_after)<br>&#160;&#160;&#160;&#160;r = simulate(mode, p, sc, dt=1e-5, x0=steady_state(mode, p, dt=1e-5))<br>&#160;&#160;&#160;&#160;return oscillation_check(r["t"], r["P"], 0.4)  <span style="color:#8fa6c4"># 5~300 Hz 진동, 저주파 스윙</span><br><br>for mode, f_pll, scr in [("GFL",20,1.5), ("GFL",50,1.5), ("GFL",50,2.0),<br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;("GFL",10,1.3), ("GFM",20,1.3)]:<br>&#160;&#160;&#160;&#160;ok, info = scr_step(mode, f_pll, scr)  <span style="color:#f2a07b"># scr 을 1.4, 1.3 으로 낮춰 보기</span></p>
+</div>
+<div style="width:560px;display:flex;flex-direction:column;gap:20px">
+<div style="background:#013364;border-radius:20px;padding:28px 32px;display:flex;flex-direction:column;gap:8px">
+<p style="font-size:24px;font-weight:700;color:#b9f179">출력 (--emt)</p>
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:23px;line-height:1.6;color:#ffffff">GFL 20 Hz →1.5: 안정<br>GFL 50 Hz →1.5: 불안정 0.043 @ 90 Hz<br>GFL 50 Hz →2.0: 안정<br>GFL 10 Hz →1.3: 불안정 0.478 @ 10 Hz<br>GFM       →1.3: 안정 [OK]</p>
+</div>
+<p style="font-size:26px;line-height:1.45"><b style="color:#013364">해 보기</b>  20 Hz GFL은 SCR 몇에서 무너지나? 그때 진동은 어느 유형?</p>
+<p style="font-size:24px;line-height:1.45;color:#037673"><b>실습 파일</b> practice/lec08_weak_grid.py<br>--plot · --emt · --answers</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#7d8ca2">8강 · 약계통과 제어 상호작용</p>
+<p style="position:absolute;left:1592px;bottom:64px;width:200px;font-size:24px;color:#7d8ca2;text-align:right">26 / 28</p>
+<aside>실습 파일입니다. practice 폴더의 lec08 파일에 실습이 다섯 개 있습니다. 1번은 SCR과 계통 임피던스, 2번은 PLL 유효 이득 코사인 δ와 평형점이 사라지는 SCR, 3번은 음저항 크기, 4번은 GFM 감쇠비 대 SCR 곡선입니다. 5번이 --emt 옵션으로 평균값 모델의 선로 트립을 돌리는 실습입니다. 화면의 함수처럼 SCR 5에서 정상상태를 만들고 0.2초에 SCR을 낮춘 뒤, 모델의 oscillation_check로 외란 0.2초 뒤 구간을 반으로 나눠 5에서 300 Hz 진동과 저주파 스윙이 줄어드는지 판정합니다. 다섯 경우를 돌리면 GFL 20 Hz는 1.5에서 안정, 50 Hz는 1.5에서 90 Hz로 불안정하지만 2.0에서는 안정, 10 Hz는 1.3에서 10 Hz 대진폭으로 불안정, GFM은 1.3에서 안정입니다. 약 2분 걸립니다. 해 볼 것으로, 20 Hz GFL의 SCR을 1.5, 1.4, 1.3으로 낮추며 어디서 무너지는지, 그때 진동 주파수가 어느 유형인지 찾아보세요. 평균값 모델의 경계는 최종값이 아니라는 점을 기억하세요.</aside>
+</section>

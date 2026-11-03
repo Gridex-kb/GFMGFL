@@ -1,0 +1,26 @@
+<section id="damping" data-transition="fade" style="background:#fbfcfd;color:#45546b;font-family:'Pretendard Variable', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:24px">
+<div style="position:absolute;left:0;top:0;width:1920px;height:12px;background:linear-gradient(90deg, #2463c8 0%, #8bc22c 100%)"></div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;color:#037673">3 · GFM의 반대쪽 약점 · 칠판 유도</p>
+<h2 style="font-size:56px;font-weight:800;line-height:1.15;letter-spacing:-1px;color:#013364">감쇠비 vs SCR: X<span style="color:#2463c8">v</span> 0.3이면 ζ 0.36 → 0.27에서 멈춘다</h2>
+</div>
+<div style="display:flex;gap:40px;align-items:center">
+<img src="/_blob/ab23e8ac43bcb0c7c5b4c3277135eae3" alt="H 4 s, D 50의 선형 근사. 왼쪽: 감쇠비 ζ vs SCR, Xv 0.3은 SCR 3에서 0.36, SCR 20에서 0.27로 하한에 수렴, Xv 0.1과 0.03은 더 낮게 떨어진다(0.03은 SCR 20에서 0.13). 오른쪽: 고유주파수 vs SCR, Xv가 작을수록 높아진다" style="width:1000px;height:564px;object-fit:contain;background:#ffffff;border:2px solid #dae3ec;border-radius:16px">
+<div style="flex:1;display:flex;flex-direction:column;gap:16px">
+<div style="background:#ffffff;border-left:8px solid #2463c8;border-radius:8px;padding:14px 22px">
+<img src="/_blob/db4d8e556c759e79d7291d5b2721b66f" alt="ζ = D/(4H ωn) = (D/4H)√(2H/(ωb Ks)): Xv 0.3이면 SCR 3에서 0.36, SCR 20에서 0.27; Xv 0.03이면 SCR 20에서 0.13" style="width:560px;height:35px;object-fit:contain">
+</div>
+<div style="background:#ffffff;border-left:8px solid #eb6834;border-radius:8px;padding:14px 22px">
+<h3 style="font-size:28px;font-weight:800;color:#013364">7강 식에 K<span style="color:#2463c8">s</span> ≈ 1/(X<span style="color:#2463c8">v</span> + 1/SCR)</h3>
+<p style="font-size:25px;line-height:1.45">SCR ↑ → K<b>s</b> ↑ → ω<b>n</b> ↑, ζ ↓. X<b>v</b>가 클수록 하락이 일찍 멈춘다</p>
+</div>
+<div style="background:#ffffff;border-left:8px solid #7d8ca2;border-radius:8px;padding:14px 22px">
+<h3 style="font-size:28px;font-weight:800;color:#013364">근사의 한계</h3>
+<p style="font-size:25px;line-height:1.45">전력 필터·전압 제어·내부 루프를 무시. 절대값보다 <b>경향</b>을 본다. 가상 임피던스와 전력 필터 설계로 보완</p>
+</div>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#7d8ca2">8강 · 약계통과 제어 상호작용</p>
+<p style="position:absolute;left:1592px;bottom:64px;width:200px;font-size:24px;color:#7d8ca2;text-align:right">21 / 28</p>
+<aside>7강의 선형화 결과에 K_s ≈ 1 나누기 X_v 더하기 1/SCR을 넣습니다. E와 V는 1, δ는 작다고 봅니다. 감쇠비는 D 나누기 4H 곱하기 루트 2H 나누기 ω_b K_s입니다. H 4초, D 50이면 X_v 0.3에서 SCR 3일 때 0.36, SCR 20일 때 0.27입니다. 왼쪽 그림의 파란 실선입니다. SCR이 커질수록 떨어지지만 X_v만 남는 값에 수렴합니다. X_v를 0.1, 0.03으로 줄이면 청록 점선, 주황 점선처럼 더 낮게 떨어져서 0.03이면 SCR 20에서 0.13입니다. 오른쪽은 고유주파수로, X_v가 작을수록 높아집니다. X_v가 클수록 감쇠비 하락이 일찍 멈추는 것이 가상 리액턴스의 하한 역할입니다. 다만 이 근사는 전력 측정 필터, 전압 제어, 내부 루프를 무시한 것이라 절대값보다 경향을 봅니다. 실제로는 가상 임피던스와 전력 필터 설계로 함께 보완합니다. GFM이 계통 강도와 무관하게 안정하다는 말은 그래서 오해입니다.</aside>
+</section>

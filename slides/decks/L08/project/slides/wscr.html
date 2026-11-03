@@ -1,0 +1,29 @@
+<section id="wscr" data-transition="fade" style="background:#fbfcfd;color:#45546b;font-family:'Pretendard Variable', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:36px">
+<div style="position:absolute;left:0;top:0;width:1920px;height:12px;background:linear-gradient(90deg, #2463c8 0%, #8bc22c 100%)"></div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;color:#037673">1 · SCR과 GFL의 약점</p>
+<h2 style="font-size:56px;font-weight:800;line-height:1.15;letter-spacing:-1px;color:#013364">IBR이 모이면 각자의 SCR은 충분해 보여도 서로를 흔든다</h2>
+</div>
+<div style="display:flex;gap:40px;align-items:center">
+<div style="background:#ffffff;border-left:8px solid #2463c8;border-radius:8px;padding:24px 32px">
+<img src="/_blob/02fcb581637e7ff8ec4c85c72064d75e" alt="WSCR = Σ S_sc,i P_i / (Σ P_i)²" style="width:454px;height:144px;object-fit:contain">
+</div>
+<table style="font-size:28px;color:#45546b;flex:1">
+<tr><th style="width:24%">지표</th><th style="width:76%">요지</th></tr>
+<tr><td><b>WSCR</b></td><td>묶은 IBR들의 단락용량을 출력으로 가중 (ERCOT 파넨들 지역에서 도입)</td></tr>
+<tr><td><b>CSCR</b></td><td>묶은 IBR을 한 모선으로 보고 단락용량 계산</td></tr>
+<tr><td><b>ESCR</b></td><td>다른 설비(커패시터, 다른 IBR)의 영향을 반영</td></tr>
+</table>
+</div>
+<div style="display:flex;gap:24px">
+<div style="flex:1;background:#e9f0f6;border-radius:16px;padding:22px 28px">
+<p style="font-size:27px;line-height:1.45"><b style="color:#013364">오해</b> “SCR 3 이상이면 안전하다” — 전체 IBR 정격 기준이어야 하고, 주변 IBR이 많으면 보정해야 한다</p>
+</div>
+<div style="flex:1;background:#e9f0f6;border-radius:16px;padding:22px 28px">
+<p style="font-size:27px;line-height:1.45">같은 SCR이라도 <b style="color:#013364">PLL 대역폭, 출력, 내부 루프 지연</b>에 따라 경계가 달라진다 (2부)</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#7d8ca2">8강 · 약계통과 제어 상호작용</p>
+<p style="position:absolute;left:1592px;bottom:64px;width:200px;font-size:24px;color:#7d8ca2;text-align:right">8 / 28</p>
+<aside>여러 인버터 기반 자원이 전기적으로 가까이 모이면, 각자의 SCR은 충분해 보여도 실제로는 서로의 PCC 전압을 흔듭니다. 그래서 보정 지표를 씁니다. 가중 단락비 WSCR은 묶은 IBR들의 단락용량을 각 출력으로 가중한 것으로, 텍사스 ERCOT의 파넨들 지역에서 풍력이 몰리면서 도입됐습니다. 복합 단락비 CSCR은 묶은 IBR을 한 모선으로 보고 단락용량을 계산하고, 유효 단락비 ESCR은 커패시터나 다른 IBR 같은 설비의 영향을 반영합니다. 흔한 오해가 SCR 3 이상이면 안전하다는 것입니다. SCR은 연계점 전체 IBR 정격 기준이어야 하고, 주변에 IBR이 많으면 이런 지표로 보정해야 합니다. 그리고 2부에서 보겠지만 같은 SCR이라도 PLL 대역폭, 출력, 내부 루프 지연에 따라 불안정 경계가 달라집니다.</aside>
+</section>

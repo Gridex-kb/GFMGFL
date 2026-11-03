@@ -1,0 +1,30 @@
+<section id="scr" data-transition="fade" style="background:#fbfcfd;color:#45546b;font-family:'Pretendard Variable', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:36px">
+<div style="position:absolute;left:0;top:0;width:1920px;height:12px;background:linear-gradient(90deg, #2463c8 0%, #8bc22c 100%)"></div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;color:#037673">1 · SCR과 GFL의 약점 · 칠판 유도</p>
+<h2 style="font-size:56px;font-weight:800;line-height:1.15;letter-spacing:-1px;color:#013364">SCR: 인버터 정격 기준 pu에서 Z<span style="color:#2463c8">g</span> = 1/SCR</h2>
+</div>
+<div style="background:#ffffff;border-left:8px solid #2463c8;border-radius:8px;padding:24px 32px;align-self:flex-start">
+<img src="/_blob/41fe85c4db2806b79c028005ca011010" alt="SCR = S_sc/S_rated ⇒ Z_g = 1/SCR pu (X_g = 1/SCR, X/R = 10)" style="width:1357px;height:118px;object-fit:contain">
+</div>
+<div style="display:flex;gap:24px">
+<div style="flex:1;background:#ffffff;border:2px solid #dae3ec;border-radius:20px;padding:32px;display:flex;flex-direction:column;gap:10px">
+<p style="font-size:26px;font-weight:700;color:#2463c8">유도</p>
+<h3 style="font-size:32px;font-weight:800;color:#013364">S<span style="color:#2463c8">sc</span> = V²/Z<span style="color:#2463c8">g</span></h3>
+<p style="font-size:27px;line-height:1.45">전압 기준 정격(V = 1), 전력 기준 인버터 정격이면 S<b>sc,pu</b> = SCR → 1/Z<b>g,pu</b> = SCR</p>
+</div>
+<div style="flex:1;background:#ffffff;border:2px solid #dae3ec;border-radius:20px;padding:32px;display:flex;flex-direction:column;gap:10px">
+<p style="font-size:26px;font-weight:700;color:#2463c8">관례</p>
+<h3 style="font-size:32px;font-weight:800;color:#013364">&gt; 3 강 · 2~3 약 · &lt; 2 매우 약</h3>
+<p style="font-size:27px;line-height:1.45">모델: 테브난 X<b>g</b> = 1/SCR, X/R = 10. SCR 3 → 0.33, SCR 1.5 → 0.67 pu</p>
+</div>
+<div style="flex:1;background:#013364;border-radius:20px;padding:32px;display:flex;flex-direction:column;gap:10px">
+<p style="font-size:26px;font-weight:700;color:#b9f179">뜻</p>
+<h3 style="font-size:32px;font-weight:800;color:#ffffff">인버터가 커질수록 계통이 약해진다</h3>
+<p style="font-size:27px;line-height:1.45;color:#c6d4e6">같은 계통에 같은 용량 한 대 더 → SCR 절반. 연계점에 모인 <b style="color:#ffffff">전체</b> IBR 정격으로 나눠야</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#7d8ca2">8강 · 약계통과 제어 상호작용</p>
+<p style="position:absolute;left:1592px;bottom:64px;width:200px;font-size:24px;color:#7d8ca2;text-align:right">7 / 28</p>
+<aside>단락비 SCR은 연계점의 단락용량을 인버터 정격으로 나눈 값입니다. 칠판에서 간단히 유도합니다. 단락용량은 V 제곱 나누기 Z_g입니다. 전압 기준을 정격으로, 전력 기준을 인버터 정격으로 잡으면 V는 1 pu이고 단락용량의 pu 값이 곧 SCR이니, 1 나누기 Z_g가 SCR, 즉 Z_g는 1 나누기 SCR입니다. 이 강좌 모델은 테브난 등가 X_g = 1/SCR, X/R = 10을 씁니다. SCR 3이면 0.33 pu, 1.5면 0.67 pu입니다. 관례적으로 3 이상이면 강계통, 2에서 3이면 약계통, 2 미만이면 매우 약한 계통이라 합니다. 이 식의 뜻을 잘 보세요. 분모가 인버터 정격이니 인버터가 커질수록 같은 계통이 약해집니다. 같은 연계점에 같은 용량의 인버터를 한 대 더 붙이면 SCR은 절반이 됩니다. 그래서 SCR은 인버터 한 대가 아니라 연계점에 모인 전체 IBR 정격으로 나눠야 의미가 있습니다.</aside>
+</section>

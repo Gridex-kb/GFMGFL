@@ -1,0 +1,25 @@
+<section id="inner" data-transition="fade" style="background:#fbfcfd;color:#45546b;font-family:'Pretendard Variable', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<div style="position:absolute;left:0;top:0;width:1920px;height:12px;background:linear-gradient(90deg, #2463c8 0%, #8bc22c 100%)"></div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;color:#037673">3 · GFM의 반대쪽 약점 · 프로젝트 사례</p>
+<h2 style="font-size:56px;font-weight:800;line-height:1.15;letter-spacing:-1px;color:#013364">외부 루프만 범인이 아니다: 내부 루프가 둘 다 흔든 두 사례</h2>
+</div>
+<div style="display:flex;gap:28px">
+<div style="flex:1;background:#ffffff;border:2px solid #dae3ec;border-radius:20px;padding:36px;display:flex;flex-direction:column;gap:14px">
+<p style="font-size:26px;font-weight:700;color:#eb6834">사례 1 · 지연 + 전압 피드포워드 (5강)</p>
+<h3 style="font-size:34px;font-weight:800;color:#013364">GFL·GFM 모두 SCR 2에서 불안정</h3>
+<p style="font-size:28px;line-height:1.5">1.5샘플 지연에 PCC 전압을 순시 피드포워드하자 100~200 Hz(현재 모델 560 Hz)로 떨었다. PLL이 없는 GFM도. 피드포워드를 빼자 해결 → 기본값 ff_gain = 0</p>
+</div>
+<div style="flex:1;background:#ffffff;border:2px solid #dae3ec;border-radius:20px;padding:36px;display:flex;flex-direction:column;gap:14px">
+<p style="font-size:26px;font-weight:700;color:#eb6834">사례 2 · GFM과 LCL 공진 (3강)</p>
+<h3 style="font-size:34px;font-weight:800;color:#013364">R<span style="color:#2463c8">d</span> 1 pu면 약 500 Hz 불안정</h3>
+<p style="font-size:28px;line-height:1.5">가상 인덕턴스에 순시 PCC 전압을 넣으면 커패시터 댐핑이 부족할 때 약 500 Hz로 떨었다. R<b>d</b> 2 pu로 해결. GFM도 고주파 상호작용에서 자유롭지 않다</p>
+</div>
+</div>
+<div style="background:#013364;border-radius:20px;padding:32px 40px">
+<p style="font-size:30px;line-height:1.5;color:#ffffff">평균값 모델은 지연을 1차로 근사해 이런 내부 루프 불안정을 잘 재현하지 못한다. 수백 Hz 이상은 <b style="color:#b9f179">스위칭·샘플링을 모의한 모델</b>로 확인한다 (4강 · 11강)</p>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#7d8ca2">8강 · 약계통과 제어 상호작용</p>
+<p style="position:absolute;left:1592px;bottom:64px;width:200px;font-size:24px;color:#7d8ca2;text-align:right">22 / 28</p>
+<aside>외부 루프, 즉 PLL이나 VSM만 범인이 아닙니다. 이 모델의 스위칭 버전을 튜닝하면서 두 가지를 관찰했습니다. 사례 1은 5강에서 본 것입니다. 1.5샘플의 계산·PWM 지연 상태에서 PCC 전압을 순시 피드포워드하면 GFL과 GFM 모두 SCR 2 근처에서 100에서 200 Hz, 현재 모델로는 560 Hz로 불안정해졌습니다. PLL이 없는 GFM도 흔들렸습니다. 피드포워드를 빼자 해결되어 모델 기본값이 0입니다. 사례 2는 3강의 LCL 공진입니다. 가상 인덕턴스에 순시 PCC 전압을 넣으면 커패시터 댐핑 저항이 1 pu로 부족할 때 약 500 Hz로 불안정했고, 2 pu로 올려 해결했습니다. GFM도 고주파 상호작용에서 자유롭지 않습니다. 중요한 것은 평균값 모델이 지연을 1차로 근사해서 이런 내부 루프 불안정을 잘 재현하지 못한다는 점입니다. 수백 Hz 이상의 상호작용은 스위칭과 샘플링을 모의한 모델로 확인해야 하고, 11강 EMT 실습에서 다룹니다.</aside>
+</section>

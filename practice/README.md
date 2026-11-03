@@ -11,6 +11,7 @@
 | 5강 전류 제어 | `lec05_current_control.py` | Kp·Ki 공식, 교차 815 Hz·위상여유 34.9°, 계단 응답(지연·디커플링), anti-windup, (EMT) 피드포워드 σ(P) 0.004/0.117/0.004 |
 | 6강 GFL: PLL로 따라가기 | `lec06_gfl_pll.py` | PLL 이득, −20° 점프 직후 주파수·54 Hz 제한, P/Q → 전류 지령, FRT 여유·ΔV, (EMT) 위상 점프 PLL 10/20/50 Hz·FRT 모드 순환 |
 | 7강 GFM: 위상을 만들기 | `lec07_gfm_vsm.py` | P–δ·동기화 토크·페이저 0.48, 스윙 모드 1.34 Hz·ζ 0.37, 드룹 등가, 가상 인덕턴스 16 ms, (EMT) 위상 점프 GFM +0.64 / GFL +0.007, 주파수 계단 H 1/4/8 |
+| 8강 약계통과 제어 상호작용 | `lec08_weak_grid.py` | Zg = 1/SCR, PLL 유효 이득 cos δ, 음저항 −V²/P, GFM ζ vs SCR, (EMT) 선로 트립 판정 GFL 10/20/50 Hz·GFM (90 Hz 상호작용형, 10 Hz 동기화 상실형) |
 
 ## 실행
 

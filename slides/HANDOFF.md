@@ -48,8 +48,8 @@
 | 5 | C07 | 전류 제어 | 완료 (29장) | https://claude.ai/artifact/51RKpHpVQLEsiGdpo3kbC6 |
 | 6 | C08 | GFL: PLL로 따라가기 | 완료 (29장) | https://claude.ai/artifact/Wo9iBotEeCnNRCn85mqMUf |
 | 7 | C09 | GFM: 위상을 만들기 | 완료 (29장) | https://claude.ai/artifact/XMojcAmfAh8qbCC4zxSXFw |
-| 8 | C10 | 약계통과 제어 상호작용 (GFM vs GFL) | **다음** · 필수 | — |
-| 9 | C11 | 전류 제한과 고장 (GFM vs GFL) | 예정 · **필수** | — |
+| 8 | C10 | 약계통과 제어 상호작용 (GFM vs GFL) | 완료 (28장) | https://claude.ai/artifact/GAKAsMUvmpBb1fWr5w9YLb |
+| 9 | C11 | 전류 제한과 고장 (GFM vs GFL) | **다음** · 필수 | — |
 | 10 | C12 | 표준 시험으로 비교 (GFM 12/14, GFL 3/14) | 예정 · **필수** | — |
 | 11 | C13 | EMT 모델링 실습 | 이후 | — |
 | 12 | C04 | 변조 SPWM·SVPWM (맨 마지막) | 이후 | — |
@@ -175,6 +175,12 @@ python3 sheet.py ../lecture-figs/L05 <scratchpad>/sheet.png "M*.png"   # 밀착 
 - 그림 `slides/figs-src/L07/G01~G07`(GFM 구조, P–δ, VSM 블록, 위상 점프 GFM/GFL EMT, 등가 회로, 주파수 계단 H 1/4/8, 동기화 루프), 수식 `E01~E12`, `_common.js`에 P–δ·Ks 계산. 데이터 `_data.py`(평균값, 약 90 s).
 - 확인한 수치: 위상 점프 GFM +0.636(10 ms)/+0.498(10~30 ms 평균), 페이저 0.482, GFL +0.007; 주파수 계단 정상상태 +0.169(드룹 0.167), 최대 0.184/0.287/0.397 (H 1/4/8). 교재와 일치.
 - 덱 29장, 실습 `practice/lec07_gfm_vsm.py` 전부 `[OK]`.
+
+## 7d. 8강(약계통, C10) 완료 메모
+
+- 그림 `slides/figs-src/L08/W01~W06`(PLL 되먹임 루프, 유효 이득 cos δ, SCR 급변 EMT, 진동 두 유형, 안정도 맵(summary.md 값), GFM 감쇠비 vs SCR), 수식 `E01~E10`. `_common.js`에 `zetaOf`, `pllGain`. 데이터 `_data.py`(평균값, 약 90 s).
+- 확인한 수치(평균값 모델): GFL 50 Hz → SCR 1.5 불안정 0.043 pu @ 90 Hz, GFL 10 Hz → 1.3 불안정 0.478 @ 10 Hz, GFL 20 Hz → 1.5 안정, GFL 50 → 2.0 안정, GFM → 1.3 안정. 교재 실습 표와 일치. 스위칭 안정도 맵은 `simulation/emt/results/summary.md`에서 가져왔다.
+- 덱 28장. `_common.js`에서 전역 이름 `D`를 쓰면 그림 파일의 `D = DATA`와 충돌한다(`H_VSM`, `D_VSM`으로 바꿈).
 
 ## 8. 6강 이후 메모
 

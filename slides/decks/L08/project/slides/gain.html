@@ -1,0 +1,26 @@
+<section id="gain" data-transition="fade" style="background:#fbfcfd;color:#45546b;font-family:'Pretendard Variable', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:24px">
+<div style="position:absolute;left:0;top:0;width:1920px;height:12px;background:linear-gradient(90deg, #2463c8 0%, #8bc22c 100%)"></div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;color:#037673">1 · SCR과 GFL의 약점 · 칠판 유도</p>
+<h2 style="font-size:56px;font-weight:800;line-height:1.15;letter-spacing:-1px;color:#013364">효과 ①: 운전점이 한계에 가까워지고 PLL 이득이 cos δ로 준다</h2>
+</div>
+<div style="display:flex;gap:40px;align-items:center">
+<img src="/_blob/ffdd1693b0cf83ef638d4b826f423eda" alt="i_d = 0.8 pu, V_g = 1에서 SCR에 따른 PLL 유효 이득 cos δ(주황)와 운전점 각 δ/90°(파랑 점선). SCR 5에서 0.99, 2에서 0.92, 1.5에서 0.85(δ 32°), 1에서 0.60, SCR 0.8에서 δ = 90°로 평형점 소멸" style="width:1000px;height:564px;object-fit:contain;background:#ffffff;border:2px solid #dae3ec;border-radius:16px">
+<div style="flex:1;display:flex;flex-direction:column;gap:16px">
+<div style="background:#ffffff;border-left:8px solid #2463c8;border-radius:8px;padding:14px 22px">
+<img src="/_blob/b64d55b2c604d36550736d93fb20b32f" alt="v_pcc = V_g e^(−jδ) + jX_g(i_d + j i_q) ⇒ v_q = −V_g sin δ + X_g i_d, ∂v_q/∂δ = −V_g cos δ" style="width:560px;height:38px;object-fit:contain">
+</div>
+<div style="background:#ffffff;border-left:8px solid #eb6834;border-radius:8px;padding:14px 22px">
+<h3 style="font-size:28px;font-weight:800;color:#013364">v<span style="color:#2463c8">q</span> → 0이면 sin δ = X<span style="color:#2463c8">g</span>i<span style="color:#2463c8">d</span>/V<span style="color:#2463c8">g</span></h3>
+<p style="font-size:25px;line-height:1.45">같은 출력에서 PCC와 계통 사이 각 δ가 커진다. PLL 루프 이득은 설계값의 cos δ배</p>
+</div>
+<div style="background:#ffffff;border-left:8px solid #7d8ca2;border-radius:8px;padding:14px 22px">
+<h3 style="font-size:28px;font-weight:800;color:#013364">X<span style="color:#2463c8">g</span>i<span style="color:#2463c8">d</span> → V<span style="color:#2463c8">g</span>면 cos δ → 0</h3>
+<p style="font-size:25px;line-height:1.45">평형점이 사라져 PLL이 미끄러진다(동기화 상실). 실제 경계는 전압 제어·전류 제한 때문에 더 빨리 온다</p>
+</div>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#7d8ca2">8강 · 약계통과 제어 상호작용</p>
+<p style="position:absolute;left:1592px;bottom:64px;width:200px;font-size:24px;color:#7d8ca2;text-align:right">10 / 28</p>
+<aside>첫 번째 효과를 칠판에서 유도합니다. PLL 좌표를 PCC 전압에 맞추고, 계통 전압을 V_g e의 마이너스 jδ, 저항은 무시하면 PCC 전압은 그것에 jX_g 곱하기 전류를 더한 것입니다. q축 성분을 꺼내면 v_q는 마이너스 V_g 사인 δ 더하기 X_g i_d입니다. PLL이 v_q를 0으로 맞추면 사인 δ가 X_g i_d 나누기 V_g입니다. 같은 출력이라도 계통이 약해 X_g가 크면 PCC 전압과 계통 전압 사이 각 δ가 커집니다. 그리고 각이 조금 어긋날 때 v_q의 변화율은 마이너스 V_g 코사인 δ이므로, PLL 루프 이득이 6강에서 설계한 값의 코사인 δ배가 됩니다. 그림은 0.8 pu 출력에서 SCR에 따른 코사인 δ입니다. SCR 5에서 0.99, 2에서 0.92, 1.5에서 0.85, 1에서 0.60으로 떨어지고, SCR 0.8이면 X_g i_d가 V_g와 같아져 δ가 90도, 평형점이 사라집니다. PLL이 미끄러지는 동기화 상실입니다. 실제 경계는 전압 제어와 전류 제한까지 얽혀서 이 정적 식보다 빨리 옵니다.</aside>
+</section>

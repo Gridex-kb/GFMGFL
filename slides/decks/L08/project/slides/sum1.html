@@ -1,0 +1,17 @@
+<section id="sum1" data-transition="fade" style="background:#fbfcfd;color:#45546b;font-family:'Pretendard Variable', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<div style="position:absolute;left:0;top:0;width:1920px;height:12px;background:linear-gradient(90deg, #2463c8 0%, #8bc22c 100%)"></div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;color:#037673">1 · SCR과 GFL의 약점</p>
+<h2 style="font-size:56px;font-weight:800;line-height:1.15;letter-spacing:-1px;color:#013364">1부 정리</h2>
+</div>
+<div style="border:3px solid #013364;border-radius:20px;padding:48px;display:flex;flex-direction:column;gap:28px;background:#ffffff">
+<p style="font-size:36px;line-height:1.45;color:#013364"><b style="color:#2463c8">①</b>  Z<span style="color:#2463c8">g</span> = 1/SCR (인버터 정격 기준). 인버터가 모이면 <b>전체</b> 정격으로, WSCR 등으로 보정</p>
+<p style="font-size:36px;line-height:1.45;color:#013364"><b style="color:#2463c8">②</b>  v<span style="color:#2463c8">pcc</span> = e<span style="color:#2463c8">g</span> + Z<span style="color:#2463c8">g</span>i: 약계통에서 PLL은 <b>자기 전류가 만든 위상</b>을 추종한다</p>
+<p style="font-size:36px;line-height:1.45;color:#013364"><b style="color:#2463c8">③</b>  효과 ①: sin δ = X<span style="color:#2463c8">g</span>i<span style="color:#2463c8">d</span>, PLL 이득 × cos δ → δ → 90°면 평형점 소멸</p>
+<p style="font-size:36px;line-height:1.45;color:#013364"><b style="color:#2463c8">④</b>  효과 ②: PLL 대역 안에서 <b>음저항 −V²/P</b>. P가 클수록, PLL이 빠를수록 넓다</p>
+</div>
+<p style="font-size:30px;line-height:1.45">다음: 두 효과는 각각 어떤 진동으로 나타나나? EMT로 본다</p>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#7d8ca2">8강 · 약계통과 제어 상호작용</p>
+<p style="position:absolute;left:1592px;bottom:64px;width:200px;font-size:24px;color:#7d8ca2;text-align:right">12 / 28</p>
+<aside>1부를 정리합니다. 계통 임피던스는 인버터 정격 기준 pu에서 SCR의 역수이고, 인버터가 모이면 전체 정격 기준으로 보고 WSCR 등으로 보정합니다. PCC 전압은 계통 전압에 자기 전류 곱하기 계통 임피던스를 더한 것이라, 약계통에서 PLL은 자기 전류가 만든 위상을 추종합니다. 그 효과 첫째, 운전점 각이 커져 PLL 이득이 코사인 δ로 줄고 90도에서 평형점이 사라집니다. 둘째, PLL 대역 안에서 GFL이 음저항으로 보이고, 출력이 클수록 PLL이 빠를수록 그 영역이 넓습니다. 2부에서 이 두 효과가 각각 어떤 진동으로 나타나는지 EMT로 봅니다.</aside>
+</section>

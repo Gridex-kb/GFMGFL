@@ -1,0 +1,22 @@
+{
+  "v": 4,
+  "createdOnFiles": {"v": 1, "at": "2026-11-03T05:00:00Z"},
+  "lists": "css",
+  "title": "8강 · 약계통과 제어 상호작용",
+  "cover": "cover",
+  "order": ["cover", "goals", "outline", "q-scr", "a-scr", "sec1", "scr", "wscr", "pcc", "gain", "negr", "sum1", "sec2", "trip", "types", "map", "msg", "sum2", "sec3", "gfm", "damping", "inner", "sec4", "ex1q", "ex1a", "code", "compare", "wrap"],
+  "sections": {
+    "s0": {"description": "도입 — 학습 목표, 목차, 같은 인버터가 선로 하나 끊기면 왜 진동하는지 묻는 질문", "start": "cover"},
+    "s1": {"description": "1. SCR과 GFL의 약점 — Zg = 1/SCR, WSCR, PLL이 자기 전류가 만든 전압을 추종, 유효 이득 cos δ, 음저항", "start": "sec1"},
+    "s2": {"description": "2. 진동의 두 유형과 안정도 맵 — SCR 급변 EMT, 동기화 상실형 10 Hz vs 상호작용형 90 Hz, PLL 대역폭별 경계", "start": "sec2"},
+    "s3": {"description": "3. GFM의 반대쪽 약점 — 강계통에서 감쇠 감소, 가상 리액턴스의 하한 역할, 내부 루프도 원인", "start": "sec3"},
+    "s4": {"description": "4. 예제와 실습 — SCR·Xg 손 계산, Python 실습, 계통 강도에 대한 두 방식의 약점 표", "start": "sec4"}
+  },
+  "faces": {
+    "pretendard-variable": {"family": "Pretendard Variable", "src": "project/ds/gridex/fonts/PretendardVariable.woff2"},
+    "jetbrains-mono": {"family": "JetBrains Mono", "href": "https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&display=swap"}
+  },
+  "designSystems": [
+    {"title": "GriDeX 디자인 베이스", "namespace": "gridex", "artifact": "https://claude.ai/artifact/DHKyReZeUdghmptteJUFVb", "version": null, "copiedAt": "2026-11-03T05:00:00Z"}
+  ]
+}

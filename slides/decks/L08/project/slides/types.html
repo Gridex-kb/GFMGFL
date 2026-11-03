@@ -1,0 +1,15 @@
+<section id="types" data-transition="fade" style="background:#fbfcfd;color:#45546b;font-family:'Pretendard Variable', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:24px">
+<div style="position:absolute;left:0;top:0;width:1920px;height:12px;background:linear-gradient(90deg, #2463c8 0%, #8bc22c 100%)"></div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;color:#037673">2 · 진동의 두 유형과 안정도 맵</p>
+<h2 style="font-size:56px;font-weight:800;line-height:1.15;letter-spacing:-1px;color:#013364">두 유형: 10 Hz 대진폭 동기화 상실 vs 90 Hz 소진폭 상호작용</h2>
+</div>
+<img src="/_blob/e832a19a7e22411d9fb237da2ca18bb6" alt="왼쪽 ① 동기화 상실형: PLL 10 Hz, SCR 5 → 1.3, 약 10 Hz로 전력이 −0.5~1.5 pu 사이를 출렁이며 PLL이 반복해서 미끄러진다. 오른쪽 ② 상호작용형: PLL 50 Hz, SCR 5 → 1.5, 400~460 ms 확대, 약 90 Hz 소진폭(0.75~0.85 pu) 지속 진동. 두 그림의 y축 범위가 크게 다르다" style="width:1400px;height:588px;object-fit:contain;background:#ffffff;border:2px solid #dae3ec;border-radius:16px;align-self:center">
+<table style="font-size:25px;color:#45546b">
+<tr><th style="width:16%"></th><th style="width:28%">① 동기화 상실형</th><th style="width:28%">② 상호작용형</th><th style="width:28%">공통</th></tr>
+<tr><td><b>조건 · 성격</b></td><td>느린 PLL, 극약계통, 고출력 · 대신호(평형점 상실)</td><td>빠른 PLL, 약계통 · 소신호(감쇠 음수)</td><td>dq의 f<b>osc</b>는 상전류에서 f<b>0</b> ± f<b>osc</b> 측대파로</td></tr>
+</table>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#7d8ca2">8강 · 약계통과 제어 상호작용</p>
+<p style="position:absolute;left:1592px;bottom:64px;width:200px;font-size:24px;color:#7d8ca2;text-align:right">15 / 28</p>
+<aside>1부의 두 효과가 각각 이렇게 나타납니다. 왼쪽, 동기화 상실형입니다. PLL 10 Hz, SCR을 1.3까지 떨어뜨린 경우입니다. 효과 ①, 운전점이 한계에 가까워져 평형점을 잃고, PLL이 반복해서 미끄러지며 전력이 ±1 pu 가까이 출렁입니다. 약 10 Hz, PLL 대역 근처의 대진폭 진동이고 대신호 현상입니다. 느린 PLL, 극약계통, 높은 출력에서 생깁니다. 오른쪽, 상호작용형입니다. PLL 50 Hz, SCR 1.5, 400에서 460 ms를 확대했습니다. 효과 ②, 음저항이 계통 감쇠를 이기면서 약 90 Hz의 작은 진폭 진동이 지속됩니다. 전류 루프와 지연과 결합한 소신호 현상, 감쇠가 음수인 것입니다. 두 그림의 y축 범위가 크게 다르다는 점에 주의하세요. 공통점은 dq 좌표에서 f_osc로 진동하는 신호가 상전류에서는 60 Hz 양옆 측대파로 보인다는 것입니다. 계측 파형에서 60 Hz 옆에 측대파가 보이면 이런 진동을 의심합니다.</aside>
+</section>

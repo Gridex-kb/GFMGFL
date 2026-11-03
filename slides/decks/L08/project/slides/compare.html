@@ -1,0 +1,24 @@
+<section id="compare" data-transition="fade" style="background:#fbfcfd;color:#45546b;font-family:'Pretendard Variable', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<div style="position:absolute;left:0;top:0;width:1920px;height:12px;background:linear-gradient(90deg, #2463c8 0%, #8bc22c 100%)"></div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;color:#037673">4 · 예제와 실습 · 정리</p>
+<h2 style="font-size:56px;font-weight:800;line-height:1.15;letter-spacing:-1px;color:#013364">계통 강도에 대한 두 방식의 약점은 반대 방향이다</h2>
+</div>
+<table style="font-size:30px;color:#45546b">
+<tr><th style="width:16%"></th><th style="width:42%">약계통 (SCR 낮음)</th><th style="width:42%">강계통 (SCR 높음)</th></tr>
+<tr><td><b>GFL</b></td><td>PLL 동기화 상실(~10 Hz), 상호작용 진동(75~115 Hz), FRT 순환</td><td>대체로 안정 (설계 전제)</td></tr>
+<tr><td><b>GFM</b></td><td>유리: PLL 없음, 전압원이 주변 GFL의 유효 SCR을 높인다</td><td>전력 루프 감쇠 감소 → 가상 임피던스 X<b>v</b>·전력 필터로 보완</td></tr>
+<tr style="background:#e9f0f6"><td><b>공통</b></td><td>내부 루프 지연·피드포워드, LCL 공진 (수백 Hz, 스위칭 모델로 확인)</td><td>—</td></tr>
+</table>
+<div style="display:flex;gap:24px">
+<div style="flex:1;background:#ffffff;border-left:8px solid #eb6834;border-radius:8px;padding:16px 24px">
+<p style="font-size:26px;line-height:1.45"><b style="color:#013364">GFL</b> 측정에 의존 → 측정이 자기 전류에 오염되는 약계통이 적</p>
+</div>
+<div style="flex:1;background:#ffffff;border-left:8px solid #2463c8;border-radius:8px;padding:16px 24px">
+<p style="font-size:26px;line-height:1.45"><b style="color:#013364">GFM</b> 회로가 먼저 답함 → 작은 각에 큰 전력이 흐르는 강계통이 적</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#7d8ca2">8강 · 약계통과 제어 상호작용</p>
+<p style="position:absolute;left:1592px;bottom:64px;width:200px;font-size:24px;color:#7d8ca2;text-align:right">27 / 28</p>
+<aside>오늘의 비교표입니다. 약계통에서 GFL은 PLL 동기화 상실, 상호작용 진동, 6강의 FRT 순환을 겪고, 강계통에서는 대체로 안정합니다. 그것이 설계 전제였으니까요. GFM은 약계통에서 유리합니다. PLL이 없고, 전압원이 되어 주변 GFL의 유효 SCR까지 높여 줍니다. 대신 강계통에서 전력 루프 감쇠가 줄어서 가상 임피던스와 전력 필터로 보완합니다. 공통으로 내부 루프의 지연과 피드포워드, LCL 공진은 둘 다 겪고, 수백 Hz라 스위칭 모델로 확인해야 합니다. 한 줄로 말하면, GFL은 측정에 의존하니 측정이 자기 전류에 오염되는 약계통이 적이고, GFM은 회로가 먼저 답하니 작은 각에 큰 전력이 흐르는 강계통이 적입니다. 6강과 7강의 한 문장이 여기서 다시 만납니다.</aside>
+</section>

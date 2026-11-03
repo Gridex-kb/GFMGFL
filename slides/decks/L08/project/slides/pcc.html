@@ -1,0 +1,26 @@
+<section id="pcc" data-transition="fade" style="background:#fbfcfd;color:#45546b;font-family:'Pretendard Variable', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:28px">
+<div style="position:absolute;left:0;top:0;width:1920px;height:12px;background:linear-gradient(90deg, #2463c8 0%, #8bc22c 100%)"></div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;color:#037673">1 · SCR과 GFL의 약점</p>
+<h2 style="font-size:56px;font-weight:800;line-height:1.15;letter-spacing:-1px;color:#013364">약계통에서 PLL은 자기 전류가 만든 전압을 추종한다</h2>
+</div>
+<div style="display:flex;gap:40px;align-items:center">
+<img src="/_blob/32a2038d4761c74c8ddf66d068158b9d" alt="SRF-PLL → θc → 전류 지령·전류 루프 → i = I e^(jθc) → PCC → Zg = 1/SCR → 계통 eg. PCC 전압 v_pcc = e_g + Z_g i가 PLL로 되먹임된다. θc 이동 → 전류 방향 변화 → PCC 전압 위상 변화 → PLL이 다시 따라감, 루프 이득 ∝ Zg" style="width:1120px;height:448px;object-fit:contain;background:#ffffff;border:2px solid #dae3ec;border-radius:16px">
+<div style="flex:1;display:flex;flex-direction:column;gap:18px">
+<div style="background:#ffffff;border-left:8px solid #2463c8;border-radius:8px;padding:16px 22px">
+<img src="/_blob/f80e503f3bb0704482eb8e51b9f048db" alt="v_pcc = e_g + Z_g i" style="width:280px;height:61px;object-fit:contain">
+</div>
+<div style="background:#ffffff;border-left:8px solid #2463c8;border-radius:8px;padding:16px 22px">
+<h3 style="font-size:28px;font-weight:800;color:#013364">강계통</h3>
+<p style="font-size:25px;line-height:1.45">Z<b>g</b>i가 작아 PLL이 계통 위상 e<b>g</b>를 본다</p>
+</div>
+<div style="background:#ffffff;border-left:8px solid #eb6834;border-radius:8px;padding:16px 22px">
+<h3 style="font-size:28px;font-weight:800;color:#013364">약계통</h3>
+<p style="font-size:25px;line-height:1.45">측정 위상의 상당 부분이 <b>자기 전류</b>가 만든 것. 루프 안에 계통 임피던스가 들어간다 (5강 피드포워드와 같은 구조)</p>
+</div>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#7d8ca2">8강 · 약계통과 제어 상호작용</p>
+<p style="position:absolute;left:1592px;bottom:64px;width:200px;font-size:24px;color:#7d8ca2;text-align:right">9 / 28</p>
+<aside>6강의 PLL은 PCC 전압을 측정합니다. 그런데 PCC 전압은 계통 전압에 인버터 자신의 전류 곱하기 계통 임피던스가 더해진 것입니다. 그림을 따라가 보세요. PLL이 θ_c를 내면, 전류 지령과 전류 루프가 그 각도로 전류를 흘리고, 그 전류가 계통 임피던스를 지나면서 PCC 전압의 위상을 바꾸고, PLL은 그 전압을 다시 측정합니다. 강계통에서는 Z_g i 항이 작아서 PLL이 계통 전압의 위상을 봅니다. 약계통에서는 PLL이 측정하는 위상의 상당 부분이 자기 전류가 만든 것입니다. PLL이 θ를 움직이면 전류 방향이 바뀌고, PCC 전압 위상이 바뀌고, PLL이 그것을 다시 따라갑니다. 루프 안에 계통 임피던스가 들어간 것입니다. 5강에서 본 전압 피드포워드의 숨은 루프와 같은 구조이고, 루프 이득은 Z_g에 비례하니 약계통일수록 큽니다. 두 가지 효과가 생기는데, 다음 두 장에서 하나씩 봅니다.</aside>
+</section>

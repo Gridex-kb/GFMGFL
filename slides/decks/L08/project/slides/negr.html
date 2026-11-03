@@ -1,0 +1,31 @@
+<section id="negr" data-transition="fade" style="background:#fbfcfd;color:#45546b;font-family:'Pretendard Variable', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:32px">
+<div style="position:absolute;left:0;top:0;width:1920px;height:12px;background:linear-gradient(90deg, #2463c8 0%, #8bc22c 100%)"></div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;color:#037673">1 · SCR과 GFL의 약점 · 칠판 유도</p>
+<h2 style="font-size:56px;font-weight:800;line-height:1.15;letter-spacing:-1px;color:#013364">효과 ②: PLL 대역 안에서 GFL은 −V²/P의 음저항처럼 보인다</h2>
+</div>
+<div style="background:#ffffff;border:2px solid #dae3ec;border-radius:20px;padding:28px 36px;display:flex;flex-direction:column;gap:18px">
+<div style="display:flex;gap:28px;align-items:center">
+<p style="font-size:30px;font-weight:800;color:#2463c8;width:48px">①</p>
+<p style="font-size:29px;line-height:1.45;color:#013364">PLL 각이 Δθ<b>c</b>만큼 돌면 전류 루프는 PLL 좌표의 i<b>d</b>를 유지 → 기준 좌표에서 Δi<b>q</b> ≈ I<b>d</b>·Δθ<b>c</b></p>
+</div>
+<div style="display:flex;gap:28px;align-items:center">
+<p style="font-size:30px;font-weight:800;color:#2463c8;width:48px">②</p>
+<img src="/_blob/b84914c93f5a9ddf1ff20d8b2c28b7a7" alt="Δi_q ≈ (I_d/V) H_pll(s) Δv_q ⇒ R_eq ≈ −V/I_d = −V²/P (PLL 대역 안)" style="width:1302px;height:125px;object-fit:contain">
+</div>
+</div>
+<div style="display:flex;gap:24px">
+<div style="flex:1;background:#e9f0f6;border-radius:16px;padding:22px 28px">
+<p style="font-size:27px;line-height:1.45"><b style="color:#013364">전압과 같은 방향</b>으로 내보내는 전류가 늘어난다 → 부하 관점에서 컨덕턴스 −I<b>d</b>H<b>pll</b>/V</p>
+</div>
+<div style="flex:1;background:#e9f0f6;border-radius:16px;padding:22px 28px">
+<p style="font-size:27px;line-height:1.45">출력 P가 클수록, PLL 대역이 <b style="color:#013364">넓을수록</b> 음저항 영역이 크다</p>
+</div>
+<div style="flex:1;background:#013364;border-radius:16px;padding:22px 28px">
+<p style="font-size:27px;line-height:1.45;color:#ffffff">Z<b>g</b>와 직렬 루프: 계통 쪽 <b style="color:#b9f179">양의 감쇠</b>가 이를 못 이기면 진동이 자란다</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#7d8ca2">8강 · 약계통과 제어 상호작용</p>
+<p style="position:absolute;left:1592px;bottom:64px;width:200px;font-size:24px;color:#7d8ca2;text-align:right">11 / 28</p>
+<aside>두 번째 효과, 음저항입니다. 정상상태 전압 방향을 기준으로 생각합니다. PLL 각이 Δθ_c만큼 돌면 전류 루프는 PLL 좌표에서 i_d를 유지하므로, 기준 좌표의 전류는 I_d e의 jΔθ_c, 즉 q축에 I_d 곱하기 Δθ_c만큼의 전류가 생깁니다. ①번입니다. PLL은 Δθ_c를 H_pll 곱하기 Δv_q 나누기 V로 만듭니다. H_pll은 PLL 폐루프 전달함수로 대역 안에서 약 1입니다. 합치면 ②번, Δi_q는 I_d 나누기 V 곱하기 H_pll 곱하기 Δv_q입니다. 인버터가 내보내는 전류가 전압과 같은 방향으로 늘어납니다. 부하 관점, 즉 들어오는 전류 기준으로 바꾸면 컨덕턴스가 마이너스 I_d H_pll 나누기 V, 즉 PLL 대역 안에서 크기 V 나누기 I_d, V 제곱 나누기 P의 음의 저항입니다. 출력이 클수록, PLL 대역이 넓을수록 이 영역이 큽니다. 이 음저항이 계통 임피던스와 직렬 루프를 이루고, Z_g가 클수록 계통 쪽 양의 감쇠가 상대적으로 작아져 진동이 자랍니다. 정식 dq 임피던스 해석은 교재의 참고 문헌에 있습니다.</aside>
+</section>

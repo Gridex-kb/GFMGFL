@@ -1,0 +1,30 @@
+<section id="gfm" data-transition="fade" style="background:#fbfcfd;color:#45546b;font-family:'Pretendard Variable', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:36px">
+<div style="position:absolute;left:0;top:0;width:1920px;height:12px;background:linear-gradient(90deg, #2463c8 0%, #8bc22c 100%)"></div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;color:#037673">3 · GFM의 반대쪽 약점</p>
+<h2 style="font-size:56px;font-weight:800;line-height:1.15;letter-spacing:-1px;color:#013364">GFM: 약계통에서 유리, 강계통에서는 동기화 계수가 너무 커진다</h2>
+</div>
+<div style="background:#ffffff;border-left:8px solid #2463c8;border-radius:8px;padding:24px 32px;align-self:flex-start">
+<img src="/_blob/696797f45bb32b42a777cb944e4b258c" alt="K_s = EV/(X_v + X_g) cos δ0 → (X_g → 0) EV/X_v cos δ0" style="width:849px;height:125px;object-fit:contain">
+</div>
+<div style="display:flex;gap:24px">
+<div style="flex:1;background:#ffffff;border:2px solid #dae3ec;border-radius:20px;padding:32px;display:flex;flex-direction:column;gap:10px">
+<p style="font-size:26px;font-weight:700;color:#2463c8">약계통에서</p>
+<h3 style="font-size:32px;font-weight:800;color:#013364">쫓아갈 루프가 없다</h3>
+<p style="font-size:27px;line-height:1.45">PLL이 없으니 PCC 전압이 흔들려도 그것을 추종하는 루프가 없다. 오히려 낮은 임피던스 전압원이 되어 주변 GFL의 유효 SCR을 높인다</p>
+</div>
+<div style="flex:1;background:#ffffff;border:2px solid #dae3ec;border-radius:20px;padding:32px;display:flex;flex-direction:column;gap:10px">
+<p style="font-size:26px;font-weight:700;color:#eb6834">강계통에서</p>
+<h3 style="font-size:32px;font-weight:800;color:#013364">K<span style="color:#2463c8">s</span> ↑ → 빠르고 덜 감쇠</h3>
+<p style="font-size:27px;line-height:1.45">X<b>g</b> → 0이면 같은 H, D에서 전력 루프가 빨라지고 ζ가 떨어진다. 작은 위상차에도 큰 전력, 20 Hz 전력 필터와 겹치면 여유가 더 준다</p>
+</div>
+<div style="flex:1;background:#013364;border-radius:20px;padding:32px;display:flex;flex-direction:column;gap:10px">
+<p style="font-size:26px;font-weight:700;color:#b9f179">가상 리액턴스의 역할</p>
+<h3 style="font-size:32px;font-weight:800;color:#ffffff">X<span style="color:#b9f179">v</span>가 X의 하한</h3>
+<p style="font-size:27px;line-height:1.45;color:#c6d4e6">X<b>v</b> = 0.3이면 SCR이 아무리 커도 X<b>v</b> + X<b>g</b> ≥ 0.3을 보장 → K<b>s</b>의 상한, ζ의 하한</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#7d8ca2">8강 · 약계통과 제어 상호작용</p>
+<p style="position:absolute;left:1592px;bottom:64px;width:200px;font-size:24px;color:#7d8ca2;text-align:right">20 / 28</p>
+<aside>GFM에는 PLL이 없습니다. 위상은 전력 균형으로 만들고 외란 직후 전류는 E 빼기 v에서 나옵니다. 그래서 약계통에서 PCC 전압이 흔들려도 그것을 쫓아가는 루프가 없고, 오히려 자신이 낮은 임피던스의 전압원이 되어 주변 GFL의 유효 SCR을 높여 줍니다. 대신 약점이 반대쪽에 있습니다. 7강의 동기화 계수 K_s는 EV 나누기 X_v 더하기 X_g 곱하기 코사인 δ_0입니다. 강계통에서 X_g가 0으로 가면 K_s가 커져서, 같은 H와 D에서 전력 루프가 빨라지고 감쇠비가 떨어집니다. 작은 위상차에도 큰 전력이 흐르고, 20 Hz 전력 측정 필터와 겹치면 여유가 더 줄어듭니다. 이것을 막는 것이 가상 리액턴스입니다. X_v가 0.3이면 SCR이 아무리 커도 X_v 더하기 X_g가 0.3 이상이라, K_s에 상한이 생기고 감쇠비에 하한이 생깁니다. 다음 장에서 숫자로 봅니다.</aside>
+</section>
