@@ -1,0 +1,22 @@
+<section id="loop" data-transition="fade" style="background:#fbfcfd;color:#45546b;font-family:'Pretendard Variable', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:28px">
+<div style="position:absolute;left:0;top:0;width:1920px;height:12px;background:linear-gradient(90deg, #2463c8 0%, #8bc22c 100%)"></div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;color:#037673">1 · 플랜트와 PI 설계</p>
+<h2 style="font-size:56px;font-weight:800;line-height:1.15;letter-spacing:-1px;color:#013364">전류루프 한 바퀴: PI → 포화 → 지연 → 인덕터</h2>
+</div>
+<img src="/_blob/378236a56e9d7e32c0a3f741be8c32bb" alt="dq 전류루프 블록선도: 지령에서 측정을 뺀 오차 → PI → 디커플링 jωLf·i와 점선 피드포워드 kff·v를 더함 → 포화 |v| ≤ 1.303 → 지연 e^(−1.5sTs) → 외란(jωLf·i + v_t)을 뺀 뒤 플랜트 ωb/(sLf) → 전류, 되먹임" style="width:1600px;height:500px;object-fit:contain;background:#ffffff;border:2px solid #dae3ec;border-radius:16px;align-self:center">
+<div style="display:flex;gap:24px">
+<div style="flex:1;background:#ffffff;border-left:8px solid #2463c8;border-radius:8px;padding:16px 24px">
+<p style="font-size:26px;line-height:1.45"><b style="color:#013364">파랑</b> 디커플링: 결합 항을 미리 더해 상쇄 (항상 켬)</p>
+</div>
+<div style="flex:1;background:#ffffff;border-left:8px solid #eb6834;border-radius:8px;padding:16px 24px">
+<p style="font-size:26px;line-height:1.45"><b style="color:#013364">주황 점선</b> 전압 피드포워드: 모델 기본값은 0 (2부)</p>
+</div>
+<div style="flex:1;background:#ffffff;border-left:8px solid #7d8ca2;border-radius:8px;padding:16px 24px">
+<p style="font-size:26px;line-height:1.45"><b style="color:#013364">포화·지연</b>은 설계가 아니라 하드웨어가 준 조건</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#7d8ca2">5강 · 전류 제어</p>
+<p style="position:absolute;left:1592px;bottom:64px;width:200px;font-size:24px;color:#7d8ca2;text-align:right">8 / 29</p>
+<aside>전류루프 전체를 블록선도로 봅니다. 왼쪽에서 외부 루프가 준 전류 지령에서 측정 전류를 빼 오차 e를 만들고, PI 제어기가 전압을 계산합니다. 여기에 파란색 디커플링 항 jωL_f i를 더합니다. 앞 장에서 본 플랜트의 교차결합 항을 제어기가 미리 더해 상쇄하는 것입니다. 주황 점선은 전압 피드포워드인데, 측정한 계통 쪽 전압을 그대로 더하는 항으로, 이 강좌의 모델에서는 기본값이 0입니다. 왜 껐는지가 2부의 핵심 사례입니다. 그다음 포화 블록은 컨버터가 낼 수 있는 최대 전압 1.303 pu로 지령을 자릅니다. 그리고 4강의 지연 150 마이크로초를 거쳐 실제 컨버터 전압이 됩니다. 플랜트 쪽에서는 외란인 결합 항과 계통 전압이 빠지고, 인덕터가 적분해서 전류가 됩니다. 전류는 샘플 시점 각도로 dq 변환되어 되먹임됩니다. 포화와 지연은 우리가 설계한 것이 아니라 하드웨어와 디지털 제어가 준 조건입니다. 이 조건 아래서 PI 이득을 정하는 것이 다음 장입니다.</aside>
+</section>

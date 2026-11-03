@@ -1,0 +1,24 @@
+<section id="ex1a" data-transition="fade" style="background:#fbfcfd;color:#45546b;font-family:'Pretendard Variable', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:32px">
+<div style="position:absolute;left:0;top:0;width:1920px;height:12px;background:linear-gradient(90deg, #2463c8 0%, #8bc22c 100%)"></div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;color:#3aa150">예제 · 풀이</p>
+<h2 style="font-size:56px;font-weight:800;line-height:1.15;letter-spacing:-1px;color:#013364">K<span style="color:#2463c8">p</span> 2.0 · K<span style="color:#2463c8">i</span> 2011 · f<span style="color:#2463c8">c</span> ≤ 630 Hz</h2>
+</div>
+<div style="background:#ffffff;border-left:8px solid #2463c8;border-radius:8px;padding:20px 28px;align-self:flex-start">
+<img src="/_blob/2fa40f66eb6b385252aa0a7195e3c537" alt="K_p = 5027 × 0.15 / 377 ≈ 2.0, K_i = 2.0 × 5027/5 ≈ 2011" style="width:1154px;height:109px;object-fit:contain">
+</div>
+<div style="background:#ffffff;border-left:8px solid #3aa150;border-radius:8px;padding:20px 28px;align-self:flex-start">
+<img src="/_blob/4f15deb79ceef77c478983cbb1466acd" alt="90° − 11° − 360° f_c × 150×10⁻⁶ ≥ 45° ⇒ f_c ≤ 34/(360 × 150×10⁻⁶) ≈ 630 Hz" style="width:1500px;height:105px;object-fit:contain">
+</div>
+<div style="display:flex;gap:24px">
+<div style="flex:1;background:#e9f0f6;border-radius:16px;padding:24px 28px">
+<p style="font-size:28px;line-height:1.45"><b style="color:#013364">(1)</b> 대역폭을 같게 두려면 K<b>p</b>는 L<b>f</b>에 비례. K<b>i</b>도 같은 비율로</p>
+</div>
+<div style="flex:1;background:#e9f0f6;border-radius:16px;padding:24px 28px">
+<p style="font-size:28px;line-height:1.45"><b style="color:#013364">(2)</b> 800 Hz 설계는 위상여유 35°를 감수한 선택 · <b style="color:#013364">(3)</b> 계통코드의 무효전류 주입 요구</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#7d8ca2">5강 · 전류 제어</p>
+<p style="position:absolute;left:1592px;bottom:64px;width:200px;font-size:24px;color:#7d8ca2;text-align:right">26 / 29</p>
+<aside>풀이입니다. 1번, ω_cc는 2π 곱하기 800, 약 5027 rad/s입니다. K_p는 5027 곱하기 0.15 나누기 377, 약 2.0 pu/pu이고, K_i는 2.0 곱하기 5027 나누기 5, 약 2011입니다. 대역폭을 같게 유지하려면 K_p가 L_f에 비례해야 합니다. 인덕터가 작아지면 같은 전압으로 전류가 더 빨리 변하니 이득을 줄여야 하는 것입니다. 2번, 위상 예산입니다. 90도에서 PI 영점 11도와 지연 위상 360도 곱하기 f_c 곱하기 150 마이크로초를 뺀 값이 45도 이상이어야 합니다. 정리하면 f_c는 34를 360 곱하기 150 마이크로초로 나눈 약 630 Hz 이하입니다. 그러니 이 강좌의 800 Hz 설계는 위상여유 35도를 감수하고 빠른 응답을 택한 것입니다. 3번, FRT 중에는 계통코드가 전압 지지를 위한 무효전류 주입을 요구하기 때문입니다. 무효전류를 먼저 고정하고 남는 여유만 유효전류에 줍니다.</aside>
+</section>

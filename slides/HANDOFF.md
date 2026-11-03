@@ -45,8 +45,8 @@
 | 2 | C03 | 2레벨 VSC | 완료 (28장) | https://claude.ai/artifact/XopWStHpdKwfmjyfY9CFuE |
 | 3 | C05 | 필터·변압기·측정점 | 완료 (28장) | https://claude.ai/artifact/DX9a9RYjLDDG6ttdoBMWWL |
 | 4 | C06 | 디지털 제어와 지연 | 완료 (25장) | https://claude.ai/artifact/93NgxzEDhLFhZjYDUHwGq4 |
-| 5 | C07 | 전류 제어 | **진행 중** (데이터 일부) | — |
-| 6 | C08 | GFL: PLL로 따라가기 | 예정 | — |
+| 5 | C07 | 전류 제어 | 완료 (29장) | https://claude.ai/artifact/51RKpHpVQLEsiGdpo3kbC6 |
+| 6 | C08 | GFL: PLL로 따라가기 | **다음** | — |
 | 7 | C09 | GFM: 위상을 만들기 | 예정 | — |
 | 8 | C10 | 약계통과 제어 상호작용 (GFM vs GFL) | 예정 · **필수** | — |
 | 9 | C11 | 전류 제한과 고장 (GFM vs GFL) | 예정 · **필수** | — |
@@ -152,15 +152,16 @@ python3 sheet.py ../lecture-figs/L05 <scratchpad>/sheet.png "M*.png"   # 밀착 
 - 옵션: `--plot`(그림 `practice/out/`), `--emt`(EMT 실습), `--answers`. 기대값은 `check(name, value, expected, tol)`로 `[OK]` 표시.
 - 작성 후 `python practice/lecNN_*.py --plot --emt --answers`로 실제 실행해 모든 `[OK]`를 확인. `practice/README.md` 표에 한 줄 추가. 덱 code 장에 파일 경로를 적는다.
 
-## 7. 5강(전류 제어, C07) 진행 상황
+## 7. 5강(전류 제어, C07) 완료 메모
 
-- 완료: `slides/figs-src/L05/_data.py` 작성. 그중 독립 전류루프 부분은 실행되어
-  `M02-계단응답.json`(0.1 pu id 계단: 지연+디커플링 / 디커플링 없음 / 지연 없음),
-  `M07-와인드업.json`(1 pu 계단: anti-windup 유무)이 생성됨.
-- 미완료: `_data.py`의 EMT 부분(GFM, SCR 2, PCC 전압 피드포워드 없음/순시/100 Hz LPF) → `M04-피드포워드.json`. 그냥 `python slides/figs-src/L05/_data.py`를 다시 돌리면 전부 생성된다(약 40 s). 교재 기대값: σ(P) 0.004 / 0.117 / 0.004 pu, 순시 피드포워드 진동 약 560 Hz.
-- 계획한 그림(접두사 M): M01 전류루프 블록선도(PI, 디커플링 jωLf·i, 점선 피드포워드, 포화 1.303, 지연 e^{-1.5sTs}, 플랜트 ωb/(sLf), 외란 −jωLf·i − v_t), M02 계단응답, M03 개루프 보드(교차 815 Hz, 위상여유 34.9°, 지연 없으면 약 79°), M04 피드포워드 불안정 P 파형, M05 피드포워드가 계통 임피던스를 통해 되먹임이 되는 루프 그림(v_pcc = e_g + Z_g·i), M06 원형 전류 제한 3패널(GFL 유효 우선, GFL FRT 무효 우선 iq = 0.95×1.2, GFM 방향 유지 축소), M07 anti-windup 비교.
-- 계획한 수식: 플랜트 식, Kp = ωcc·Lf/ωb ≈ 2.67, Ki = Kp·ωcc/5 ≈ 2681, 제어 법칙(디커플링·피드포워드), 개루프 L(jω), 위상여유 90 − 11 − 43 ≈ 35°, 포화 식, v_pcc = e_g + Z_g·i, 예제(Lf 0.15 → Kp 2.0, Ki 2011; 위상여유 45° 이상 → fc ≤ 630 Hz).
-- 실습 파일 `practice/lec05_current_control.py`: Kp·Ki 계산, 개루프 교차·위상여유(지연 유무), 독립 전류루프 계단응답(지연·디커플링), anti-windup 유무, (EMT) 피드포워드 실험. 해보기: f_cc = 400 Hz 위상여유, Lf = 0.15 이득.
+- 그림 `slides/figs-src/L05/M01~M07`(블록선도, 계단응답, 보드, 피드포워드 EMT, 되먹임 루프, 전류 제한 3패널, anti-windup), 수식 `E01~E12`. 공통 `_common.js`에 개루프 `openLoop()`/`crossover()`가 있어 보드 그림이 수치를 직접 계산한다.
+- EMT 결과(`_data.py` 실행, 약 40 s): σ(P) 0.004 / 0.117 / 0.004 pu, 순시 피드포워드 진동 560 Hz — 교재와 일치.
+- 덱 29장. 실습 `practice/lec05_current_control.py` 전부 `[OK]`.
+- **Windows에서 작업할 때 주의**
+  - `render.mjs`는 `fileURLToPath`로 고쳤다(이전 `URL.pathname`은 `C:\C:\…` 오류). `slides/tools/package.json`에 playwright를 넣었으니 `npm install && npx playwright install chromium`.
+  - Artifact 에셋 업로드가 저장소 안의 PNG를 "hard link"라며 거절하면(Downloads 폴더 등), scratchpad로 `cp`한 뒤 그 경로로 올린다.
+  - `practice/common.py`가 stdout을 UTF-8로 재설정하므로 cp949 콘솔에서도 `−`, `ω`가 깨지지 않는다.
+  - bash heredoc으로 Korean 파일명을 여러 개 쓰면 따옴표 오류가 나기 쉽다. 파일은 Write 도구로 하나씩 쓴다.
 
 ## 8. 6강 이후 메모
 

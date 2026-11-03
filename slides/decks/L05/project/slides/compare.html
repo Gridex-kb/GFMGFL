@@ -1,0 +1,19 @@
+<section id="compare" data-transition="fade" style="background:#fbfcfd;color:#45546b;font-family:'Pretendard Variable', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<div style="position:absolute;left:0;top:0;width:1920px;height:12px;background:linear-gradient(90deg, #2463c8 0%, #8bc22c 100%)"></div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;color:#037673">4 · 예제와 실습 · 정리</p>
+<h2 style="font-size:56px;font-weight:800;line-height:1.15;letter-spacing:-1px;color:#013364">전류루프의 항목별 선택: 이 강좌의 모델</h2>
+</div>
+<table style="font-size:30px;color:#45546b">
+<tr><th style="width:22%">항목</th><th style="width:30%">선택</th><th style="width:48%">이유 · 대안</th></tr>
+<tr><td><b>대역폭</b></td><td>800 Hz, 위상여유 35°</td><td>f<b>s</b>/12.5. 45° 이상이면 630 Hz 이하 (예제)</td></tr>
+<tr><td><b>PI 영점</b></td><td>ω<b>cc</b>/5 (160 Hz)</td><td>R<b>f</b>/L<b>f</b> 극 상쇄는 R<b>f</b>가 불확실해 피함</td></tr>
+<tr><td><b>디커플링</b></td><td>항상 켬</td><td>계산값. i<b>q</b> 흔들림 절반</td></tr>
+<tr><td><b>전압 피드포워드</b></td><td>끔 (ff_gain = 0)</td><td>측정값 → 숨은 루프. 쓰면 100 Hz 저역통과</td></tr>
+<tr><td><b>전압 포화</b></td><td>원형 1.303 pu + 조건부 적분</td><td>오버슈트 68 % → 3 %</td></tr>
+<tr style="background:#e9f0f6"><td><b>전류 제한</b></td><td>원형 1.2 pu</td><td>GFL 유효 우선 / FRT 무효 우선 / GFM 방향 유지</td></tr>
+</table>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#7d8ca2">5강 · 전류 제어</p>
+<p style="position:absolute;left:1592px;bottom:64px;width:200px;font-size:24px;color:#7d8ca2;text-align:right">28 / 29</p>
+<aside>오늘 다룬 선택을 표로 정리합니다. 대역폭은 800 Hz, 샘플링 주파수의 12.5분의 1이고 위상여유 35도를 감수했습니다. 45도 이상을 원하면 630 Hz 이하로 내려야 합니다. PI 영점은 대역폭의 5분의 1인 160 Hz에 두었고, 플랜트 극 상쇄 설계는 R_f가 불확실해서 피했습니다. 디커플링은 계산값이라 항상 켜고, 전압 피드포워드는 측정값이 만드는 숨은 루프 때문에 껐습니다. 쓴다면 100 Hz 저역통과를 거칩니다. 전압 포화는 원형 1.303 pu에 조건부 적분을 붙여 오버슈트를 68 %에서 3 %로 줄였습니다. 전류 제한은 원형 1.2 pu이고, GFL은 정상 운전에서 유효 우선, FRT에서 무효 우선, GFM은 방향을 유지합니다. 이 표가 6강과 7강에서 외부 루프를 올릴 때의 공통 바닥입니다.</aside>
+</section>

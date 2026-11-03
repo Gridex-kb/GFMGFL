@@ -8,6 +8,7 @@
 | 2강 2레벨 VSC | `lec02_two_level_vsc.py` | 상태 8개 표, 반송파 PWM 상태 순서, 6스텝 기본파 1.436 pu, 평균 벡터·1.303 pu |
 | 3강 필터·변압기·측정점 | `lec03_filter_measurement.py` | LCL 공진과 SCR, 보드 선도·5 kHz 감쇠, 리플 상한, (EMT) 실측 리플·측정점별 잡음 |
 | 4강 디지털 제어와 지연 | `lec04_digital_delay.py` | 1.5 Ts 지연 vs 1차 근사, 영차 홀드, 위상 예산, (EMT) 연속 θ 버그 61.35 → 60.00 Hz |
+| 5강 전류 제어 | `lec05_current_control.py` | Kp·Ki 공식, 교차 815 Hz·위상여유 34.9°, 계단 응답(지연·디커플링), anti-windup, (EMT) 피드포워드 σ(P) 0.004/0.117/0.004 |
 
 ## 실행
 

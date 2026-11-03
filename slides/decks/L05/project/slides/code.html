@@ -1,0 +1,23 @@
+<section id="code" data-transition="fade" style="background:#fbfcfd;color:#45546b;font-family:'Pretendard Variable', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:32px">
+<div style="position:absolute;left:0;top:0;width:1920px;height:12px;background:linear-gradient(90deg, #2463c8 0%, #8bc22c 100%)"></div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;color:#037673">4 · 예제와 실습 · Python</p>
+<h2 style="font-size:56px;font-weight:800;line-height:1.15;letter-spacing:-1px;color:#013364">교차주파수와 위상여유를 다섯 줄로 구한다</h2>
+</div>
+<div style="display:flex;gap:36px;align-items:stretch">
+<div style="flex:1;background:#0f233f;border-radius:20px;padding:36px 40px">
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:26px;line-height:1.6;color:#e6edf5">Kp = wcc * p.Lf / p.wb;  Ki = Kp * wcc / 5<br>Td = 1.5 / (2 * p.f_sw)          <span style="color:#f2a07b"># 0 으로 바꿔 보기</span><br>L = (Kp + Ki/(1j*w)) * np.exp(-1j*w*Td) * p.wb/(1j*w*p.Lf)<br>k = np.argmin(abs(abs(L) - 1))<br>print(f[k], 180 + np.degrees(np.angle(L[k])))<br><br><span style="color:#8fa6c4"># EMT: GFM, SCR 2, 피드포워드 없음/순시/100 Hz</span><br>Params(converter="average", scr=2.0, ff_gain=ff, f_vff=fv)</p>
+</div>
+<div style="width:560px;display:flex;flex-direction:column;gap:20px">
+<div style="background:#013364;border-radius:20px;padding:28px 32px;display:flex;flex-direction:column;gap:8px">
+<p style="font-size:24px;font-weight:700;color:#b9f179">출력</p>
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:24px;line-height:1.6;color:#ffffff">[OK] Kp 2.667, Ki 2681<br>[OK] 교차 815 Hz, PM 34.9°<br>[OK] σ(P) 0.004/0.117/0.004</p>
+</div>
+<p style="font-size:26px;line-height:1.45"><b style="color:#013364">해 보기</b>  f_cc = 400 Hz면 위상여유는? Lf = 0.15면 이득은?</p>
+<p style="font-size:24px;line-height:1.45;color:#037673"><b>실습 파일</b> practice/lec05_current_control.py<br>--plot · --emt · --answers</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#7d8ca2">5강 · 전류 제어</p>
+<p style="position:absolute;left:1592px;bottom:64px;width:200px;font-size:24px;color:#7d8ca2;text-align:right">27 / 29</p>
+<aside>실습 파일입니다. practice 폴더의 lec05 파일에 실습이 다섯 개 있습니다. 1번은 이득 계산, 2번은 화면의 코드로 개루프 교차주파수와 위상여유를 구하는 것입니다. PI 곱하기 지연 곱하기 플랜트를 주파수 배열에서 계산하고, 크기가 1에 가장 가까운 점을 찾아 거기서 위상을 읽습니다. 815 Hz, 34.9도가 나옵니다. T_d를 0으로 바꾸면 79도로 커지는 것을 바로 볼 수 있습니다. 3번은 독립 전류루프 계단 응답으로 지연과 디커플링 효과, 4번은 1 pu 계단에서 anti-windup 유무입니다. 5번은 --emt 옵션으로 GFM, SCR 2에서 피드포워드 없음, 순시, 100 Hz 저역통과 세 경우를 스위칭 모델로 돌려 전력 표준편차 0.004, 0.117, 0.004를 확인합니다. 약 40초 걸립니다. 해 볼 것으로, 대역폭을 400 Hz로 낮추면 위상여유가 얼마가 되는지, 그리고 L_f가 0.15면 이득이 어떻게 바뀌는지 확인해 보세요. --answers 옵션이 답을 보여 줍니다.</aside>
+</section>

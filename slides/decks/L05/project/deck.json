@@ -1,0 +1,22 @@
+{
+  "v": 4,
+  "createdOnFiles": {"v": 1, "at": "2026-11-03T02:00:00Z"},
+  "lists": "css",
+  "title": "5강 · 전류 제어",
+  "cover": "cover",
+  "order": ["cover", "goals", "outline", "q-pm", "a-pm", "sec1", "plant", "loop", "gains", "bode", "step", "sum1", "sec2", "decouple", "ffpros", "ffloop", "case", "msg", "sum2", "sec3", "sat", "windup", "limit", "sec4", "ex1q", "ex1a", "code", "compare", "wrap"],
+  "sections": {
+    "s0": {"description": "도입 — 학습 목표, 목차, 800 Hz 설계의 위상여유를 묻는 질문", "start": "cover"},
+    "s1": {"description": "1. 플랜트와 PI 설계 — dq 좌표의 Lf, Kp·Ki 공식, 개루프 보드와 위상여유 35°, 계단 응답", "start": "sec1"},
+    "s2": {"description": "2. 디커플링과 피드포워드 — 교차결합 상쇄, 피드포워드의 장점과 함정, SCR 2에서 560 Hz 진동 사례", "start": "sec2"},
+    "s3": {"description": "3. 포화와 전류 제한 — 1.303 pu 전압 포화, anti-windup, 원형 전류 제한 1.2 pu와 P/Q 우선순위", "start": "sec3"},
+    "s4": {"description": "4. 예제와 실습 — 이득과 교차주파수 손 계산, Python 실습, GFL·GFM 비교표와 정리", "start": "sec4"}
+  },
+  "faces": {
+    "pretendard-variable": {"family": "Pretendard Variable", "src": "project/ds/gridex/fonts/PretendardVariable.woff2"},
+    "jetbrains-mono": {"family": "JetBrains Mono", "href": "https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&display=swap"}
+  },
+  "designSystems": [
+    {"title": "GriDeX 디자인 베이스", "namespace": "gridex", "artifact": "https://claude.ai/artifact/DHKyReZeUdghmptteJUFVb", "version": null, "copiedAt": "2026-11-03T02:00:00Z"}
+  ]
+}

@@ -1,0 +1,21 @@
+// 개루프 L(jω) 보드: 크기(위)와 위상(아래). 지연 포함(주황)과 지연 없음(파랑 점선). 교차 815 Hz, 위상여유 34.9° / 79°
+const F = Fig(1100, 710), C = FC, lg = Math.log10;
+const xl = [2, lg(5000)], xt = [2, lg(200), lg(500), 3, lg(2000), lg(5000)];
+const xf = (v) => { const m = { 2: "100", 3: "1k" }; if (m[v]) return m[v]; for (const [k, s] of [[200, "200"], [500, "500"], [2000, "2k"], [5000, "5k"]]) if (Math.abs(v - lg(k)) < 1e-9) return s; return ""; };
+const A = F.frame([120, 60, 760, 230], xl, [-20, 30]).axes({ xticks: xt, yticks: [-20, 0, 20], tick: 22, xfmt: () => "", ylabel: "|L(jω)| [dB]" });
+A.fn((x) => openLoop(10 ** x).mag, 600, { color: C.orange, width: 4.5 });
+const cw = crossover(true), cn = crossover(false);
+A.vline(lg(cw.f)); F.dot(A.x(lg(cw.f)), A.y(0), { r: 9, color: C.orange });
+A.label(lg(cw.f) + 0.04, 8, `교차 ${cw.f.toFixed(0)} Hz`, { anchor: "l", size: 24, color: C.orange, weight: 700 });
+const B = F.frame([120, 340, 760, 250], xl, [-290, -80]).axes({ xticks: xt, yticks: [-270, -180, -90], tick: 22, xfmt: xf, xlabel: "주파수 [Hz]", ylabel: "∠L(jω) [°]" });
+B.hline(-180, { color: C.red, width: 2.5, dash: "6 6" });
+B.fn((x) => openLoop(10 ** x, false).ph, 600, { color: C.blue, width: 4, dash: "12 8" });
+B.fn((x) => openLoop(10 ** x, true).ph, 600, { color: C.orange, width: 4.5 });
+B.vline(lg(cw.f));
+F.arrow(B.x(lg(cw.f)), B.y(-180), B.x(lg(cw.f)), B.y(-180 + cw.pm), { color: C.orange, width: 4, head: 16, both: true });
+F.arrow(B.x(lg(cn.f)) - 28, B.y(-180), B.x(lg(cn.f)) - 28, B.y(-180 + cn.pm), { color: C.blue, width: 3, head: 14, both: true });
+F.label(895, B.y(-180 + cw.pm / 2), `위상여유 ${cw.pm.toFixed(0)}°<br>지연 1.5 Ts 포함`, { anchor: "l", size: 22, color: C.orange, weight: 700 });
+F.label(895, B.y(-118), `위상여유 ${cn.pm.toFixed(0)}°<br>지연 없음`, { anchor: "l", size: 22, color: C.blue, weight: 700 });
+F.label(895, B.y(-180) + 34, "−180°", { anchor: "l", size: 22, color: C.red, weight: 700 });
+F.label(895, A.y(-10), "PI + 지연 + 플랜트", { anchor: "l", size: 22, color: C.orange, weight: 700 });
+F.done();

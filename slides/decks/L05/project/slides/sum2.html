@@ -1,0 +1,17 @@
+<section id="sum2" data-transition="fade" style="background:#fbfcfd;color:#45546b;font-family:'Pretendard Variable', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<div style="position:absolute;left:0;top:0;width:1920px;height:12px;background:linear-gradient(90deg, #2463c8 0%, #8bc22c 100%)"></div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;color:#037673">2 · 디커플링과 피드포워드</p>
+<h2 style="font-size:56px;font-weight:800;line-height:1.15;letter-spacing:-1px;color:#013364">2부 정리</h2>
+</div>
+<div style="border:3px solid #013364;border-radius:20px;padding:48px;display:flex;flex-direction:column;gap:28px;background:#ffffff">
+<p style="font-size:36px;line-height:1.45;color:#013364"><b style="color:#2463c8">①</b>  디커플링 jωL<span style="color:#2463c8">f</span>i: 계산값, 항상 켬. i<span style="color:#2463c8">q</span> 흔들림 <b>절반</b>으로</p>
+<p style="font-size:36px;line-height:1.45;color:#013364"><b style="color:#2463c8">②</b>  피드포워드 k<span style="color:#2463c8">ff</span>v: 측정값. v<span style="color:#2463c8">pcc</span> = e<span style="color:#2463c8">g</span> + Z<span style="color:#2463c8">g</span>i → <b>숨은 루프</b></p>
+<p style="font-size:36px;line-height:1.45;color:#013364"><b style="color:#2463c8">③</b>  지연 + 순시 피드포워드 + 약계통(SCR 2) = GFM도 <b>560 Hz</b> 진동, σ(P) 0.117 pu</p>
+<p style="font-size:36px;line-height:1.45;color:#013364"><b style="color:#2463c8">④</b>  끄거나(기본값 0) 100 Hz 저역통과 → <b>0.004 pu</b>. 약계통 불안정 ≠ 언제나 PLL</p>
+</div>
+<p style="font-size:30px;line-height:1.45">다음: 제어기가 아무리 큰 전압을 요구해도 컨버터는 1.303 pu까지만 낸다. 그다음엔?</p>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#7d8ca2">5강 · 전류 제어</p>
+<p style="position:absolute;left:1592px;bottom:64px;width:200px;font-size:24px;color:#7d8ca2;text-align:right">19 / 29</p>
+<aside>2부를 정리합니다. 디커플링은 내 전류로 계산하는 항이라 항상 켜고, q축 흔들림을 절반으로 줄입니다. 피드포워드는 측정 전압을 더하는 항인데, PCC 전압이 내 전류의 함수라서 계통 임피던스를 거쳐 돌아오는 숨은 루프가 됩니다. 지연과 순시 피드포워드와 약계통이 만나면 PLL이 없는 GFM도 560 Hz로 진동했고, 전력 표준편차가 0.117 pu였습니다. 끄거나 100 Hz 저역통과를 거치면 0.004 pu로 안정합니다. 그래서 약계통 불안정이 언제나 PLL 탓은 아닙니다. 3부의 질문입니다. 제어기가 아무리 큰 전압을 요구해도 컨버터는 1.303 pu까지만 냅니다. 그 뒤에는 무슨 일이 생길까요?</aside>
+</section>

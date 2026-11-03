@@ -1,0 +1,27 @@
+<section id="step" data-transition="fade" style="background:#fbfcfd;color:#45546b;font-family:'Pretendard Variable', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:24px">
+<div style="position:absolute;left:0;top:0;width:1920px;height:12px;background:linear-gradient(90deg, #2463c8 0%, #8bc22c 100%)"></div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;color:#037673">1 · 플랜트와 PI 설계</p>
+<h2 style="font-size:56px;font-weight:800;line-height:1.15;letter-spacing:-1px;color:#013364">지연이 오버슈트를 15 %에서 50 %로 키운다</h2>
+</div>
+<div style="display:flex;gap:40px;align-items:center">
+<img src="/_blob/5f4eb409cb370196e756d5e71e54a6f2" alt="0.1 pu id 계단 응답. 위: id, 지연 없음(청록)은 오버슈트 15 %, 지연 1.5 Ts(파랑)는 50 %, 디커플링 없음(주황)도 비슷. 아래: iq 흔들림, 디커플링 있음 −0.006 pu, 없음 −0.013 pu" style="width:1045px;height:655px;object-fit:contain;background:#ffffff;border:2px solid #dae3ec;border-radius:16px">
+<div style="flex:1;display:flex;flex-direction:column;gap:20px">
+<div style="background:#ffffff;border-left:8px solid #2463c8;border-radius:8px;padding:16px 22px">
+<h3 style="font-size:28px;font-weight:800;color:#013364">독립 전류루프 모의</h3>
+<p style="font-size:25px;line-height:1.45">C<b>f</b> 무시, 단자 전압 1 pu 고정, 10 kHz 샘플 + 1샘플 지연 + 홀드</p>
+</div>
+<div style="background:#ffffff;border-left:8px solid #eb6834;border-radius:8px;padding:16px 22px">
+<h3 style="font-size:28px;font-weight:800;color:#013364">위상여유 35°의 얼굴</h3>
+<p style="font-size:25px;line-height:1.45">오버슈트 50 %, 정착 약 2 ms. 지연 없으면 15 %</p>
+</div>
+<div style="background:#ffffff;border-left:8px solid #3aa150;border-radius:8px;padding:16px 22px">
+<h3 style="font-size:28px;font-weight:800;color:#013364">디커플링은 i<span style="color:#2463c8">q</span>를 지킨다</h3>
+<p style="font-size:25px;line-height:1.45">i<b>d</b> 계단이 i<b>q</b>에 남기는 흔들림을 절반으로 (2부)</p>
+</div>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#7d8ca2">5강 · 전류 제어</p>
+<p style="position:absolute;left:1592px;bottom:64px;width:200px;font-size:24px;color:#7d8ca2;text-align:right">11 / 29</p>
+<aside>시간 영역에서 확인합니다. 교재 그림 스크립트의 독립 전류루프 모의입니다. 커패시터를 무시하고 단자 전압을 1 pu로 고정한 채, 10 kHz 샘플링, 한 샘플 계산 지연, 영차 홀드를 그대로 넣었습니다. d축 전류 지령을 0.1 pu 계단으로 줍니다. 위 그림의 청록색이 지연이 없을 때로 오버슈트 약 15 %입니다. 파란색이 지연 1.5 샘플을 넣은 실제 모델로 오버슈트가 50 %까지 커집니다. 위상여유 35도가 시간 영역에서 이렇게 보입니다. 그래도 정착은 약 2 ms 안에 끝납니다. 아래 그림은 q축입니다. d축만 바꿨는데 q축이 흔들리는 것이 교차결합입니다. 주황색 디커플링 없음은 최대 −0.013 pu, 파란색 디커플링 있음은 −0.006 pu로 절반 정도입니다. 지연 때문에 완벽히 상쇄되지는 않지만 효과는 분명합니다. L_f가 0.2 pu로 작아 이 설비에서는 결합 자체가 크지 않다는 점도 기억해 두세요.</aside>
+</section>

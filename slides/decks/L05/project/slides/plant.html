@@ -1,0 +1,28 @@
+<section id="plant" data-transition="fade" style="background:#fbfcfd;color:#45546b;font-family:'Pretendard Variable', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:28px">
+<div style="position:absolute;left:0;top:0;width:1920px;height:12px;background:linear-gradient(90deg, #2463c8 0%, #8bc22c 100%)"></div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;color:#037673">1 · 플랜트와 PI 설계 · 칠판 유도</p>
+<h2 style="font-size:56px;font-weight:800;line-height:1.15;letter-spacing:-1px;color:#013364">회전 좌표에서 보면 인덕터에 jωL<span style="color:#2463c8">f</span>·i 항이 생긴다</h2>
+</div>
+<div style="background:#ffffff;border:2px solid #dae3ec;border-radius:20px;padding:28px 36px;display:flex;flex-direction:column;gap:20px">
+<div style="display:flex;gap:28px;align-items:center">
+<p style="font-size:30px;font-weight:800;color:#2463c8;width:48px">①</p>
+<img src="/_blob/8ab5c08f172a6261d79e0e12de2110cc" alt="i_αβ = i_dq e^(jθ), θ' = ω_b ω ⇒ d i_αβ/dt = (d i_dq/dt + j ω_b ω i_dq) e^(jθ)" style="width:1211px;height:112px;object-fit:contain">
+</div>
+<div style="display:flex;gap:28px;align-items:center">
+<p style="font-size:30px;font-weight:800;color:#2463c8;width:48px">②</p>
+<img src="/_blob/752511e987a3fc77a69bbca751afb042" alt="(L_f/ω_b) d i_dq/dt = v_c,dq − R_f i_dq − jωL_f i_dq (교차결합) − v_t,dq (계통 전압)" style="width:904px;height:156px;object-fit:contain">
+</div>
+</div>
+<div style="display:flex;gap:24px">
+<div style="flex:1;background:#e9f0f6;border-radius:16px;padding:24px 28px">
+<p style="font-size:28px;line-height:1.45"><b style="color:#013364">복소수 한 줄</b> = d·q 두 축. 실수부가 d, 허수부가 q</p>
+</div>
+<div style="flex:1;background:#e9f0f6;border-radius:16px;padding:24px 28px">
+<p style="font-size:28px;line-height:1.45">마지막 두 항은 제어기 입장의 <b style="color:#013364">외란</b>: 결합 jωL<b>f</b>i, 계통 전압 v<b>t</b></p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#7d8ca2">5강 · 전류 제어</p>
+<p style="position:absolute;left:1592px;bottom:64px;width:200px;font-size:24px;color:#7d8ca2;text-align:right">7 / 29</p>
+<aside>플랜트부터 칠판에서 유도합니다. 컨버터 전압 v_c와 필터 단자 전압 v_t 사이에 L_f와 R_f가 있습니다. 정지좌표에서는 L_f 나누기 ω_b 곱하기 di/dt가 v_c 빼기 R_f i 빼기 v_t입니다. 1강에서 배운 대로 αβ 벡터를 dq 벡터 곱하기 e의 jθ로 쓰고, θ는 ω_b 곱하기 pu 각속도 ω로 돕니다. 미분하면 ①번 식처럼 곱의 미분으로 jω_b ω i_dq 항이 튀어나옵니다. 양변에 e의 −jθ를 곱하고 L_f/ω_b를 곱하면 ②번 식입니다. 좌변은 dq 전류의 미분, 우변은 컨버터 전압에서 저항 강하, 교차결합 항 jωL_f i, 계통 쪽 전압 v_t를 뺀 것입니다. 복소수 한 줄이 d축과 q축 두 식을 담고 있습니다. 제어기 입장에서 마지막 두 항은 내가 정하지 않은 외란입니다. 교차결합 항은 d축 전류가 q축 전압에, q축 전류가 d축 전압에 영향을 주는 항이고, v_t는 계통이 밀어 넣는 1 pu짜리 큰 외란입니다. 이 둘을 어떻게 다룰지가 2부의 주제입니다.</aside>
+</section>

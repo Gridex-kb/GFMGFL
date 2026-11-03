@@ -1,0 +1,25 @@
+<section id="ffpros" data-transition="fade" style="background:#fbfcfd;color:#45546b;font-family:'Pretendard Variable', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<div style="position:absolute;left:0;top:0;width:1920px;height:12px;background:linear-gradient(90deg, #2463c8 0%, #8bc22c 100%)"></div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;color:#037673">2 · 디커플링과 피드포워드</p>
+<h2 style="font-size:56px;font-weight:800;line-height:1.15;letter-spacing:-1px;color:#013364">전압 피드포워드: 장점과 함정</h2>
+</div>
+<div style="display:flex;gap:32px">
+<div style="flex:1;background:#ffffff;border:2px solid #dae3ec;border-radius:20px;padding:36px;display:flex;flex-direction:column;gap:20px">
+<h3 style="font-size:34px;font-weight:800;color:#3aa150">장점</h3>
+<p style="font-size:28px;line-height:1.5"><b style="color:#013364">기동·전압 급변</b>  적분기가 1 pu를 쌓을 때까지 기다리지 않아 전류가 덜 튄다</p>
+<p style="font-size:28px;line-height:1.5"><b style="color:#013364">외란 상쇄</b>  계통 전압 변화를 PI 대역폭(수백 Hz)보다 빨리 상쇄</p>
+<p style="font-size:28px;line-height:1.5"><b style="color:#013364">강계통</b>  Z<b>g</b>가 작으면 측정 전압 ≈ 계통 전원, 거의 공짜 항</p>
+</div>
+<div style="flex:1;background:#013364;border-radius:20px;padding:36px;display:flex;flex-direction:column;gap:20px">
+<h3 style="font-size:34px;font-weight:800;color:#eb6834">함정</h3>
+<p style="font-size:28px;line-height:1.5;color:#ffffff"><b style="color:#b9f179">숨은 루프</b>  v<b>pcc</b> = e<b>g</b> + Z<b>g</b>i. 측정 전압은 내 전류의 함수 → 되먹임</p>
+<p style="font-size:28px;line-height:1.5;color:#ffffff"><b style="color:#b9f179">지연 + 약계통</b>  경로에도 1.5 T<b>s</b> 지연. Z<b>g</b>가 클수록 루프 이득 ↑, 어느 주파수에서 양의 되먹임</p>
+<p style="font-size:28px;line-height:1.5;color:#ffffff"><b style="color:#b9f179">잡음·고조파</b>  측정 잡음이 그대로 컨버터 전압으로 나간다</p>
+</div>
+</div>
+<p style="font-size:30px;line-height:1.45">이 강좌의 모델: 기본값 <b style="color:#013364">ff_gain = 0</b>. 쓰려면 저역통과를 거치고 운전 SCR 범위 전체에서 확인</p>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#7d8ca2">5강 · 전류 제어</p>
+<p style="position:absolute;left:1592px;bottom:64px;width:200px;font-size:24px;color:#7d8ca2;text-align:right">15 / 29</p>
+<aside>전압 피드포워드의 장점과 함정을 나란히 봅니다. 장점 세 가지. 기동이나 전압 급변 때 적분기가 1 pu를 쌓을 때까지 기다릴 필요가 없어 전류가 덜 튑니다. 계통 전압 외란을 PI 대역폭을 기다리지 않고 바로 상쇄합니다. 그리고 강계통에서는 계통 임피던스가 작아 측정 전압이 거의 계통 전원 그 자체라서 거의 공짜 항입니다. 함정 세 가지. 첫째, 숨은 루프입니다. PCC 전압은 계통 전원 더하기 계통 임피던스 곱하기 내 전류이니, 측정 전압은 내 전류의 함수입니다. 그것을 다시 전압 지령에 더하면 되먹임 루프가 하나 더 생기는 것입니다. 둘째, 그 경로에도 1.5 샘플 지연이 있습니다. 계통이 약할수록 이 루프의 이득이 커지고, 지연이 위상을 돌려 어느 주파수에서 양의 되먹임이 됩니다. 셋째, 측정 잡음과 고조파가 그대로 컨버터 전압으로 나갑니다. 그래서 이 강좌의 모델은 기본값을 0으로 두었습니다. 쓰려면 저역통과 필터를 거치고, 운전할 SCR 범위 전체에서 안정도를 확인해야 합니다.</aside>
+</section>

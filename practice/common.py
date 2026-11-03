@@ -15,6 +15,14 @@ OUT_DIR = os.path.join(ROOT, "practice", "out")
 if EMT_DIR not in sys.path:
     sys.path.insert(0, EMT_DIR)
 
+# Windows 콘솔(cp949)에서도 −, ω 같은 문자가 깨지지 않게 출력을 UTF-8로 맞춘다
+for _s in (sys.stdout, sys.stderr):
+    if hasattr(_s, "reconfigure"):
+        try:
+            _s.reconfigure(encoding="utf-8", errors="replace")
+        except (ValueError, OSError):
+            pass
+
 # 강좌 색 (슬라이드와 같음)
 NAVY, BLUE, ORANGE, GREEN, SLATE, MUTED = "#013364", "#2463c8", "#eb6834", "#3aa150", "#45546b", "#7d8ca2"
 PHASE = {"a": BLUE, "b": ORANGE, "c": GREEN}

@@ -1,0 +1,30 @@
+<section id="decouple" data-transition="fade" style="background:#fbfcfd;color:#45546b;font-family:'Pretendard Variable', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:36px">
+<div style="position:absolute;left:0;top:0;width:1920px;height:12px;background:linear-gradient(90deg, #2463c8 0%, #8bc22c 100%)"></div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;color:#037673">2 · 디커플링과 피드포워드</p>
+<h2 style="font-size:56px;font-weight:800;line-height:1.15;letter-spacing:-1px;color:#013364">제어 법칙: 아는 외란은 미리 더해 준다</h2>
+</div>
+<div style="background:#ffffff;border-left:8px solid #2463c8;border-radius:8px;padding:24px 32px;align-self:flex-start">
+<img src="/_blob/9c1d355bc1ef2c41fe1d32c72c9aa7d5" alt="v*_c,dq = K_p e + x_I + jωL_f i_dq (파랑, 디커플링) (+ k_ff v_dq, 주황, 피드포워드), e = i*_dq − i_dq" style="width:1228px;height:75px;object-fit:contain">
+</div>
+<div style="display:flex;gap:24px">
+<div style="flex:1;background:#ffffff;border:2px solid #dae3ec;border-radius:20px;padding:32px;display:flex;flex-direction:column;gap:10px">
+<p style="font-size:26px;font-weight:700;color:#2463c8">파랑 · 교차결합 디커플링</p>
+<h3 style="font-size:32px;font-weight:800;color:#013364">항상 켠다</h3>
+<p style="font-size:27px;line-height:1.45">내 전류 i와 ω만 알면 되는 항. d·q 두 축이 거의 독립된다. 지연 때문에 완벽하진 않다</p>
+</div>
+<div style="flex:1;background:#ffffff;border:2px solid #dae3ec;border-radius:20px;padding:32px;display:flex;flex-direction:column;gap:10px">
+<p style="font-size:26px;font-weight:700;color:#eb6834">주황 · 전압 피드포워드</p>
+<h3 style="font-size:32px;font-weight:800;color:#013364">측정 전압을 그대로 더한다</h3>
+<p style="font-size:27px;line-height:1.45">적분기 x<b>I</b>가 1 pu 계통 전압을 떠맡지 않아도 된다. 하지만 <b>측정값</b>이 들어온다</p>
+</div>
+<div style="flex:1;background:#013364;border-radius:20px;padding:32px;display:flex;flex-direction:column;gap:10px">
+<p style="font-size:26px;font-weight:700;color:#b9f179">차이</p>
+<h3 style="font-size:32px;font-weight:800;color:#ffffff">계산값 vs 측정값</h3>
+<p style="font-size:27px;line-height:1.45;color:#c6d4e6">디커플링은 내부 계산. 피드포워드는 계통에서 재 온 값이라 또 하나의 루프가 된다</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#7d8ca2">5강 · 전류 제어</p>
+<p style="position:absolute;left:1592px;bottom:64px;width:200px;font-size:24px;color:#7d8ca2;text-align:right">14 / 29</p>
+<aside>제어 법칙을 한 줄로 씁니다. 전압 지령은 비례항 K_p e, 적분기 상태 x_I, 파란색 디커플링 항 jωL_f i, 그리고 괄호 안의 주황색 피드포워드 항 k_ff v입니다. 두 항 모두 플랜트의 외란을 미리 더해 상쇄하려는 것인데 성격이 다릅니다. 디커플링은 내 전류와 각속도만 있으면 계산되는 항입니다. 측정 전류는 이미 제어에 쓰고 있으니 추가 위험이 없고, d축과 q축이 거의 독립됩니다. 그래서 항상 켭니다. 피드포워드는 계통 쪽 전압을 측정해서 그대로 더하는 것입니다. 장점은 분명합니다. 적분기가 1 pu 계통 전압을 떠맡지 않아도 되니 기동과 전압 급변 때 전류가 덜 튀고, 계통 전압 외란을 PI 대역폭을 기다리지 않고 바로 상쇄합니다. 하지만 측정값이 들어온다는 것이 핵심 차이입니다. 그 측정 전압은 내 전류에 따라 변하니, 피드포워드는 계통을 거쳐 돌아오는 또 하나의 루프가 됩니다. 다음 장에서 장단점을 정리하고, 그다음 장에서 이 루프를 그림으로 봅니다.</aside>
+</section>

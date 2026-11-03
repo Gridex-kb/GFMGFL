@@ -1,0 +1,30 @@
+<section id="sat" data-transition="fade" style="background:#fbfcfd;color:#45546b;font-family:'Pretendard Variable', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:36px">
+<div style="position:absolute;left:0;top:0;width:1920px;height:12px;background:linear-gradient(90deg, #2463c8 0%, #8bc22c 100%)"></div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;color:#037673">3 · 포화와 전류 제한</p>
+<h2 style="font-size:56px;font-weight:800;line-height:1.15;letter-spacing:-1px;color:#013364">컨버터는 1.303 pu까지만 낸다: 원형으로 자른다</h2>
+</div>
+<div style="background:#ffffff;border-left:8px solid #2463c8;border-radius:8px;padding:24px 32px;align-self:flex-start">
+<img src="/_blob/5031f47f0edbac2b66bb24baa3373ce3" alt="|v*_c,dq| > 1.303 ⇒ v*_c,dq ← 1.303 · v*_c,dq / |v*_c,dq|" style="width:808px;height:139px;object-fit:contain">
+</div>
+<div style="display:flex;gap:24px">
+<div style="flex:1;background:#ffffff;border:2px solid #dae3ec;border-radius:20px;padding:32px;display:flex;flex-direction:column;gap:10px">
+<p style="font-size:26px;font-weight:700;color:#2463c8">어디서 온 숫자</p>
+<h3 style="font-size:32px;font-weight:800;color:#013364">V<span style="color:#2463c8">dc</span>/√3 = 1.303 pu</h3>
+<p style="font-size:27px;line-height:1.45">2레벨 SVPWM 선형 영역 최대 상전압 진폭 (2강). DC 700 V, 기준 310 V</p>
+</div>
+<div style="flex:1;background:#ffffff;border:2px solid #dae3ec;border-radius:20px;padding:32px;display:flex;flex-direction:column;gap:10px">
+<p style="font-size:26px;font-weight:700;color:#2463c8">왜 원형</p>
+<h3 style="font-size:32px;font-weight:800;color:#013364">방향은 지키고 크기만</h3>
+<p style="font-size:27px;line-height:1.45">d·q를 따로 자르면 벡터 방향이 틀어진다. 크기를 원 위로 끌어내린다</p>
+</div>
+<div style="flex:1;background:#013364;border-radius:20px;padding:32px;display:flex;flex-direction:column;gap:10px">
+<p style="font-size:26px;font-weight:700;color:#b9f179">언제 걸리나</p>
+<h3 style="font-size:32px;font-weight:800;color:#ffffff">큰 계단, 고장, 과변조</h3>
+<p style="font-size:27px;line-height:1.45;color:#c6d4e6">정상 운전은 1 pu 근처. 1 pu 전류 계단이나 고장 순간에 포화</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#7d8ca2">5강 · 전류 제어</p>
+<p style="position:absolute;left:1592px;bottom:64px;width:200px;font-size:24px;color:#7d8ca2;text-align:right">21 / 29</p>
+<aside>컨버터가 낼 수 있는 전압은 유한합니다. 2강에서 본 대로 2레벨 SVPWM 선형 영역의 최대 상전압 진폭은 DC 전압 나누기 루트 3이고, 우리 설비는 700 V 나누기 루트 3, 404 V, 기준 310 V로 나누면 1.303 pu입니다. 제어기가 이보다 큰 전압을 요구하면 모델은 지령 벡터의 크기를 원형으로 자릅니다. 식처럼 크기가 1.303을 넘으면 방향은 그대로 두고 크기만 1.303으로 줄입니다. d축과 q축을 따로 자르면 벡터의 방향이 틀어져 의도하지 않은 무효 성분이 생기기 때문에 원형으로 자릅니다. 정상 운전에서는 전압이 1 pu 근처라 여유가 있습니다. 포화는 큰 전류 계단, 고장 순간, 또는 계통 전압이 높을 때 걸립니다. 문제는 포화 중에 적분기가 무슨 일을 하느냐입니다. 다음 장입니다.</aside>
+</section>

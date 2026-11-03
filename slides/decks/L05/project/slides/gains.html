@@ -1,0 +1,31 @@
+<section id="gains" data-transition="fade" style="background:#fbfcfd;color:#45546b;font-family:'Pretendard Variable', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:28px">
+<div style="position:absolute;left:0;top:0;width:1920px;height:12px;background:linear-gradient(90deg, #2463c8 0%, #8bc22c 100%)"></div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;color:#037673">1 · 플랜트와 PI 설계 · 칠판 유도</p>
+<h2 style="font-size:56px;font-weight:800;line-height:1.15;letter-spacing:-1px;color:#013364">이득은 대역폭에서 나온다: K<span style="color:#2463c8">p</span> 2.67, K<span style="color:#2463c8">i</span> 2681</h2>
+</div>
+<div style="background:#ffffff;border:2px solid #dae3ec;border-radius:20px;padding:28px 36px;display:flex;flex-direction:column;gap:20px">
+<div style="display:flex;gap:28px;align-items:center">
+<p style="font-size:30px;font-weight:800;color:#2463c8;width:48px">①</p>
+<img src="/_blob/c52fab75dc5d357172d8d5ec9a3cdd08" alt="K_p = ω_cc L_f/ω_b = 2π·800×0.2/377 ≈ 2.67, K_i = K_p ω_cc/5 ≈ 2681" style="width:1324px;height:118px;object-fit:contain">
+</div>
+<div style="display:flex;gap:28px;align-items:center">
+<p style="font-size:30px;font-weight:800;color:#2463c8;width:48px">②</p>
+<img src="/_blob/e2de15acae451215bc382e7c74143be1" alt="∠(K_p + K_i/(jω_cc)) = −arctan(K_i/(K_p ω_cc)) = −arctan(1/5) ≈ −11°" style="width:1182px;height:125px;object-fit:contain">
+</div>
+</div>
+<div style="display:flex;gap:24px">
+<div style="flex:1;background:#e9f0f6;border-radius:16px;padding:24px 28px">
+<p style="font-size:27px;line-height:1.45"><b style="color:#013364">K<span style="color:#2463c8">p</span></b>: 비례만 있으면 개루프 K<b>p</b>ω<b>b</b>/(sL<b>f</b>). 이득 1인 주파수 = ω<b>cc</b></p>
+</div>
+<div style="flex:1;background:#e9f0f6;border-radius:16px;padding:24px 28px">
+<p style="font-size:27px;line-height:1.45"><b style="color:#013364">K<span style="color:#2463c8">i</span></b>: PI 영점 K<b>i</b>/K<b>p</b>를 대역폭의 1/5 (160 Hz)에. 위상 손실 11°</p>
+</div>
+<div style="flex:1;background:#013364;border-radius:16px;padding:24px 28px">
+<p style="font-size:27px;line-height:1.45;color:#ffffff">R<b>f</b>/L<b>f</b> 극 상쇄 설계도 흔하지만, R<b>f</b> 0.005는 작고 불확실 → 영점 고정</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#7d8ca2">5강 · 전류 제어</p>
+<p style="position:absolute;left:1592px;bottom:64px;width:200px;font-size:24px;color:#7d8ca2;text-align:right">9 / 29</p>
+<aside>이득을 칠판에서 정합니다. R_f가 0.005로 작으니 플랜트는 거의 적분기 ω_b 나누기 sL_f입니다. 비례 이득만 있으면 개루프는 K_p ω_b 나누기 sL_f이고, 이 크기가 1이 되는 주파수가 교차주파수, 즉 대역폭입니다. 그래서 K_p는 ω_cc L_f 나누기 ω_b입니다. 800 Hz면 2π 곱하기 800 곱하기 0.2 나누기 377, 약 2.67 pu/pu입니다. 적분 이득은 PI의 영점 K_i/K_p를 어디에 둘지로 정합니다. 이 모델은 대역폭의 5분의 1, 160 Hz에 둡니다. 그래서 K_i는 K_p 곱하기 ω_cc 나누기 5, 약 2681입니다. ②번 식처럼 영점을 5분의 1에 두면 교차주파수에서 PI의 위상이 아크탄젠트 5분의 1, 약 11도 늦습니다. 앞 질문의 11도가 여기서 나옵니다. PI 영점을 R_f/L_f에 맞춰 플랜트 극을 상쇄하는 설계도 흔합니다. 하지만 R_f는 작고 온도에 따라 변해서 불확실하니, 이 모델은 영점을 대역폭 기준으로 고정해 적분 작용을 충분히 빠르게 했습니다.</aside>
+</section>

@@ -7,10 +7,10 @@
 import { createRequire } from "node:module";
 import fs from "node:fs";
 import path from "node:path";
-import { pathToFileURL } from "node:url";
+import { pathToFileURL, fileURLToPath } from "node:url";
 
 const { chromium } = createRequire(import.meta.url)("playwright");
-const TOOLS = path.dirname(new URL(import.meta.url).pathname);
+const TOOLS = path.dirname(fileURLToPath(import.meta.url));
 const [srcDir, outDir] = process.argv.slice(2).map((p) => path.resolve(p));
 if (!srcDir || !outDir) { console.error("usage: render.mjs <src> <out>"); process.exit(1); }
 fs.mkdirSync(outDir, { recursive: true });

@@ -1,0 +1,26 @@
+<section id="bode" data-transition="fade" style="background:#fbfcfd;color:#45546b;font-family:'Pretendard Variable', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:24px">
+<div style="position:absolute;left:0;top:0;width:1920px;height:12px;background:linear-gradient(90deg, #2463c8 0%, #8bc22c 100%)"></div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;color:#037673">1 · 플랜트와 PI 설계</p>
+<h2 style="font-size:56px;font-weight:800;line-height:1.15;letter-spacing:-1px;color:#013364">보드 선도: 교차 815 Hz, 위상여유 35°</h2>
+</div>
+<div style="display:flex;gap:40px;align-items:center">
+<img src="/_blob/0c4b1130576a37fb5947374eba6d1ebd" alt="개루프 L(jω) 보드 선도. 위: 크기 dB, 815 Hz에서 0 dB 교차. 아래: 위상, 지연 포함(주황)은 교차에서 −145°로 위상여유 35°, 지연 없음(파랑 점선)은 79°" style="width:1030px;height:665px;object-fit:contain;background:#ffffff;border:2px solid #dae3ec;border-radius:16px">
+<div style="flex:1;display:flex;flex-direction:column;gap:20px">
+<div style="background:#ffffff;border-left:8px solid #2463c8;border-radius:8px;padding:16px 22px">
+<img src="/_blob/9422435a736782bf06f817e11dba4fcc" alt="L(jω) = (K_p + K_i/jω) e^(−jωT_d) ω_b/(jωL_f), T_d = 1.5 T_s" style="width:520px;height:62px;object-fit:contain">
+</div>
+<div style="background:#ffffff;border-left:8px solid #eb6834;border-radius:8px;padding:16px 22px">
+<h3 style="font-size:28px;font-weight:800;color:#013364">지연이 위상을 끝없이 내린다</h3>
+<p style="font-size:25px;line-height:1.45">1.5 kHz 근처에서 −180° 통과. 대역폭을 올리면 바로 불안정</p>
+</div>
+<div style="background:#ffffff;border-left:8px solid #7d8ca2;border-radius:8px;padding:16px 22px">
+<h3 style="font-size:28px;font-weight:800;color:#013364">35°는 작다</h3>
+<p style="font-size:25px;line-height:1.45">보통 45~60°를 원한다. 800 Hz는 응답을 위해 감수한 선택</p>
+</div>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#7d8ca2">5강 · 전류 제어</p>
+<p style="position:absolute;left:1592px;bottom:64px;width:200px;font-size:24px;color:#7d8ca2;text-align:right">10 / 29</p>
+<aside>이득을 넣고 개루프 전달함수를 그려 봅니다. 식은 PI 곱하기 지연 곱하기 플랜트입니다. 위 그림은 크기입니다. 대략 −20 dB/dec로 떨어지며 815 Hz에서 0 dB를 지납니다. 설계값 800 Hz보다 조금 높은 이유는 적분 항이 크기를 약간 보태기 때문입니다. 아래 그림은 위상입니다. 파란 점선이 지연이 없을 때로, −90도 근처에서 PI 영점 때문에 조금 내려갔다가 다시 −90도로 올라갑니다. 교차주파수에서 −101도, 위상여유 79도입니다. 주황 실선이 지연을 넣은 실제 루프입니다. 위상이 주파수에 비례해 끝없이 내려가서, 교차주파수에서 −145도, 위상여유 35도입니다. 더 가면 1.5 kHz 근처에서 −180도를 지나니, 대역폭을 조금만 올려도 불안정에 가까워집니다. 35도는 작은 값입니다. 보통 45도에서 60도를 원합니다. 이 강좌의 800 Hz는 빠른 응답을 위해 위상여유를 감수한 선택이고, 그 대가가 다음 장의 오버슈트입니다.</aside>
+</section>

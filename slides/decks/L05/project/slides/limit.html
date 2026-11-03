@@ -1,0 +1,22 @@
+<section id="limit" data-transition="fade" style="background:#fbfcfd;color:#45546b;font-family:'Pretendard Variable', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:28px">
+<div style="position:absolute;left:0;top:0;width:1920px;height:12px;background:linear-gradient(90deg, #2463c8 0%, #8bc22c 100%)"></div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;color:#037673">3 · 포화와 전류 제한</p>
+<h2 style="font-size:56px;font-weight:800;line-height:1.15;letter-spacing:-1px;color:#013364">원형 전류 제한 1.2 pu: 누구를 먼저 깎을 것인가</h2>
+</div>
+<img src="/_blob/f0daac1b75251ae33917704ce73cb4ef" alt="원형 전류 제한 1.2 pu 세 패널. GFL 정상 운전: id 1.1 유지, ir을 0.8에서 0.48로 축소. GFL 저전압 FRT: ir = 1.14 고정, id를 0.7에서 0.37로 축소. GFM: 지령 (1.3, −0.6)의 방향을 유지한 채 크기만 1.2로 축소. 빈 원은 외부 루프 지령, 찬 원은 제한 후 지령" style="width:1500px;height:560px;object-fit:contain;background:#ffffff;border:2px solid #dae3ec;border-radius:16px;align-self:center">
+<div style="display:flex;gap:24px">
+<div style="flex:1;background:#ffffff;border-left:8px solid #2463c8;border-radius:8px;padding:16px 24px">
+<p style="font-size:26px;line-height:1.45"><b style="color:#013364">GFL 정상</b> 유효 우선: 유효전력 계약 이행</p>
+</div>
+<div style="flex:1;background:#ffffff;border-left:8px solid #eb6834;border-radius:8px;padding:16px 24px">
+<p style="font-size:26px;line-height:1.45"><b style="color:#013364">GFL FRT</b> 무효 우선 i<b>r</b> = 0.95 × 1.2: 계통코드 요구</p>
+</div>
+<div style="flex:1;background:#ffffff;border-left:8px solid #037673;border-radius:8px;padding:16px 24px">
+<p style="font-size:26px;line-height:1.45"><b style="color:#013364">GFM</b> 방향 유지 + anti-windup: 전압원 성격 유지 (9강)</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#7d8ca2">5강 · 전류 제어</p>
+<p style="position:absolute;left:1592px;bottom:64px;width:200px;font-size:24px;color:#7d8ca2;text-align:right">23 / 29</p>
+<aside>반도체는 전류로 망가집니다. 그래서 전류 지령의 크기를 1.2 pu 원 안으로 제한합니다. 원 밖의 지령을 원 위로 옮기는 방법이 곧 우선순위이고, 세 가지가 있습니다. 왼쪽, GFL 정상 운전은 유효 우선입니다. 유효전류 1.1을 지키고 남는 만큼만 무효전류를 줍니다. 0.8을 요구했지만 0.48만 남습니다. 유효전력 계약을 이행하기 위해서입니다. 가운데, GFL이 저전압 FRT에 들어가면 무효 우선으로 바꿉니다. 무효전류를 0.95 곱하기 1.2, 1.14 pu로 고정하고 남는 여유 0.37만 유효전류에 줍니다. 계통코드가 전압 지지를 위한 무효전류 주입을 요구하기 때문입니다. 오른쪽, GFM은 다릅니다. 가상 어드미턴스가 만든 전류 지령의 방향을 유지한 채 크기만 1.2로 줄입니다. 전압원처럼 동작하는 것이 목적이라 전류의 위상을 지켜야 전압원 성격과 동기를 최대한 유지하기 때문입니다. 여기에 anti-windup과 가속 정지 보정이 붙는데, 이것은 9강 전류 제한과 고장에서 자세히 다룹니다. 하나 더, 고장 순간에는 내부 루프 지연 때문에 전류가 한계를 잠깐 넘습니다. 모델에서 약 1.34에서 1.35 pu입니다. 실제 설비에서는 하드웨어 과전류 보호가 이를 맡습니다.</aside>
+</section>

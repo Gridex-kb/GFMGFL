@@ -1,0 +1,17 @@
+<section id="sum1" data-transition="fade" style="background:#fbfcfd;color:#45546b;font-family:'Pretendard Variable', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<div style="position:absolute;left:0;top:0;width:1920px;height:12px;background:linear-gradient(90deg, #2463c8 0%, #8bc22c 100%)"></div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;color:#037673">1 · 플랜트와 PI 설계</p>
+<h2 style="font-size:56px;font-weight:800;line-height:1.15;letter-spacing:-1px;color:#013364">1부 정리</h2>
+</div>
+<div style="border:3px solid #013364;border-radius:20px;padding:48px;display:flex;flex-direction:column;gap:28px;background:#ffffff">
+<p style="font-size:36px;line-height:1.45;color:#013364"><b style="color:#2463c8">①</b>  dq 플랜트: 인덕터 적분기 + 외란 두 개 (<b>결합 jωL<span style="color:#2463c8">f</span>i</b>, <b>계통 전압 v<span style="color:#2463c8">t</span></b>)</p>
+<p style="font-size:36px;line-height:1.45;color:#013364"><b style="color:#2463c8">②</b>  K<span style="color:#2463c8">p</span> = ω<span style="color:#2463c8">cc</span>L<span style="color:#2463c8">f</span>/ω<span style="color:#2463c8">b</span> ≈ <b>2.67</b>, K<span style="color:#2463c8">i</span> = K<span style="color:#2463c8">p</span>ω<span style="color:#2463c8">cc</span>/5 ≈ <b>2681</b></p>
+<p style="font-size:36px;line-height:1.45;color:#013364"><b style="color:#2463c8">③</b>  위상여유 90 − 11 − 43 ≈ <b>35°</b> (815 Hz) → 오버슈트 <b>50 %</b></p>
+<p style="font-size:36px;line-height:1.45;color:#013364"><b style="color:#2463c8">④</b>  대역폭은 높을수록 좋은 게 아니다: 지연이 먹는 위상 360°·f<span style="color:#2463c8">c</span>·T<span style="color:#2463c8">d</span></p>
+</div>
+<p style="font-size:30px;line-height:1.45">다음: 외란 두 개를 제어기가 미리 알고 있다면, 더해 주면 되지 않을까?</p>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#7d8ca2">5강 · 전류 제어</p>
+<p style="position:absolute;left:1592px;bottom:64px;width:200px;font-size:24px;color:#7d8ca2;text-align:right">12 / 29</p>
+<aside>1부를 정리합니다. dq 좌표의 플랜트는 인덕터 적분기에 외란 두 개가 붙은 것입니다. 교차결합 항과 계통 전압입니다. 이득은 대역폭에서 나옵니다. K_p는 ω_cc L_f 나누기 ω_b로 2.67, K_i는 영점을 대역폭의 5분의 1에 두어 2681입니다. 위상여유는 180에서 플랜트 90, PI 영점 11, 지연 43을 뺀 약 35도이고, 그 얼굴이 계단 응답 오버슈트 50 %입니다. 그래서 대역폭은 높을수록 좋은 것이 아닙니다. 지연이 먹는 위상이 주파수에 비례해 커지기 때문입니다. 이제 2부의 질문입니다. 외란 두 개, 결합 항과 계통 전압을 제어기가 미리 알고 있다면 그냥 더해 주면 되지 않을까요? 하나는 그렇고, 하나는 함정입니다.</aside>
+</section>

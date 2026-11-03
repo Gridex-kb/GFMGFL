@@ -1,0 +1,25 @@
+% 5강 수식
+%% E01-플랜트
+\frac{L_f}{\omega_b}\frac{d\,i_{dq}}{dt} = v_{c,dq} - R_f\,i_{dq} \;\underbrace{-\;j\omega L_f\,i_{dq}}_{\text{교차결합}}\;\underbrace{-\;v_{t,dq}}_{\text{계통 전압}}
+%% E02-회전유도
+i_{\alpha\beta} = i_{dq}\,e^{j\theta},\quad \dot\theta = \omega_b\,\omega \;\Rightarrow\; \frac{d i_{\alpha\beta}}{dt} = \Big(\frac{d i_{dq}}{dt} + j\omega_b\,\omega\, i_{dq}\Big)e^{j\theta}
+%% E03-이득
+K_p = \frac{\omega_{cc}L_f}{\omega_b} = \frac{2\pi\cdot 800 \times 0.2}{377} \approx 2.67,\qquad K_i = K_p\,\frac{\omega_{cc}}{5} \approx 2681
+%% E04-제어법칙
+v^*_{c,dq} = K_p\,e + x_I + \textcolor{#2463c8}{j\omega L_f\, i_{dq}}\;\big(+\;\textcolor{#eb6834}{k_{ff}\,v_{dq}}\big),\qquad e = i^*_{dq} - i_{dq}
+%% E05-개루프
+L(j\omega) = \Big(K_p + \frac{K_i}{j\omega}\Big)\, e^{-j\omega T_d}\, \frac{\omega_b}{j\omega L_f},\qquad T_d = 1.5\,T_s
+%% E06-위상여유
+\text{PM} \approx 180^\circ - \underbrace{90^\circ}_{\text{플랜트}} - \underbrace{11^\circ}_{\text{PI 영점}} - \underbrace{43^\circ}_{\text{지연}} \approx 35^\circ
+%% E07-PI영점
+\angle\Big(K_p + \frac{K_i}{j\omega_{cc}}\Big) = -\arctan\frac{K_i}{K_p\,\omega_{cc}} = -\arctan\frac{1}{5} \approx -11^\circ
+%% E08-포화
+|v^*_{c,dq}| > 1.303 \;\Rightarrow\; v^*_{c,dq} \leftarrow 1.303\,\frac{v^*_{c,dq}}{|v^*_{c,dq}|}
+%% E09-PCC
+v_{pcc} = e_g + Z_g\, i \;\Rightarrow\; \text{피드포워드 루프 이득} \propto k_{ff}\,|Z_g|\,e^{-j\omega T_d}
+%% E10-예제1
+K_p = \frac{5027 \times 0.15}{377} \approx 2.0,\qquad K_i = 2.0 \times \frac{5027}{5} \approx 2011
+%% E11-예제2
+90^\circ - 11^\circ - 360^\circ f_c \times 150\times 10^{-6} \ge 45^\circ \;\Rightarrow\; f_c \le \frac{34}{360 \times 150\times 10^{-6}} \approx 630\ \mathrm{Hz}
+%% E12-전류제한
+|i^*| > 1.2 \;\Rightarrow\; i^* \leftarrow 1.2\,\frac{i^*}{|i^*|}\quad(\text{GFM: 방향 유지}),\qquad \text{GFL FRT: } i_r = 0.95 \times 1.2 = 1.14

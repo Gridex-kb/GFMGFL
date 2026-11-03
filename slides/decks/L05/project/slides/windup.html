@@ -1,0 +1,27 @@
+<section id="windup" data-transition="fade" style="background:#fbfcfd;color:#45546b;font-family:'Pretendard Variable', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:28px">
+<div style="position:absolute;left:0;top:0;width:1920px;height:12px;background:linear-gradient(90deg, #2463c8 0%, #8bc22c 100%)"></div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;color:#037673">3 · 포화와 전류 제한</p>
+<h2 style="font-size:56px;font-weight:800;line-height:1.15;letter-spacing:-1px;color:#013364">포화 중에 적분하면 풀린 뒤 68 % 오버슈트</h2>
+</div>
+<div style="display:flex;gap:40px;align-items:center">
+<img src="/_blob/418544ee49caa19fd484632112456c9f" alt="1 pu id 계단 응답. anti-windup 없음(주황)은 1.68 pu까지 68 % 오버슈트로 전류 한계 1.2 pu(빨간 점선)를 한참 넘고, 조건부 적분(파랑)은 3 % 오버슈트" style="width:1100px;height:560px;object-fit:contain;background:#ffffff;border:2px solid #dae3ec;border-radius:16px">
+<div style="flex:1;display:flex;flex-direction:column;gap:20px">
+<div style="background:#ffffff;border-left:8px solid #eb6834;border-radius:8px;padding:16px 22px">
+<h3 style="font-size:28px;font-weight:800;color:#013364">와인드업</h3>
+<p style="font-size:25px;line-height:1.45">포화 중 오차가 계속 쌓임 → 풀린 뒤 쌓인 값이 전류를 밀어 올린다</p>
+</div>
+<div style="background:#ffffff;border-left:8px solid #2463c8;border-radius:8px;padding:16px 22px">
+<h3 style="font-size:28px;font-weight:800;color:#013364">조건부 적분</h3>
+<p style="font-size:25px;line-height:1.45">포화된 샘플에서는 적분기를 멈춘다. 가장 단순한 anti-windup</p>
+</div>
+<div style="background:#ffffff;border-left:8px solid #7d8ca2;border-radius:8px;padding:16px 22px">
+<h3 style="font-size:28px;font-weight:800;color:#013364">코드 한 줄</h3>
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:24px;line-height:1.5;color:#45546b">if not sat: x += Ki*Ts*e</p>
+</div>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#7d8ca2">5강 · 전류 제어</p>
+<p style="position:absolute;left:1592px;bottom:64px;width:200px;font-size:24px;color:#7d8ca2;text-align:right">22 / 29</p>
+<aside>같은 독립 전류루프에 0.1이 아니라 1 pu 계단을 넣어 봅니다. 전압 지령이 1.303을 넘어 약 2 ms 동안 포화됩니다. 주황색은 포화 중에도 적분기가 오차를 계속 쌓는 경우입니다. 포화가 풀린 뒤 쌓인 적분값이 전류를 1.68 pu까지 밀어 올려 68 % 오버슈트가 생기고, 빨간 점선인 전류 한계 1.2 pu를 한참 넘습니다. 이것이 적분 와인드업입니다. 파란색은 이 모델이 쓰는 조건부 적분입니다. 포화된 샘플에서는 적분기를 멈춥니다. 코드로는 한 줄, 포화가 아닐 때만 적분합니다. 그러면 오버슈트가 3 %로 줄어듭니다. 더 정교한 back-calculation 같은 방법도 있지만 이 모델은 가장 단순한 것을 씁니다. 실습 4에서 이 한 줄을 if 밖으로 빼서 직접 비교해 봅니다.</aside>
+</section>

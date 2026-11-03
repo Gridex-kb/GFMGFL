@@ -1,0 +1,27 @@
+<section id="ffloop" data-transition="fade" style="background:#fbfcfd;color:#45546b;font-family:'Pretendard Variable', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:28px">
+<div style="position:absolute;left:0;top:0;width:1920px;height:12px;background:linear-gradient(90deg, #2463c8 0%, #8bc22c 100%)"></div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;color:#037673">2 · 디커플링과 피드포워드</p>
+<h2 style="font-size:56px;font-weight:800;line-height:1.15;letter-spacing:-1px;color:#013364">피드포워드는 계통 임피던스를 거쳐 돌아오는 루프다</h2>
+</div>
+<div style="display:flex;gap:40px;align-items:center">
+<img src="/_blob/b90abdd7c71852156728c4c84e34629f" alt="전류 제어기 → 컨버터 + Lf → 전류 i → PCC → Zg = 1/SCR → 계통 전원 eg. PCC 전압 v_pcc가 측정 + 지연 1.5 Ts → k_ff를 거쳐 전류 제어기 지령에 더해지는 주황색 되먹임 경로. v_pcc = e_g + Z_g i" style="width:1160px;height:464px;object-fit:contain;background:#ffffff;border:2px solid #dae3ec;border-radius:16px">
+<div style="flex:1;display:flex;flex-direction:column;gap:20px">
+<div style="background:#ffffff;border-left:8px solid #eb6834;border-radius:8px;padding:16px 22px">
+<h3 style="font-size:28px;font-weight:800;color:#013364">루프 이득</h3>
+<p style="font-size:25px;line-height:1.45">k<b>ff</b> × |Z<b>g</b>| × 지연. SCR 2면 Z<b>g</b> = 0.5 pu, SCR 10의 5배</p>
+</div>
+<div style="background:#ffffff;border-left:8px solid #2463c8;border-radius:8px;padding:16px 22px">
+<h3 style="font-size:28px;font-weight:800;color:#013364">위상</h3>
+<p style="font-size:25px;line-height:1.45">지연 150 µs는 560 Hz에서 30°, LCL 공진 근처에서 더 돈다</p>
+</div>
+<div style="background:#ffffff;border-left:8px solid #3aa150;border-radius:8px;padding:16px 22px">
+<h3 style="font-size:28px;font-weight:800;color:#013364">끊는 법</h3>
+<p style="font-size:25px;line-height:1.45">k<b>ff</b> = 0, 또는 100 Hz 저역통과로 고주파 경로를 끊는다</p>
+</div>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#7d8ca2">5강 · 전류 제어</p>
+<p style="position:absolute;left:1592px;bottom:64px;width:200px;font-size:24px;color:#7d8ca2;text-align:right">16 / 29</p>
+<aside>숨은 루프를 그림으로 봅니다. 위쪽 남색 경로가 원래 의도한 흐름입니다. 전류 제어기가 컨버터를 움직여 전류 i를 내고, 그 전류가 PCC를 지나 계통 임피던스 Z_g를 통해 계통 전원 e_g로 흘러갑니다. 그런데 PCC 전압은 e_g에 Z_g 곱하기 i를 더한 값이라, 내 전류가 바뀌면 PCC 전압도 바뀝니다. 아래쪽 주황 경로가 피드포워드입니다. 그 PCC 전압을 측정하고, 1.5 샘플 지연을 거쳐, k_ff를 곱해 전압 지령에 더합니다. 내 전류가 PCC 전압을 바꾸고, 그 전압이 다시 내 전압 지령을 바꾸니 루프입니다. 이 루프의 이득은 k_ff 곱하기 계통 임피던스 곱하기 지연입니다. SCR 2면 Z_g가 0.5 pu로 SCR 10의 다섯 배입니다. 위상은 지연 150 마이크로초가 560 Hz에서 30도를 돌리고, 3강에서 본 LCL 공진 근처에서는 더 돕니다. 끊는 방법은 두 가지입니다. 아예 k_ff를 0으로 두거나, 저역통과 필터로 고주파 경로만 끊는 것입니다. 다음 장에서 실제로 돌려 봅니다.</aside>
+</section>
