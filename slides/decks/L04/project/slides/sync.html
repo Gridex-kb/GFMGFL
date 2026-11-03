@@ -1,0 +1,27 @@
+<section id="sync" data-transition="fade" style="background:#fbfcfd;color:#45546b;font-family:'Pretendard Variable', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:28px">
+<div style="position:absolute;left:0;top:0;width:1920px;height:12px;background:linear-gradient(90deg, #2463c8 0%, #8bc22c 100%)"></div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;color:#037673">1 · 샘플링과 갱신</p>
+<h2 style="font-size:56px;font-weight:800;line-height:1.15;letter-spacing:-1px;color:#013364">꼭짓점에서 재면 필터 없이 리플 평균을 얻는다</h2>
+</div>
+<div style="display:flex;gap:44px;align-items:center">
+<img src="/_blob/201bf12614693b85b42e55be3a2a089e" alt="EMT 모델(GFM, SCR 3)의 Lf 전류 리플(주황, 2 µs)과 반송파 꼭짓점 샘플(파랑 점, 10 kHz). 샘플은 톱니의 가운데를 잡는다" style="width:1100px;height:560px;object-fit:contain;background:#ffffff;border:2px solid #dae3ec;border-radius:16px">
+<div style="flex:1;display:flex;flex-direction:column;gap:22px">
+<div style="background:#ffffff;border-left:8px solid #2463c8;border-radius:8px;padding:18px 24px">
+<h3 style="font-size:30px;font-weight:800;color:#013364">대칭이라서</h3>
+<p style="font-size:26px;line-height:1.45">삼각파 PWM의 리플은 꼭짓점을 중심으로 대칭 → 그 순간 전류 = 평균</p>
+</div>
+<div style="background:#ffffff;border-left:8px solid #2463c8;border-radius:8px;padding:18px 24px">
+<h3 style="font-size:30px;font-weight:800;color:#013364">2회 갱신</h3>
+<p style="font-size:26px;line-height:1.45">골과 마루 모두 샘플·갱신: 5 kHz → 10 kHz, T<b>s</b> = 100 µs</p>
+</div>
+<div style="background:#ffffff;border-left:8px solid #eb6834;border-radius:8px;padding:18px 24px">
+<h3 style="font-size:30px;font-weight:800;color:#013364">그래도 남는 것</h3>
+<p style="font-size:26px;line-height:1.45">측대파 일부는 에일리어싱 (3강: 360 Hz 배수)</p>
+</div>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#7d8ca2">4강 · 디지털 제어와 지연</p>
+<p style="position:absolute;left:1592px;bottom:64px;width:200px;font-size:24px;color:#7d8ca2;text-align:right">7 / 25</p>
+<aside>3강에서 L_f 전류에 0.11 pu 리플이 있다는 것을 봤습니다. 디지털 제어기는 이 전류를 어떻게 재야 할까요? 그림은 EMT 모델의 실제 L_f 전류, 주황색 톱니와, 제어기가 실제로 잰 값, 파란 점입니다. 파란 점이 톱니의 정확히 가운데를 지나는 것이 보이시죠. 대칭 삼각파 PWM에서는 펄스가 반송파 꼭짓점을 중심으로 대칭이라, 리플 톱니도 꼭짓점을 중심으로 대칭입니다. 그래서 꼭짓점 순간의 전류가 리플의 평균값을 지납니다. 이것을 반송파 동기 샘플링이라고 하고, 아날로그 필터 없이 평균값을 얻는 요령입니다. 골과 마루 양쪽에서 샘플링하고 듀티를 갱신하는 것을 2회 갱신이라 하고, 우리 설비는 5 kHz 스위칭에 10 kHz 샘플링, 샘플 간격 100 마이크로초입니다. 다만 듀티가 샘플 사이에 변하고 측대파가 있어서, 3강에서 본 에일리어싱 잡음이 조금은 남습니다.</aside>
+</section>

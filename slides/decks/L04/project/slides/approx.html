@@ -1,0 +1,31 @@
+<section id="approx" data-transition="fade" style="background:#fbfcfd;color:#45546b;font-family:'Pretendard Variable', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:36px">
+<div style="position:absolute;left:0;top:0;width:1920px;height:12px;background:linear-gradient(90deg, #2463c8 0%, #8bc22c 100%)"></div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;color:#037673">2 · 지연이 먹는 위상</p>
+<h2 style="font-size:56px;font-weight:800;line-height:1.15;letter-spacing:-1px;color:#013364">1차 지연 근사는 고주파에서 낙관적이다</h2>
+</div>
+<div style="background:#ffffff;border-left:8px solid #2463c8;border-radius:8px;padding:20px 28px;align-self:flex-start">
+<img src="/_blob/a2d0a8742b3de5ea0d5341bb3f6d6d6a" alt="1/(1 + sTd): 위상 = −arctan(ωTd) = −37° at 800 Hz" style="width:1052px;height:116px;object-fit:contain">
+</div>
+<div style="display:flex;gap:24px">
+<div style="flex:1;background:#ffffff;border:2px solid #dae3ec;border-radius:20px;padding:32px;display:flex;flex-direction:column;gap:10px">
+<p style="font-size:26px;font-weight:700;color:#2463c8">위상</p>
+<h3 style="font-size:32px;font-weight:800;color:#013364">덜 늦는다</h3>
+<p style="font-size:27px;line-height:1.45">800 Hz에서 37° (실제 43°). 90°에서 멈춘다</p>
+</div>
+<div style="flex:1;background:#ffffff;border:2px solid #dae3ec;border-radius:20px;padding:32px;display:flex;flex-direction:column;gap:10px">
+<p style="font-size:26px;font-weight:700;color:#2463c8">크기</p>
+<h3 style="font-size:32px;font-weight:800;color:#013364">이득을 깎는다</h3>
+<p style="font-size:27px;line-height:1.45">800 Hz에서 −2 dB. 고주파 루프 이득이 실제보다 작아 보인다</p>
+</div>
+<div style="flex:1;background:#013364;border-radius:20px;padding:32px;display:flex;flex-direction:column;gap:10px">
+<p style="font-size:26px;font-weight:700;color:#b9f179">이 프로젝트에서</p>
+<h3 style="font-size:32px;font-weight:800;color:#ffffff">560 Hz 진동</h3>
+<p style="font-size:27px;line-height:1.45;color:#c6d4e6">PCC 전압 피드포워드 GFM, SCR 2: 평균값 모델은 안정, 스위칭 모델은 지속 진동</p>
+</div>
+</div>
+<p style="font-size:30px;line-height:1.45">고주파 안정도 결론은 <b style="color:#013364">순수 지연이 들어간 모델</b>로 확인한다 (11강)</p>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#7d8ca2">4강 · 디지털 제어와 지연</p>
+<p style="position:absolute;left:1592px;bottom:64px;width:200px;font-size:24px;color:#7d8ca2;text-align:right">13 / 25</p>
+<aside>이 강좌의 시뮬레이션 모델에는 두 가지 컨버터 모델이 있습니다. 스위칭 모델은 실제 디지털 제어처럼 샘플링과 순수 지연이 있고, 평균값 모델은 빠른 검토용으로 지연을 1차 지연, 1/(1 + sT_d)로 근사합니다. 이 근사는 고주파에서 두 가지로 실제보다 낙관적입니다. 위상은 덜 늦습니다. 800 Hz에서 실제 43도 대신 37도이고, 아무리 주파수를 올려도 90도에서 멈춥니다. 크기는 반대로 깎습니다. 800 Hz에서 2 dB 작습니다. 위상은 여유가 있어 보이고 이득은 작아 보이니, 안정도를 과대평가하게 됩니다. 실제 사례가 있습니다. PCC 전압 순시 피드포워드를 켠 GFM은 SCR 2에서 평균값 모델로는 안정했지만, 스위칭 모델에서는 약 560 Hz 진동이 자라 지속됐습니다. 다음 5강 전류 제어에서 그 그림을 보여 드립니다. 그래서 수백 Hz 이상의 안정도 결론은 반드시 순수 지연이 들어간 모델로 확인해야 합니다. 11강 EMT 실습에서 다시 다룹니다.</aside>
+</section>

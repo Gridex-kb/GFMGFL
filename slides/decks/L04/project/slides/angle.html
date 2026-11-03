@@ -1,0 +1,25 @@
+<section id="angle" data-transition="fade" style="background:#fbfcfd;color:#45546b;font-family:'Pretendard Variable', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:28px">
+<div style="position:absolute;left:0;top:0;width:1920px;height:12px;background:linear-gradient(90deg, #2463c8 0%, #8bc22c 100%)"></div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;color:#037673">3 · 각도 처리</p>
+<h2 style="font-size:56px;font-weight:800;line-height:1.15;letter-spacing:-1px;color:#013364">측정은 샘플 시점 각도로, 출력은 1.5 T<span style="color:#2463c8">s</span> 앞당겨</h2>
+</div>
+<div style="display:flex;gap:48px;align-items:center">
+<img src="/_blob/28bdd68736ba2f7e0482cb6ba4614ba7" alt="αβ 평면: 측정 변환은 샘플 시점 각 θk(파랑), 출력은 θk + 1.5ωTs(주황)로 되돌리고, 연속 회전 각 θ(t)(회색 점선)는 쓰지 않는다. 각도는 과장해서 그림" style="width:680px;height:560px;object-fit:contain;background:#ffffff;border:2px solid #dae3ec;border-radius:16px">
+<div style="flex:1;display:flex;flex-direction:column;gap:22px">
+<div style="background:#ffffff;border:2px solid #dae3ec;border-radius:16px;padding:24px 28px;display:flex;flex-direction:column;gap:8px">
+<p style="font-size:26px;font-weight:700;color:#2463c8">규칙 1 · 변환</p>
+<p style="font-size:28px;line-height:1.45">홀드된 측정은 <b style="color:#013364">샘플 시점의 각 θ<span style="color:#2463c8">k</span></b>로 dq 변환한다</p>
+</div>
+<div style="background:#ffffff;border:2px solid #dae3ec;border-radius:16px;padding:24px 28px;display:flex;flex-direction:column;gap:12px">
+<p style="font-size:26px;font-weight:700;color:#eb6834">규칙 2 · 출력</p>
+<p style="font-size:28px;line-height:1.45">지령은 1.5 T<b>s</b> 뒤에 효과를 내니, 그만큼 돌아갈 각을 <b style="color:#013364">앞당겨</b> αβ로</p>
+<img src="/_blob/d9a582e0f2808ed44d541d67d09e66f6" alt="v*_αβ = v*_dq e^(j(θk + 1.5 ω Ts))" style="width:459px;height:76px;object-fit:contain">
+</div>
+<p style="font-size:26px;line-height:1.45">60 Hz에서 1 T<b>s</b> 동안 각은 2.16° 돈다 · 모델: th_hold, th_out</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#7d8ca2">4강 · 디지털 제어와 지연</p>
+<p style="position:absolute;left:1592px;bottom:64px;width:200px;font-size:24px;color:#7d8ca2;text-align:right">16 / 25</p>
+<aside>dq 제어에서 각도 θ는 계속 회전합니다. 60 Hz면 100 마이크로초에 약 2.16도씩 돕니다. 그런데 측정값은 샘플 시점에 홀드되어 있습니다. 그래서 규칙이 두 가지 필요합니다. 규칙 1, 홀드된 측정은 그것을 잰 순간, 샘플 시점의 각 θ_k로 dq 변환합니다. 측정이 멈춰 있는데 계속 도는 θ(t)로 변환하면, 고정된 벡터를 도는 좌표에서 보게 되어 v_q가 샘플 주기 안에서 흘러 버립니다. 규칙 2, 반대로 계산한 전압 지령은 1.5 샘플 뒤에 효과를 내므로, 그동안 돌아갈 각 1.5 ω T_s만큼 앞당겨서 αβ로 되돌립니다. 그림은 각도를 과장해서 그렸습니다. 파란색이 측정 변환에 쓰는 θ_k, 주황색이 출력에 쓰는 각, 회색 점선이 쓰면 안 되는 연속 θ입니다. 시뮬레이션 모델의 코드에서는 sample 함수가 th_hold에 샘플 시점 각을 저장하고, deriv 함수가 th_out을 θ_k + 1.5 T_s ω로 만듭니다.</aside>
+</section>

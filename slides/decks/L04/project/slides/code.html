@@ -1,0 +1,23 @@
+<section id="code" data-transition="fade" style="background:#fbfcfd;color:#45546b;font-family:'Pretendard Variable', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:32px">
+<div style="position:absolute;left:0;top:0;width:1920px;height:12px;background:linear-gradient(90deg, #2463c8 0%, #8bc22c 100%)"></div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;color:#037673">4 · 예제와 실습 · Python</p>
+<h2 style="font-size:56px;font-weight:800;line-height:1.15;letter-spacing:-1px;color:#013364">각도 버그를 한 줄로 재현한다</h2>
+</div>
+<div style="display:flex;gap:36px;align-items:stretch">
+<div style="flex:1;background:#0f233f;border-radius:20px;padding:36px 40px">
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:26px;line-height:1.6;color:#e6edf5">class ContTheta(emt.Inverter):<br>&#160;&#160;&#160;&#160;<span style="color:#8fa6c4">"""잘못된 각도 처리: 연속 θ로 변환"""</span><br>&#160;&#160;&#160;&#160;def deriv(self, t, x):<br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;self.th_hold = x[emt.TH_C]   <span style="color:#f2a07b"># ← 이 한 줄</span><br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;return super().deriv(t, x)<br><br>p = Params(f_pll=50.0, scr=5.0)<br>for cls in (emt.Inverter, ContTheta):<br>&#160;&#160;&#160;&#160;...  <span style="color:#8fa6c4"># 시뮬레이션 후 PLL 주파수 평균</span></p>
+</div>
+<div style="width:560px;display:flex;flex-direction:column;gap:20px">
+<div style="background:#013364;border-radius:20px;padding:28px 32px;display:flex;flex-direction:column;gap:8px">
+<p style="font-size:24px;font-weight:700;color:#b9f179">출력 (--emt)</p>
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:24px;line-height:1.6;color:#ffffff">샘플 시점 θ: 60.00 Hz, 5.44°<br>연속 θ:      61.35 Hz, 4.35°<br>[OK] 오프셋 1.35 Hz</p>
+</div>
+<p style="font-size:26px;line-height:1.45"><b style="color:#013364">해 보기</b>  f_pll = 20으로 낮추면? scr = 2로 바꾸면?</p>
+<p style="font-size:24px;line-height:1.45;color:#037673"><b>실습 파일</b> practice/lec04_digital_delay.py<br>--plot · --emt · --answers</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#7d8ca2">4강 · 디지털 제어와 지연</p>
+<p style="position:absolute;left:1592px;bottom:64px;width:200px;font-size:24px;color:#7d8ca2;text-align:right">23 / 25</p>
+<aside>실습 파일로 버그를 재현합니다. practice 폴더의 lec04 파일에는 실습이 다섯 개 있습니다. 1번은 순수 지연과 1차 근사의 위상 표, 2번은 영차 홀드가 정확히 반 샘플 지연인지 수치 확인, 3번은 위상 예산, 4번은 연속 θ 톱니의 평균과 예상 오프셋, 5번이 EMT로 버그를 재현하는 실습입니다. 핵심은 화면의 이 클래스입니다. 시뮬레이션 모델의 Inverter를 상속하고, deriv 함수에서 th_hold를 매 계산마다 현재의 연속 각도로 덮어씁니다. 이 한 줄이 측정 변환을 연속 θ로 바꾸는 버그입니다. --emt 옵션으로 실행하면 약 10초 뒤에 샘플 시점 θ는 60.00 Hz, 연속 θ는 61.35 Hz가 나오고, 오프셋을 자동으로 확인해 OK를 출력합니다. 해 볼 것으로, PLL 대역폭을 20 Hz로 낮추면 오프셋이 k_p에 비례해 약 0.54 Hz로 줄어드는지, SCR을 2로 바꿔도 오프셋이 거의 그대로인지 확인해 보세요. --plot은 그림을 저장하고, --answers는 해보기 답을 보여 줍니다.</aside>
+</section>

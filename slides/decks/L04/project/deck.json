@@ -1,0 +1,22 @@
+{
+  "v": 4,
+  "createdOnFiles": {"v": 1, "at": "2026-11-03T13:00:00Z"},
+  "lists": "css",
+  "title": "4강 · 디지털 제어와 지연",
+  "cover": "cover",
+  "order": ["cover", "goals", "outline", "q-delay", "a-delay", "sec1", "sync", "timing", "zoh", "sec2", "phase", "budget", "approx", "sum1", "sec3", "angle", "derive", "msg", "case", "sec4", "ex1q", "ex1a", "code", "compare", "wrap"],
+  "sections": {
+    "s0": {"description": "도입 — 학습 목표, 목차, 샘플링 10 kHz면 지연이 100 µs인지 묻는 질문", "start": "cover"},
+    "s1": {"description": "1. 샘플링과 갱신 — 반송파 꼭짓점 동기 샘플링, 계산 1 Ts와 영차 홀드 0.5 Ts", "start": "sec1"},
+    "s2": {"description": "2. 지연이 먹는 위상 — 주파수별 위상 지연, 800 Hz 위상 예산, 1차 근사의 낙관", "start": "sec2"},
+    "s3": {"description": "3. 각도 처리 — 측정은 샘플 시점 θ로, 출력은 1.5 Ts 앞당겨, PLL 61.3 Hz 사례", "start": "sec3"},
+    "s4": {"description": "4. 예제와 실습 — 위상 지연과 PLL 오프셋 손 계산, Python 실습, 모델 비교와 정리", "start": "sec4"}
+  },
+  "faces": {
+    "pretendard-variable": {"family": "Pretendard Variable", "src": "project/ds/gridex/fonts/PretendardVariable.woff2"},
+    "jetbrains-mono": {"family": "JetBrains Mono", "href": "https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&display=swap"}
+  },
+  "designSystems": [
+    {"title": "GriDeX 디자인 베이스", "namespace": "gridex", "artifact": "https://claude.ai/artifact/DHKyReZeUdghmptteJUFVb", "version": null, "copiedAt": "2026-11-03T13:00:00Z"}
+  ]
+}

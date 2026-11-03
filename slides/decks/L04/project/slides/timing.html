@@ -1,0 +1,18 @@
+<section id="timing" data-transition="fade" style="background:#fbfcfd;color:#45546b;font-family:'Pretendard Variable', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:28px">
+<div style="position:absolute;left:0;top:0;width:1920px;height:12px;background:linear-gradient(90deg, #2463c8 0%, #8bc22c 100%)"></div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;color:#037673">1 · 샘플링과 갱신</p>
+<h2 style="font-size:56px;font-weight:800;line-height:1.15;letter-spacing:-1px;color:#013364">샘플 1에서 잰 값은 2.5 T<span style="color:#2463c8">s</span>에 효과를 낸다</h2>
+</div>
+<div style="display:flex;gap:40px;align-items:center">
+<img src="/_blob/481d33ef125c97e23f06af8536dc6663" alt="반송파 꼭짓점의 샘플 0~4, 아래 타임라인: 샘플 1~2 사이 계산, 샘플 2~3 사이 PWM 적용(영차 홀드), 적용 구간 무게중심 250 µs, 샘플 1에서 1.5 Ts = 150 µs" style="width:1300px;height:600px;object-fit:contain;background:#ffffff;border:2px solid #dae3ec;border-radius:16px">
+<div style="flex:1;display:flex;flex-direction:column;gap:24px">
+<p style="font-size:28px;line-height:1.45"><b style="color:#eb6834">100 µs</b> 잰 값으로 계산</p>
+<p style="font-size:28px;line-height:1.45"><b style="color:#2463c8">200~300 µs</b> 지령 유지</p>
+<p style="font-size:28px;line-height:1.45"><b style="color:#013364">250 µs</b> 효과의 무게중심</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#7d8ca2">4강 · 디지털 제어와 지연</p>
+<p style="position:absolute;left:1592px;bottom:64px;width:200px;font-size:24px;color:#7d8ca2;text-align:right">8 / 25</p>
+<aside>타이밍을 그림으로 보겠습니다. 위는 반송파와 샘플 시점입니다. 골과 마루마다 샘플 0, 1, 2, 3, 4가 100 마이크로초 간격으로 있습니다. 아래 타임라인을 보세요. 샘플 1, 즉 100 마이크로초에 잰 값으로 제어기가 계산을 합니다. 주황색 구간입니다. 계산 결과는 샘플 2, 200 마이크로초부터 PWM에 적용되고, 샘플 3까지 100 마이크로초 동안 유지됩니다. 파란색 구간입니다. 이 구간이 출력에 미치는 효과의 무게중심은 가운데인 250 마이크로초입니다. 그래서 잰 순간 100에서 효과의 중심 250까지, 1.5 샘플, 150 마이크로초의 지연이 됩니다. 칠판에 이 그림을 따라 그려 보시면 오래 기억에 남습니다.</aside>
+</section>

@@ -1,0 +1,28 @@
+<section id="zoh" data-transition="fade" style="background:#fbfcfd;color:#45546b;font-family:'Pretendard Variable', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:28px">
+<div style="position:absolute;left:0;top:0;width:1920px;height:12px;background:linear-gradient(90deg, #2463c8 0%, #8bc22c 100%)"></div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;color:#037673">1 · 샘플링과 갱신 · 칠판 유도</p>
+<h2 style="font-size:56px;font-weight:800;line-height:1.15;letter-spacing:-1px;color:#013364">영차 홀드는 정확히 반 샘플의 순수 지연이다</h2>
+</div>
+<div style="background:#ffffff;border:2px solid #dae3ec;border-radius:20px;padding:28px 36px;display:flex;flex-direction:column;gap:20px">
+<div style="display:flex;gap:28px;align-items:center">
+<p style="font-size:30px;font-weight:800;color:#2463c8;width:48px">①</p>
+<img src="/_blob/ad932785f40478e81405a3db29a512b5" alt="G_zoh(s) = (1 − e^(−sTs))/(sTs), G_zoh(jω) = e^(−jωTs/2) sin(ωTs/2)/(ωTs/2)" style="width:1180px;height:131px;object-fit:contain">
+</div>
+<div style="display:flex;gap:28px;align-items:center">
+<p style="font-size:30px;font-weight:800;color:#2463c8;width:48px">②</p>
+<img src="/_blob/becb280c9bf7254cad2ee6c9d5058d24" alt="T_d ≈ Ts(계산) + 0.5 Ts(PWM 홀드) = 1.5 Ts = 150 µs" style="width:813px;height:127px;object-fit:contain">
+</div>
+</div>
+<div style="display:flex;gap:24px">
+<div style="flex:1;background:#e9f0f6;border-radius:16px;padding:24px 28px">
+<p style="font-size:28px;line-height:1.45">sin 항: 크기는 ωT<b>s</b> ≪ 1에서 거의 1 (800 Hz: 0.99)</p>
+</div>
+<div style="flex:1;background:#e9f0f6;border-radius:16px;padding:24px 28px">
+<p style="font-size:28px;line-height:1.45">지수 항: 위상이 정확히 −ωT<b>s</b>/2 = <b style="color:#013364">0.5 T<span style="color:#2463c8">s</span> 지연</b></p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#7d8ca2">4강 · 디지털 제어와 지연</p>
+<p style="position:absolute;left:1592px;bottom:64px;width:200px;font-size:24px;color:#7d8ca2;text-align:right">9 / 25</p>
+<aside>영차 홀드가 왜 반 샘플 지연인지 칠판에서 유도합니다. 영차 홀드는 입력이 들어온 순간부터 T_s 동안 값을 유지하는 장치이고, 전달함수는 1 − e의 −sT_s를 sT_s로 나눈 것입니다. 여기에 s = jω를 넣고, 분자에서 e의 −jωT_s/2를 묶어 내면 분자에 e의 jωT_s/2 − e의 −jωT_s/2, 즉 2j sin(ωT_s/2)가 남습니다. 정리하면 e의 −jωT_s/2 곱하기 sin(ωT_s/2) 나누기 (ωT_s/2)입니다. 뒤의 sin x/x 항은 실수라서 위상에 영향이 없고, 우리 관심 주파수에서 크기가 거의 1입니다. 800 Hz에서 0.99입니다. 앞의 지수 항이 위상을 정확히 ωT_s/2만큼 늦추니, 순수 지연 반 샘플입니다. 계산 지연 한 샘플 e의 −sT_s와 곱하면 e의 −1.5sT_s, 150 마이크로초가 됩니다. 실습 파일의 실습 2에서 이 위상이 정확히 맞는지 숫자로 확인합니다.</aside>
+</section>

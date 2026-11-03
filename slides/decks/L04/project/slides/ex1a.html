@@ -1,0 +1,24 @@
+<section id="ex1a" data-transition="fade" style="background:#fbfcfd;color:#45546b;font-family:'Pretendard Variable', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:32px">
+<div style="position:absolute;left:0;top:0;width:1920px;height:12px;background:linear-gradient(90deg, #2463c8 0%, #8bc22c 100%)"></div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;color:#3aa150">예제 · 풀이</p>
+<h2 style="font-size:56px;font-weight:800;line-height:1.15;letter-spacing:-1px;color:#013364">1 kHz에서 54°, PLL 20 Hz면 오프셋 0.53 Hz</h2>
+</div>
+<div style="background:#ffffff;border-left:8px solid #2463c8;border-radius:8px;padding:20px 28px;align-self:flex-start">
+<img src="/_blob/77da72e9aeb6798b72ec2e5786cdf307" alt="φ_d = 360° × 1000 × 150×10⁻⁶ = 54°" style="width:799px;height:73px;object-fit:contain">
+</div>
+<div style="background:#ffffff;border-left:8px solid #3aa150;border-radius:8px;padding:20px 28px;align-self:flex-start">
+<img src="/_blob/fb3ccc765d5efab010fd44175bfe167b" alt="kp = 2 × 0.707 × 2π × 20/377 ≈ 0.471, Δf ≈ 0.471 × 0.0377/2 × 60 ≈ 0.53 Hz" style="width:1500px;height:99px;object-fit:contain">
+</div>
+<div style="display:flex;gap:24px">
+<div style="flex:1;background:#e9f0f6;border-radius:16px;padding:24px 28px">
+<p style="font-size:28px;line-height:1.45"><b style="color:#013364">(1)</b> 90 + 54 + 10 = 154° → 위상여유 약 26°. 너무 빠듯하다</p>
+</div>
+<div style="flex:1;background:#e9f0f6;border-radius:16px;padding:24px 28px">
+<p style="font-size:28px;line-height:1.45"><b style="color:#013364">(3)</b> 거의 그대로(약 1.35 Hz @ 50 Hz PLL). 계통이 아니라 디지털 처리 오차</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#7d8ca2">4강 · 디지털 제어와 지연</p>
+<p style="position:absolute;left:1592px;bottom:64px;width:200px;font-size:24px;color:#7d8ca2;text-align:right">22 / 25</p>
+<aside>풀이입니다. 1번, 360도 곱하기 1000 곱하기 150 마이크로초는 54도입니다. 위상 예산으로 보면 플랜트 90, 지연 54, PI 영점 10을 더해 154도, 남는 위상여유는 약 26도입니다. 응답이 크게 출렁이고 파라미터가 조금만 바뀌어도 불안정해질 수 있는 수준이라 너무 빠듯합니다. 2번, k_p는 2 곱하기 0.707 곱하기 2π 곱하기 20을 377로 나눈 약 0.471입니다. 오프셋은 0.471 곱하기 0.0377/2 곱하기 60, 약 0.53 Hz입니다. 50 Hz일 때의 1.33 Hz보다 작고, k_p에 비례합니다. 3번, 오프셋은 SCR과 거의 무관합니다. 교재 실습에서 SCR 2로 바꿔 보면 50 Hz PLL 기준으로 약 1.35 Hz로 거의 같습니다. 계통의 문제가 아니라 순수한 디지털 처리 오차라서입니다.</aside>
+</section>

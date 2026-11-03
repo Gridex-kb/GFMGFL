@@ -1,0 +1,17 @@
+<section id="sum1" data-transition="fade" style="background:#fbfcfd;color:#45546b;font-family:'Pretendard Variable', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<div style="position:absolute;left:0;top:0;width:1920px;height:12px;background:linear-gradient(90deg, #2463c8 0%, #8bc22c 100%)"></div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;color:#037673">2 · 지연이 먹는 위상</p>
+<h2 style="font-size:56px;font-weight:800;line-height:1.15;letter-spacing:-1px;color:#013364">1 · 2부 정리</h2>
+</div>
+<div style="border:3px solid #013364;border-radius:20px;padding:48px;display:flex;flex-direction:column;gap:28px;background:#ffffff">
+<p style="font-size:36px;line-height:1.45;color:#013364"><b style="color:#2463c8">①</b>  꼭짓점 동기 샘플링 = 필터 없이 <b>리플 평균</b>, 10 kHz, T<span style="color:#2463c8">s</span> 100 µs</p>
+<p style="font-size:36px;line-height:1.45;color:#013364"><b style="color:#2463c8">②</b>  지연 = 계산 1 T<span style="color:#2463c8">s</span> + 영차 홀드 0.5 T<span style="color:#2463c8">s</span> = <b>150 µs</b></p>
+<p style="font-size:36px;line-height:1.45;color:#013364"><b style="color:#2463c8">③</b>  위상 360°·f·T<span style="color:#2463c8">d</span>: 800 Hz에서 <b>43°</b> → 대역폭의 상한</p>
+<p style="font-size:36px;line-height:1.45;color:#013364"><b style="color:#2463c8">④</b>  1차 근사는 고주파에서 <b>낙관적</b> — 결론은 순수 지연 모델로</p>
+</div>
+<p style="font-size:30px;line-height:1.45">다음: 측정은 멈춰 있는데 각도는 계속 돈다. 어느 각도를 써야 할까?</p>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#7d8ca2">4강 · 디지털 제어와 지연</p>
+<p style="position:absolute;left:1592px;bottom:64px;width:200px;font-size:24px;color:#7d8ca2;text-align:right">14 / 25</p>
+<aside>1부와 2부를 정리합니다. 반송파 꼭짓점에서 재면 필터 없이 리플 평균을 얻고, 우리 설비는 10 kHz, 샘플 간격 100 마이크로초입니다. 지연은 계산 한 샘플과 영차 홀드 반 샘플을 합한 150 마이크로초입니다. 그 위상은 주파수에 비례해서 800 Hz에서 43도이고, 이것이 전류 제어 대역폭의 상한을 정합니다. 그리고 1차 지연 근사는 고주파에서 낙관적이니, 고주파 결론은 순수 지연이 들어간 모델로 확인합니다. 이제 3부의 질문입니다. dq 제어의 각도는 계속 도는데, 측정값은 샘플 시점에 멈춰 있습니다. 어느 각도로 변환해야 할까요?</aside>
+</section>

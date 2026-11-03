@@ -6,7 +6,7 @@
 </div>
 <div style="display:flex;gap:36px;align-items:stretch">
 <div style="flex:1;background:#0f233f;border-radius:20px;padding:36px 40px">
-<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:26px;line-height:1.6;color:#e6edf5">import sys; sys.path.insert(0, "simulation/emt")<br>import numpy as np<br>from gfm_gfl_emt import Params<br>p = Params()<br>for Lg in (p.Lt, p.Lt + 1/3, p.Lt + 1/2):<br>    f_res = p.f0*np.sqrt((p.Lf + Lg)/(p.Lf*Lg*p.Cf))<br>    print(f"Lg={Lg:.3f} -&gt; {f_res:.0f} Hz")<br>vdc = p.V_dc/p.V_base_peak      <span style="color:#8fa6c4"># 2.256 pu</span><br>L   = p.Lf/p.wb                 <span style="color:#8fa6c4"># pu → '초'</span><br>print(vdc/(4*L*p.f_sw))</p>
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:26px;line-height:1.6;color:#e6edf5">import sys; sys.path.insert(0, "simulation/emt")<br>import numpy as np<br>from gfm_gfl_emt import Params<br>p = Params()<br>for Lg in (p.Lt, p.Lt + 1/3, p.Lt + 1/2):<br>&#160;&#160;&#160;&#160;f_res = p.f0*np.sqrt((p.Lf + Lg)/(p.Lf*Lg*p.Cf))<br>&#160;&#160;&#160;&#160;print(f"Lg={Lg:.3f} -&gt; {f_res:.0f} Hz")<br>vdc = p.V_dc/p.V_base_peak      <span style="color:#8fa6c4"># 2.256 pu</span><br>L   = p.Lf/p.wb                 <span style="color:#8fa6c4"># pu → '초'</span><br>print(vdc/(4*L*p.f_sw))</p>
 </div>
 <div style="width:520px;display:flex;flex-direction:column;gap:20px">
 <div style="background:#013364;border-radius:20px;padding:28px 32px;display:flex;flex-direction:column;gap:8px">

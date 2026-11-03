@@ -6,7 +6,7 @@
 </div>
 <div style="display:flex;gap:36px;align-items:stretch">
 <div style="flex:1;background:#0f233f;border-radius:20px;padding:36px 40px">
-<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:26px;line-height:1.6;color:#e6edf5">import itertools, numpy as np<br>V_dc = 2.256<br>a = np.exp(2j*np.pi/3)<br>for s in itertools.product((1, 0), repeat=3):<br>    vp  = (2*np.array(s) - 1)*V_dc/2   <span style="color:#8fa6c4"># 극전압</span><br>    vn0 = vp.mean()                    <span style="color:#8fa6c4"># 영상분</span><br>    vph = vp - vn0                     <span style="color:#8fa6c4"># 상전압</span><br>    v   = 2/3*(vp[0] + a*vp[1] + a**2*vp[2])<br>    print(s, vn0, vph[0], abs(v), np.angle(v, deg=True))</p>
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:26px;line-height:1.6;color:#e6edf5">import itertools, numpy as np<br>V_dc = 2.256<br>a = np.exp(2j*np.pi/3)<br>for s in itertools.product((1, 0), repeat=3):<br>&#160;&#160;&#160;&#160;vp  = (2*np.array(s) - 1)*V_dc/2   <span style="color:#8fa6c4"># 극전압</span><br>&#160;&#160;&#160;&#160;vn0 = vp.mean()                    <span style="color:#8fa6c4"># 영상분</span><br>&#160;&#160;&#160;&#160;vph = vp - vn0                     <span style="color:#8fa6c4"># 상전압</span><br>&#160;&#160;&#160;&#160;v   = 2/3*(vp[0] + a*vp[1] + a**2*vp[2])<br>&#160;&#160;&#160;&#160;print(s, vn0, vph[0], abs(v), np.angle(v, deg=True))</p>
 </div>
 <div style="width:560px;display:flex;flex-direction:column;gap:20px">
 <div style="background:#013364;border-radius:20px;padding:28px 32px;display:flex;flex-direction:column;gap:8px">

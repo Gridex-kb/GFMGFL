@@ -1,0 +1,25 @@
+<section id="budget" data-transition="fade" style="background:#fbfcfd;color:#45546b;font-family:'Pretendard Variable', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:36px">
+<div style="position:absolute;left:0;top:0;width:1920px;height:12px;background:linear-gradient(90deg, #2463c8 0%, #8bc22c 100%)"></div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;color:#037673">2 · 지연이 먹는 위상</p>
+<h2 style="font-size:56px;font-weight:800;line-height:1.15;letter-spacing:-1px;color:#013364">800 Hz 교차주파수의 위상 예산</h2>
+</div>
+<img src="/_blob/7939f40165f23b3dcdbc2de36232e2fb" alt="180° 위상 예산 막대: 플랜트(인덕터) 90°, 지연 43°, PI 영점 약 10°, 남는 위상여유 약 35~37°" style="width:1500px;height:330px;object-fit:contain;background:#ffffff;border:2px solid #dae3ec;border-radius:16px;align-self:center">
+<div style="display:flex;gap:24px">
+<div style="flex:1;background:#ffffff;border:2px solid #dae3ec;border-radius:20px;padding:32px;display:flex;flex-direction:column;gap:10px">
+<h3 style="font-size:32px;font-weight:800;color:#013364">경험칙: 대역폭 ≈ f<span style="color:#2463c8">s</span>/10</h3>
+<p style="font-size:27px;line-height:1.45">위상여유 35~45°를 남기려면 f<b>c</b>·T<b>d</b> ≈ 0.1</p>
+</div>
+<div style="flex:1;background:#ffffff;border:2px solid #dae3ec;border-radius:20px;padding:32px;display:flex;flex-direction:column;gap:10px">
+<h3 style="font-size:32px;font-weight:800;color:#013364">이 강좌: 800 Hz</h3>
+<p style="font-size:27px;line-height:1.45">10 kHz의 1/12.5, f<b>c</b>·T<b>d</b> = 0.12 → 위상여유 약 35°</p>
+</div>
+<div style="flex:1;background:#013364;border-radius:20px;padding:32px;display:flex;flex-direction:column;gap:10px">
+<h3 style="font-size:32px;font-weight:800;color:#ffffff">경험칙일 뿐</h3>
+<p style="font-size:27px;line-height:1.45;color:#c6d4e6">정확한 한계는 지연, 원하는 위상여유, 플랜트 모양으로 계산한다 (5강)</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#7d8ca2">4강 · 디지털 제어와 지연</p>
+<p style="position:absolute;left:1592px;bottom:64px;width:200px;font-size:24px;color:#7d8ca2;text-align:right">12 / 25</p>
+<aside>왜 43도가 문제인지 위상 예산으로 보겠습니다. 되먹임 루프가 불안정해지는 경계는 교차주파수에서 위상이 −180도가 되는 지점입니다. 이 180도가 우리가 쓸 수 있는 예산입니다. 전류 제어의 플랜트는 인덕터, 즉 적분기라서 이미 90도를 씁니다. 지연이 800 Hz에서 43도를 씁니다. PI 제어기의 영점이 약 10도를 더 씁니다. 남는 것이 위상여유로, 약 35도에서 37도입니다. 그래서 흔히 전류 제어 대역폭은 샘플링 주파수의 10분의 1 정도라고 말합니다. f_c 곱하기 T_d가 0.1 근처여야 위상여유 35에서 45도가 남는다는 뜻입니다. 이 강좌는 10 kHz의 12.5분의 1인 800 Hz를 쓰고 위상여유 약 35도를 남깁니다. 다만 이것은 경험칙입니다. 정확한 한계는 지연 크기, 원하는 위상여유, 플랜트 모양으로 계산해야 하고, 그것을 다음 5강 전류 제어에서 합니다.</aside>
+</section>

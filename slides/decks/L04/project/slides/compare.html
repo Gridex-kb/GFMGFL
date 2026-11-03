@@ -1,0 +1,19 @@
+<section id="compare" data-transition="fade" style="background:#fbfcfd;color:#45546b;font-family:'Pretendard Variable', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<div style="position:absolute;left:0;top:0;width:1920px;height:12px;background:linear-gradient(90deg, #2463c8 0%, #8bc22c 100%)"></div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;color:#037673">4 · 예제와 실습 · 정리</p>
+<h2 style="font-size:56px;font-weight:800;line-height:1.15;letter-spacing:-1px;color:#013364">스위칭 모델과 평균값 모델은 무엇이 다른가</h2>
+</div>
+<table style="font-size:30px;color:#45546b">
+<tr><th style="width:24%">항목</th><th style="width:40%">스위칭 모델 (실제 디지털 제어)</th><th style="width:36%">평균값 모델</th></tr>
+<tr><td><b>지연</b></td><td>순수 지연 e^(−1.5sT<b>s</b>)</td><td>1차 지연 1/(1 + sT<b>d</b>)</td></tr>
+<tr><td><b>800 Hz 위상</b></td><td>43°, 끝없이 증가</td><td>37° (−2 dB), 90°에서 멈춤</td></tr>
+<tr><td><b>샘플링·리플</b></td><td>있음, 에일리어싱도</td><td>없음</td></tr>
+<tr><td><b>각도 처리</b></td><td>θ<b>k</b> 변환 + 1.5 T<b>s</b> 보상 필요</td><td>연속 θ, 보상 없음</td></tr>
+<tr style="background:#e9f0f6"><td><b>쓰임</b></td><td>결과 재현, 고주파 안정도 결론</td><td>빠른 검토, 회귀 테스트</td></tr>
+</table>
+<p style="font-size:32px;line-height:1.45">평균값 모델로 “안정”이 나와도 수백 Hz 이상은 <b style="color:#013364">스위칭 모델로 다시 확인</b>한다</p>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#7d8ca2">4강 · 디지털 제어와 지연</p>
+<p style="position:absolute;left:1592px;bottom:64px;width:200px;font-size:24px;color:#7d8ca2;text-align:right">24 / 25</p>
+<aside>이 강좌의 시뮬레이션 모델에 있는 두 컨버터 모델을 표로 정리합니다. 스위칭 모델은 실제 디지털 제어처럼 순수 지연, 샘플링, 리플, 에일리어싱이 다 있고, 각도 처리도 오늘 배운 규칙대로 해야 합니다. 평균값 모델은 지연을 1차 지연으로 근사하고 샘플링과 리플이 없으며 연속 각도를 씁니다. 그래서 평균값 모델은 빠른 검토와 회귀 테스트에 좋고, 결과 재현과 고주파 안정도 결론에는 스위칭 모델을 씁니다. 평균값 모델로 안정이 나왔더라도 수백 Hz 이상의 현상은 꼭 스위칭 모델로 다시 확인하세요.</aside>
+</section>

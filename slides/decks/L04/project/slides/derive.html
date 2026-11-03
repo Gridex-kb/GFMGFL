@@ -1,0 +1,34 @@
+<section id="derive" data-transition="fade" style="background:#fbfcfd;color:#45546b;font-family:'Pretendard Variable', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:28px">
+<div style="position:absolute;left:0;top:0;width:1920px;height:12px;background:linear-gradient(90deg, #2463c8 0%, #8bc22c 100%)"></div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;color:#037673">3 · 각도 처리 · 칠판 유도</p>
+<h2 style="font-size:56px;font-weight:800;line-height:1.15;letter-spacing:-1px;color:#013364">연속 θ로 변환하면 PLL 주파수가 어긋난다</h2>
+</div>
+<div style="background:#ffffff;border:2px solid #dae3ec;border-radius:20px;padding:28px 36px;display:flex;flex-direction:column;gap:20px">
+<div style="display:flex;gap:28px;align-items:center">
+<p style="font-size:30px;font-weight:800;color:#2463c8;width:48px">①</p>
+<img src="/_blob/27b7360d7986a0be7e6b22e8a0e1b3bb" alt="vq(t) = −sin(ω(t − tk)) ≈ −ω(t − tk), 평균 −ωTs/2" style="width:1164px;height:111px;object-fit:contain">
+</div>
+<div style="display:flex;gap:28px;align-items:center">
+<p style="font-size:30px;font-weight:800;color:#2463c8;width:48px">③</p>
+<img src="/_blob/89aaeba9cb04395645c318b69ae85d91" alt="Δω_pll(tk) = kp ωTs/2, Δf ≈ 1.18 × 0.0377/2 × 60 ≈ 1.33 Hz" style="width:1269px;height:111px;object-fit:contain">
+</div>
+</div>
+<div style="display:flex;gap:24px">
+<div style="flex:1;background:#ffffff;border:2px solid #dae3ec;border-radius:16px;padding:24px 28px;display:flex;flex-direction:column;gap:8px">
+<p style="font-size:26px;font-weight:700;color:#2463c8">②</p>
+<p style="font-size:27px;line-height:1.45">PI 적분기는 <b>평균</b> v<b>q</b>를 0으로 만든다 → 샘플 시점 값은 +ωT<b>s</b>/2</p>
+</div>
+<div style="flex:1;background:#ffffff;border:2px solid #dae3ec;border-radius:16px;padding:24px 28px;display:flex;flex-direction:column;gap:8px">
+<p style="font-size:26px;font-weight:700;color:#2463c8">③의 근거</p>
+<p style="font-size:27px;line-height:1.45">ω<b>pll</b> = 1 + k<b>p</b>v<b>q</b> + x<b>I</b>, 평균 주파수가 맞으니 x<b>I</b> ≈ 0</p>
+</div>
+<div style="flex:1;background:#013364;border-radius:16px;padding:24px 28px;display:flex;flex-direction:column;gap:8px">
+<p style="font-size:26px;font-weight:700;color:#b9f179">PLL 50 Hz</p>
+<p style="font-size:27px;line-height:1.45;color:#ffffff">k<b>p</b> = 2ζω<b>n</b>/ω<b>b</b> ≈ 1.18 → <b>1.33 Hz</b> 오프셋</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#7d8ca2">4강 · 디지털 제어와 지연</p>
+<p style="position:absolute;left:1592px;bottom:64px;width:200px;font-size:24px;color:#7d8ca2;text-align:right">17 / 25</p>
+<aside>규칙 1을 어기면 무슨 일이 생기는지 칠판에서 유도합니다. 계통 전압 크기 1, PLL이 정확히 추종해서 샘플 시점에 v_q가 0이라고 합시다. 홀드된 벡터를 계속 도는 θ(t) = θ_k + ω(t − t_k)로 변환하면 v_q(t)는 −sin(ω(t − t_k)), 작은 각이니 −ω(t − t_k)입니다. 샘플 주기 안에서 0에서 −ωT_s까지 흐르는 톱니이고, 평균은 −ωT_s/2입니다. ①번 식입니다. 그런데 PLL의 PI 적분기는 평균 v_q를 0으로 만드는 방향으로 움직입니다. 그래서 정상상태에서는 톱니 전체가 위로 올라가, 샘플 시점 값이 플러스 ωT_s/2가 됩니다. 위상 오차로는 약 1.08도입니다. ②번입니다. PLL 주파수 출력은 1 + k_p v_q + 적분항입니다. 평균 주파수는 60 Hz로 맞아야 하니 적분항은 거의 0이고, 샘플 시점, 즉 제어와 기록에 쓰이는 시점의 주파수는 k_p 곱하기 ωT_s/2만큼 어긋납니다. PLL 대역폭 50 Hz, 감쇠비 0.707이면 k_p가 약 1.18이고, ωT_s가 0.0377 라디안이니 1.18 × 0.0377/2 × 60, 약 1.33 Hz입니다. ③번입니다. 다음 장에서 이 숫자를 실제 시뮬레이션과 비교합니다.</aside>
+</section>
