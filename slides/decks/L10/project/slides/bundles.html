@@ -1,0 +1,19 @@
+<section id="bundles" data-transition="fade" style="background:#fbfcfd;color:#45546b;font-family:'Pretendard Variable', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:32px">
+<div style="position:absolute;left:0;top:0;width:1920px;height:12px;background:linear-gradient(90deg, #2463c8 0%, #8bc22c 100%)"></div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;color:#3aa150">답 · 1 · 시험은 거동을 본다</p>
+<h2 style="font-size:56px;font-weight:800;line-height:1.15;letter-spacing:-1px;color:#013364">B, 거동으로 정의한다: GFM 고유 거동이 드러나는 외란을 골라 시험한다</h2>
+</div>
+<table style="font-size:25px;color:#45546b">
+<tr><th style="width:17%">묶음</th><th style="width:30%">원 시험</th><th style="width:30%">의도 (무엇을 보려 하나)</th><th style="width:23%">판정 지표</th></tr>
+<tr><td><b>최후 동기기 상실</b></td><td>NERC 2023 Test 1~3, AEMO 2024 Test 1~4, ERCOT AGS #1~4</td><td>따라갈 기준 전압이 사라져도 스스로 전압·주파수를 세우는가</td><td>분리 후 안정, 주파수·전압 범위, 전류 한계 내 운전</td></tr>
+<tr><td><b>RoCoF</b></td><td>AEMO Test 5, ERCOT #5, GB Active ROCOF Response Power</td><td>주파수가 기울 때 측정 없이 관성 전력을 내는가</td><td>안정 유지, 관성 응답 크기 (H<b>eq</b>)</td></tr>
+<tr><td><b>SCR 급감 + 고장</b></td><td>AEMO Test 6, ERCOT #6</td><td>약해진 계통에서 고장을 통과하고 동기를 지키는가</td><td>동기 유지, 고장 후 회복</td></tr>
+<tr><td><b>위상각 스텝 · 60° 내성</b></td><td>ERCOT #7, ENTSO-E TG GFC, GB GC0137, AEMO Test 7</td><td>위상이 튀는 순간 회로 법칙으로 즉시 전력을 내는가 · 극 미끄럼 없이 돌아오는가</td><td>응답 시간 5/10/15 ms, 응답 크기, 복귀</td></tr>
+<tr><td><b>전압 스텝 · 감쇠 · 고장</b></td><td>ENTSO-E TG GFC, IEEE 2800, 국내 이용규정, 한전 연계기준안(초안)</td><td>무효전류가 즉시 나오는가 · 0.1~10 Hz 진동을 스스로 감쇠하는가 · 고장 중 전압원 동작과 고장전류</td><td>무효전류 30 ms 내 90 %, ζ ≥ 5 %, 2.0 pu ≥ 140 ms</td></tr>
+</table>
+<p style="font-size:26px;line-height:1.45;color:#7d8ca2">NERC 2023(3종) → AEMO 2024(7종) → ERCOT 2024(11종)로 넓어졌고, 공통 핵심은 앞의 네 묶음</p>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#7d8ca2">10강 · 표준 시험으로 비교</p>
+<p style="position:absolute;left:1592px;bottom:64px;width:200px;font-size:24px;color:#7d8ca2;text-align:right">6 / 31</p>
+<aside>답은 B입니다. NERC 2023을 비롯한 대부분의 기관은 GFM을 제어 구조로 정의하지 않습니다. 짧은 시간대에 내부 전압 페이저를 거의 일정하게 유지하는 임피던스 뒤의 전압원이라는 거동으로 정의하고, 시험으로 판정합니다. 그래서 시험은 GFM 고유의 거동이 드러나는 외란을 고릅니다. 표의 다섯 묶음입니다. 최후 동기기 상실은 따라갈 기준 전압이 사라져도 스스로 전압과 주파수를 세우는가를 봅니다. RoCoF는 주파수가 기울 때 측정 없이 관성 전력을 내는가. SCR 급감 더하기 고장은 약해진 계통에서 고장을 통과하고 동기를 지키는가. 위상각 스텝은 위상이 튀는 순간 회로 법칙으로 즉시 전력을 내는가이고, 60도 내성은 전류 제한이 걸리는 큰 점프에서 극 미끄럼 없이 돌아오는가입니다. 마지막 묶음은 전압 스텝에 무효전류가 즉시 나오는가, 저주파 진동을 스스로 감쇠하는가, 그리고 고장 중 전압원 동작과 고장전류입니다. 시험 프레임워크는 NERC 3종에서 AEMO 7종, ERCOT 11종으로 넓어졌고, 공통 핵심은 앞의 네 묶음입니다. 9강 끝에서 전압원 동작을 구조로 판정한다고 한 것은 한국 기준안의 그 항목에 한한 이야기이고, 시뮬레이션으로 잴 수 없어서 그랬던 것입니다.</aside>
+</section>

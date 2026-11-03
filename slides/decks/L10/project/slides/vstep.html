@@ -1,0 +1,27 @@
+<section id="vstep" data-transition="fade" style="background:#fbfcfd;color:#45546b;font-family:'Pretendard Variable', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:24px">
+<div style="position:absolute;left:0;top:0;width:1920px;height:12px;background:linear-gradient(90deg, #2463c8 0%, #8bc22c 100%)"></div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;color:#037673">3 · 판정표와 부적합 읽기 · T10 (스위칭 2 µs)</p>
+<h2 style="font-size:56px;font-weight:800;line-height:1.15;letter-spacing:-1px;color:#013364">전압 스텝 −5 %: 무효전류 90 % 도달 GFM 4.3 ms, GFL 90.2 ms (기준 30 ms)</h2>
+</div>
+<div style="display:flex;gap:40px;align-items:center">
+<img src="/_blob/76a2d600888bb45bb534cb8edafa2259" alt="T10 계통 전압 1.00 → 0.95 pu 스텝, SCR 3, P0 0.5. 위: 무효전력, GFM 90 % 도달 4.3 ms, GFL 90.2 ms, 기준 30 ms, 100 ms 기준값. 아래: PCC 전압, GFM은 즉시 무효전류가 나와 전압 하락이 작고, GFL은 먼저 떨어진 뒤 제어가 되돌린다" style="width:990px;height:657px;object-fit:contain;background:#ffffff;border:2px solid #dae3ec;border-radius:16px">
+<div style="flex:1;display:flex;flex-direction:column;gap:16px">
+<div style="background:#ffffff;border-left:8px solid #2463c8;border-radius:8px;padding:14px 22px">
+<h3 style="font-size:28px;font-weight:800;color:#013364">GFM 4.3 ms · 적합</h3>
+<p style="font-size:25px;line-height:1.45">내부 전압 E는 그대로, 계통만 낮아지니 가상 임피던스 양단 차로 무효전류가 회로 법칙대로 즉시 나온다. ΔQ@100 ms 0.094 pu</p>
+</div>
+<div style="background:#ffffff;border-left:8px solid #eb6834;border-radius:8px;padding:14px 22px">
+<h3 style="font-size:28px;font-weight:800;color:#013364">GFL 90.2 ms · 부적합</h3>
+<p style="font-size:25px;line-height:1.45">6강 Q 제어 루프(전압 측정 → 무효 지령)가 따라가는 속도. ΔQ@100 ms 0.078 pu. 아래 그림: PCC 전압이 먼저 떨어진다</p>
+</div>
+<div style="background:#ffffff;border-left:8px solid #7d8ca2;border-radius:8px;padding:14px 22px">
+<h3 style="font-size:28px;font-weight:800;color:#013364">판정 방식</h3>
+<p style="font-size:25px;line-height:1.45">ENTSO-E TG GFC: 100 ms 시점 ΔQ의 90 %에 30 ms 이내. 위상 점프의 유효전력판과 같은 “전압원이면 즉시”의 무효 버전</p>
+</div>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#7d8ca2">10강 · 표준 시험으로 비교</p>
+<p style="position:absolute;left:1592px;bottom:64px;width:200px;font-size:24px;color:#7d8ca2;text-align:right">23 / 31</p>
+<aside>T10 전압 스텝입니다. 계통 전압을 1.00에서 0.95 pu로 떨어뜨리고, 무효전력 변화가 100 ms 시점 값의 90 %에 30 ms 이내 도달하는지 봅니다. ENTSO-E TG GFC 기준이고, 위상 점프의 유효전력판과 같은 전압원이면 즉시의 무효 버전입니다. 파란 GFM은 4.3 ms입니다. 내부 전압은 그대로이고 계통만 낮아지니 가상 임피던스 양단 차로 무효전류가 회로 법칙대로 즉시 나옵니다. 주황 GFL은 90.2 ms로 부적합입니다. 6강의 Q 제어 루프가 전압을 재서 무효 지령을 바꾸는 속도입니다. 아래 그림의 PCC 전압을 보면 GFM은 즉시 무효전류가 나와 하락이 작고, GFL은 먼저 떨어진 뒤 제어가 되돌립니다. 100 ms 시점의 변화 크기는 0.094와 0.078로 비슷하니, 차이는 크기가 아니라 시점입니다. 9강에서 고장전류도 크기는 정격이, 시점은 방식이 정한다고 한 것과 같은 그림입니다.</aside>
+</section>

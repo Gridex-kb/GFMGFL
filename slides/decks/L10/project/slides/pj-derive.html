@@ -1,0 +1,35 @@
+<section id="pj-derive" data-transition="fade" style="background:#fbfcfd;color:#45546b;font-family:'Pretendard Variable', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:28px">
+<div style="position:absolute;left:0;top:0;width:1920px;height:12px;background:linear-gradient(90deg, #2463c8 0%, #8bc22c 100%)"></div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;color:#037673">2 · 위상 점프·관성·감쇠 · 칠판 유도</p>
+<h2 style="font-size:56px;font-weight:800;line-height:1.15;letter-spacing:-1px;color:#013364">위상점프 전력: 내부 기전력은 그대로, 계통만 Δθ 튀니 δ가 그만큼 바뀐다</h2>
+</div>
+<div style="background:#ffffff;border:2px solid #dae3ec;border-radius:20px;padding:24px 36px;display:flex;flex-direction:column;gap:18px">
+<div style="display:flex;gap:28px;align-items:center">
+<p style="font-size:30px;font-weight:800;color:#2463c8;width:48px">①</p>
+<img src="/_blob/5409c10f4a40018d0657a9a136e8f249" alt="ΔP ≈ (E Vg/X)[sin(δ0 − Δθ) − sin δ0], Δθ < 0 ⇒ ΔP > 0" style="width:1298px;height:111px;object-fit:contain">
+</div>
+<div style="display:flex;gap:28px;align-items:center">
+<p style="font-size:30px;font-weight:800;color:#2463c8;width:48px">②</p>
+<img src="/_blob/08aada1f52489214ed16dea37dbc8358" alt="δ0 = arcsin(P0 X/(E Vg)) = arcsin(0.5 × 0.733) ≈ 21.5°, X = Xv + Lt + 1/SCR = 0.3 + 0.1 + 0.333" style="width:1500px;height:92px;object-fit:contain">
+</div>
+<div style="display:flex;gap:28px;align-items:center">
+<p style="font-size:30px;font-weight:800;color:#2463c8;width:48px">③</p>
+<img src="/_blob/abda3130328e88478ecbba4e41c488bf" alt="Δθ = −20°: ΔP ≈ 1.36[sin 41.5° − sin 21.5°] ≈ 0.40 pu. T07 GFM 측정: 초기 피크 +0.64 pu, 10 ms 유효전류 +0.68 pu" style="width:1469px;height:167px;object-fit:contain">
+</div>
+</div>
+<div style="display:flex;gap:24px">
+<div style="flex:1;background:#e9f0f6;border-radius:16px;padding:20px 28px">
+<p style="font-size:26px;line-height:1.45"><b style="color:#013364">①</b> 7강 P–δ 곡선. VSM 관성 때문에 δ는 바로 못 따라가니 점프 직후 위상차는 δ<b>0</b> − Δθ. 계통이 뒤로 밀리면(Δθ &lt; 0) 공급 방향</p>
+</div>
+<div style="flex:1;background:#e9f0f6;border-radius:16px;padding:20px 28px">
+<p style="font-size:26px;line-height:1.45"><b style="color:#013364">②③</b> P<b>0</b> 0.5, SCR 3이면 δ<b>0</b> ≈ 21.5°, 예상 0.40 pu. 측정 0.64가 더 큰 이유: PCC 분로·전자기 과도가 더해지고 전류 루프가 서브사이클로 따라간다</p>
+</div>
+<div style="flex:1;background:#013364;border-radius:16px;padding:20px 28px">
+<p style="font-size:26px;line-height:1.45;color:#ffffff">GFL은 전류 지령이 <b style="color:#b9f179">PLL을 거쳐야</b> 바뀌므로 이 즉시 성분이 거의 없다 (+0.00 pu)</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#7d8ca2">10강 · 표준 시험으로 비교</p>
+<p style="position:absolute;left:1592px;bottom:64px;width:200px;font-size:24px;color:#7d8ca2;text-align:right">12 / 31</p>
+<aside>위상점프 전력의 크기는 7강의 P 델타 곡선으로 예상할 수 있습니다. ①번, 내부 기전력 E 각 델타 제로와 계통 Vg 사이 합성 리액턴스가 X이면 P는 E Vg 나누기 X 곱하기 사인 델타입니다. 계통 위상이 델타 세타만큼 바뀌면 위상차는 델타 제로 빼기 델타 세타가 됩니다. VSM의 관성 때문에 델타는 바로 따라가지 못하니, 점프 직후 전력은 새 위상차의 사인으로 결정됩니다. 그 차이가 ①번 식입니다. 계통이 뒤로 밀리면, 즉 델타 세타가 음수이면 공급 방향으로 전력이 늘어납니다. ②번, 초기 운전점입니다. P 제로 0.5, SCR 3이면 X는 0.3 더하기 0.1 더하기 3분의 1로 0.733이고 델타 제로는 약 21.5도입니다. ③번, 마이너스 20도 점프이면 1.36 곱하기 사인 41.5도 빼기 사인 21.5도로 약 0.40 pu입니다. T07에서 GFM의 초기 피크는 0.64, 10 ms 유효전류 변화는 0.68로 예상보다 큽니다. PCC 분로와 전자기 과도가 더해지고 내부 전류 루프가 서브사이클로 따라가기 때문입니다. 페이저 식은 크기의 차수를 잡는 도구로 보면 됩니다. GFL은 전류 지령이 PLL을 거쳐야 바뀌므로 이 즉시 성분이 거의 없습니다.</aside>
+</section>

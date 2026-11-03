@@ -1,0 +1,38 @@
+<section id="matrix" data-transition="fade" style="background:#fbfcfd;color:#45546b;font-family:'Pretendard Variable', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:24px">
+<div style="position:absolute;left:0;top:0;width:1920px;height:12px;background:linear-gradient(90deg, #2463c8 0%, #8bc22c 100%)"></div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;color:#037673">3 · 판정표와 부적합 읽기 · 스위칭 모델 2 µs</p>
+<h2 style="font-size:56px;font-weight:800;line-height:1.15;letter-spacing:-1px;color:#013364">판정표: GFM 12/14, GFL 3/14 — “부적합” 하나는 여러 항목 중 하나만 어긋나도 붙는다</h2>
+</div>
+<div style="display:flex;gap:32px;align-items:flex-start">
+<table style="font-size:24px;color:#45546b;width:1150px">
+<tr><th style="width:9%">ID</th><th style="width:43%">시험</th><th style="width:24%">GFL</th><th style="width:24%">GFM</th></tr>
+<tr><td>T01</td><td>동기원 상실 — 방전 중</td><td style="color:#eb6834">부적합 (진동, 54~66 Hz)</td><td style="color:#3aa150">적합</td></tr>
+<tr><td>T02</td><td>동기원 상실 — 충전 중</td><td style="color:#eb6834">부적합</td><td style="color:#3aa150">적합</td></tr>
+<tr><td>T03</td><td>동기원 상실 — 한계 초과 부하</td><td style="color:#eb6834">부적합 (54 Hz)</td><td style="color:#3aa150">적합</td></tr>
+<tr><td>T04</td><td>동기원 상실 — 전력 균형</td><td style="color:#eb6834">부적합 (54 Hz)</td><td style="color:#3aa150">적합</td></tr>
+<tr><td>T05a/b</td><td>RoCoF ∓1 Hz/s (GFL+SI 포함)</td><td style="color:#eb6834">부적합 (H<b>eq</b>)</td><td style="color:#3aa150">적합 (3.44 / 3.72 s)</td></tr>
+<tr><td>T06</td><td>SCR 3 → 1.5 후 3상 고장</td><td style="color:#eb6834">부적합 (78°, 1347 ms)</td><td style="color:#3aa150">적합 (35°, 819 ms)</td></tr>
+<tr><td>T07/08</td><td>위상각 스텝 ∓20°</td><td style="color:#eb6834">부적합 (응답 없음)</td><td style="color:#3aa150">적합</td></tr>
+<tr style="background:#fff3ec"><td>T09</td><td>위상각 60° 내성</td><td style="color:#3aa150">적합</td><td style="color:#eb6834">부적합 (전류 제한 고착)</td></tr>
+<tr><td>T10</td><td>전압 스텝 −5 %</td><td style="color:#eb6834">부적합 (90.2 ms)</td><td style="color:#3aa150">적합 (4.3 ms)</td></tr>
+<tr><td>T11</td><td>진동 감쇠</td><td style="color:#3aa150">적합 (진동 없음)</td><td style="color:#3aa150">적합 (ζ 30.7 %)</td></tr>
+<tr><td>T12</td><td>3상 고장 통과</td><td style="color:#3aa150">적합 (96 ms)</td><td style="color:#3aa150">적합 (483 ms)</td></tr>
+<tr style="background:#fff3ec"><td>T13</td><td>고장전류 2.0 pu·140 ms (1.2 / 2.0 pu 사양)</td><td style="color:#eb6834">부적합 / 부적합</td><td style="color:#eb6834">부적합</td><td style="color:#3aa150">/ 적합</td></tr>
+</table>
+<div style="flex:1;display:flex;flex-direction:column;gap:16px">
+<div style="background:#013364;border-radius:16px;padding:22px 26px">
+<p style="font-size:25px;line-height:1.45;color:#ffffff"><b style="color:#b9f179">GFM 부적합 2</b>: T09(60° 점프에서 전류 제한 고착), T13 1.2 pu 사양(정격 부족)</p>
+</div>
+<div style="background:#ffffff;border:2px solid #dae3ec;border-radius:16px;padding:22px 26px">
+<p style="font-size:25px;line-height:1.45"><b style="color:#013364">GFL 적합 3</b>: T09(PLL이 따라감), T11(진동 없음), T12(고장 통과 96 ms)</p>
+</div>
+<div style="background:#ffffff;border:2px solid #dae3ec;border-radius:16px;padding:22px 26px">
+<p style="font-size:25px;line-height:1.45"><b style="color:#013364">읽는 법</b>: 근거 항목이 규격의 의도(측정 없이 즉시)와 관련된 차이인지, 보고서가 정한 수치 경계(“본 보고서 기준”)의 차이인지 가른다</p>
+</div>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#7d8ca2">10강 · 표준 시험으로 비교</p>
+<p style="position:absolute;left:1592px;bottom:64px;width:200px;font-size:24px;color:#7d8ca2;text-align:right">20 / 31</p>
+<aside>판정표 전체입니다. 열세 개 시험, T05가 a와 b로 나뉘어 열네 건입니다. GFM은 12건 적합, GFL은 3건 적합입니다. 먼저 읽는 법입니다. 부적합 하나는 여러 판정 항목 중 하나만 어긋나도 붙습니다. 그래서 상세에서 어느 항목이 기준에서 얼마나 벗어났는지 보고, 그것이 규격의 의도, 예를 들어 측정 없이 즉시 응답하는가와 관련된 차이인지, 보고서가 정한 수치 경계의 차이인지 가려야 합니다. GFM이 떨어진 두 건은 T09 60도 점프에서 전류 제한에 갇힌 것과, T13의 1.2 pu 사양이 정격 부족으로 2.0 pu에 못 닿은 것입니다. GFL이 붙은 세 건은 T09 PLL이 따라가서 복귀한 것, T11 저주파 진동이 없는 것, T12 고장 통과를 96 ms에 회복한 것입니다. 동기원 상실 네 건에서 GFL이 모두 떨어진 것, 위상 점프와 전압 스텝에서 응답이 없거나 느린 것은 규격의 의도와 직접 관련된 차이입니다. 이제 네 건을 그림으로 봅니다.</aside>
+</section>

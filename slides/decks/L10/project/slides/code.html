@@ -1,0 +1,23 @@
+<section id="code" data-transition="fade" style="background:#fbfcfd;color:#45546b;font-family:'Pretendard Variable', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:32px">
+<div style="position:absolute;left:0;top:0;width:1920px;height:12px;background:linear-gradient(90deg, #2463c8 0%, #8bc22c 100%)"></div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;color:#037673">4 · 예제와 실습 · Python</p>
+<h2 style="font-size:56px;font-weight:800;line-height:1.15;letter-spacing:-1px;color:#013364">보고서 JSON을 훑고, 시험 하나를 평균값 모델로 같은 판정 함수에 넣어 본다</h2>
+</div>
+<div style="display:flex;gap:36px;align-items:stretch">
+<div style="flex:1;background:#0f233f;border-radius:20px;padding:36px 40px">
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:25px;line-height:1.6;color:#e6edf5">d = json.load(open("simulation/emt/results/compliance.json"))<br>for t in d["tests"]:  <span style="color:#8fa6c4"># 판정표: verdict, 근거: criteria[...]</span><br>&#160;&#160;&#160;&#160;print(t["id"], t["verdict"])<br><br>import compliance_tests as ct   <span style="color:#8fa6c4"># 보고서와 같은 판정 함수</span><br>td = next(x for x in ct.TESTS if x["id"] == "T10")<br>for L in td["labels"]:<br>&#160;&#160;&#160;&#160;mode, kw = ct.label_params(L, td["p"], td["id"])<br>&#160;&#160;&#160;&#160;p = Params(converter="average", **kw)   <span style="color:#f2a07b"># kw["f_pll"] = 50.0 (해보기 A)</span><br>&#160;&#160;&#160;&#160;r = simulate(mode, p, ct.scenario(td["ev"], 0.8), dt=1e-5, x0=...)<br>for c in ct.eval_vstep(td, R): print(c["name"], c["values"])</p>
+</div>
+<div style="width:560px;display:flex;flex-direction:column;gap:20px">
+<div style="background:#013364;border-radius:20px;padding:28px 32px;display:flex;flex-direction:column;gap:8px">
+<p style="font-size:24px;font-weight:700;color:#b9f179">출력 (--emt, 평균값 10 µs)</p>
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:23px;line-height:1.6;color:#ffffff">T10 GFL 88.3 ms [부적합]<br>T10 GFM  4.3 ms [적합]<br>T07 GFM +0.68 pu, 8.2 ms, 3.1 ms<br>T07 GFL 응답 없음  [OK]</p>
+</div>
+<p style="font-size:26px;line-height:1.45"><b style="color:#013364">해 보기</b>  GFL f<b>pll</b> 20 → 50 Hz면 세 기준은? T01 droop 0.04면 분리 후 주파수는?</p>
+<p style="font-size:24px;line-height:1.45;color:#037673"><b>실습 파일</b> practice/lec10_compliance.py<br>--plot · --emt · --answers</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#7d8ca2">10강 · 표준 시험으로 비교</p>
+<p style="position:absolute;left:1592px;bottom:64px;width:200px;font-size:24px;color:#7d8ca2;text-align:right">29 / 31</p>
+<aside>실습 파일입니다. practice 폴더의 lec10 파일에 실습이 여섯 개 있습니다. 1번은 보고서 JSON을 읽어 판정표와 부적합 근거 항목을 훑는 것입니다. 화면 위 코드처럼 tests 목록의 verdict와 criteria를 읽으면 됩니다. 2번은 위상점프 전력 예상과 T07 세 시간 기준, 3번은 관성 전력과 등가 관성, 4번은 감쇠비를 보고서 계열의 극값 비로 다시 구하는 것, 5번은 T13 지속 시간과 T01 분리 후 주파수입니다. 6번이 --emt 옵션으로 시험 하나를 평균값 모델로 돌리는 실습입니다. compliance_tests 모듈의 TESTS 정의와 label_params, scenario, 그리고 보고서와 같은 판정 함수 eval_vstep, eval_phase를 그대로 빌려 씁니다. 평균값 10 µs로 T10은 GFL 88.3 ms 부적합, GFM 4.3 ms 적합이고, T07의 GFM은 플러스 0.68 pu, 8.2 ms, 3.1 ms로 스위칭 모델 보고서와 같은 결론입니다. 약 2분 걸립니다. 해 볼 것으로, 주석 처리된 줄을 풀어 GFL의 PLL을 50 Hz로 올려도 세 기준이 여전히 부적합인지, T01에서 드룹을 0.04로 바꾸면 분리 후 주파수가 59.28 Hz로 가는지 확인해 보세요.</aside>
+</section>

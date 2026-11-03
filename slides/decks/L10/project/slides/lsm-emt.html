@@ -1,0 +1,27 @@
+<section id="lsm-emt" data-transition="fade" style="background:#fbfcfd;color:#45546b;font-family:'Pretendard Variable', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:24px">
+<div style="position:absolute;left:0;top:0;width:1920px;height:12px;background:linear-gradient(90deg, #2463c8 0%, #8bc22c 100%)"></div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;color:#037673">3 · 판정표와 부적합 읽기 · T01 (스위칭 2 µs)</p>
+<h2 style="font-size:56px;font-weight:800;line-height:1.15;letter-spacing:-1px;color:#013364">동기원 상실: GFM은 드룹이 정한 59.6 Hz에 정착, GFL은 따라갈 전압이 없다</h2>
+</div>
+<div style="display:flex;gap:40px;align-items:center">
+<img src="/_blob/77a7cbbd51959dd59bb52a0676ff1340" alt="T01 동기원 상실 방전 중, SCR 3, P* 0.5, 국부 부하 0.8, t = 0 차단기 개방. 위: 인버터 주파수, GFL 54~66 Hz 왕복, GFM 59.60 Hz 정착, 판정 범위 58.8~61.2 Hz. 아래: PCC 전압, GFL 0.46~1.28 pu 진동, GFM 1.00 pu 유지" style="width:990px;height:657px;object-fit:contain;background:#ffffff;border:2px solid #dae3ec;border-radius:16px">
+<div style="flex:1;display:flex;flex-direction:column;gap:16px">
+<div style="background:#ffffff;border-left:8px solid #2463c8;border-radius:8px;padding:14px 22px">
+<h3 style="font-size:28px;font-weight:800;color:#013364">GFM: 세 항목 적합</h3>
+<p style="font-size:25px;line-height:1.45">주파수 59.60 Hz(범위 59.6~59.7), 전압 1.00 pu. 부하 0.8 &gt; 지령 0.5라 드룹만큼 내려간다</p>
+</div>
+<div style="background:#ffffff;border-left:8px solid #2463c8;border-radius:8px;padding:10px 22px">
+<img src="/_blob/5fa234270e114f71d9c51d295e695876" alt="f = f0[1 + droop(P* − P_load)]. T01: 60[1 + 0.02(0.5 − 0.8)] = 59.64 Hz (보고서 59.60), T02: 60[1 + 0.02(−0.3 − 0.5)] = 59.04 (보고서 59.00)" style="width:560px;height:39px;object-fit:contain">
+</div>
+<div style="background:#ffffff;border-left:8px solid #eb6834;border-radius:8px;padding:14px 22px">
+<h3 style="font-size:28px;font-weight:800;color:#013364">GFL: 세 항목 부적합</h3>
+<p style="font-size:25px;line-height:1.45">PLL이 추종할 전압이 없어 54~66 Hz 제한값을 왕복, 전압 0.46~1.28 pu 진동. T03·T04는 54 Hz에 붙는다</p>
+</div>
+<p style="font-size:22px;line-height:1.4;color:#7d8ca2">T02 충전 → 방전 전환, T03 한계 초과 부하(|i| 1.20, V 0.84), T04 균형도 GFM만 적합</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#7d8ca2">10강 · 표준 시험으로 비교</p>
+<p style="position:absolute;left:1592px;bottom:64px;width:200px;font-size:24px;color:#7d8ca2;text-align:right">21 / 31</p>
+<aside>T01 동기원 상실, 방전 중입니다. SCR 3, 지령 0.5, 국부 부하 0.8에서 t 0에 차단기를 엽니다. 위 그림의 인버터 주파수를 보면, 파란 GFM은 59.60 Hz에 정착합니다. 부하가 지령보다 크니 드룹만큼 내려가는 것이고, 식으로 쓰면 60 곱하기 1 더하기 0.02 곱하기 0.5 빼기 0.8로 59.64 Hz, 보고서 값과 맞습니다. 전압도 1.00 pu를 유지해서 세 항목 모두 적합입니다. 주황 GFL은 PLL이 추종할 전압이 없어 주파수가 54에서 66 Hz 제한값을 왕복하고, 아래 그림의 PCC 전압은 0.46에서 1.28 pu로 진동합니다. 세 항목 모두 부적합입니다. T02 충전 중 방전 전환, T03 한계 초과 부하, T04 전력 균형도 같은 결론입니다. T03과 T04의 GFL은 54 Hz 하한에 붙어 버립니다. T03의 GFM은 전류 1.20 pu에서 전압 0.84 pu로 떨어진 채 안정하게 운전하는데, 규격이 전압 저하를 허용하는 항목이라 적합입니다. 해보기 B에서 드룹을 0.04로 바꾸면 분리 후 주파수가 59.28 Hz로 가는지 확인해 보세요.</aside>
+</section>

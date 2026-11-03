@@ -1,0 +1,26 @@
+<section id="t09" data-transition="fade" style="background:#fbfcfd;color:#45546b;font-family:'Pretendard Variable', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:24px">
+<div style="position:absolute;left:0;top:0;width:1920px;height:12px;background:linear-gradient(90deg, #2463c8 0%, #8bc22c 100%)"></div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;color:#037673">3 · 판정표와 부적합 읽기 · T09 (스위칭 2 µs)</p>
+<h2 style="font-size:56px;font-weight:800;line-height:1.15;letter-spacing:-1px;color:#013364">60° 내성: GFM이 떨어진 이유는 9강의 freeze 보정, 위상차 60°가 그대로 남는다</h2>
+</div>
+<div style="display:flex;gap:40px;align-items:center">
+<img src="/_blob/30f44b8646a5038d7a33d24d09d571e0" alt="T09 위상각 −60° 점프, SCR 3, P0 0.5. 위: 유효전력, GFL은 P 0.5로 복귀(적합), GFM은 P 0.05 pu에 고착, 끝까지 |i| 1.20 pu(부적합). 아래: 위상 변화, GFL은 60°를 따라가 원래 운전점, GFM은 위상차 60°가 남는다" style="width:990px;height:657px;object-fit:contain;background:#ffffff;border:2px solid #dae3ec;border-radius:16px">
+<div style="flex:1;display:flex;flex-direction:column;gap:16px">
+<div style="background:#ffffff;border-left:8px solid #2463c8;border-radius:8px;padding:14px 22px">
+<h3 style="font-size:28px;font-weight:800;color:#013364">GFM: 전류 제한 고착</h3>
+<p style="font-size:25px;line-height:1.45">점프로 전류 1.44 pu 요구 → 포화. freeze가 P* − P &gt; 0인 가속을 막아 재동기에 필요한 60° 이동까지 막는다. 끝까지 |i| 1.20, P 0.05</p>
+</div>
+<div style="background:#ffffff;border-left:8px solid #eb6834;border-radius:8px;padding:14px 22px">
+<h3 style="font-size:28px;font-weight:800;color:#013364">GFL: PLL이 따라간다</h3>
+<p style="font-size:25px;line-height:1.45">최대 |i| 0.76 pu로 제한 없이 새 위상을 잡고 P 0.5 복귀. 위상 점프에 “응답하지 않는” 성질이 여기서는 장점</p>
+</div>
+<div style="background:#013364;border-radius:8px;padding:14px 22px">
+<p style="font-size:25px;line-height:1.45;color:#ffffff"><b style="color:#b9f179">교훈</b>: 고장(T12)은 전압 회복으로 풀리지만 위상차는 스스로 안 풀린다. 과도 가상 임피던스처럼 제한 중에도 전력–위상 관계를 유지하는 방식이 필요</p>
+</div>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#7d8ca2">10강 · 표준 시험으로 비교</p>
+<p style="position:absolute;left:1592px;bottom:64px;width:200px;font-size:24px;color:#7d8ca2;text-align:right">22 / 31</p>
+<aside>T09 60도 내성은 GFM이 떨어진 건입니다. 마이너스 60도 점프이면 1부 식으로 전류 요구가 1.44 pu까지 가서 전류 제한이 걸립니다. 9강의 freeze 보정은 포화 중 P 스타 빼기 P가 양수인 가속을 막는데, 이 상황에서는 재동기에 필요한 60도 위상 이동까지 막아 버립니다. 그래서 GFM은 끝까지 전류 1.20 pu, 전력 0.05 pu에 고착되고 아래 그림처럼 위상차 60도가 그대로 남습니다. 극 미끄럼은 없지만 원래 운전점으로 돌아오지 못해 부적합입니다. GFL은 최대 전류 0.76 pu로 제한에 걸리지 않고 PLL이 새 위상을 잡아 0.5 pu로 복귀합니다. 위상 점프에 응답하지 않는 성질이 여기서는 장점이 됩니다. 교훈은 이렇습니다. 고장 T12는 전압이 회복되면서 제한이 풀리지만, 위상차는 스스로 풀리지 않습니다. 과도 가상 임피던스처럼 제한 중에도 전력과 위상의 관계를 유지하는 방식이 필요하고, 이것이 9강 퀴즈 2의 답이었습니다. 참고로 MISO가 초안에 넣었던 60도 요건은 이후 삭제됐고, GB GC0137은 유지하고 있습니다.</aside>
+</section>

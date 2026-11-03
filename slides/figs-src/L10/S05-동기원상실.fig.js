@@ -1,0 +1,22 @@
+// T01 동기원 상실 — 방전 중 (SCR 3, P* 0.5, 국부 부하 0.8, t = 0 차단기 개방, 스위칭 2 µs): 인버터 주파수와 PCC 전압
+const F = Fig(1100, 730), C = FC, D = DATA, xl = [-0.05, 1.3];
+const A = F.frame([120, 50, 760, 300], xl, [53, 67]).axes({ xticks: [0, 0.3, 0.6, 0.9, 1.2], yticks: [54, 57, 60, 63, 66], tick: 22, xfmt: () => "", ylabel: "인버터 주파수 [Hz]" });
+A.hline(58.8, { color: C.green, width: 2, dash: "6 6" });
+A.hline(61.2, { color: C.green, width: 2, dash: "6 6" });
+A.vline(0, { color: C.navy, width: 2.5, dash: "8 6" });
+A.plot(D.GFL.t, D.GFL.f, { color: C.orange, width: 2.5 });
+A.plot(D.GFM.t, D.GFM.f, { color: C.blue, width: 3.5 });
+A.label(0.02, 66.5, "차단기 개방", { anchor: "l", size: 20, color: C.navy, weight: 700 });
+F.label(895, A.y(65), "GFL: 따라갈 전압이<br>없다 → 54~66 Hz<br>왕복 (제한값)", { anchor: "l", size: 20, color: C.orange, weight: 700 });
+F.label(895, A.y(59.2), `GFM: ${D.GFM.f_mean.toFixed(2)} Hz 정착<br>= 60[1 + 0.02<br>× (0.5 − 0.8)]`, { anchor: "l", size: 20, color: C.blue, weight: 700 });
+F.label(895, A.y(54.5), "점선: 판정 범위<br>58.8~61.2 Hz", { anchor: "l", size: 18, color: C.green });
+const B = F.frame([120, 390, 760, 300], xl, [0.3, 1.4]).axes({ xticks: [0, 0.3, 0.6, 0.9, 1.2], yticks: [0.4, 0.7, 1.0, 1.3], tick: 22, xlabel: "차단기 개방 후 시간 [s]", ylabel: "PCC 전압 [pu]" });
+B.hline(0.9, { color: C.green, width: 2, dash: "6 6" });
+B.hline(1.1, { color: C.green, width: 2, dash: "6 6" });
+B.vline(0, { color: C.navy, width: 2.5, dash: "8 6" });
+B.plot(D.GFL.t, D.GFL.V, { color: C.orange, width: 2.5 });
+B.plot(D.GFM.t, D.GFM.V, { color: C.blue, width: 3.5 });
+F.label(895, B.y(1.3), "GFL: 0.46~1.28 pu<br>진동", { anchor: "l", size: 20, color: C.orange, weight: 700 });
+F.label(895, B.y(0.95), "GFM: 1.00 pu 유지<br>(스스로 전압을<br>세운다)", { anchor: "l", size: 20, color: C.blue, weight: 700 });
+F.label(895, B.y(0.5), "점선: 판정 범위<br>0.9~1.1 pu", { anchor: "l", size: 18, color: C.green });
+F.done();

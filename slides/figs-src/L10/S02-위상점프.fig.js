@@ -1,0 +1,22 @@
+// T07 위상각 스텝 −20° (스위칭 2 µs): 위 점프 직후 60 ms 유효전력, 아래 전체 2.5 s 와 스윙 극값(T11 감쇠비)
+const F = Fig(1100, 800), C = FC, D = DATA;
+const A = F.frame([120, 60, 760, 300], [-5, 60], [0.3, 1.3]).axes({ xticks: [0, 10, 20, 30, 40, 50, 60], yticks: [0.4, 0.6, 0.8, 1.0, 1.2], tick: 22, xlabel: "점프 후 시간 [ms]", ylabel: "유효전력 $P$ [pu]" });
+A.hline(0.5, { color: C.muted, width: 2, dash: "6 6" });
+A.vline(10, { color: C.navy, width: 2, dash: "8 6" });
+A.vline(15, { color: C.navy, width: 2, dash: "8 6" });
+A.plot(D.GFL.t_ms, D.GFL.P, { color: C.orange, width: 3 });
+A.plot(D.GFM.t_ms, D.GFM.P, { color: C.blue, width: 3.5 });
+F.dot(A.x(D.GFM.t50_ms), A.y(D.GFM.P0 + 0.5 * D.GFM.peak), { r: 9, color: C.navy });
+F.dot(A.x(D.GFM.t90_ms), A.y(D.GFM.P0 + 0.9 * D.GFM.peak), { r: 9, color: C.navy });
+A.label(10.5, 1.27, "10 ms", { anchor: "l", size: 20, color: C.navy });
+A.label(15.5, 1.17, "15 ms", { anchor: "l", size: 20, color: C.navy });
+F.label(895, A.y(1.15), `GFM: 피크 +${D.GFM.peak.toFixed(2)} pu<br>50 % 도달 ${D.GFM.t50_ms} ms<br>90 % 도달 ${D.GFM.t90_ms} ms`, { anchor: "l", size: 20, color: C.blue, weight: 700 });
+F.label(895, A.y(0.55), `GFL: 응답 없음<br>(최대 +${D.GFL.peak.toFixed(3)} pu)`, { anchor: "l", size: 20, color: C.orange, weight: 700 });
+const B = F.frame([120, 450, 760, 260], [-0.05, 2.5], [0.2, 1.3]).axes({ xticks: [0, 0.5, 1.0, 1.5, 2.0, 2.5], yticks: [0.2, 0.5, 0.8, 1.1], tick: 22, xlabel: "점프 후 시간 [s]", ylabel: "유효전력 $P$ [pu]" });
+B.hline(0.5, { color: C.muted, width: 2, dash: "6 6" });
+B.plot(D.GFL.tf, D.GFL.Pf, { color: C.orange, width: 3 });
+B.plot(D.GFM.tf, D.GFM.Pf, { color: C.blue, width: 3.5 });
+D.ext_t.forEach((t, k) => F.dot(B.x(t), B.y(D.ext_P[k]), { r: 7, color: C.navy }));
+F.label(895, B.y(1.05), `스윙 극값 → T11<br>ζ = ${(D.zeta * 100).toFixed(1)} %<br>(${D.fd.toFixed(2)} Hz)<br>반주기마다<br>진폭 ≈ 36 %`, { anchor: "l", size: 20, color: C.navy, weight: 700 });
+F.label(895, B.y(0.4), "둘 다 점프 전 P 로 복귀", { anchor: "l", size: 20, color: C.slate });
+F.done();

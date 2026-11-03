@@ -1,0 +1,23 @@
+<section id="kr" data-transition="fade" style="background:#fbfcfd;color:#45546b;font-family:'Pretendard Variable', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:24px">
+<div style="position:absolute;left:0;top:0;width:1920px;height:12px;background:linear-gradient(90deg, #2463c8 0%, #8bc22c 100%)"></div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;color:#037673">3 · 판정표와 부적합 읽기 · T13 (스위칭 2 µs)</p>
+<h2 style="font-size:56px;font-weight:800;line-height:1.15;letter-spacing:-1px;color:#013364">한국 연계기준안: 네 가지 비교에서 2.0 pu 사양 GFM만 두 항목 다 적합</h2>
+</div>
+<div style="display:flex;gap:40px;align-items:center">
+<img src="/_blob/ec24b12d0386791c08968a50ccd55550" alt="T13 PCC 3상 지락 0.05 pu × 200 ms, SCR 3, P0 0.8, 전류 한계 1.2와 2.0, GFL과 GFM. 한계 2.0 사양은 GFM 199 ms, GFL 197 ms 동안 2.0 pu 이상(기준 140 ms), 한계 1.2 사양은 최대 1.53/1.23 pu로 2.0에 못 닿음. 전압원 동작은 구조로 판정, GFM 적합 GFL 부적합" style="width:990px;height:504px;object-fit:contain;background:#ffffff;border:2px solid #dae3ec;border-radius:16px">
+<div style="flex:1;display:flex;flex-direction:column;gap:14px">
+<table style="font-size:24px;color:#45546b">
+<tr><th style="width:34%">대상</th><th style="width:33%">2.0 pu ≥ 140 ms</th><th style="width:33%">전압원 동작</th></tr>
+<tr><td>GFL 1.2</td><td style="color:#eb6834">0 ms (1.23)</td><td style="color:#eb6834">전류원</td></tr>
+<tr><td>GFM 1.2</td><td style="color:#eb6834">0 ms (1.53)</td><td style="color:#3aa150">전압원</td></tr>
+<tr><td>GFL 2.0</td><td style="color:#3aa150">197 ms</td><td style="color:#eb6834">전류원</td></tr>
+<tr style="background:#e9f0f6"><td><b>GFM 2.0</b></td><td style="color:#3aa150">199 ms</td><td style="color:#3aa150">전압원 → 적합</td></tr>
+</table>
+<p style="font-size:24px;line-height:1.45">크기 항목은 <b style="color:#013364">정격</b>이 정한다(GFL도 가능). 전압원 항목은 시뮬레이션 지표가 아니라 <b style="color:#013364">제어 구조</b>로 판정 (9강 3부)</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#7d8ca2">10강 · 표준 시험으로 비교</p>
+<p style="position:absolute;left:1592px;bottom:64px;width:200px;font-size:24px;color:#7d8ca2;text-align:right">24 / 31</p>
+<aside>T13 한국 연계기준안입니다. PCC 3상 지락 200 ms에 전류 한계 1.2와 2.0 사양을 GFL과 GFM으로, 네 가지를 비교합니다. 9강에서 평균값 모델로 본 것의 스위칭 모델 판입니다. 첫 항목, 2.0 pu 이상 140 ms 연속 유지는 한계 2.0 사양이면 GFM 199 ms, GFL 197 ms로 둘 다 적합이고, 1.2 사양은 최대 1.53과 1.23 pu로 둘 다 못 닿습니다. 크기는 정격이 정하니 GFL도 가능합니다. 둘째 항목, 고장 시 전압원 동작은 시뮬레이션 지표가 아니라 제어 구조로 판정합니다. GFM은 가상 임피던스 뒤의 E 각 세타이니 전압원, GFL은 PLL 기준 전류 지령이니 전류원입니다. 그래서 네 가지 가운데 2.0 pu 사양 GFM만 두 항목 모두 적합입니다. 판정표의 GFM 부적합 한 건은 이 1.2 pu 사양이고, 정격의 문제이지 제어의 문제가 아닙니다. 흔한 오해, 한국 기준안 시험은 GFM만 통과한다는 말은 절반만 맞습니다.</aside>
+</section>

@@ -50,8 +50,8 @@
 | 7 | C09 | GFM: 위상을 만들기 | 완료 (29장) | https://claude.ai/artifact/XMojcAmfAh8qbCC4zxSXFw |
 | 8 | C10 | 약계통과 제어 상호작용 (GFM vs GFL) | 완료 (28장) | https://claude.ai/artifact/GAKAsMUvmpBb1fWr5w9YLb |
 | 9 | C11 | 전류 제한과 고장 (GFM vs GFL) | 완료 (29장) | https://claude.ai/artifact/6pZwVFcUrHAZppsTyyVhnm |
-| 10 | C12 | 표준 시험으로 비교 (GFM 12/14, GFL 3/14) | **다음** · 필수 | — |
-| 11 | C13 | EMT 모델링 실습 | 이후 | — |
+| 10 | C12 | 표준 시험으로 비교 (GFM 12/14, GFL 3/14) | 완료 (31장) | https://claude.ai/artifact/S8LXG9qjuokAi1Ffkct8ji |
+| 11 | C13 | EMT 모델링 실습 | **다음** | — |
 | 12 | C04 | 변조 SPWM·SVPWM (맨 마지막) | 이후 | — |
 
 - 3레벨(C03B)은 사용자 요청으로 제외. 교재 파일은 남아 있다.
@@ -187,6 +187,13 @@ python3 sheet.py ../lecture-figs/L05 <scratchpad>/sheet.png "M*.png"   # 밀착 
 - 그림 `slides/figs-src/L09/F01~F05`(포화와 상한 두 패널, 고장 0.3 pu·150 ms 응답 세 패널(보정/보정 없음/GFL), PCC 지락 200 ms 전류 정격 1.2/2.0, anti-windup 블록, GFL·GFM FRT 흐름), 수식 `E01~E10`. `_common.js`에 `blkRow`, `harrow`, `shade`(음영 opacity 0.4, 곡선 위에 그려도 가리지 않게). 데이터 `_data.py`(평균값 10 µs, 약 3 분).
 - 확인한 수치(평균값 모델): 고장 0.3 pu·150 ms → GFM 보정 위상 7.1°/제거 후 포화 1 ms/회복 457 ms, 보정 없음 12.6°/214 ms/659 ms, GFL 108 ms, 고장 중 평균 PCC 전압 GFL 0.69 / GFM 0.60 pu, 진입 피크 1.34 pu. PCC 지락(g 20 pu) 200 ms → 한계 2.0 사양 GFM 199 / GFL 197 ms 동안 2.0 pu 유지(기준안 140 ms), 한계 1.2 사양 최대 1.54/1.24, 고장 중 V 0.15~0.18, 제거 직후 GFL 2.0 피크 2.6 pu, GFM 적분기 와인드업 과전압 1.14 pu. 교재(스위칭 2 µs: 회복 0.1/0.48/0.95 s, V 0.71/0.63)와 같은 경향. 슬라이드에는 평균값 수치를 쓰고 노트에서 스위칭 수치를 언급.
 - 덱 29장, 실습 `practice/lec09_current_limit.py` 전부 `[OK]`(EMT 실습 5는 약 2 분).
+
+## 7f. 10강(표준 시험으로 비교, C12) 완료 메모
+
+- 시뮬레이션을 새로 돌리지 않았다. `simulation/emt/results/compliance.json`에 시험별 `charts`(500점 계열)와 T07 `hires`(2 µs 상전류)가 이미 들어 있어 `slides/figs-src/L10/_data.py`가 거기서 그림 JSON을 꺼낸다(수 초). 라벨 수치는 500점 계열로 재계산한 값이 아니라 보고서 판정 문자열(`criteria[].values`)에서 정규식으로 뽑은 값을 쓴다(재계산은 몇 % 다르다: H_eq 3.73 vs 3.44, T13 191 vs 199 ms). `compliance_tests.py` 전체 재실행은 중간에 멈췄고(캐시 pkl 없음) 결과 파일은 건드리지 않았다.
+- 그림 `S01~S08`(판정 시간 기준 로그축 개념도, T07 P 60 ms + 2.5 s 스윙 극값, T07 상전류 2 µs, T05a RoCoF, T01 동기원 상실, T09 60°, T10 전압 스텝, T13 고장전류), 수식 `E01~E10`(위상점프 ΔP, δ0, 관성 전력, H_eq, 감쇠비 Λ, 분리 후 주파수 f0[1+droop(P*−P_load)], 세 기준, 예제). `_common.js`에 `shade`, `legend`. 두 줄 수식은 `egin{aligned}`.
+- 확인한 수치(보고서): T07 GFM 피크 +0.64, 50 % 3.1 ms, 90 % 8.4 ms, 10 ms 유효전류 +0.68; T05a H_eq GFM 3.44 / GFL+SI 1.09 / GFL −2.86; T11 ζ 30.7 % @ 1.27 Hz(극값 −0.181/+0.061/−0.024, 반주기 비 0.36); T01 GFM 59.60 Hz = 60[1+0.02(0.5−0.8)]; T09 GFM P 0.05 고착 위상 +60°; T10 4.3 / 90.2 ms; T13 199/197 ms. 페이저 ΔP 예상 0.40 pu(δ0 21.5°).
+- 덱 31장, 실습 `practice/lec10_compliance.py` 전부 `[OK]`(실습 6 `--emt`는 T10·T07 평균값, 약 2 분; 결론은 스위칭 보고서와 같다).
 
 ## 8. 6강 이후 메모
 

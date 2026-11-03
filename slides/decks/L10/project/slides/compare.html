@@ -1,0 +1,19 @@
+<section id="compare" data-transition="fade" style="background:#fbfcfd;color:#45546b;font-family:'Pretendard Variable', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<div style="position:absolute;left:0;top:0;width:1920px;height:12px;background:linear-gradient(90deg, #2463c8 0%, #8bc22c 100%)"></div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;color:#037673">4 · 예제와 실습 · 정리</p>
+<h2 style="font-size:56px;font-weight:800;line-height:1.15;letter-spacing:-1px;color:#013364">시험 묶음별 GFL과 GFM: 떨어지는 이유가 서로 다르다</h2>
+</div>
+<table style="font-size:27px;color:#45546b">
+<tr><th style="width:22%">묶음</th><th style="width:39%">GFL</th><th style="width:39%">GFM (VSM + 가상 임피던스)</th></tr>
+<tr><td><b>최후 동기기 상실</b></td><td>부적합 4/4 — 추종할 전압이 없어 54~66 Hz, V 진동</td><td>적합 4/4 — 드룹이 정한 주파수에 정착 (59.6 Hz)</td></tr>
+<tr><td><b>RoCoF</b></td><td>부적합 — 드룹 H<b>eq</b> &lt; 0, 합성 관성 1.1 s (측정 지연)</td><td>적합 — H<b>eq</b> 3.4~3.7 s, 측정 없이 관성 전력</td></tr>
+<tr><td><b>SCR 급감 + 고장</b></td><td>부적합 — 위상 78°, 회복 1.35 s</td><td>적합 — 위상 35°, 회복 0.82 s</td></tr>
+<tr><td><b>위상각 스텝 ∓20° · 60°</b></td><td>∓20° 응답 없음 · 60°는 PLL이 따라가 적합</td><td>∓20° 3.1 / 8.4 ms 적합 · 60°는 전류 제한 고착(freeze)</td></tr>
+<tr><td><b>전압 스텝 · 감쇠</b></td><td>90 ms 부적합 · 진동 없음 적합</td><td>4.3 ms 적합 · ζ 30.7 % 적합</td></tr>
+<tr style="background:#e9f0f6"><td><b>고장 · 연계기준안</b></td><td>FRT 96 ms 적합 · 2.0 pu는 정격으로 가능, 전압원 동작 불가</td><td>FRT 483 ms 적합 · 2.0 pu 사양이면 두 항목 다 적합</td></tr>
+</table>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#7d8ca2">10강 · 표준 시험으로 비교</p>
+<p style="position:absolute;left:1592px;bottom:64px;width:200px;font-size:24px;color:#7d8ca2;text-align:right">30 / 31</p>
+<aside>오늘의 비교표입니다. 묶음별로 보면 떨어지는 이유가 서로 다릅니다. 최후 동기기 상실은 GFL이 네 건 모두 부적합, 추종할 전압이 없어서이고, GFM은 드룹이 정한 주파수에 정착해 네 건 모두 적합입니다. RoCoF는 GFL이 드룹만으로는 등가 관성이 음수, 합성 관성을 넣어도 측정 지연 때문에 1.1초로 부적합이고, GFM은 3.4에서 3.7초로 적합입니다. SCR 급감 더하기 고장은 GFL이 위상 78도 회복 1.35초로 부적합, GFM은 35도 0.82초로 적합입니다. 위상각 스텝은 플러스마이너스 20도에서 GFL은 응답이 없고 GFM은 3.1과 8.4 ms로 적합이지만, 60도에서는 거꾸로 GFL이 PLL로 따라가 적합, GFM은 freeze 때문에 전류 제한에 고착됩니다. 전압 스텝은 GFL 90 ms 부적합, GFM 4.3 ms 적합이고, 감쇠는 둘 다 적합입니다. 고장 통과는 둘 다 적합이고, 한국 연계기준안은 GFL이 2.0 pu를 정격으로 맞출 수는 있어도 전압원 동작이 불가, GFM은 2.0 pu 사양이면 두 항목 다 적합입니다. GFL의 부적합은 대부분 측정을 거쳐야 하는 구조, GFM의 부적합은 제한 중 위상 보정과 정격의 문제라는 것이 오늘의 결론입니다.</aside>
+</section>

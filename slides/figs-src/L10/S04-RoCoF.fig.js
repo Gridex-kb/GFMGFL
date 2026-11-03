@@ -1,0 +1,21 @@
+// T05a RoCoF −1 Hz/s × 0.5 s (SCR 5, P0 0.3, 스위칭 2 µs): GFL(드룹) / GFL+SI(합성 관성) / GFM — P 와 인버터 주파수
+const F = Fig(1100, 730), C = FC, D = DATA, xl = [-0.1, 1.8];
+const A = F.frame([120, 50, 760, 300], xl, [0.2, 0.9]).axes({ xticks: [0, 0.5, 1.0, 1.5], yticks: [0.3, 0.5, 0.7, 0.9], tick: 22, xfmt: () => "", ylabel: "유효전력 $P$ [pu]" });
+shade(F, A, 0, 0.5);
+A.plot(D.GFL.t, D.GFL.P, { color: C.orange, width: 3 });
+A.plot(D["GFL+SI"].t, D["GFL+SI"].P, { color: C.purple, width: 3, dash: "10 8" });
+A.plot(D.GFM.t, D.GFM.P, { color: C.blue, width: 3.5 });
+F.label(895, A.y(0.85), `GFM: H_eq ${D.GFM.H_eq.toFixed(2)} s`, { anchor: "l", size: 22, color: C.blue, weight: 700 });
+F.label(895, A.y(0.72), `GFL+SI: ${D["GFL+SI"].H_eq.toFixed(2)} s`, { anchor: "l", size: 22, color: C.purple, weight: 700 });
+F.label(895, A.y(0.59), `GFL 드룹: ${D.GFL.H_eq.toFixed(2)} s`, { anchor: "l", size: 22, color: C.orange, weight: 700 });
+F.label(895, A.y(0.4), "램프 중 ΔP 에서<br>드룹 몫을 뺀 등가 관성<br>(기준 ≥ 2.0 s)", { anchor: "l", size: 20, color: C.slate });
+A.label(0.25, 0.27, "램프 0.5 s", { anchor: "b", size: 20, color: C.navy, weight: 700 });
+const B = F.frame([120, 390, 760, 300], xl, [59.2, 60.2]).axes({ xticks: [0, 0.5, 1.0, 1.5], yticks: [59.25, 59.5, 59.75, 60.0], tick: 22, xlabel: "램프 시작 후 시간 [s]", ylabel: "인버터 주파수 [Hz]" });
+shade(F, B, 0, 0.5);
+B.plot([-0.1, 0, 0.5, 1.8], [60, 60, 59.5, 59.5], { color: C.muted, width: 2.5, dash: "6 6" });
+B.plot(D.GFL.tf, D.GFL.f, { color: C.orange, width: 3 });
+B.plot(D["GFL+SI"].tf, D["GFL+SI"].f, { color: C.purple, width: 3, dash: "10 8" });
+B.plot(D.GFM.tf, D.GFM.f, { color: C.blue, width: 3.5 });
+F.label(895, B.y(60.1), "점선: 계통 주파수", { anchor: "l", size: 20, color: C.muted });
+F.label(895, B.y(59.75), "GFM 은 관성 때문에<br>계통보다 늦게 내려간다<br>→ 그 차이가 관성 전력", { anchor: "l", size: 20, color: C.blue, weight: 700 });
+F.done();

@@ -1,0 +1,31 @@
+<section id="damping" data-transition="fade" style="background:#fbfcfd;color:#45546b;font-family:'Pretendard Variable', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:32px">
+<div style="position:absolute;left:0;top:0;width:1920px;height:12px;background:linear-gradient(90deg, #2463c8 0%, #8bc22c 100%)"></div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;color:#037673">2 · 위상 점프·관성·감쇠 · 칠판 유도</p>
+<h2 style="font-size:56px;font-weight:800;line-height:1.15;letter-spacing:-1px;color:#013364">감쇠비는 반주기 극값의 비로 센다: T11 GFM ζ 30.7 %, 기준 5 %는 반주기마다 15 % 감소</h2>
+</div>
+<div style="background:#ffffff;border:2px solid #dae3ec;border-radius:20px;padding:24px 36px;display:flex;flex-direction:column;gap:20px">
+<div style="display:flex;gap:28px;align-items:center">
+<p style="font-size:30px;font-weight:800;color:#2463c8;width:48px">①</p>
+<img src="/_blob/7d00981af888996255f981216b1ec7d6" alt="ζ = Λ/√(π² + Λ²), Λ = ln(A_k/A_{k+1}), 반주기마다 번갈아 나오는 극값의 절댓값 비" style="width:1500px;height:107px;object-fit:contain">
+</div>
+<div style="display:flex;gap:28px;align-items:center">
+<p style="font-size:30px;font-weight:800;color:#2463c8;width:48px">②</p>
+<img src="/_blob/de7295b684740d7fd5da5b559518421c" alt="ζ = 0.307 ⇒ Λ = πζ/√(1−ζ²) ≈ 1.01, A_{k+1}/A_k = e^−Λ ≈ 0.36; ζ = 0.05 ⇒ A_{k+1}/A_k ≈ 0.86" style="width:1500px;height:94px;object-fit:contain">
+</div>
+</div>
+<div style="display:flex;gap:24px">
+<div style="flex:1;background:#e9f0f6;border-radius:16px;padding:22px 28px">
+<p style="font-size:27px;line-height:1.45"><b style="color:#013364">①</b> 감쇠 진동의 극값은 반주기 π/ω<b>d</b>마다 부호를 바꿔 나오고, 연속 두 극값의 비는 exp(−πζ/√(1−ζ²)). 그 로그가 Λ</p>
+</div>
+<div style="flex:1;background:#e9f0f6;border-radius:16px;padding:22px 28px">
+<p style="font-size:27px;line-height:1.45"><b style="color:#013364">②</b> T07 GFM 스윙(0.15 s 이후, 20 ms 이동평균) 극값 −0.181 → +0.061 → −0.024: 비 0.34, 0.39 → ζ ≈ 31 %, 1.27 Hz. GFL은 유의한 저주파 진동 없음 → 적합</p>
+</div>
+<div style="flex:1;background:#013364;border-radius:16px;padding:22px 28px">
+<p style="font-size:27px;line-height:1.45;color:#ffffff">주의: 같은 비라도 <b style="color:#b9f179">한 주기</b>(같은 부호 극값) 간격이면 π 대신 2π. 극값 비가 어느 간격인지 먼저 확인</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#7d8ca2">10강 · 표준 시험으로 비교</p>
+<p style="position:absolute;left:1592px;bottom:64px;width:200px;font-size:24px;color:#7d8ca2;text-align:right">17 / 31</p>
+<aside>T11은 ENTSO-E의 0.1에서 10 Hz 유효전력 진동 감쇠비 5 % 이상 기준입니다. 별도 시험이 아니라 T07의 스윙에서 추정합니다. ①번, 감쇠 진동의 극값은 반주기마다 부호를 바꿔 나오고, 연속 두 극값의 절댓값 비는 exp 마이너스 파이 제타 나누기 루트 1 빼기 제타 제곱입니다. 그 로그를 람다라고 하면 제타는 람다 나누기 루트 파이 제곱 더하기 람다 제곱입니다. ②번, 보고서의 T07 GFM 스윙에서 점프 후 0.15초 이후, 20 ms 이동평균한 전력의 극값은 마이너스 0.181, 플러스 0.061, 마이너스 0.024입니다. 비가 0.34와 0.39이니 람다 약 1.0, 제타 약 31 %, 주파수 1.27 Hz입니다. 반주기마다 진폭이 36 %로 줄어드는 셈이고, 기준 5 %는 반주기마다 86 %, 즉 15 % 정도 줄면 됩니다. GFL은 유의한 저주파 진동이 없어 적합으로 봅니다. 주의할 점은 같은 비라도 한 주기, 즉 같은 부호 극값 간격이면 파이 대신 2파이가 들어간다는 것입니다. 극값 비가 어느 간격인지 먼저 확인해야 합니다. 예제에서 다시 봅니다.</aside>
+</section>

@@ -1,0 +1,21 @@
+% 10강 수식
+%% E01-위상점프전력
+\Delta P \approx \frac{E\,V_g}{X}\left[\sin(\delta_0 - \Delta\theta) - \sin\delta_0\right]\qquad(\Delta\theta < 0 \;\Rightarrow\; \Delta P > 0)
+%% E02-운전점
+\delta_0 = \arcsin\frac{P_0\,X}{E\,V_g} = \arcsin(0.5 \times 0.733) \approx 21.5^\circ\qquad(X = X_v + L_t + 1/\mathrm{SCR} = 0.3 + 0.1 + 0.333)
+%% E03-예상값
+\begin{aligned} \Delta\theta = -20^\circ:\quad \Delta P &\approx 1.36\,[\sin 41.5^\circ - \sin 21.5^\circ] \approx 0.40\ \mathrm{pu} \\[2pt] \text{T07 GFM 측정}:\quad &\text{초기 피크 } +0.64\ \mathrm{pu},\quad 10\ \mathrm{ms}\ \text{유효전류 } +0.68\ \mathrm{pu} \end{aligned}
+%% E04-관성전력
+\Delta P_{관성} = -2H\,\frac{\mathrm{RoCoF}}{f_0} = -2 \times 4 \times \frac{-1}{60} \approx 0.133\ \mathrm{pu}
+%% E05-등가관성
+P - P^* = -2H\,\frac{\mathrm{RoCoF}}{f_0} - D\,\Delta\omega \;\Rightarrow\; H_{eq} = \frac{\Delta P - K\,\Delta f}{-2\,\mathrm{RoCoF}}\qquad(\text{pu},\ K\text{는 램프 후 정상상태에서 식별})
+%% E06-감쇠비
+\zeta = \frac{\Lambda}{\sqrt{\pi^2 + \Lambda^2}},\qquad \Lambda = \ln\frac{A_k}{A_{k+1}}\quad(\text{반주기마다 번갈아 나오는 극값의 절댓값 비})
+%% E07-감쇠비예
+\zeta = 0.307 \;\Rightarrow\; \Lambda = \frac{\pi\zeta}{\sqrt{1-\zeta^2}} \approx 1.01,\quad \frac{A_{k+1}}{A_k} = e^{-\Lambda} \approx 0.36;\qquad \zeta = 0.05 \;\Rightarrow\; \frac{A_{k+1}}{A_k} \approx 0.86
+%% E08-분리후주파수
+\begin{aligned} f &= f_0\,[1 + \text{droop}\,(P^* - P_{load})] \\[2pt] \text{T01: } 60\,[1 + 0.02\,(0.5 - 0.8)] &= 59.64\ \mathrm{Hz}\ (\text{보고서 } 59.60),\qquad \text{T02: } 60\,[1 + 0.02\,(-0.3 - 0.5)] = 59.04\ (\text{보고서 } 59.00) \end{aligned}
+%% E09-세기준
+\text{GB: } t_{50\%} \le 5\ \mathrm{ms}\ (\text{시작})\qquad \text{ENTSO-E: } \Delta i_P(10\ \mathrm{ms}) \ge 0.25\ \mathrm{pu}\ (\text{크기})\qquad \text{ERCOT: } t_{90\%} \le 15\ \mathrm{ms}\ (\text{속도})
+%% E10-예제
+\Lambda = \ln\frac{1}{0.6} \approx 0.51,\quad \zeta = \frac{0.51}{\sqrt{\pi^2 + 0.51^2}} \approx 0.16 \ge 0.05\ \checkmark;\qquad \text{한 주기 비라면 } \zeta = \frac{0.51}{\sqrt{4\pi^2 + 0.51^2}} \approx 0.08

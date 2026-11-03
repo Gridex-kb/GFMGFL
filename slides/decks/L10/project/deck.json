@@ -1,0 +1,22 @@
+{
+  "v": 4,
+  "createdOnFiles": {"v": 1, "at": "2026-11-03T08:00:00Z"},
+  "lists": "css",
+  "title": "10강 · 표준 시험으로 비교",
+  "cover": "cover",
+  "order": ["cover", "goals", "outline", "q-def", "sec1", "bundles", "timeline", "lsm-why", "sum1", "sec2", "three", "pj-derive", "pj-emt", "pj-phase", "rocof-derive", "rocof-emt", "damping", "sum2", "sec3", "matrix", "lsm-emt", "t09", "vstep", "kr", "limits", "sec4", "ex1q", "ex1a", "code", "compare", "wrap"],
+  "sections": {
+    "s0": {"description": "도입 — 학습 목표, 목차, 규격은 GFM을 토폴로지가 아니라 거동으로 정의한다는 질문", "start": "cover"},
+    "s1": {"description": "1. 시험은 거동을 본다 — 다섯 묶음의 의도, 판정 시간 기준을 한 축에, 최후 동기기 상실 시험의 뜻과 이 프로젝트의 대체", "start": "sec1"},
+    "s2": {"description": "2. 위상 점프·관성·감쇠 — 세 시간 기준(5/10/15 ms), 위상점프 전력 유도와 T07, RoCoF 관성 전력과 H_eq, 감쇠비", "start": "sec2"},
+    "s3": {"description": "3. 판정표와 부적합 읽기 — GFM 12/14·GFL 3/14, T01 동기원 상실, T09 60° 내성, T10 전압 스텝, T13 고장전류, 한계", "start": "sec3"},
+    "s4": {"description": "4. 예제와 실습 — 위상점프 전력·관성 전력·감쇠비 손 계산, Python 실습, 시험 묶음별 GFL·GFM 비교표", "start": "sec4"}
+  },
+  "faces": {
+    "pretendard-variable": {"family": "Pretendard Variable", "src": "project/ds/gridex/fonts/PretendardVariable.woff2"},
+    "jetbrains-mono": {"family": "JetBrains Mono", "href": "https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&display=swap"}
+  },
+  "designSystems": [
+    {"title": "GriDeX 디자인 베이스", "namespace": "gridex", "artifact": "https://claude.ai/artifact/DHKyReZeUdghmptteJUFVb", "version": null, "copiedAt": "2026-11-03T08:00:00Z"}
+  ]
+}

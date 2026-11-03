@@ -1,0 +1,31 @@
+<section id="rocof-derive" data-transition="fade" style="background:#fbfcfd;color:#45546b;font-family:'Pretendard Variable', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:32px">
+<div style="position:absolute;left:0;top:0;width:1920px;height:12px;background:linear-gradient(90deg, #2463c8 0%, #8bc22c 100%)"></div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;color:#037673">2 · 위상 점프·관성·감쇠 · 칠판 유도</p>
+<h2 style="font-size:56px;font-weight:800;line-height:1.15;letter-spacing:-1px;color:#013364">RoCoF 시험: 관성 전력은 −2H·RoCoF/f<span style="color:#2463c8">0</span>, 보고서는 드룹 몫을 빼고 H<span style="color:#2463c8">eq</span>를 센다</h2>
+</div>
+<div style="background:#ffffff;border:2px solid #dae3ec;border-radius:20px;padding:24px 36px;display:flex;flex-direction:column;gap:20px">
+<div style="display:flex;gap:28px;align-items:center">
+<p style="font-size:30px;font-weight:800;color:#2463c8;width:48px">①</p>
+<img src="/_blob/fcb48766b937f4e36f0317d9a285bcae" alt="ΔP_관성 = −2H RoCoF/f0 = −2 × 4 × (−1/60) ≈ 0.133 pu" style="width:1085px;height:120px;object-fit:contain">
+</div>
+<div style="display:flex;gap:28px;align-items:center">
+<p style="font-size:30px;font-weight:800;color:#2463c8;width:48px">②</p>
+<img src="/_blob/0bc30e3ce7bb826aed9190df3ee43577" alt="P − P* = −2H RoCoF/f0 − D Δω ⇒ H_eq = (ΔP − K Δf)/(−2 RoCoF), pu, K는 램프 후 정상상태에서 식별" style="width:1500px;height:86px;object-fit:contain">
+</div>
+</div>
+<div style="display:flex;gap:24px">
+<div style="flex:1;background:#e9f0f6;border-radius:16px;padding:22px 28px">
+<p style="font-size:27px;line-height:1.45"><b style="color:#013364">①</b> 7강 스윙식에서 인버터 주파수가 계통 램프를 따라가면 관성 항이 전력으로 나온다. H 4 s, −1 Hz/s면 0.133 pu</p>
+</div>
+<div style="flex:1;background:#e9f0f6;border-radius:16px;padding:22px 28px">
+<p style="font-size:27px;line-height:1.45"><b style="color:#013364">②</b> 램프 중 ΔP에는 드룹 몫 K·Δf도 섞여 있다. 램프가 끝나고 정착한 출력으로 K를 먼저 구하고, 램프 끝 ΔP에서 빼서 등가 관성을 센다</p>
+</div>
+<div style="flex:1;background:#013364;border-radius:16px;padding:22px 28px">
+<p style="font-size:27px;line-height:1.45;color:#ffffff">기준(본 보고서): H<b style="color:#b9f179">eq</b> ≥ 2.0 s (설정 4 s의 50 %). 계통 주파수 기준이라 VSM의 드룹·관성 결합분만큼 실제 H보다 작게 나온다</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#7d8ca2">10강 · 표준 시험으로 비교</p>
+<p style="position:absolute;left:1592px;bottom:64px;width:200px;font-size:24px;color:#7d8ca2;text-align:right">15 / 31</p>
+<aside>RoCoF 시험입니다. ①번, 7강 스윙 방정식에서 인버터 주파수가 계통 램프를 따라가면 2H 곱하기 델타 오메가 미분이 전력으로 나옵니다. 관성 전력은 마이너스 2H 곱하기 RoCoF 나누기 f 제로이고, H 4초, 마이너스 1 Hz/s, 60 Hz이면 0.133 pu입니다. ②번, 보고서가 등가 관성을 세는 방법입니다. 램프 중 전력 변화에는 관성 항뿐 아니라 드룹 몫 K 곱하기 델타 f도 섞여 있습니다. 그래서 램프가 끝나고 정착한 출력으로 드룹 이득 K를 먼저 구하고, 램프 끝 시점의 델타 P에서 드룹 몫을 뺀 뒤 마이너스 2 RoCoF로 나눠 등가 관성을 구합니다. 모두 pu입니다. 기준은 본 보고서 기준으로 등가 관성 2.0초 이상, 설정 4초의 50 %입니다. 계통 주파수를 기준으로 계산하므로 VSM의 드룹과 관성이 결합된 만큼 설정 H보다 작게 나옵니다. GB의 Active ROCOF Response Power의 의도를 옮긴 것이지 규격 수치는 아닙니다.</aside>
+</section>
