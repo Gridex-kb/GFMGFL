@@ -1,0 +1,23 @@
+<section id="code" data-transition="fade" style="background:#fbfcfd;color:#45546b;font-family:'Pretendard Variable', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:32px">
+<div style="position:absolute;left:0;top:0;width:1920px;height:12px;background:linear-gradient(90deg, #2463c8 0%, #8bc22c 100%)"></div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;color:#037673">4 · 예제와 실습 · Python</p>
+<h2 style="font-size:56px;font-weight:800;line-height:1.15;letter-spacing:-1px;color:#013364">위상 점프와 FRT 순환을 평균값 모델로 돌려 본다</h2>
+</div>
+<div style="display:flex;gap:36px;align-items:stretch">
+<div style="flex:1;background:#0f233f;border-radius:20px;padding:36px 40px">
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:26px;line-height:1.6;color:#e6edf5">jump = Scenario(t_end=0.3,<br>&#160;&#160;&#160;&#160;grid_phase=lambda t: radians(-20) if t &gt;= 0.1 else 0.0)<br>for f_pll in (10, 20, 50):<br>&#160;&#160;&#160;&#160;p = Params(converter="average", f_pll=f_pll)<br>&#160;&#160;&#160;&#160;r = simulate("GFL", p, jump, dt=1e-5, x0=steady_state("GFL", p, dt=1e-5))<br>&#160;&#160;&#160;&#160;...  <span style="color:#8fa6c4"># 10 ms 내 ΔP, 측정 주파수 최저, 정착 시간</span><br><br>trip = Scenario(t_end=0.8, scr=lambda t: 5.0 if t &lt; 0.2 else 1.5)<br>Params(..., P_ref=0.8, gfl_frt_enter=0.85)  <span style="color:#f2a07b"># 0.5 로 바꿔 보기</span></p>
+</div>
+<div style="width:560px;display:flex;flex-direction:column;gap:20px">
+<div style="background:#013364;border-radius:20px;padding:28px 32px;display:flex;flex-direction:column;gap:8px">
+<p style="font-size:24px;font-weight:700;color:#b9f179">출력 (--emt)</p>
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:24px;line-height:1.6;color:#ffffff">PLL 20 Hz: ΔP +0.007, 54.00 Hz, 47 ms<br>FRT 0.85: |v| 0.37~1.28, 54~66 Hz<br>FRT 0.5 : |v| 1.00, 60 Hz [OK]</p>
+</div>
+<p style="font-size:26px;line-height:1.45"><b style="color:#013364">해 보기</b>  pll_dw_max = 0.2면 최저 주파수는? gfl_frt_iq = 0.5면 순환이 멈출까?</p>
+<p style="font-size:24px;line-height:1.45;color:#037673"><b>실습 파일</b> practice/lec06_gfl_pll.py<br>--plot · --emt · --answers</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#7d8ca2">6강 · GFL: PLL로 따라가기</p>
+<p style="position:absolute;left:1592px;bottom:64px;width:200px;font-size:24px;color:#7d8ca2;text-align:right">27 / 29</p>
+<aside>실습 파일입니다. practice 폴더의 lec06 파일에 실습이 다섯 개 있습니다. 1번은 PLL 이득 계산, 2번은 강계통 PLL 비선형 응답으로 점프 직후 주파수와 재정렬 시간, 3번은 P/Q에서 전류 지령과 유효 우선 제한, 4번은 FRT 중 전압 상승 추정입니다. 5번이 --emt 옵션으로 평균값 EMT 모델을 돌리는 실습입니다. 화면의 코드처럼 위상 점프 시나리오를 만들어 PLL 대역폭 10, 20, 50 Hz로 돌리면 10 ms 내 ΔP, 측정 주파수 최저, 정착 시간이 나옵니다. 20 Hz면 0.007 pu, 54.00 Hz, 47 ms입니다. 그다음 SCR 5에서 1.5로 트립하는 시나리오에 FRT 진입 전압 0.85와 0.5를 넣어 순환을 재현합니다. 약 1분 걸립니다. 해 볼 것으로, PLL 제한을 ±20 %로 넓히면 최저 주파수가 49 Hz 근처까지 내려가는지, 그리고 무효전류 주입량을 0.5로 줄여도 순환이 멈추지 않는지 확인해 보세요. 무엇을 바꿔야 끊기는지 찾는 것이 과제입니다.</aside>
+</section>

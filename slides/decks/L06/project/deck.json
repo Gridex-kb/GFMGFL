@@ -1,0 +1,22 @@
+{
+  "v": 4,
+  "createdOnFiles": {"v": 1, "at": "2026-11-03T03:00:00Z"},
+  "lists": "css",
+  "title": "6강 · GFL: PLL로 따라가기",
+  "cover": "cover",
+  "order": ["cover", "goals", "outline", "q-jump", "a-jump", "sec1", "fork", "struct", "pll", "derive", "sum1", "sec2", "bw", "tradeoff", "jump", "danger", "msg", "sum2", "sec3", "pq", "vctrl", "frt", "frtcycle", "sec4", "ex1q", "ex1a", "code", "compare", "wrap"],
+  "sections": {
+    "s0": {"description": "도입 — 학습 목표, 목차, 위상 점프 때 GFL 유효전력이 얼마나 변하는지 묻는 질문", "start": "cover"},
+    "s1": {"description": "1. 갈림길과 PLL — θ를 측정한다, GFL 제어 구조, SRF-PLL 블록과 이득 유도", "start": "sec1"},
+    "s2": {"description": "2. PLL 대역폭과 위상 점프 — 10/20/50 Hz 트레이드오프, 54 Hz 한계, 측정 기반 응답의 위험", "start": "sec2"},
+    "s3": {"description": "3. 전력 지령과 FRT — P/Q → 전류 지령, 전압 제어, FRT 로직과 약계통 모드 순환", "start": "sec3"},
+    "s4": {"description": "4. 예제와 실습 — PLL 이득과 전류 지령 손 계산, Python 실습, GFL 설계 선택 표", "start": "sec4"}
+  },
+  "faces": {
+    "pretendard-variable": {"family": "Pretendard Variable", "src": "project/ds/gridex/fonts/PretendardVariable.woff2"},
+    "jetbrains-mono": {"family": "JetBrains Mono", "href": "https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&display=swap"}
+  },
+  "designSystems": [
+    {"title": "GriDeX 디자인 베이스", "namespace": "gridex", "artifact": "https://claude.ai/artifact/DHKyReZeUdghmptteJUFVb", "version": null, "copiedAt": "2026-11-03T03:00:00Z"}
+  ]
+}

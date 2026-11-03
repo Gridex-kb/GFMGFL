@@ -1,0 +1,19 @@
+<section id="tradeoff" data-transition="fade" style="background:#fbfcfd;color:#45546b;font-family:'Pretendard Variable', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<div style="position:absolute;left:0;top:0;width:1920px;height:12px;background:linear-gradient(90deg, #2463c8 0%, #8bc22c 100%)"></div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;color:#037673">2 · PLL 대역폭과 위상 점프</p>
+<h2 style="font-size:56px;font-weight:800;line-height:1.15;letter-spacing:-1px;color:#013364">PLL 대역폭 10~50 Hz: “빠를수록 좋다”는 성립하지 않는다</h2>
+</div>
+<table style="font-size:30px;color:#45546b">
+<tr><th style="width:30%"></th><th style="width:35%">느린 PLL (≈ 10 Hz)</th><th style="width:35%">빠른 PLL (≈ 50 Hz)</th></tr>
+<tr><td><b>위상 점프 후 재정렬</b></td><td>느림 (EMT 약 84 ms)</td><td>빠름 (약 24 ms)</td></tr>
+<tr><td><b>고조파·불평형·잡음</b></td><td>둔감</td><td>민감 (그대로 θ에 들어온다)</td></tr>
+<tr><td><b>약계통 (8강)</b></td><td>저주파 동기화 상실 쪽</td><td>불안정 경계 SCR이 높아짐 (75~115 Hz 상호작용)</td></tr>
+<tr><td><b>측정 주파수 첫 반응</b></td><td>작음 (−4.8 Hz)</td><td>크다 (−24 Hz) → 제한 54/66 Hz에 쉽게 닿음</td></tr>
+<tr style="background:#e9f0f6"><td><b>이 강좌의 모델</b></td><td></td><td>중간값 <b>20 Hz</b>, ζ = 0.707</td></tr>
+</table>
+<p style="font-size:30px;line-height:1.45">빠른 PLL은 위상을 금방 따라가지만, PCC 전압의 흔들림도 <b style="color:#013364">그대로 받아들인다</b></p>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#7d8ca2">6강 · GFL: PLL로 따라가기</p>
+<p style="position:absolute;left:1592px;bottom:64px;width:200px;font-size:24px;color:#7d8ca2;text-align:right">14 / 29</p>
+<aside>트레이드오프를 표로 정리합니다. 느린 PLL, 약 10 Hz는 위상 점프 뒤 재정렬이 느립니다. EMT 모델에서 약 84 ms입니다. 대신 고조파, 불평형, 잡음에 둔감합니다. 약계통에서는 저주파 동기화 상실 쪽에 가깝습니다. 측정 주파수의 첫 반응도 작습니다. 빠른 PLL, 약 50 Hz는 24 ms 만에 재정렬하지만, PCC 전압의 흔들림이 그대로 θ에 들어옵니다. 약계통에서는 불안정 경계 SCR이 높아지고, 8강에서 보겠지만 75에서 115 Hz의 제어 상호작용이 생깁니다. 측정 주파수 첫 반응이 −24 Hz로 커서 제한에 쉽게 닿습니다. 그래서 빠를수록 좋다는 말은 성립하지 않습니다. 빠른 PLL은 위상을 금방 따라가는 대신 PCC 전압의 모든 흔들림을 그대로 받아들입니다. 이 강좌의 모델은 중간값 20 Hz, 감쇠비 0.707을 기본으로 씁니다.</aside>
+</section>

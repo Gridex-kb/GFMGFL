@@ -1,0 +1,22 @@
+<section id="struct" data-transition="fade" style="background:#fbfcfd;color:#45546b;font-family:'Pretendard Variable', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:28px">
+<div style="position:absolute;left:0;top:0;width:1920px;height:12px;background:linear-gradient(90deg, #2463c8 0%, #8bc22c 100%)"></div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;color:#037673">1 · 갈림길과 PLL</p>
+<h2 style="font-size:56px;font-weight:800;line-height:1.15;letter-spacing:-1px;color:#013364">GFL 제어 구조: 측정 → PLL → 전류 지령 → 전류 루프</h2>
+</div>
+<img src="/_blob/63a807dee6d5076eb46ebfef9f8b5dd8" alt="GFL 제어 구조 블록선도. PCC 전압 → SRF-PLL(θc, ω) → dq 변환. PCC 전압 → |v| 필터 20 Hz → 전압 제어 적분 → Q*. P*와 Q*에서 id* = P*/vd, iq* = −Q*/vd → 전류 제한 1.2·FRT 무효 우선 → 전류 PI(5강) → PWM" style="width:1600px;height:560px;object-fit:contain;background:#ffffff;border:2px solid #dae3ec;border-radius:16px;align-self:center">
+<div style="display:flex;gap:24px">
+<div style="flex:1;background:#ffffff;border-left:8px solid #eb6834;border-radius:8px;padding:16px 24px">
+<p style="font-size:26px;line-height:1.45"><b style="color:#013364">PLL</b> PCC 전압에서 θ<b>c</b>, ω를 측정 (주황)</p>
+</div>
+<div style="flex:1;background:#ffffff;border-left:8px solid #2463c8;border-radius:8px;padding:16px 24px">
+<p style="font-size:26px;line-height:1.45"><b style="color:#013364">전압 제어</b> |v|를 1 pu로 맞추는 적분기가 Q*를 만든다</p>
+</div>
+<div style="flex:1;background:#ffffff;border-left:8px solid #7d8ca2;border-radius:8px;padding:16px 24px">
+<p style="font-size:26px;line-height:1.45"><b style="color:#013364">전류 지령</b> P*/v<b>d</b>, −Q*/v<b>d</b> → 제한·FRT → 5강 전류 PI</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#7d8ca2">6강 · GFL: PLL로 따라가기</p>
+<p style="position:absolute;left:1592px;bottom:64px;width:200px;font-size:24px;color:#7d8ca2;text-align:right">8 / 29</p>
+<aside>GFL 제어 구조 전체입니다. 왼쪽에서 PCC 전압이 들어옵니다. 3강에서 정한 대로 측정점은 변압기 고압측 PCC 전압과 변압기 전류입니다. 위 경로, 주황색 SRF-PLL이 PCC 전압에서 각도 θ_c와 주파수 ω를 측정합니다. 이 각도로 측정 전류와 전압을 dq 변환합니다. 아래 경로에서는 PCC 전압 크기를 20 Hz로 필터하고, 전압 제어 적분기가 그것을 1 pu로 맞추기 위한 무효전력 지령 Q*를 만듭니다. 유효전력 지령 P*는 운전자나 EMS가 줍니다. 가운데 상자에서 P*와 Q*를 전압으로 나눠 전류 지령 i_d*, i_q*를 만들고, 1.2 pu 전류 제한과 FRT 무효 우선 로직을 거쳐 5강의 전류 PI로 넘깁니다. 그다음은 12강의 PWM입니다. 오늘은 이 그림의 주황 PLL, 가운데 전류 지령 계산, 그리고 FRT 상자를 순서대로 뜯어봅니다.</aside>
+</section>

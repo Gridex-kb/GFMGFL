@@ -1,0 +1,25 @@
+% 6강 수식
+%% E01-PLL
+\Delta\omega = K_p\, v_q + K_i\!\int v_q\,dt,\qquad \frac{d\theta_c}{dt} = \omega_b\,(1 + \Delta\omega),\qquad |\Delta\omega| \le 0.1\ \mathrm{pu}
+%% E02-PLL이득
+K_p = \frac{2\zeta\,\omega_n}{\omega_b},\qquad K_i = \frac{\omega_n^2}{\omega_b}\qquad (f_n = 20\ \mathrm{Hz},\ \zeta = 0.707:\ K_p = 0.471,\ K_i = 41.9)
+%% E03-vq
+v_{dq} = v\,e^{-j\theta_c} = V e^{j(\theta_g - \theta_c)} \;\Rightarrow\; v_q = V\sin(\theta_g - \theta_c) \approx V\,e,\qquad e = \theta_g - \theta_c
+%% E04-2차
+\ddot e + \omega_b K_p V\,\dot e + \omega_b K_i V\, e = 0 \;\longleftrightarrow\; \ddot e + 2\zeta\omega_n\,\dot e + \omega_n^2\, e = 0
+%% E05-점프직후
+\Delta f_0 = f_0\, K_p\, V \sin\Delta\phi \;\Rightarrow\; -4.8\ /\ -9.7\ /\ -24\ \mathrm{Hz}\ (10/20/50\ \mathrm{Hz\ PLL},\ \Delta\phi = -20^\circ)
+%% E06-전류지령
+i_d^* = \frac{P^*}{v_d},\qquad i_q^* = -\frac{Q^*}{v_d}
+%% E07-Q부호
+P + jQ = v\,i^* = v_d\,(i_d - j\,i_q) \;\Rightarrow\; P = v_d\, i_d,\quad Q = -\,v_d\, i_q
+%% E08-전압제어
+Q^* = \int k_v\,\bigl(V^* - |v|_f\bigr)\,dt,\qquad \Delta V \approx X_g\,\Delta Q \;\Rightarrow\; \tau \approx \frac{1}{k_v X_g}
+%% E09-전류원
+i \approx \bigl(i_d^* + j\,i_q^*\bigr)\,e^{j\theta_c}
+%% E10-FRT전압
+\Delta V \approx X_g \times 1.14 = \frac{1.14}{\mathrm{SCR}} \;\Rightarrow\; \mathrm{SCR}\ 1.5:\ \approx 0.76\ \mathrm{pu}
+%% E11-예제1
+\begin{aligned} K_p &= \frac{2 \times 0.707 \times 188.5}{377} \approx 0.707,\qquad K_i = \frac{188.5^2}{377} \approx 94.2 \\ \Delta f_0 &= 60 \times 0.707 \times \sin(-20^\circ) \approx -14.5\ \mathrm{Hz} \;\to\; \text{제한 } 54\ \mathrm{Hz} \end{aligned}
+%% E12-예제2
+i_d^* = \frac{0.8}{0.95} \approx 0.842,\qquad i_q^* = -\frac{0.3}{0.95} \approx -0.316,\qquad |i^*| \approx 0.899 < 1.2

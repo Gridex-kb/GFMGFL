@@ -1,0 +1,29 @@
+<section id="pq" data-transition="fade" style="background:#fbfcfd;color:#45546b;font-family:'Pretendard Variable', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:28px">
+<div style="position:absolute;left:0;top:0;width:1920px;height:12px;background:linear-gradient(90deg, #2463c8 0%, #8bc22c 100%)"></div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;color:#037673">3 · 전력 지령과 FRT · 칠판 유도</p>
+<h2 style="font-size:56px;font-weight:800;line-height:1.15;letter-spacing:-1px;color:#013364">P/Q 지령 → 전류 지령: i<span style="color:#2463c8">q</span>에 음의 부호가 붙는 이유</h2>
+</div>
+<div style="display:flex;gap:40px;align-items:center">
+<img src="/_blob/8100886e5ab2db37f94e7633edbdb3f1" alt="dq 평면: PLL 정렬로 v = v_d가 d축 위, 전류 i = i_d* + j i_q*가 d축 아래로 뒤져 있으면 Q > 0. i_d* = P*/v_d, i_q* = −Q*/v_d" style="width:620px;height:510px;object-fit:contain;background:#ffffff;border:2px solid #dae3ec;border-radius:16px">
+<div style="flex:1;display:flex;flex-direction:column;gap:18px">
+<div style="display:flex;gap:20px;align-items:center;background:#ffffff;border:2px solid #dae3ec;border-radius:16px;padding:18px 26px">
+<p style="font-size:28px;font-weight:800;color:#2463c8;width:44px">①</p>
+<img src="/_blob/3edc2082a6826a63604f5633c76adfa6" alt="P + jQ = v i* = v_d (i_d − j i_q) ⇒ P = v_d i_d, Q = −v_d i_q" style="width:860px;height:51px;object-fit:contain">
+</div>
+<div style="display:flex;gap:20px;align-items:center;background:#ffffff;border:2px solid #dae3ec;border-radius:16px;padding:18px 26px">
+<p style="font-size:28px;font-weight:800;color:#2463c8;width:44px">②</p>
+<img src="/_blob/a21e78c256e96609f7a705c948fd2076" alt="i_d* = P*/v_d, i_q* = −Q*/v_d" style="width:400px;height:92px;object-fit:contain">
+</div>
+<div style="background:#e9f0f6;border-radius:16px;padding:20px 28px">
+<p style="font-size:26px;line-height:1.45">모델은 v<b>d</b> 대신 20 Hz로 필터한 |v| (하한 0.3 pu)로 나눈다 · pu에서는 2/3 계수가 없다 (1강)</p>
+</div>
+<div style="background:#013364;border-radius:16px;padding:20px 28px">
+<p style="font-size:26px;line-height:1.45;color:#ffffff">|i*| &gt; 1.2면 정상 운전은 <b style="color:#b9f179">유효 우선</b>: i<b>d</b>를 먼저, 남은 √(1.2² − i<b>d</b>²) 안에서 i<b>q</b> (5강)</p>
+</div>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#7d8ca2">6강 · GFL: PLL로 따라가기</p>
+<p style="position:absolute;left:1592px;bottom:64px;width:200px;font-size:24px;color:#7d8ca2;text-align:right">20 / 29</p>
+<aside>PLL이 d축을 PCC 전압에 맞췄으니 v_q는 0이고 전압은 v_d 하나입니다. 1강의 pu 전력 식 P 더하기 jQ는 v 곱하기 i의 켤레에서, v가 실수 v_d이고 i가 i_d 더하기 j i_q이면 v_d 곱하기 i_d 빼기 j i_q가 됩니다. 그래서 P는 v_d i_d, Q는 마이너스 v_d i_q입니다. ①번입니다. 뒤집으면 전류 지령 ②번, i_d*는 P* 나누기 v_d, i_q*는 마이너스 Q* 나누기 v_d입니다. 음의 부호가 붙는 이유를 그림으로 보세요. 무효전력을 계통에 공급하려면, 즉 Q가 양수이려면 i_q가 음수, 전류가 전압보다 뒤져야 합니다. 유도성 부하가 전류를 뒤지게 하는 것과 같은 방향입니다. 모델에서는 v_d 대신 20 Hz로 필터한 전압 크기를 쓰고 하한을 0.3 pu로 둬서, 전압이 꺼져도 나눗셈이 폭주하지 않게 합니다. 1강에서 말한 대로 pu에서는 3/2 계수가 없습니다. 그리고 전류 크기가 1.2를 넘으면 5강에서 본 대로 정상 운전은 유효 우선으로 자릅니다.</aside>
+</section>

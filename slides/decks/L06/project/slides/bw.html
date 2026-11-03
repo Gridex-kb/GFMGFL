@@ -1,0 +1,26 @@
+<section id="bw" data-transition="fade" style="background:#fbfcfd;color:#45546b;font-family:'Pretendard Variable', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:24px">
+<div style="position:absolute;left:0;top:0;width:1920px;height:12px;background:linear-gradient(90deg, #2463c8 0%, #8bc22c 100%)"></div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;color:#037673">2 · PLL 대역폭과 위상 점프</p>
+<h2 style="font-size:56px;font-weight:800;line-height:1.15;letter-spacing:-1px;color:#013364">빠른 PLL은 금방 재정렬하지만 54 Hz 한계에 붙는다</h2>
+</div>
+<div style="display:flex;gap:40px;align-items:center">
+<img src="/_blob/ad394b182dc49d304ca72eb580a321bf" alt="강계통 SRF-PLL의 −20° 위상 점프 응답. 위: 위상 오차, 50 Hz PLL 19 ms, 20 Hz 37 ms, 10 Hz 69 ms에 1° 이내 정착. 아래: 측정 주파수, 20·50 Hz는 54 Hz 한계에 붙고 10 Hz는 최저 55.16 Hz로 한계에 닿지 않음" style="width:990px;height:657px;object-fit:contain;background:#ffffff;border:2px solid #dae3ec;border-radius:16px">
+<div style="flex:1;display:flex;flex-direction:column;gap:18px">
+<div style="background:#ffffff;border-left:8px solid #2463c8;border-radius:8px;padding:16px 22px">
+<img src="/_blob/fcfc0b702cdf4949b541a3cf87e934a4" alt="Δf0 = f0 Kp V sin Δφ ⇒ −4.8 / −9.7 / −24 Hz (10/20/50 Hz PLL, Δφ = −20°)" style="width:560px;height:23px;object-fit:contain">
+</div>
+<div style="background:#ffffff;border-left:8px solid #eb6834;border-radius:8px;padding:16px 22px">
+<h3 style="font-size:28px;font-weight:800;color:#013364">점프 직후는 비례항뿐</h3>
+<p style="font-size:25px;line-height:1.45">적분기는 0에서 시작. 첫 반응 = f<b>0</b>·K<b>p</b>·sin Δφ. 20·50 Hz는 −6 Hz 제한을 넘는다</p>
+</div>
+<div style="background:#ffffff;border-left:8px solid #7d8ca2;border-radius:8px;padding:16px 22px">
+<h3 style="font-size:28px;font-weight:800;color:#013364">54는 현상이 아니라 제한값</h3>
+<p style="font-size:25px;line-height:1.45">제한을 ±20 %로 넓히면 20 Hz PLL은 약 49 Hz까지 내려간다 (실습)</p>
+</div>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#7d8ca2">6강 · GFL: PLL로 따라가기</p>
+<p style="position:absolute;left:1592px;bottom:64px;width:200px;font-size:24px;color:#7d8ca2;text-align:right">13 / 29</p>
+<aside>강계통, 전압 1 pu 고정에서 −20도 위상 점프를 준 SRF-PLL의 비선형 응답입니다. 위 그림은 위상 오차입니다. 50 Hz PLL은 약 19 ms, 20 Hz는 37 ms, 10 Hz는 69 ms 만에 1도 이내로 들어옵니다. 빠를수록 빨리 재정렬합니다. 아래 그림이 측정 주파수입니다. 점프 직후에는 적분기가 0에서 시작하므로 비례항만 작동하고, 첫 반응은 f_0 곱하기 K_p 곱하기 사인 Δφ입니다. 10 Hz PLL은 −4.8 Hz, 20 Hz는 −9.7 Hz, 50 Hz는 −24 Hz입니다. 뒤의 둘은 −6 Hz 제한을 넘어 54 Hz에 붙습니다. 10 Hz PLL만 한계에 닿지 않고 최저 55.2 Hz입니다. 여기서 중요한 것은 54 Hz가 물리 현상이 아니라 제한값이라는 점입니다. 실습에서 제한을 ±20 %로 넓히면 20 Hz PLL의 측정 주파수가 49 Hz 근처까지 내려갑니다. 실제 계통 주파수는 전혀 변하지 않았는데 측정값이 이렇게 움직입니다.</aside>
+</section>

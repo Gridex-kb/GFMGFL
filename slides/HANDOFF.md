@@ -46,8 +46,8 @@
 | 3 | C05 | 필터·변압기·측정점 | 완료 (28장) | https://claude.ai/artifact/DX9a9RYjLDDG6ttdoBMWWL |
 | 4 | C06 | 디지털 제어와 지연 | 완료 (25장) | https://claude.ai/artifact/93NgxzEDhLFhZjYDUHwGq4 |
 | 5 | C07 | 전류 제어 | 완료 (29장) | https://claude.ai/artifact/51RKpHpVQLEsiGdpo3kbC6 |
-| 6 | C08 | GFL: PLL로 따라가기 | **다음** | — |
-| 7 | C09 | GFM: 위상을 만들기 | 예정 | — |
+| 6 | C08 | GFL: PLL로 따라가기 | 완료 (29장) | https://claude.ai/artifact/Wo9iBotEeCnNRCn85mqMUf |
+| 7 | C09 | GFM: 위상을 만들기 | **다음** | — |
 | 8 | C10 | 약계통과 제어 상호작용 (GFM vs GFL) | 예정 · **필수** | — |
 | 9 | C11 | 전류 제한과 고장 (GFM vs GFL) | 예정 · **필수** | — |
 | 10 | C12 | 표준 시험으로 비교 (GFM 12/14, GFL 3/14) | 예정 · **필수** | — |
@@ -162,6 +162,13 @@ python3 sheet.py ../lecture-figs/L05 <scratchpad>/sheet.png "M*.png"   # 밀착 
   - Artifact 에셋 업로드가 저장소 안의 PNG를 "hard link"라며 거절하면(Downloads 폴더 등), scratchpad로 `cp`한 뒤 그 경로로 올린다.
   - `practice/common.py`가 stdout을 UTF-8로 재설정하므로 cp949 콘솔에서도 `−`, `ω`가 깨지지 않는다.
   - bash heredoc으로 Korean 파일명을 여러 개 쓰면 따옴표 오류가 나기 쉽다. 파일은 Write 도구로 하나씩 쓴다.
+
+## 7b. 6강(GFL, C08) 완료 메모
+
+- 그림 `slides/figs-src/L06/N01~N07`(GFL 구조, PLL 블록, PLL 대역폭 numpy, 위상 점프 EMT, FRT 순환 EMT, 전류원 벡터, FRT 상태도), 수식 `E01~E12`. 데이터 `_data.py`(평균값 모델, 약 60 s).
+- 확인한 수치: 점프 직후 Δf0 −4.8/−9.7/−24.2 Hz, 20 Hz PLL 54.00 Hz·정착 47 ms, ΔP +0.007 pu; FRT 0.85 → |v| 0.37~1.28, 54~66 Hz; 진입 0.5 → 최저 0.74, 1.00 pu 유지. 교재와 일치.
+- 덱 29장, 실습 `practice/lec06_gfl_pll.py` 전부 `[OK]`.
+- figlib 라벨 문자열은 JS 문자열이므로 `\,`, `\approx`처럼 역슬래시를 두 번 쓴다(한 번 쓰면 KaTeX 오류·공백).
 
 ## 8. 6강 이후 메모
 

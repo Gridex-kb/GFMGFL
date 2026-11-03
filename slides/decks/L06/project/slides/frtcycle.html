@@ -1,0 +1,27 @@
+<section id="frtcycle" data-transition="fade" style="background:#fbfcfd;color:#45546b;font-family:'Pretendard Variable', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:24px">
+<div style="position:absolute;left:0;top:0;width:1920px;height:12px;background:linear-gradient(90deg, #2463c8 0%, #8bc22c 100%)"></div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;color:#037673">3 · 전력 지령과 FRT · 프로젝트 사례</p>
+<h2 style="font-size:56px;font-weight:800;line-height:1.15;letter-spacing:-1px;color:#013364">약계통 FRT 모드 순환: 0.37~1.28 pu, 54~66 Hz를 오간다</h2>
+</div>
+<div style="display:flex;gap:40px;align-items:center">
+<img src="/_blob/14da0621d230c0642ececb3858572e13" alt="평균값 EMT GFL, SCR 5 → 1.5 선로 트립, P* 0.8. 위: PCC 전압, FRT 진입 0.85(주황)는 0.37~1.28 pu 사이를 순환, 진입 0.5(청록 점선)는 최저 0.74 pu를 FRT 없이 넘기고 1.00 pu로 회복. 아래: PLL 측정 주파수, 기본 설정은 54~66 Hz 제한 사이를 오가고 진입 0.5는 60 Hz 유지" style="width:990px;height:657px;object-fit:contain;background:#ffffff;border:2px solid #dae3ec;border-radius:16px">
+<div style="flex:1;display:flex;flex-direction:column;gap:20px">
+<div style="background:#ffffff;border-left:8px solid #eb6834;border-radius:8px;padding:16px 22px">
+<h3 style="font-size:28px;font-weight:800;color:#013364">증상</h3>
+<p style="font-size:25px;line-height:1.45">SCR 5 → 1.5 트립 뒤 저전압 → FRT 진입 → 1.14 pu 주입에 <b>1.28 pu 과전압</b> → 해제 → 다시 저전압 … 반복</p>
+</div>
+<div style="background:#ffffff;border-left:8px solid #2463c8;border-radius:8px;padding:16px 22px">
+<h3 style="font-size:28px;font-weight:800;color:#013364">해결 (한 가지)</h3>
+<p style="font-size:25px;line-height:1.45">진입 전압을 0.5 pu로 낮추면 순간 저전압(최저 0.74)을 FRT 없이 넘긴다</p>
+</div>
+<div style="background:#ffffff;border-left:8px solid #7d8ca2;border-radius:8px;padding:16px 22px">
+<h3 style="font-size:28px;font-weight:800;color:#013364">교훈</h3>
+<p style="font-size:25px;line-height:1.45">주입량·진입·해제 조건을 <b>계통 강도와 함께</b> 설계한다. 많이 넣을수록 좋은 게 아니다</p>
+</div>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#7d8ca2">6강 · GFL: PLL로 따라가기</p>
+<p style="position:absolute;left:1592px;bottom:64px;width:200px;font-size:24px;color:#7d8ca2;text-align:right">23 / 29</p>
+<aside>평균값 EMT 모델로 선로 트립을 모의합니다. SCR 5에서 1.5로 갑자기 약해지고, 유효전력은 0.8 pu입니다. 주황색이 기본 FRT 설정, 진입 0.85 pu입니다. 트립 직후 전압이 떨어져 FRT에 들어가고, 1.14 pu 무효전류가 큰 X_g를 통과하면서 PCC 전압을 1.28 pu까지 올립니다. 0.92를 넘고 30 ms가 지나 FRT가 풀리면 지지가 사라져 전압이 0.37 pu까지 떨어지고, 다시 FRT에 들어갑니다. 이것이 끝없이 반복됩니다. 아래 그림을 보면 PLL 측정 주파수도 54와 66 Hz 제한 사이를 오갑니다. 청록 점선은 진입 전압을 0.5 pu로 낮춘 경우입니다. 트립 직후 순간 저전압의 최저가 0.74 pu라 FRT에 들어가지 않고, 전압 제어가 천천히 1 pu로 회복합니다. 주파수도 60 Hz를 유지합니다. 교재 실습에서 무효전류 주입량만 0.5로 줄여서는 순환이 멈추지 않는다는 것도 확인할 수 있습니다. 교훈은 FRT의 주입량, 진입, 해제 조건을 계통 강도와 함께 설계해야 한다는 것입니다. 무효전류는 많이 넣을수록 좋은 것이 아닙니다. 측정 전압에 비례하는 k-factor 방식도 약계통에서는 루프 이득이 1을 넘어 진동했습니다.</aside>
+</section>

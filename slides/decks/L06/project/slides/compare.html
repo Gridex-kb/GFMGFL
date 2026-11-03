@@ -1,0 +1,19 @@
+<section id="compare" data-transition="fade" style="background:#fbfcfd;color:#45546b;font-family:'Pretendard Variable', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<div style="position:absolute;left:0;top:0;width:1920px;height:12px;background:linear-gradient(90deg, #2463c8 0%, #8bc22c 100%)"></div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;color:#037673">4 · 예제와 실습 · 정리</p>
+<h2 style="font-size:56px;font-weight:800;line-height:1.15;letter-spacing:-1px;color:#013364">GFL 외부 루프의 선택: 이 강좌의 모델</h2>
+</div>
+<table style="font-size:30px;color:#45546b">
+<tr><th style="width:22%">항목</th><th style="width:32%">선택</th><th style="width:46%">이유 · 대가</th></tr>
+<tr><td><b>θ</b></td><td>SRF-PLL로 측정</td><td>전류원 등가. 측정이 틀리면 그대로 약점</td></tr>
+<tr><td><b>PLL 대역폭</b></td><td>20 Hz, ζ 0.707 (K<b>p</b> 0.471, K<b>i</b> 41.9)</td><td>10 Hz는 느리고, 50 Hz는 잡음·약계통에 민감</td></tr>
+<tr><td><b>주파수 제한</b></td><td>±10 % (54~66 Hz) + anti-windup</td><td>점프 때 54 Hz는 현상이 아니라 제한값</td></tr>
+<tr><td><b>Q 지령</b></td><td>전압 제어 적분 k<b>v</b> 20, |Q*| ≤ 0.6</td><td>τ ≈ 1/(k<b>v</b>X<b>g</b>): 약계통일수록 빠르다</td></tr>
+<tr><td><b>드룹·합성관성</b></td><td>측정 주파수 필터 2 Hz</td><td>5 Hz면 불안정. 지연만큼 관성 응답을 놓친다</td></tr>
+<tr style="background:#e9f0f6"><td><b>FRT</b></td><td>0.85 진입 / 0.92 + 30 ms 해제, i<b>q</b> 1.14 고정</td><td>강계통엔 좋고 약계통(SCR 1.5)에선 모드 순환</td></tr>
+</table>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#7d8ca2">6강 · GFL: PLL로 따라가기</p>
+<p style="position:absolute;left:1592px;bottom:64px;width:200px;font-size:24px;color:#7d8ca2;text-align:right">28 / 29</p>
+<aside>오늘 본 GFL 외부 루프의 선택을 표로 정리합니다. θ는 SRF-PLL로 측정하고, 그 결과 전류원이 됩니다. 측정이 틀리면 그대로 약점입니다. PLL 대역폭은 20 Hz, 감쇠비 0.707로 이득은 0.471과 41.9입니다. 10 Hz는 느리고 50 Hz는 잡음과 약계통에 민감합니다. 주파수는 ±10 %로 제한하고 anti-windup을 둡니다. 위상 점프 때의 54 Hz는 현상이 아니라 제한값입니다. Q 지령은 전압 제어 적분기가 만들고, 시정수는 1 나누기 k_v X_g라 약계통일수록 빠릅니다. 드룹과 합성관성에 쓰는 측정 주파수는 2 Hz로 거릅니다. 5 Hz면 불안정했고, 거른 만큼 관성 응답을 놓칩니다. FRT는 0.85에 들어가 0.92와 30 ms에 나오고 무효전류 1.14를 고정 주입하는데, 강계통엔 좋지만 SCR 1.5 약계통에서는 모드 순환이 생깁니다. 이 표의 "대가" 열이 7강 GFM이 풀려는 문제 목록이기도 합니다.</aside>
+</section>

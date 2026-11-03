@@ -1,0 +1,22 @@
+<section id="frt" data-transition="fade" style="background:#fbfcfd;color:#45546b;font-family:'Pretendard Variable', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:28px">
+<div style="position:absolute;left:0;top:0;width:1920px;height:12px;background:linear-gradient(90deg, #2463c8 0%, #8bc22c 100%)"></div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;color:#037673">3 · 전력 지령과 FRT</p>
+<h2 style="font-size:56px;font-weight:800;line-height:1.15;letter-spacing:-1px;color:#013364">FRT: 0.85에 들어가 0.92 + 30 ms에 나온다, 무효전류 1.14 고정</h2>
+</div>
+<img src="/_blob/5cc8d970bbcba7ca84874d7d511c77c7" alt="FRT 상태 전이도. 정상 운전(id* = P*/vd, 전압 제어 → Q*, 유효 우선) → 진입 |v|f < 0.85 → FRT(iq* = −0.95×1.2 = −1.14 고정, id* 여유 0.37) → 해제 |v|f > 0.92 그리고 30 ms 경과. 약계통 SCR 1.5에서 1.14 pu 무효전류는 PCC 전압을 약 0.76 pu 올려 모드 순환" style="width:1500px;height:420px;object-fit:contain;background:#ffffff;border:2px solid #dae3ec;border-radius:16px;align-self:center">
+<div style="display:flex;gap:24px">
+<div style="flex:1;background:#ffffff;border-left:8px solid #2463c8;border-radius:8px;padding:16px 24px">
+<p style="font-size:26px;line-height:1.45"><b style="color:#013364">목적</b> 고장 중 계통 전압 지지. 계통코드의 무효전류 주입 요구</p>
+</div>
+<div style="flex:1;background:#ffffff;border-left:8px solid #eb6834;border-radius:8px;padding:16px 24px">
+<p style="font-size:26px;line-height:1.45"><b style="color:#013364">히스테리시스 + 최소 유지</b> 진입 0.85, 해제 0.92 <b>그리고</b> 30 ms</p>
+</div>
+<div style="flex:1;background:#ffffff;border-left:8px solid #7d8ca2;border-radius:8px;padding:16px 24px">
+<p style="font-size:26px;line-height:1.45"><b style="color:#013364">고정 주입</b> 측정 전압과 무관한 1.14 pu → 강계통엔 좋고 약계통엔 함정</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#7d8ca2">6강 · GFL: PLL로 따라가기</p>
+<p style="position:absolute;left:1592px;bottom:64px;width:200px;font-size:24px;color:#7d8ca2;text-align:right">22 / 29</p>
+<aside>저전압 통과, FRT입니다. 고장으로 계통 전압이 떨어지면 GFL은 전압을 지지하기 위해 무효전류를 넣습니다. 계통코드가 요구하는 동작입니다. 모델의 로직은 상태 두 개입니다. 필터한 PCC 전압이 0.85 pu 아래로 떨어지면 FRT에 들어갑니다. FRT 중에는 무효전류를 0.95 곱하기 1.2, 1.14 pu로 고정 주입하고, 유효전류는 남는 여유 약 0.37 pu 이내만 허용합니다. 5강의 무효 우선입니다. 해제 조건은 전압이 0.92 pu를 넘고, 그리고 진입 후 30 ms가 지나야 합니다. 히스테리시스와 최소 유지시간입니다. 강계통 고장에서는 잘 동작합니다. 문제는 주입량이 측정 전압과 무관한 고정값이라는 점입니다. 약계통에서 X_g가 0.67이면 1.14 pu 무효전류가 PCC 전압을 약 0.76 pu나 올립니다. 과전압으로 FRT가 풀리면 지지가 사라져 전압이 다시 떨어지고, 다시 FRT에 들어갑니다. 다음 장에서 이 모드 순환을 실제로 봅니다.</aside>
+</section>

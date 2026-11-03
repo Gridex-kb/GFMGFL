@@ -1,0 +1,32 @@
+<section id="derive" data-transition="fade" style="background:#fbfcfd;color:#45546b;font-family:'Pretendard Variable', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:24px">
+<div style="position:absolute;left:0;top:0;width:1920px;height:12px;background:linear-gradient(90deg, #2463c8 0%, #8bc22c 100%)"></div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;color:#037673">1 · 갈림길과 PLL · 칠판 유도</p>
+<h2 style="font-size:56px;font-weight:800;line-height:1.15;letter-spacing:-1px;color:#013364">PLL은 2차 시스템: 이득은 f<span style="color:#2463c8">n</span>과 ζ에서 나온다</h2>
+</div>
+<div style="background:#ffffff;border:2px solid #dae3ec;border-radius:20px;padding:24px 36px;display:flex;flex-direction:column;gap:16px">
+<div style="display:flex;gap:28px;align-items:center">
+<p style="font-size:30px;font-weight:800;color:#2463c8;width:48px">①</p>
+<img src="/_blob/3dae0964fbb4ab4d995f85c75906e1a5" alt="v_dq = v e^(−jθc) = V e^(j(θg − θc)) ⇒ v_q = V sin(θg − θc) ≈ V e, e = θg − θc" style="width:1300px;height:64px;object-fit:contain">
+</div>
+<div style="display:flex;gap:28px;align-items:center">
+<p style="font-size:30px;font-weight:800;color:#2463c8;width:48px">②</p>
+<img src="/_blob/ecbfaf11b4a1f2a84beca5082399321a" alt="ë + ωb Kp V ė + ωb Ki V e = 0 ⟷ ë + 2ζωn ė + ωn² e = 0" style="width:1100px;height:68px;object-fit:contain">
+</div>
+<div style="display:flex;gap:28px;align-items:center">
+<p style="font-size:30px;font-weight:800;color:#2463c8;width:48px">③</p>
+<img src="/_blob/f755d9a5ebfb113078b46e9acaeed58b" alt="Kp = 2ζωn/ωb, Ki = ωn²/ωb (fn = 20 Hz, ζ = 0.707: Kp = 0.471, Ki = 41.9)" style="width:1500px;height:111px;object-fit:contain">
+</div>
+</div>
+<div style="display:flex;gap:24px">
+<div style="flex:1;background:#e9f0f6;border-radius:16px;padding:20px 28px">
+<p style="font-size:27px;line-height:1.45">② 유도: 계통 주파수 일정이면 ė = −ω<b>b</b>Δω. Δω를 대입하고 한 번 미분</p>
+</div>
+<div style="flex:1;background:#013364;border-radius:16px;padding:20px 28px">
+<p style="font-size:27px;line-height:1.45;color:#ffffff">루프 이득에 <b style="color:#b9f179">V</b>가 곱해진다: 전압이 떨어지거나 약계통이면 설계한 ω<b>n</b>, ζ가 유지되지 않는다 (8강)</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#7d8ca2">6강 · GFL: PLL로 따라가기</p>
+<p style="position:absolute;left:1592px;bottom:64px;width:200px;font-size:24px;color:#7d8ca2;text-align:right">10 / 29</p>
+<aside>이득을 칠판에서 유도합니다. PCC 전압을 크기 V, 각도 θ_g인 벡터라 하고 PLL 각을 θ_c라 하면, PLL 좌표의 전압은 V e의 j(θ_g − θ_c)입니다. 그래서 v_q는 V 사인(θ_g − θ_c), 각도 오차 e가 작으면 V 곱하기 e입니다. ①번입니다. 계통 주파수가 일정하면 오차의 미분은 마이너스 ω_b Δω입니다. 여기에 Δω = K_p V e 더하기 K_i V 적분 e를 대입하고 한 번 더 미분하면 ②번의 2차 미분방정식이 됩니다. 표준형 2ζω_n, ω_n 제곱과 계수를 맞추면 V = 1에서 K_p는 2ζω_n 나누기 ω_b, K_i는 ω_n 제곱 나누기 ω_b입니다. ③번입니다. 모델 기본값 고유주파수 20 Hz, 감쇠비 0.707이면 K_p 0.471, K_i 41.9입니다. 하나 주의할 점이 있습니다. 루프 이득에 전압 크기 V가 곱해져 있습니다. PCC 전압이 떨어지거나, 약계통에서 PCC 전압 자체가 인버터 전류에 따라 움직이면, 설계한 ω_n과 ζ가 그대로 유지되지 않습니다. 이것이 8강 약계통 상호작용의 씨앗입니다.</aside>
+</section>

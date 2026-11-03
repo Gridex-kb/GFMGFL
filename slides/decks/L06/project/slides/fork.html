@@ -1,0 +1,18 @@
+<section id="fork" data-transition="fade" style="background:#fbfcfd;color:#45546b;font-family:'Pretendard Variable', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<div style="position:absolute;left:0;top:0;width:1920px;height:12px;background:linear-gradient(90deg, #2463c8 0%, #8bc22c 100%)"></div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;color:#037673">1 · 갈림길과 PLL</p>
+<h2 style="font-size:56px;font-weight:800;line-height:1.15;letter-spacing:-1px;color:#013364">갈림길: θ를 측정할 것인가, 만들 것인가</h2>
+</div>
+<table style="font-size:30px;color:#45546b">
+<tr><th style="width:24%"></th><th style="width:38%">GFL (오늘)</th><th style="width:38%">GFM (7강)</th></tr>
+<tr><td><b>θ의 출처</b></td><td>PCC 전압을 <b>측정</b> (PLL)</td><td>유효전력 균형으로 <b>생성</b> (스윙 방정식)</td></tr>
+<tr><td><b>외부 루프 출력</b></td><td>전류 지령 i<b>d</b>*, i<b>q</b>*</td><td>내부 기전력 E∠θ → 가상 임피던스 → 전류 지령</td></tr>
+<tr><td><b>계통에서 본 모습</b></td><td>전류원</td><td>임피던스 뒤의 전압원</td></tr>
+<tr style="background:#e9f0f6"><td><b>같은 것</b></td><td>하드웨어 · 전류 루프 (5강) · 전류 제한 1.2 pu</td><td>하드웨어 · 전류 루프 (5강) · 전류 제한 1.2 pu</td></tr>
+</table>
+<p style="font-size:30px;line-height:1.45">같은 하드웨어, 같은 전류 루프에서 <b style="color:#013364">외부 루프만</b> 다르다. 오늘은 컨버터 쪽에서 한 단계씩 따라간다</p>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#7d8ca2">6강 · GFL: PLL로 따라가기</p>
+<p style="position:absolute;left:1592px;bottom:64px;width:200px;font-size:24px;color:#7d8ca2;text-align:right">7 / 29</p>
+<aside>5강까지 만든 전류 루프는 각도 θ가 주어지면 그 dq 좌표에서 전류를 지령대로 흘립니다. 남은 것은 θ를 누가 정하느냐입니다. 여기서 갈라집니다. GFL은 PCC 전압을 측정해서 θ를 얻습니다. 그 일을 하는 것이 PLL입니다. GFM은 7강에서 보겠지만 유효전력 균형, 즉 스윙 방정식으로 θ를 스스로 만듭니다. 외부 루프의 출력도 다릅니다. GFL은 전류 지령을 직접 냅니다. GFM은 내부 기전력 E와 각도 θ를 만들고, 가상 임피던스를 거쳐 전류 지령이 됩니다. 그래서 계통에서 볼 때 GFL은 전류원, GFM은 임피던스 뒤의 전압원입니다. 중요한 것은 표의 마지막 줄입니다. 하드웨어, 5강의 전류 루프, 1.2 pu 전류 제한은 둘이 똑같습니다. 외부 루프만 다릅니다. 오늘은 컨버터 쪽에서 출발해서 PLL, 전력 지령, FRT 순서로 한 단계씩 따라갑니다.</aside>
+</section>

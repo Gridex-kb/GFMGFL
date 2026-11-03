@@ -1,0 +1,30 @@
+<section id="vctrl" data-transition="fade" style="background:#fbfcfd;color:#45546b;font-family:'Pretendard Variable', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:36px">
+<div style="position:absolute;left:0;top:0;width:1920px;height:12px;background:linear-gradient(90deg, #2463c8 0%, #8bc22c 100%)"></div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;color:#037673">3 · 전력 지령과 FRT</p>
+<h2 style="font-size:56px;font-weight:800;line-height:1.15;letter-spacing:-1px;color:#013364">Q 지령은 전압 제어가 만든다: 약계통일수록 루프가 빨라진다</h2>
+</div>
+<div style="background:#ffffff;border-left:8px solid #2463c8;border-radius:8px;padding:24px 32px;align-self:flex-start">
+<img src="/_blob/4af0d010f8f1164f3903db37c3823f94" alt="Q* = ∫ k_v (V* − |v|_f) dt, ΔV ≈ X_g ΔQ ⇒ τ ≈ 1/(k_v X_g)" style="width:1258px;height:125px;object-fit:contain">
+</div>
+<div style="display:flex;gap:24px">
+<div style="flex:1;background:#ffffff;border:2px solid #dae3ec;border-radius:20px;padding:32px;display:flex;flex-direction:column;gap:10px">
+<p style="font-size:26px;font-weight:700;color:#2463c8">적분 제어</p>
+<h3 style="font-size:32px;font-weight:800;color:#013364">k<span style="color:#2463c8">v</span> = 20 pu/s/pu, |Q*| ≤ 0.6</h3>
+<p style="font-size:27px;line-height:1.45">Q를 고정값으로 주는 대신 PCC 전압을 1 pu로 맞추는 적분기가 Q*를 만든다</p>
+</div>
+<div style="flex:1;background:#ffffff;border:2px solid #dae3ec;border-radius:20px;padding:32px;display:flex;flex-direction:column;gap:10px">
+<p style="font-size:26px;font-weight:700;color:#2463c8">시정수</p>
+<h3 style="font-size:32px;font-weight:800;color:#013364">SCR 3: τ ≈ 0.15 s</h3>
+<p style="font-size:27px;line-height:1.45">X<b>g</b> = 0.33이면 1/(20 × 0.33). 같은 k<b>v</b>라도 X<b>g</b>가 크면 루프가 빨라진다</p>
+</div>
+<div style="flex:1;background:#013364;border-radius:20px;padding:32px;display:flex;flex-direction:column;gap:10px">
+<p style="font-size:26px;font-weight:700;color:#b9f179">같은 사실의 다른 얼굴</p>
+<h3 style="font-size:32px;font-weight:800;color:#ffffff">X<span style="color:#b9f179">g</span>가 클수록 Q가 전압을 크게 움직인다</h3>
+<p style="font-size:27px;line-height:1.45;color:#c6d4e6">FRT의 고정 무효전류가 약계통에서 문제를 일으키는 이유 (다음 장)</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#7d8ca2">6강 · GFL: PLL로 따라가기</p>
+<p style="position:absolute;left:1592px;bottom:64px;width:200px;font-size:24px;color:#7d8ca2;text-align:right">21 / 29</p>
+<aside>무효전력 지령은 어디서 올까요. 이 모델은 Q를 고정값으로 주지 않고, PCC 전압을 1 pu로 맞추는 적분 제어가 Q*를 만듭니다. 이득은 20 pu/s/pu이고 Q*는 ±0.6 pu로 제한합니다. 이 루프의 시정수를 어림해 봅시다. 계통 리액턴스가 X_g이면 PCC 전압은 대략 X_g 곱하기 ΔQ만큼 움직입니다. 적분기와 묶으면 전압 편차는 마이너스 k_v X_g 곱하기 전압 편차의 속도로 줄어드니, 시정수는 1 나누기 k_v X_g입니다. SCR 3이면 X_g가 0.33이라 약 0.15초입니다. 같은 이득이라도 약계통일수록 루프가 빨라집니다. 이것은 "X_g가 클수록 Q가 전압을 크게 움직인다"는 사실의 다른 얼굴이고, 다음 장에서 FRT의 고정 무효전류가 약계통에서 문제를 일으키는 이유가 바로 이것입니다.</aside>
+</section>

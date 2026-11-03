@@ -1,0 +1,28 @@
+<section id="danger" data-transition="fade" style="background:#fbfcfd;color:#45546b;font-family:'Pretendard Variable', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<div style="position:absolute;left:0;top:0;width:1920px;height:12px;background:linear-gradient(90deg, #2463c8 0%, #8bc22c 100%)"></div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;color:#037673">2 · PLL 대역폭과 위상 점프</p>
+<h2 style="font-size:56px;font-weight:800;line-height:1.15;letter-spacing:-1px;color:#013364">54 Hz라는 가짜 신호에 무엇이 연결되어 있는가</h2>
+</div>
+<div style="display:flex;gap:28px">
+<div style="flex:1;background:#ffffff;border:2px solid #dae3ec;border-radius:20px;padding:36px;display:flex;flex-direction:column;gap:14px">
+<p style="font-size:26px;font-weight:700;color:#eb6834">주파수 보호</p>
+<h3 style="font-size:34px;font-weight:800;color:#013364">정상 계통에서 탈락</h3>
+<p style="font-size:28px;line-height:1.45">저주파수 트립, RoCoF 계전기가 54 Hz를 믿으면 멀쩡한 계통에서 인버터가 빠진다. NERC IBR 대규모 탈락 사례의 한 축</p>
+</div>
+<div style="flex:1;background:#ffffff;border:2px solid #dae3ec;border-radius:20px;padding:36px;display:flex;flex-direction:column;gap:14px">
+<p style="font-size:26px;font-weight:700;color:#eb6834">드룹 · 합성관성</p>
+<h3 style="font-size:34px;font-weight:800;color:#013364">가짜 사건에 출력이 튄다</h3>
+<p style="font-size:28px;line-height:1.45">모델: 5 Hz 필터 PLL 주파수에 드룹을 걸자 위상 점프 때 출력이 <b>0.5 pu</b> 튀었다</p>
+</div>
+<div style="flex:1;background:#013364;border-radius:20px;padding:36px;display:flex;flex-direction:column;gap:14px">
+<p style="font-size:26px;font-weight:700;color:#b9f179">그래서</p>
+<h3 style="font-size:34px;font-weight:800;color:#ffffff">측정 주파수는 느리게 거른다</h3>
+<p style="font-size:28px;line-height:1.45;color:#c6d4e6">합성관성은 필터 5 Hz면 불안정, <b style="color:#ffffff">2 Hz</b>로 늦춰야 안정. 지연이 있는 관성은 처음 수백 ms를 놓친다</p>
+</div>
+</div>
+<p style="font-size:30px;line-height:1.45">측정 기반 관성은 안정을 위해 지연을 감수한다. 이것이 GFM 관성과의 <b style="color:#013364">본질적 차이</b> (7강)</p>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#7d8ca2">6강 · GFL: PLL로 따라가기</p>
+<p style="position:absolute;left:1592px;bottom:64px;width:200px;font-size:24px;color:#7d8ca2;text-align:right">16 / 29</p>
+<aside>측정 주파수가 54 Hz로 떨어진 것 자체는 해롭지 않습니다. 문제는 그 값에 무엇이 연결되어 있느냐입니다. 첫째, 주파수 보호입니다. 저주파수 트립이나 RoCoF 계전기가 이 값을 믿으면 멀쩡한 계통에서 인버터가 탈락합니다. NERC가 분석한 인버터 기반 자원 대규모 탈락 사례의 한 축이 바로 이것입니다. 둘째, 주파수 드룹과 합성관성입니다. 측정 주파수에 비례해 출력을 바꾸면 위상 점프가 가짜 주파수 사건이 되어 출력이 튑니다. 이 모델에서 5 Hz 필터를 거친 PLL 주파수에 드룹을 걸었더니 위상 점프 때 출력이 0.5 pu 튀었습니다. 그래서 합성관성은 측정 주파수를 느리게 걸러야 합니다. 이 모델에서는 필터 5 Hz면 합성관성 루프가 불안정했고 2 Hz로 늦춰야 안정했습니다. 그런데 지연이 있는 관성은 처음 수백 ms의 관성 응답을 놓칩니다. 측정 기반 관성은 안정을 위해 지연을 감수해야 한다는 것, 이것이 7강 GFM 관성과의 본질적 차이입니다.</aside>
+</section>

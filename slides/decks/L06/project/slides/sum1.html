@@ -1,0 +1,17 @@
+<section id="sum1" data-transition="fade" style="background:#fbfcfd;color:#45546b;font-family:'Pretendard Variable', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<div style="position:absolute;left:0;top:0;width:1920px;height:12px;background:linear-gradient(90deg, #2463c8 0%, #8bc22c 100%)"></div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;color:#037673">1 · 갈림길과 PLL</p>
+<h2 style="font-size:56px;font-weight:800;line-height:1.15;letter-spacing:-1px;color:#013364">1부 정리</h2>
+</div>
+<div style="border:3px solid #013364;border-radius:20px;padding:48px;display:flex;flex-direction:column;gap:28px;background:#ffffff">
+<p style="font-size:36px;line-height:1.45;color:#013364"><b style="color:#2463c8">①</b>  GFL은 θ를 <b>측정</b>한다 → 계통에서 본 모습은 <b>전류원</b>. 하드웨어·전류 루프는 GFM과 같다</p>
+<p style="font-size:36px;line-height:1.45;color:#013364"><b style="color:#2463c8">②</b>  SRF-PLL: v<span style="color:#2463c8">q</span> → 0이 되도록 Δω를 조절, ±10 % 제한 + anti-windup</p>
+<p style="font-size:36px;line-height:1.45;color:#013364"><b style="color:#2463c8">③</b>  2차 시스템: K<span style="color:#2463c8">p</span> = 2ζω<span style="color:#2463c8">n</span>/ω<span style="color:#2463c8">b</span>, K<span style="color:#2463c8">i</span> = ω<span style="color:#2463c8">n</span>²/ω<span style="color:#2463c8">b</span> → 20 Hz: <b>0.471, 41.9</b></p>
+<p style="font-size:36px;line-height:1.45;color:#013364"><b style="color:#2463c8">④</b>  루프 이득에 <b>V</b>가 곱해진다: 전압이 떨어지면 PLL 동특성이 바뀐다</p>
+</div>
+<p style="font-size:30px;line-height:1.45">다음: 고유주파수 f<b>n</b>을 10, 20, 50 Hz 중 어디에 둘까? 빠를수록 좋을까?</p>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#7d8ca2">6강 · GFL: PLL로 따라가기</p>
+<p style="position:absolute;left:1592px;bottom:64px;width:200px;font-size:24px;color:#7d8ca2;text-align:right">11 / 29</p>
+<aside>1부를 정리합니다. GFL은 θ를 계통 전압에서 측정하고, 그래서 계통에서 볼 때 전류원입니다. 하드웨어와 전류 루프는 GFM과 같고 외부 루프만 다릅니다. SRF-PLL은 v_q가 0이 되도록 회전 속도 편차를 조절하고, ±10 % 제한과 anti-windup이 있습니다. 2차 시스템으로 보면 이득은 고유주파수와 감쇠비에서 나오고, 20 Hz, 0.707이면 0.471과 41.9입니다. 그리고 루프 이득에 전압 크기가 곱해지니 전압이 떨어지면 동특성이 바뀝니다. 2부의 질문입니다. 고유주파수를 10, 20, 50 Hz 중 어디에 둘까요. 빠를수록 좋을까요.</aside>
+</section>
