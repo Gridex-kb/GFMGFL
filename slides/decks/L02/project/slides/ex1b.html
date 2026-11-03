@@ -1,0 +1,21 @@
+<section id="ex1b" data-transition="fade" style="background:#fbfcfd;color:#45546b;font-family:'Pretendard Variable', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:28px">
+<div style="position:absolute;left:0;top:0;width:1920px;height:12px;background:linear-gradient(90deg, #2463c8 0%, #8bc22c 100%)"></div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;color:#3aa150">예제 1 · 풀이 (3)</p>
+<h2 style="font-size:56px;font-weight:800;line-height:1.15;letter-spacing:-1px;color:#013364">(110)은 육각형의 60° 꼭짓점, V2다</h2>
+</div>
+<div style="display:flex;gap:48px;align-items:center">
+<img src="/_blob/2ca8ebe74962036228fe8febc6d0602a" alt="육각형에서 상태 110인 V2가 60도 방향 주황 굵은 화살표로 강조된 그림" style="width:640px;height:600px;object-fit:contain;background:#ffffff;border:2px solid #dae3ec;border-radius:16px">
+<div style="flex:1;display:flex;flex-direction:column;gap:24px">
+<div style="background:#ffffff;border-left:8px solid #2463c8;border-radius:8px;padding:20px 24px">
+<img src="/_blob/d88c68c38dff223fb8be2b0d5df6ccf8" alt="v_110 = (2/3) V_dc (1 + a) = (2/3) V_dc e^(j60°) = 1.504∠60°" style="width:860px;height:97px;object-fit:contain">
+</div>
+<p style="font-size:30px;line-height:1.45">1 + a = −a² = e<b>^j60°</b> : 정삼각형 기하로도 보인다</p>
+<p style="font-size:30px;line-height:1.45">선간전압: v<b>ab</b> = 0, v<b>bc</b> = +2.256, v<b>ca</b> = −2.256</p>
+<p style="font-size:30px;line-height:1.45">영상분 +0.376은 이 그림 어디에도 없다 — <b style="color:#013364">αβ에는 안 보인다</b></p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#7d8ca2">2강 · 2레벨 전압형 컨버터(VSC)</p>
+<p style="position:absolute;left:1592px;bottom:64px;width:200px;font-size:24px;color:#7d8ca2;text-align:right">24 / 28</p>
+<aside>3번입니다. 공간벡터는 2/3 V_dc 곱하기 1 + a입니다. a는 120도 방향의 단위 벡터이니, 1과 a를 더하면 그 사이 60도 방향을 가리키고 길이는 1입니다. 정삼각형 두 변을 더한 것이니까요. 식으로는 1 + a = −a제곱 = e의 j60도입니다. 그래서 크기 1.504, 각도 60도, 육각형의 V2 꼭짓점입니다. 선간전압도 보면 a와 b가 같은 레일이라 v_ab는 0, v_bc는 플러스 2.256, v_ca는 마이너스 2.256입니다. 마지막으로 강조할 점은, 앞에서 구한 영상분 플러스 0.376이 이 그림 어디에도 없다는 것입니다. 영상분은 αβ 평면에 보이지 않는 성분입니다.</aside>
+</section>

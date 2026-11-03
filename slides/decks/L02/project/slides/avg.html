@@ -1,0 +1,21 @@
+<section id="avg" data-transition="fade" style="background:#fbfcfd;color:#45546b;font-family:'Pretendard Variable', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:28px">
+<div style="position:absolute;left:0;top:0;width:1920px;height:12px;background:linear-gradient(90deg, #2463c8 0%, #8bc22c 100%)"></div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;color:#037673">3 · 상태 8개와 육각형</p>
+<h2 style="font-size:56px;font-weight:800;line-height:1.15;letter-spacing:-1px;color:#013364">순간값은 8개뿐, 평균은 육각형 안 어디든</h2>
+</div>
+<div style="display:flex;gap:48px;align-items:center">
+<img src="/_blob/40afc9699cf35f8e7f4e53dd64f84abc" alt="섹터 1 삼각형 안에서 t1/Ts·V1과 t2/Ts·V2를 이어 붙여 평균 벡터 1.0∠20°를 만드는 그림, t1/Ts 0.49, t2/Ts 0.26, 영벡터 0.24" style="width:700px;height:560px;object-fit:contain;background:#ffffff;border:2px solid #dae3ec;border-radius:16px">
+<div style="flex:1;display:flex;flex-direction:column;gap:22px">
+<div style="background:#ffffff;border-left:8px solid #2463c8;border-radius:8px;padding:20px 24px">
+<img src="/_blob/3765a9c5ac34f6987962b1d24c77bbab" alt="평균 벡터 × Ts = V1 t1 + V2 t2 + V0 t0, t1 + t2 + t0 = Ts" style="width:852px;height:64px;object-fit:contain">
+</div>
+<p style="font-size:30px;line-height:1.45">한 스위칭 주기 T<b>s</b> = 200 µs (5 kHz) 안에서 <b style="color:#013364">인접 유효 벡터 2개 + 영벡터</b>를 섞는다</p>
+<p style="font-size:30px;line-height:1.45">전압 × 시간 면적이 같으면 필터 뒤 전류는 평균만 본다</p>
+<p style="font-size:30px;line-height:1.45">어떤 순서, 어떤 비율로 섞을지 = <b style="color:#013364">변조</b> (12강)</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#7d8ca2">2강 · 2레벨 전압형 컨버터(VSC)</p>
+<p style="position:absolute;left:1592px;bottom:64px;width:200px;font-size:24px;color:#7d8ca2;text-align:right">17 / 28</p>
+<aside>도입의 퍼즐을 풀 차례입니다. 어느 순간이든 출력은 여덟 벡터 중 하나입니다. 그런데 한 스위칭 주기, 5 kHz면 200 마이크로초 안에서 V1을 t1 동안, V2를 t2 동안, 나머지는 영벡터를 내보내면, 그 주기의 평균은 V1과 V2의 시간 가중 합이 됩니다. 그림은 크기 1, 각도 20도의 벡터를 만드는 예입니다. V1을 49%, V2를 26%, 영벡터를 24% 쓰면 됩니다. 필터 인덕터는 200 마이크로초 사이의 빠른 변화를 거의 따라가지 못하므로 전류는 이 평균 전압에 반응합니다. 그래서 순간값은 여덟 개뿐이어도 평균으로는 육각형 안 어디든 만들 수 있습니다. 어떤 순서로, 어떤 비율로 섞을지가 마지막 12강에서 다룰 변조입니다. 칠판에서 t1과 t2를 직접 구해 보겠습니다. 베타 성분부터 맞추면 t2가 나오고, 그다음 알파 성분에서 t1이 나옵니다.</aside>
+</section>

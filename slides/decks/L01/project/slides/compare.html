@@ -1,0 +1,19 @@
+<section id="compare" data-transition="fade" style="background:#fbfcfd;color:#45546b;font-family:'Pretendard Variable', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<div style="position:absolute;left:0;top:0;width:1920px;height:12px;background:linear-gradient(90deg, #2463c8 0%, #8bc22c 100%)"></div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;color:#037673">4 · 예제와 실습 · 정리</p>
+<h2 style="font-size:56px;font-weight:800;line-height:1.15;letter-spacing:-1px;color:#013364">같은 3상 신호, 세 가지 좌표</h2>
+</div>
+<table style="font-size:30px;color:#45546b">
+<tr><th style="width:22%"> </th><th style="width:26%">abc</th><th style="width:26%">αβ (Clarke)</th><th style="width:26%">dq (Park)</th></tr>
+<tr><td><b>값의 개수</b></td><td>3</td><td>2 (+ 영상분)</td><td>2 (+ 영상분)</td></tr>
+<tr><td><b>정상상태 모양</b></td><td>60 Hz 사인파</td><td>60 Hz 사인파</td><td><b style="color:#013364">직류</b></td></tr>
+<tr><td><b>좌표축</b></td><td>120° 간격 고정</td><td>직각, 고정</td><td>직각, θ로 회전</td></tr>
+<tr><td><b>필요한 것</b></td><td>측정값 그대로</td><td>고정 행렬</td><td><b style="color:#013364">각도 θ</b></td></tr>
+<tr><td><b>강좌에서 쓰는 곳</b></td><td>측정, PWM</td><td>변조, 해석</td><td>전류·전압 제어</td></tr>
+</table>
+<p style="font-size:32px;line-height:1.45">변환은 정보를 바꾸지 않는다. <b style="color:#013364">어떤 눈으로 보느냐</b>를 바꿀 뿐이다</p>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#7d8ca2">1강 · 3상 계통의 표현과 공간벡터·dq</p>
+<p style="position:absolute;left:1592px;bottom:64px;width:200px;font-size:24px;color:#7d8ca2;text-align:right">26 / 27</p>
+<aside>오늘 본 세 좌표를 표로 정리합니다. abc는 측정값 그대로이고 값이 세 개, 60 Hz 사인파입니다. 알파베타는 고정된 행렬로 바꾼 것이고 값은 두 개지만 여전히 사인파입니다. dq는 각도 θ로 돌린 것이고 정상상태에서 직류입니다. 대신 dq를 쓰려면 θ가 반드시 필요합니다. 강좌에서는 측정과 PWM 출력은 abc, 변조와 해석은 알파베타, 제어는 dq에서 합니다. 변환은 정보를 바꾸지 않고 바라보는 눈만 바꾼다는 점을 기억하세요. 그래서 제어기 안에서 abc, 알파베타, dq를 오가는 것이 자연스럽습니다.</aside>
+</section>

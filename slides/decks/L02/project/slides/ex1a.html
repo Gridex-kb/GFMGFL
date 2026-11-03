@@ -1,0 +1,20 @@
+<section id="ex1a" data-transition="fade" style="background:#fbfcfd;color:#45546b;font-family:'Pretendard Variable', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:28px">
+<div style="position:absolute;left:0;top:0;width:1920px;height:12px;background:linear-gradient(90deg, #2463c8 0%, #8bc22c 100%)"></div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;color:#3aa150">예제 1 · 풀이 (1)(2)</p>
+<h2 style="font-size:56px;font-weight:800;line-height:1.15;letter-spacing:-1px;color:#013364">극전압 두 개는 위, 하나는 아래: 평균이 +0.376</h2>
+</div>
+<div style="display:flex;gap:40px;align-items:center">
+<img src="/_blob/e7fffffde68b184c2c45a996f5f46e28" alt="상태 110의 회로: Sa, Sb 상단 스위치와 Sc 하단 스위치가 ON(초록 상자), 나머지 OFF(회색 점선). 출력 a, b는 +1.128, c는 −1.128" style="width:862px;height:510px;object-fit:contain;background:#ffffff;border:2px solid #dae3ec;border-radius:16px">
+<div style="flex:1;display:flex;flex-direction:column;gap:22px">
+<div style="background:#ffffff;border-left:8px solid #2463c8;border-radius:8px;padding:20px 24px">
+<img src="/_blob/d81a4cd57b73b95a69195cc3c71b028d" alt="극전압 (+1.128, +1.128, −1.128), 영상분 +0.376, 상전압 (+0.752, +0.752, −1.504)" style="width:700px;height:179px;object-fit:contain">
+</div>
+<p style="font-size:28px;line-height:1.45">영상분 = (1.128 + 1.128 − 1.128) / 3 = <b style="color:#013364">+0.376</b></p>
+<p style="font-size:28px;line-height:1.45">검산: 0.752 + 0.752 − 1.504 = <b style="color:#013364">0</b></p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#7d8ca2">2강 · 2레벨 전압형 컨버터(VSC)</p>
+<p style="position:absolute;left:1592px;bottom:64px;width:200px;font-size:24px;color:#7d8ca2;text-align:right">23 / 28</p>
+<aside>풀이입니다. 회로에서 초록 상자가 켜진 스위치입니다. a와 b는 위 스위치가 켜져 P에 붙었으니 극전압이 플러스 1.128, c는 아래 스위치가 켜져 N에 붙었으니 마이너스 1.128입니다. 영상분은 세 극전압의 평균으로, 1.128 + 1.128 − 1.128을 3으로 나눈 플러스 0.376입니다. 상전압은 극전압에서 0.376을 빼면 a와 b가 플러스 0.752, c가 마이너스 1.504입니다. 세 개를 더하면 0이 되어 검산도 맞습니다. 물리적으로 보면, a와 b 두 상이 병렬로 묶여 c상과 직렬로 V_dc를 나눠 받는 셈이라 c상이 두 배의 전압을 받습니다.</aside>
+</section>

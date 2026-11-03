@@ -1,0 +1,22 @@
+<section id="neutral" data-transition="fade" style="background:#fbfcfd;color:#45546b;font-family:'Pretendard Variable', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:28px">
+<div style="position:absolute;left:0;top:0;width:1920px;height:12px;background:linear-gradient(90deg, #2463c8 0%, #8bc22c 100%)"></div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;color:#037673">2 · 극전압 · 상전압 · 영상분 · 칠판 유도</p>
+<h2 style="font-size:56px;font-weight:800;line-height:1.15;letter-spacing:-1px;color:#013364">부하 중성점의 전위는 극전압의 평균이다</h2>
+</div>
+<div style="display:flex;gap:48px;align-items:center">
+<img src="/_blob/e964aa0b10192fdf31b264aa5274fbe9" alt="DC 중점 0에서 극전압 전원 va0, vb0, vc0가 같은 임피던스 Z를 지나 부하 중성점 n에서 만나는 등가회로, 0과 n 사이 전압 vn0" style="width:760px;height:520px;object-fit:contain;background:#ffffff;border:2px solid #dae3ec;border-radius:16px">
+<div style="flex:1;display:flex;flex-direction:column;gap:20px">
+<div style="background:#ffffff;border-left:8px solid #2463c8;border-radius:8px;padding:18px 24px">
+<img src="/_blob/eeda15333af19c3bf00f34e0345cd02a" alt="각 상에서 v_x0 = Z i_x + v_n0, 세 식을 더하면 v_a0 + v_b0 + v_c0 = Z(i_a + i_b + i_c) + 3 v_n0, 전류 합은 0" style="width:790px;height:192px;object-fit:contain">
+</div>
+<div style="background:#ffffff;border-left:8px solid #3aa150;border-radius:8px;padding:18px 24px">
+<img src="/_blob/912e4f44e4a475869f9bf3ac99197126" alt="v_n0 = (v_a0 + v_b0 + v_c0)/3, v_xn = v_x0 − v_n0" style="width:790px;height:94px;object-fit:contain">
+</div>
+<p style="font-size:28px;line-height:1.45">조건: 평형 부하, <b style="color:#013364">중성선 없음</b> → i<b>a</b> + i<b>b</b> + i<b>c</b> = 0</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#7d8ca2">2강 · 2레벨 전압형 컨버터(VSC)</p>
+<p style="position:absolute;left:1592px;bottom:64px;width:200px;font-size:24px;color:#7d8ca2;text-align:right">10 / 28</p>
+<aside>이 슬라이드는 칠판에서 같이 유도합니다. 컨버터의 세 레그를 극전압 전원 세 개로 바꿔 그리면 왼쪽 그림이 됩니다. 세 전원이 DC 중점 0에서 출발해 같은 임피던스 Z를 지나 부하 중성점 n에서 만납니다. 각 상에서 극전압은 Z 곱하기 그 상 전류 더하기 0과 n 사이 전압 v_n0입니다. 세 식을 더해 보죠. 중성선이 없으니 세 전류의 합은 0이고, Z 항이 사라집니다. 그러면 극전압 셋의 합이 3 v_n0이 됩니다. 즉 부하 중성점의 전위는 극전압의 평균입니다. 상전압은 극전압에서 이 평균을 뺀 것이고, 그래서 상전압 셋의 합은 항상 0입니다. 인덕터나 커패시터가 섞인 부하라도 세 상이 같은 연산자 Z(s)를 가지면 똑같이 성립합니다. 조건은 두 가지, 평형 부하와 중성선 없음입니다.</aside>
+</section>

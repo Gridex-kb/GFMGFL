@@ -1,0 +1,28 @@
+<section id="a-pi" data-transition="fade" style="background:#fbfcfd;color:#45546b;font-family:'Pretendard Variable', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<div style="position:absolute;left:0;top:0;width:1920px;height:12px;background:linear-gradient(90deg, #2463c8 0%, #8bc22c 100%)"></div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;color:#3aa150">답</p>
+<h2 style="font-size:56px;font-weight:800;line-height:1.15;letter-spacing:-1px;color:#013364">적분기는 <span style="color:#2463c8">직류</span> 오차만 0으로 만든다</h2>
+</div>
+<div style="display:flex;gap:32px;align-items:stretch">
+<div style="flex:1;background:#ffffff;border:2px solid #dae3ec;border-radius:20px;padding:40px;display:flex;flex-direction:column;gap:16px">
+<p style="font-size:26px;font-weight:700;color:#eb6834">정지 좌표 abc</p>
+<h3 style="font-size:40px;font-weight:800;color:#013364">지령이 60 Hz로 계속 변한다</h3>
+<p style="font-size:30px;line-height:1.45">적분기 이득이 60 Hz에서 유한 → 위상 지연과 크기 오차가 남는다</p>
+</div>
+<div style="display:flex;align-items:center">
+<x-shape kind="arrow-right" style="width:96px;height:56px;background:#8bc22c"></x-shape>
+</div>
+<div style="flex:1;background:#013364;border-radius:20px;padding:40px;display:flex;flex-direction:column;gap:16px">
+<p style="font-size:26px;font-weight:700;color:#b9f179">계통과 함께 도는 좌표 dq</p>
+<h3 style="font-size:40px;font-weight:800;color:#ffffff">같은 전류가 직류로 보인다</h3>
+<p style="font-size:30px;line-height:1.45;color:#c6d4e6">적분기 이득이 직류에서 무한 → 정상상태 오차 0</p>
+</div>
+</div>
+<div style="background:#e9f0f6;border-radius:20px;padding:32px 40px">
+<p style="font-size:34px;line-height:1.45;color:#013364">오늘의 길: <b>3상 사인파 3개</b> → <b>회전 벡터 1개</b> → <b>멈춘 좌표의 직류 2개</b></p>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#7d8ca2">1강 · 3상 계통의 표현과 공간벡터·dq</p>
+<p style="position:absolute;left:1592px;bottom:64px;width:200px;font-size:24px;color:#7d8ca2;text-align:right">5 / 27</p>
+<aside>답은 이렇습니다. PI 제어기의 적분기 1/s는 주파수 0, 즉 직류에서만 이득이 무한대입니다. 그래서 직류 오차만 정확히 0으로 만들고, 60 Hz처럼 계속 변하는 신호에는 유한한 이득밖에 주지 못합니다. 그 결과가 앞에서 본 33도 지연입니다. 해결책은 두 가지가 있습니다. 하나는 제어기를 바꾸는 것, 예를 들어 60 Hz 공진 제어기를 쓰는 것이고, 다른 하나는 좌표계를 바꾸는 것입니다. 계통 전압과 같은 속도로 도는 좌표에서 보면 60 Hz 전류가 멈춰 있는 직류로 보입니다. 그러면 평범한 PI로 오차 없이 따라갈 수 있습니다. 이 강좌의 GFL, GFM 제어기는 모두 두 번째 방법을 씁니다. 오늘은 그 좌표계로 가는 길을 세 단계로 밟습니다.</aside>
+</section>

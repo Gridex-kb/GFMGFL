@@ -1,0 +1,22 @@
+{
+  "v": 4,
+  "createdOnFiles": {"v": 1, "at": "2026-11-03T10:00:00Z"},
+  "lists": "css",
+  "title": "2강 · 2레벨 전압형 컨버터(VSC)",
+  "cover": "cover",
+  "order": ["cover", "goals", "outline", "q-states", "a-states", "sec1", "topo", "leg", "sec2", "neutral", "levels", "zsmsg", "sum1", "sec3", "statevec", "hexagon", "avg", "inscribed", "numbers", "dclink", "sec4", "ex1q", "ex1a", "ex1b", "ex2", "code", "compare", "wrap"],
+  "sections": {
+    "s0": {"description": "도입 — 학습 목표, 목차, 스위치 6개가 낼 수 있는 전압은 몇 가지인지 묻는 질문", "start": "cover"},
+    "s1": {"description": "1. 구조와 스위칭 함수 — 레그 3개, 상보 동작, 극전압 ±V_dc/2", "start": "sec1"},
+    "s2": {"description": "2. 극전압·상전압·영상분 — 부하 중성점, 다섯 계단 상전압, 영상분이라는 자유도", "start": "sec2"},
+    "s3": {"description": "3. 상태 8개와 육각형 — 공간벡터, 평균 벡터, 선형 한계 1.303 pu, DC 링크", "start": "sec3"},
+    "s4": {"description": "4. 예제와 실습 — 상태 110 손 계산, PWM 그림 읽기, Python 확인, 정리", "start": "sec4"}
+  },
+  "faces": {
+    "pretendard-variable": {"family": "Pretendard Variable", "src": "project/ds/gridex/fonts/PretendardVariable.woff2"},
+    "jetbrains-mono": {"family": "JetBrains Mono", "href": "https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&display=swap"}
+  },
+  "designSystems": [
+    {"title": "GriDeX 디자인 베이스", "namespace": "gridex", "artifact": "https://claude.ai/artifact/DHKyReZeUdghmptteJUFVb", "version": null, "copiedAt": "2026-11-03T10:00:00Z"}
+  ]
+}

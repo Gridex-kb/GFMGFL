@@ -1,0 +1,23 @@
+<section id="code" data-transition="fade" style="background:#fbfcfd;color:#45546b;font-family:'Pretendard Variable', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:32px">
+<div style="position:absolute;left:0;top:0;width:1920px;height:12px;background:linear-gradient(90deg, #2463c8 0%, #8bc22c 100%)"></div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;color:#037673">4 · 예제와 실습 · Python</p>
+<h2 style="font-size:56px;font-weight:800;line-height:1.15;letter-spacing:-1px;color:#013364">예제 1을 열 줄로 확인한다</h2>
+</div>
+<div style="display:flex;gap:40px;align-items:stretch">
+<div style="flex:1;background:#0f233f;border-radius:20px;padding:36px 40px">
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:26px;line-height:1.6;color:#e6edf5">import numpy as np<br>wb = 2*np.pi*60.0<br>t  = np.arange(0, 0.05, 1e-5)<br>th = wb*t                  <span style="color:#8fa6c4"># Park 각도 θ = ωt</span><br>a  = np.exp(2j*np.pi/3)<br>ia = np.cos(wb*t - np.pi/6) <span style="color:#8fa6c4"># 30° 늦은 전류</span><br>ib = np.cos(wb*t - np.pi/6 - 2*np.pi/3)<br>ic = np.cos(wb*t - np.pi/6 + 2*np.pi/3)<br>i_sv = 2/3*(ia + a*ib + a**2*ic)  <span style="color:#8fa6c4"># 공간벡터</span><br>i_dq = i_sv*np.exp(-1j*th)        <span style="color:#8fa6c4"># Park</span><br>print(i_dq.real.mean(), i_dq.imag.mean())</p>
+</div>
+<div style="width:440px;display:flex;flex-direction:column;gap:24px">
+<div style="background:#013364;border-radius:20px;padding:32px;display:flex;flex-direction:column;gap:12px">
+<p style="font-size:26px;font-weight:700;color:#b9f179">출력</p>
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:34px;color:#ffffff">0.866  −0.5</p>
+</div>
+<p style="font-size:28px;line-height:1.45">손 계산과 같다</p>
+<p style="font-size:28px;line-height:1.45"><b style="color:#013364">해 보기</b>: 세 상에 평형 5고조파 0.1 pu를 더하면 i<b>dq</b>에 몇 Hz 리플이 생길까?</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#7d8ca2">1강 · 3상 계통의 표현과 공간벡터·dq</p>
+<p style="position:absolute;left:1592px;bottom:64px;width:200px;font-size:24px;color:#7d8ca2;text-align:right">25 / 27</p>
+<aside>이제 Python으로 확인합니다. 코드는 정말 짧습니다. 시간 벡터를 만들고, Park 각도를 ωt로 두고, 30도 늦은 3상 전류를 만든 뒤, 공간벡터 정의 그대로 2/3 곱하기 ia + a ib + a제곱 ic를 계산합니다. 여기에 e의 −jθ를 곱하면 i_dq입니다. NumPy는 복소수를 그대로 다루므로 교재 식이 코드와 한 줄씩 대응합니다. 출력은 0.866과 −0.5로 손 계산과 같습니다. 숙제로 하나 해 보세요. 세 상 전류에 평형 5고조파 0.1 pu를 더하면 dq에서 몇 Hz 리플이 보일까요? 5고조파는 역상으로 돌기 때문에 답은 300이 아니라 360 Hz입니다. 왜 그런지 공간벡터로 설명해 오시면 됩니다. 코드를 바꿔 가며 직접 실험해 보세요.</aside>
+</section>

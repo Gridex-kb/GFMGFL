@@ -1,0 +1,38 @@
+<section id="derive" data-transition="fade" style="background:#fbfcfd;color:#45546b;font-family:'Pretendard Variable', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:28px">
+<div style="position:absolute;left:0;top:0;width:1920px;height:12px;background:linear-gradient(90deg, #2463c8 0%, #8bc22c 100%)"></div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;color:#037673">3 · dq와 Park · 칠판 유도</p>
+<h2 style="font-size:56px;font-weight:800;line-height:1.15;letter-spacing:-1px;color:#013364">필터 인덕터 식을 dq로 옮기면 결합항이 생긴다</h2>
+</div>
+<div style="display:flex;gap:40px;align-items:center">
+<div style="background:#ffffff;border:2px solid #dae3ec;border-radius:20px;padding:20px 32px;display:flex;flex-direction:column;gap:8px">
+<div style="display:flex;gap:24px;align-items:center">
+<p style="font-size:28px;font-weight:800;color:#2463c8;width:48px">①</p>
+<img src="/_blob/dc4a69dff7da63e06a1e18778d5cf89a" alt="v = (xL/ωb) di/dt + e" style="width:264px;height:111px;object-fit:contain">
+</div>
+<div style="display:flex;gap:24px;align-items:center">
+<p style="font-size:28px;font-weight:800;color:#2463c8;width:48px">②</p>
+<img src="/_blob/db9a5699a824c82158266042f275e067" alt="i = idq e^(jθ), di/dt = (didq/dt + j ωb ω idq) e^(jθ)" style="width:770px;height:116px;object-fit:contain">
+</div>
+<div style="display:flex;gap:24px;align-items:center">
+<p style="font-size:28px;font-weight:800;color:#2463c8;width:48px">③</p>
+<img src="/_blob/df377dd6ed84d7ce5313971c75f95df8" alt="vdq = (xL/ωb) didq/dt + j ω xL idq + edq" style="width:555px;height:101px;object-fit:contain">
+</div>
+<div style="display:flex;gap:24px;align-items:center">
+<p style="font-size:28px;font-weight:800;color:#2463c8;width:48px">④</p>
+<img src="/_blob/13d39fc42c8dad98ef50cd72efd5f765" alt="vd = (xL/ωb) did/dt − ω xL iq + ed, vq = (xL/ωb) diq/dt + ω xL id + eq" style="width:486px;height:217px;object-fit:contain">
+</div>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:20px">
+<div style="background:#013364;border-radius:16px;padding:28px">
+<h3 style="font-size:32px;font-weight:800;color:#ffffff">j ω x<span style="color:#b9f179">L</span> i<span style="color:#b9f179">dq</span></h3>
+<p style="font-size:28px;line-height:1.45;color:#c6d4e6">돌아가는 좌표에서 미분하면 생기는 항. d와 q를 서로 엮는다</p>
+</div>
+<p style="font-size:28px;line-height:1.45">ω와 x<b>L</b>은 pu, ω<b>b</b> = 2π·60 rad/s</p>
+<p style="font-size:28px;line-height:1.45">정상상태: d/dt = 0 → 결합항만 남는다</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#7d8ca2">1강 · 3상 계통의 표현과 공간벡터·dq</p>
+<p style="position:absolute;left:1592px;bottom:64px;width:200px;font-size:24px;color:#7d8ca2;text-align:right">19 / 27</p>
+<aside>이 슬라이드는 칠판에서 같이 유도합니다. 슬라이드는 단계 번호만 보여 주고, 판서는 직접 하겠습니다. 출발은 필터 인덕터의 전압 식입니다. pu로 쓰면 v = xL/ωb 곱하기 di/dt 더하기 e입니다. e는 계통 쪽 전압입니다. 두 번째, 전류 공간벡터를 i_dq 곱하기 e의 jθ로 씁니다. 곱의 미분을 하면 di_dq/dt 항과, e의 jθ를 미분해서 나오는 jωb ω i_dq 항이 생깁니다. dθ/dt가 ωb ω이기 때문입니다. 세 번째, 양변의 e의 jθ를 지우면 dq 식이 됩니다. 정지 좌표에는 없던 jω xL i_dq 항이 새로 생겼습니다. 네 번째, 실수부와 허수부로 나누면 vd 식에 −ω xL iq가, vq 식에 +ω xL id가 들어갑니다. d축과 q축이 서로 엮여 있다는 뜻입니다. 이 결합항이 5강 전류 제어에서 디커플링 피드포워드로 다시 나옵니다. 정상상태에서는 미분항이 0이 되니, 인덕터 전압강하는 결합항, 즉 xL 곱하기 전류를 90도 돌린 것뿐입니다. 페이저의 jX I와 같은 것이죠.</aside>
+</section>

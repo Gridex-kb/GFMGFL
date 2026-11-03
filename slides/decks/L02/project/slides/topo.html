@@ -1,0 +1,27 @@
+<section id="topo" data-transition="fade" style="background:#fbfcfd;color:#45546b;font-family:'Pretendard Variable', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:28px">
+<div style="position:absolute;left:0;top:0;width:1920px;height:12px;background:linear-gradient(90deg, #2463c8 0%, #8bc22c 100%)"></div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;color:#037673">1 · 구조와 스위칭 함수</p>
+<h2 style="font-size:56px;font-weight:800;line-height:1.15;letter-spacing:-1px;color:#013364">DC 링크 하나에 레그 세 개가 나란히 붙는다</h2>
+</div>
+<div style="display:flex;gap:48px;align-items:center">
+<img src="/_blob/722fcadd6253df3e4be85ac75b64ba06" alt="2레벨 VSC 회로: P와 N 레일 사이 커패시터 두 개(중점 0), 레그 a·b·c마다 상단 스위치 S와 하단 스위치 S바, 각 스위치에 역병렬 다이오드, 레그 중점이 출력 단자" style="width:1006px;height:595px;object-fit:contain;background:#ffffff;border:2px solid #dae3ec;border-radius:16px">
+<div style="flex:1;display:flex;flex-direction:column;gap:22px">
+<div style="background:#ffffff;border-left:8px solid #2463c8;border-radius:8px;padding:18px 24px">
+<h3 style="font-size:30px;font-weight:800;color:#013364">DC 링크 P · N</h3>
+<p style="font-size:26px;line-height:1.45">V<b>dc</b> = 2.256 pu. 중점 0은 기준용 가상의 점</p>
+</div>
+<div style="background:#ffffff;border-left:8px solid #2463c8;border-radius:8px;padding:18px 24px">
+<h3 style="font-size:30px;font-weight:800;color:#013364">레그 = 스위치 2개</h3>
+<p style="font-size:26px;line-height:1.45">상단 S, 하단 S̄. 가운데가 출력 a, b, c</p>
+</div>
+<div style="background:#ffffff;border-left:8px solid #2463c8;border-radius:8px;padding:18px 24px">
+<h3 style="font-size:30px;font-weight:800;color:#013364">역병렬 다이오드</h3>
+<p style="font-size:26px;line-height:1.45">전류는 양방향. 전력도 양방향으로 흐른다</p>
+</div>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#7d8ca2">2강 · 2레벨 전압형 컨버터(VSC)</p>
+<p style="position:absolute;left:1592px;bottom:64px;width:200px;font-size:24px;color:#7d8ca2;text-align:right">7 / 28</p>
+<aside>회로를 왼쪽부터 보겠습니다. DC 링크는 P와 N 두 레일이고, 그 사이 전압이 V_dc입니다. 이 강좌의 설비는 700 V DC, 380 V AC 기준으로 V_dc가 2.256 pu입니다. 커패시터를 두 개 직렬로 그린 것은 중점 0을 만들기 위해서입니다. 실제로는 중점이 없는 설비도 많지만, 전압을 재는 기준점으로 쓰기 편해서 그립니다. 가운데에는 레그가 세 개 있습니다. 레그마다 위 스위치 S와 아래 스위치 S바가 있고, 둘 사이가 교류 출력 단자입니다. 스위치마다 다이오드가 거꾸로 붙어 있어서, 스위치가 켜진 쪽 레일과 출력 사이로 전류가 어느 방향으로든 흐를 수 있습니다. 그래서 이 컨버터는 인버터로도 정류기로도 동작합니다. 오른쪽 부하는 중성점 n이 DC 링크와 연결되지 않은 3선식입니다. 이 점이 2부에서 중요해집니다.</aside>
+</section>

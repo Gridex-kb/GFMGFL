@@ -1,0 +1,21 @@
+<section id="power" data-transition="fade" style="background:#fbfcfd;color:#45546b;font-family:'Pretendard Variable', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:32px">
+<div style="position:absolute;left:0;top:0;width:1920px;height:12px;background:linear-gradient(90deg, #2463c8 0%, #8bc22c 100%)"></div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;color:#037673">1 · 3상 신호</p>
+<h2 style="font-size:56px;font-weight:800;line-height:1.15;letter-spacing:-1px;color:#013364">상마다 출렁이는 전력이 더하면 일정해진다</h2>
+</div>
+<div style="background:#ffffff;border-left:8px solid #2463c8;padding:20px 28px;border-radius:8px;align-self:flex-start">
+<img src="/_blob/00c5060e67873f3642ac1be1b472138a" alt="p(t) = va ia + vb ib + vc ic = (3/2) V I cos φ" style="width:797px;height:109px;object-fit:contain">
+</div>
+<div style="display:flex;gap:40px;align-items:center">
+<img src="/_blob/116f488670497b5beb1ed26ce68c5052" alt="역률 0.8에서 상별 순시전력은 120 Hz로 출렁이지만 세 상의 합은 1.2 pu로 일정" style="width:1080px;height:461px;object-fit:contain;background:#ffffff;border:2px solid #dae3ec;border-radius:16px">
+<div style="flex:1;display:flex;flex-direction:column;gap:24px">
+<p style="font-size:30px;line-height:1.45">상별 전력은 <b style="color:#013364">120 Hz</b>로 출렁인다</p>
+<p style="font-size:30px;line-height:1.45">세 상의 출렁임은 120°씩 어긋나 <b style="color:#013364">서로 지운다</b></p>
+<p style="font-size:30px;line-height:1.45">V̂ = Î = 1, cos φ = 0.8 → <b style="color:#013364">1.2</b></p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#7d8ca2">1강 · 3상 계통의 표현과 공간벡터·dq</p>
+<p style="position:absolute;left:1592px;bottom:64px;width:200px;font-size:24px;color:#7d8ca2;text-align:right">9 / 27</p>
+<aside>단상 전력은 2배 주파수, 즉 120 Hz로 출렁입니다. 그런데 3상의 세 출렁임은 서로 120도씩, 정확히는 240도씩 어긋나 있어서 더하면 지워집니다. 칠판에서 cos 곱을 합과 차로 풀어 보겠습니다. cos A cos B는 절반의 cos(A−B) 더하기 절반의 cos(A+B)입니다. cos(A−B) 항은 세 상 모두 cos φ로 같아서 3/2 cos φ가 남고, cos(A+B) 항은 2ωt 성분이라 세 상의 합이 0입니다. 그래서 3/2 V I cos φ가 일정하게 남습니다. 그림은 역률 0.8일 때로, 합이 1.2로 평평합니다. 이 3/2라는 계수를 기억해 두세요. 2부에서 공간벡터를 정의할 때 이 계수가 다시 나오고, pu 기준을 잘 잡으면 사라집니다.</aside>
+</section>

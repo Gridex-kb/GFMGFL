@@ -1,0 +1,26 @@
+<section id="leg" data-transition="fade" style="background:#fbfcfd;color:#45546b;font-family:'Pretendard Variable', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:28px">
+<div style="position:absolute;left:0;top:0;width:1920px;height:12px;background:linear-gradient(90deg, #2463c8 0%, #8bc22c 100%)"></div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;color:#037673">1 · 구조와 스위칭 함수</p>
+<h2 style="font-size:56px;font-weight:800;line-height:1.15;letter-spacing:-1px;color:#013364">레그 하나는 P와 N 사이를 오가는 스위치 하나다</h2>
+</div>
+<div style="display:flex;gap:40px;align-items:center">
+<img src="/_blob/e78fd10d5bf3197636f9e5e2bf12c074" alt="레그를 단극 쌍투 스위치로 그린 두 그림. 왼쪽 S=1이면 출력 x가 P에 붙어 극전압 +1.128, 오른쪽 S=0이면 N에 붙어 −1.128" style="width:900px;height:432px;object-fit:contain;background:#ffffff;border:2px solid #dae3ec;border-radius:16px">
+<div style="flex:1;display:flex;flex-direction:column;gap:20px">
+<div style="background:#ffffff;border:2px solid #dae3ec;border-radius:16px;padding:24px 28px;display:flex;flex-direction:column;gap:8px">
+<h3 style="font-size:30px;font-weight:800;color:#013364">스위칭 함수 S<span style="color:#2463c8">x</span></h3>
+<p style="font-size:26px;line-height:1.45">1 = 상단 ON (출력이 P), 0 = 하단 ON (출력이 N)</p>
+</div>
+<div style="background:#ffffff;border:2px solid #dae3ec;border-radius:16px;padding:24px 28px;display:flex;flex-direction:column;gap:8px">
+<h3 style="font-size:30px;font-weight:800;color:#013364">데드타임 (개념만)</h3>
+<p style="font-size:26px;line-height:1.45">실제로는 단락을 막으려 둘 다 끄는 짧은 구간을 둔다. 이 강좌의 모델은 생략</p>
+</div>
+</div>
+</div>
+<div style="background:#ffffff;border-left:8px solid #2463c8;border-radius:8px;padding:20px 28px;align-self:flex-start">
+<img src="/_blob/70452ff4aef09c81246415a624c84376" alt="v_x0 = (2S_x − 1) V_dc/2 = ±1.128 pu, x ∈ {a, b, c}" style="width:961px;height:100px;object-fit:contain">
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#7d8ca2">2강 · 2레벨 전압형 컨버터(VSC)</p>
+<p style="position:absolute;left:1592px;bottom:64px;width:200px;font-size:24px;color:#7d8ca2;text-align:right">8 / 28</p>
+<aside>상보 동작을 하면 레그 하나는 출력 단자를 P와 N 중 하나에 붙이는 단극 쌍투 스위치와 같습니다. 그림 왼쪽이 S가 1일 때, 오른쪽이 0일 때입니다. 출력 단자 전압을 DC 중점 0에서 재면, 이것을 극전압이라고 부르는데, P에 붙으면 플러스 V_dc/2, N에 붙으면 마이너스 V_dc/2입니다. 우리 설비로 플러스마이너스 1.128 pu입니다. 식으로는 2S − 1을 곱한 것이죠. 극전압이 두 값뿐이라서 2레벨이라고 부릅니다. 실제 구동 회로에서는 한 스위치가 완전히 꺼진 것을 확인한 뒤 다른 스위치를 켜야 하므로, 둘 다 꺼진 짧은 데드타임을 둡니다. 이 동안 전압 오차가 조금 생기는데, 우리 시뮬레이션 모델에서는 넣지 않았습니다.</aside>
+</section>

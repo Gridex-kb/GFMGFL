@@ -1,0 +1,22 @@
+{
+  "v": 4,
+  "createdOnFiles": {"v": 1, "at": "2026-11-02T09:00:00Z"},
+  "lists": "css",
+  "title": "1강 · 3상 계통의 표현과 공간벡터·dq 변환",
+  "cover": "cover",
+  "order": ["cover", "goals", "outline", "q-pi", "a-pi", "sec1", "abc", "phasor", "power", "sum1", "sec2", "svdef", "svrot", "svmsg", "clarke", "inv", "sec3", "park", "derive", "dqpow", "sec4", "ex1q", "ex1a", "ex2", "code", "compare", "wrap"],
+  "sections": {
+    "s0": {"description": "도입 — 학습 목표, 목차, 그리고 왜 좌표 변환이 필요한지 묻는 질문", "start": "cover"},
+    "s1": {"description": "1. 3상 신호 — 상전압·선간전압, 페이저, 일정한 3상 순시전력", "start": "sec1"},
+    "s2": {"description": "2. 공간벡터와 Clarke — 스칼라 세 개를 회전 벡터 하나로", "start": "sec2"},
+    "s3": {"description": "3. dq와 Park — 회전 벡터를 멈춰 세워 직류로 다루기", "start": "sec3"},
+    "s4": {"description": "4. 예제와 실습 — 손으로 풀고, Python으로 확인하고, 정리하기", "start": "sec4"}
+  },
+  "faces": {
+    "pretendard-variable": {"family": "Pretendard Variable", "src": "project/ds/gridex/fonts/PretendardVariable.woff2"},
+    "jetbrains-mono": {"family": "JetBrains Mono", "href": "https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&display=swap"}
+  },
+  "designSystems": [
+    {"title": "GriDeX 디자인 베이스", "namespace": "gridex", "artifact": "https://claude.ai/artifact/DHKyReZeUdghmptteJUFVb", "version": null, "copiedAt": "2026-11-02T09:00:00Z"}
+  ]
+}

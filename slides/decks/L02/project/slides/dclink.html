@@ -1,0 +1,33 @@
+<section id="dclink" data-transition="fade" style="background:#fbfcfd;color:#45546b;font-family:'Pretendard Variable', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:36px">
+<div style="position:absolute;left:0;top:0;width:1920px;height:12px;background:linear-gradient(90deg, #2463c8 0%, #8bc22c 100%)"></div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;color:#037673">3 · 상태 8개와 육각형</p>
+<h2 style="font-size:56px;font-weight:800;line-height:1.15;letter-spacing:-1px;color:#013364">DC 링크는 전압원이자 에너지 완충기다</h2>
+</div>
+<div style="display:flex;gap:28px">
+<div style="flex:1;background:#ffffff;border:2px solid #dae3ec;border-radius:20px;padding:36px;display:flex;flex-direction:column;gap:14px">
+<x-icon name="Lightning" style="width:48px;height:48px;color:#2463c8"></x-icon>
+<h3 style="font-size:34px;font-weight:800;color:#013364">단단한 전압원</h3>
+<p style="font-size:28px;line-height:1.45">모든 출력 전압이 V<b>dc</b>에 비례한다. V<b>dc</b>가 교류 전압의 상한을 정한다</p>
+</div>
+<div style="flex:1;background:#ffffff;border:2px solid #dae3ec;border-radius:20px;padding:36px;display:flex;flex-direction:column;gap:14px">
+<x-icon name="Database" style="width:48px;height:48px;color:#2463c8"></x-icon>
+<h3 style="font-size:34px;font-weight:800;color:#013364">에너지 완충</h3>
+<p style="font-size:28px;line-height:1.45">3상 전력은 거의 일정 → 커패시터는 주로 스위칭 리플 전류만 흡수한다</p>
+</div>
+<div style="flex:1;background:#013364;border-radius:20px;padding:36px;display:flex;flex-direction:column;gap:14px">
+<x-icon name="Settings" style="width:48px;height:48px;color:#8bc22c"></x-icon>
+<h3 style="font-size:34px;font-weight:800;color:#ffffff">이 강좌의 모델</h3>
+<p style="font-size:28px;line-height:1.45;color:#c6d4e6">이상적 직류원, V<b>dc</b> = 2.256 일정. DC 전압 제어와 1차 전원 한계는 다루지 않는다</p>
+</div>
+</div>
+<div style="display:flex;gap:28px;align-items:center">
+<div style="background:#ffffff;border-left:8px solid #2463c8;border-radius:8px;padding:18px 28px">
+<img src="/_blob/0eeb80ae6165e4204bb2159464622766" alt="p_dc = V_dc i_dc = p_ac (무손실)" style="width:621px;height:73px;object-fit:contain">
+</div>
+<p style="font-size:28px;line-height:1.45">교류 쪽에서 보낸 전력은 DC 쪽 어디선가 와야 한다 — GFM의 관성도 결국 이 에너지에서 나온다</p>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#7d8ca2">2강 · 2레벨 전압형 컨버터(VSC)</p>
+<p style="position:absolute;left:1592px;bottom:64px;width:200px;font-size:24px;color:#7d8ca2;text-align:right">20 / 28</p>
+<aside>DC 링크의 역할을 짚고 넘어갑니다. 첫째, 레그들이 공유하는 단단한 전압원입니다. 오늘 본 모든 전압 크기가 V_dc에 비례하므로 V_dc가 컨버터가 낼 수 있는 교류 전압의 상한을 정합니다. 둘째, 에너지 완충기입니다. 손실이 없으면 DC 쪽 전력과 AC 쪽 전력이 매 순간 같습니다. 평형 3상은 1강에서 본 것처럼 순시 전력이 거의 일정하므로, DC 커패시터는 큰 저주파 리플 없이 주로 스위칭 주파수 리플 전류만 흡수합니다. 셋째, 이 강좌의 시뮬레이션 모델은 DC 링크를 전압이 변하지 않는 이상적 직류원으로 둡니다. 실제 설비에서는 배터리나 태양광, DC 전압 제어기가 있고 그 한계가 GFM 성능을 제한합니다. 특히 GFM이 계통에 관성을 줄 때 그 에너지는 결국 DC 쪽에서 와야 한다는 점을 기억해 두세요. 7강 GFM에서 다시 나옵니다.</aside>
+</section>

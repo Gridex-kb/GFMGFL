@@ -1,0 +1,30 @@
+<section id="a-states" data-transition="fade" style="background:#fbfcfd;color:#45546b;font-family:'Pretendard Variable', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<div style="position:absolute;left:0;top:0;width:1920px;height:12px;background:linear-gradient(90deg, #2463c8 0%, #8bc22c 100%)"></div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;color:#3aa150">답</p>
+<h2 style="font-size:56px;font-weight:800;line-height:1.15;letter-spacing:-1px;color:#013364">레그마다 두 상태뿐: 2 × 2 × 2 = <span style="color:#2463c8">8가지</span></h2>
+</div>
+<div style="display:flex;gap:28px">
+<div style="flex:1;background:#ffffff;border:2px solid #dae3ec;border-radius:20px;padding:36px;display:flex;flex-direction:column;gap:14px">
+<p style="font-size:26px;font-weight:700;color:#eb6834">금지 ①</p>
+<h3 style="font-size:36px;font-weight:800;color:#013364">위아래 동시에 ON</h3>
+<p style="font-size:28px;line-height:1.45">DC 링크 단락(shoot-through). 수 µs 안에 소자가 파손된다</p>
+</div>
+<div style="flex:1;background:#ffffff;border:2px solid #dae3ec;border-radius:20px;padding:36px;display:flex;flex-direction:column;gap:14px">
+<p style="font-size:26px;font-weight:700;color:#eb6834">금지 ②</p>
+<h3 style="font-size:36px;font-weight:800;color:#013364">위아래 동시에 OFF</h3>
+<p style="font-size:28px;line-height:1.45">출력 전압을 전류 방향이 정한다. 제어할 수 없는 상태</p>
+</div>
+<div style="flex:1;background:#013364;border-radius:20px;padding:36px;display:flex;flex-direction:column;gap:14px">
+<p style="font-size:26px;font-weight:700;color:#b9f179">남는 것</p>
+<h3 style="font-size:36px;font-weight:800;color:#ffffff">둘 중 하나만 ON</h3>
+<p style="font-size:28px;line-height:1.45;color:#c6d4e6">레그 하나 = 숫자 하나 S ∈ {0, 1}. 세 레그면 2³ = 8</p>
+</div>
+</div>
+<div style="background:#e9f0f6;border-radius:20px;padding:32px 40px">
+<p style="font-size:34px;line-height:1.45;color:#013364">그런데 출력은 8가지뿐인데 어떻게 <b>사인파</b>가 나올까? → 오늘의 마지막 답: <b>시간 평균</b></p>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#7d8ca2">2강 · 2레벨 전압형 컨버터(VSC)</p>
+<p style="position:absolute;left:1592px;bottom:64px;width:200px;font-size:24px;color:#7d8ca2;text-align:right">5 / 28</p>
+<aside>답은 여덟 가지입니다. 같은 레그의 위아래를 동시에 켜면 DC 링크가 그대로 단락됩니다. 이것을 슛스루라고 하고, 몇 마이크로초 안에 소자가 망가집니다. 반대로 둘 다 끄면 출력 단자가 어디에도 붙지 않아서, 전류가 흐르던 방향에 따라 다이오드가 출력 전압을 정합니다. 제어기가 정할 수 없는 상태죠. 그래서 정상 동작에서는 위아래 중 정확히 하나만 켭니다. 그러면 레그 하나는 0 또는 1, 숫자 하나로 완전히 표현되고, 레그가 세 개이니 2의 3제곱, 8가지입니다. 그런데 이상하지 않습니까? 출력이 여덟 가지 중 하나로 계속 점프하는데 계통에는 사인파 전류가 흐릅니다. 그 답이 오늘 강의의 마지막 퍼즐 조각인 시간 평균입니다.</aside>
+</section>

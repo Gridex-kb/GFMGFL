@@ -1,0 +1,25 @@
+<section id="statevec" data-transition="fade" style="background:#fbfcfd;color:#45546b;font-family:'Pretendard Variable', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:28px">
+<div style="position:absolute;left:0;top:0;width:1920px;height:12px;background:linear-gradient(90deg, #2463c8 0%, #8bc22c 100%)"></div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;color:#037673">3 · 상태 8개와 육각형</p>
+<h2 style="font-size:56px;font-weight:800;line-height:1.15;letter-spacing:-1px;color:#013364">상태를 공간벡터로: 공통 성분은 저절로 사라진다</h2>
+</div>
+<div style="background:#ffffff;border-left:8px solid #2463c8;border-radius:8px;padding:20px 28px;align-self:flex-start">
+<img src="/_blob/be2904bee059d0c48956e55521eb0246" alt="v = (2/3)(v_a0 + a v_b0 + a² v_c0) = (2/3) V_dc (S_a + a S_b + a² S_c)" style="width:1126px;height:109px;object-fit:contain">
+</div>
+<div style="display:flex;gap:40px;align-items:center">
+<div style="background:#ffffff;border-left:8px solid #3aa150;border-radius:8px;padding:20px 28px">
+<img src="/_blob/f3eb3027c0561703d691b142325b79ac" alt="(2/3)(k + a k + a² k) = (2/3) k (1 + a + a²) = 0" style="width:875px;height:156px;object-fit:contain">
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:16px">
+<p style="font-size:28px;line-height:1.45">k = 세 상에 똑같이 더해진 값</p>
+<p style="font-size:28px;line-height:1.45">극전압의 <b style="color:#013364">−V<span style="color:#2463c8">dc</span>/2</b> 오프셋도, <b style="color:#013364">영상분</b>도 k다</p>
+</div>
+</div>
+<div style="background:#e9f0f6;border-radius:20px;padding:28px 36px">
+<p style="font-size:32px;line-height:1.45;color:#013364">그래서 극전압을 그대로 넣어도 된다 — 모델 <b>Inverter.pwm()</b>도 영상분을 따로 빼지 않는다</p>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#7d8ca2">2강 · 2레벨 전압형 컨버터(VSC)</p>
+<p style="position:absolute;left:1592px;bottom:64px;width:200px;font-size:24px;color:#7d8ca2;text-align:right">15 / 28</p>
+<aside>1강의 공간벡터 정의에 극전압을 그대로 넣어 보겠습니다. 극전압은 S V_dc 빼기 V_dc/2입니다. 그런데 빼기 V_dc/2는 세 상에 똑같이 들어 있는 값입니다. 세 상에 똑같이 더해진 값 k를 공간벡터 식에 넣으면 k 곱하기 1 + a + a제곱이 되고, 1강에서 본 것처럼 1 + a + a제곱은 0입니다. 그래서 공통 오프셋은 사라지고, 같은 이유로 영상분도 사라집니다. 결국 공간벡터는 2/3 V_dc 곱하기 S_a + a S_b + a제곱 S_c, 스위칭 함수만으로 깔끔하게 정해집니다. 이 성질 덕분에 극전압으로 계산하든 상전압으로 계산하든 결과가 같습니다. 우리 시뮬레이션 모델의 pwm 함수도 극전압을 그대로 Clarke 변환에 넣습니다. 영상분은 αβ 평면에 아예 보이지 않는 성분입니다.</aside>
+</section>

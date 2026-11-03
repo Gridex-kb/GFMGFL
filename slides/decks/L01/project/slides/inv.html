@@ -1,0 +1,27 @@
+<section id="inv" data-transition="fade" style="background:#fbfcfd;color:#45546b;font-family:'Pretendard Variable', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:36px">
+<div style="position:absolute;left:0;top:0;width:1920px;height:12px;background:linear-gradient(90deg, #2463c8 0%, #8bc22c 100%)"></div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;color:#037673">2 · 공간벡터와 Clarke</p>
+<h2 style="font-size:56px;font-weight:800;line-height:1.15;letter-spacing:-1px;color:#013364">계수 2/3을 쓰면 전력에 3/2가 붙는다 — pu에서는 사라진다</h2>
+</div>
+<table style="font-size:30px;color:#45546b">
+<tr><th style="width:28%">방식</th><th style="width:18%">앞 계수</th><th style="width:27%">벡터 길이</th><th style="width:27%">전력식</th></tr>
+<tr style="background:#e9f0f6"><td><b>진폭 불변 (이 강좌)</b></td><td>2/3</td><td>상전압 피크</td><td>(3/2) Re(v i*)</td></tr>
+<tr><td>전력 불변</td><td>√(2/3)</td><td>피크 × √(3/2)</td><td>Re(v i*)</td></tr>
+</table>
+<div style="display:flex;gap:32px">
+<div style="flex:1;background:#ffffff;border:2px solid #dae3ec;border-radius:20px;padding:32px;display:flex;flex-direction:column;gap:16px">
+<p style="font-size:26px;font-weight:700;color:#7d8ca2">SI 단위로 쓰면</p>
+<img src="/_blob/3c48a4be1c53da6315e95360e16b859a" alt="p = (3/2) Re(v i*), q = (3/2) Im(v i*)" style="width:712px;height:101px;object-fit:contain">
+</div>
+<div style="flex:1;background:#013364;border-radius:20px;padding:32px;display:flex;flex-direction:column;gap:16px">
+<p style="font-size:26px;font-weight:700;color:#b9f179">기준 S_b = (3/2) V̂_b Î_b 로 나누면</p>
+<div style="background:#ffffff;border-radius:12px;padding:12px 16px">
+<img src="/_blob/f0d33f98591ccae7aab1c3f48c2096b9" alt="P = Re(v i*), Q = Im(v i*) [pu]" style="width:707px;height:75px;object-fit:contain">
+</div>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#7d8ca2">1강 · 3상 계통의 표현과 공간벡터·dq</p>
+<p style="position:absolute;left:1592px;bottom:64px;width:200px;font-size:24px;color:#7d8ca2;text-align:right">16 / 27</p>
+<aside>교과서마다 계수가 다른 이유가 이것입니다. 2/3을 쓰는 진폭 불변 방식은 벡터 길이가 상전압 피크와 같아서 직관적이지만, 전력을 계산할 때 3/2가 붙습니다. 루트 2/3을 쓰는 전력 불변 방식은 전력식이 깔끔하지만 벡터 길이가 피크와 달라집니다. 이 강좌는 진폭 불변을 씁니다. 그리고 pu 기준 전력을 3/2 곱하기 기준 전압 피크 곱하기 기준 전류 피크로 잡으면, 즉 3상 정격 피상전력으로 잡으면 3/2가 기준에 흡수되어 pu 전력식은 그냥 Re(v i*), Im(v i*)가 됩니다. 두 장점을 다 가지는 셈입니다. 시뮬레이션 코드에서 P와 Q 계산이 단순한 곱으로 되어 있는 이유입니다. 다른 문헌의 식을 가져올 때는 어떤 계수를 쓰는지 꼭 확인하세요.</aside>
+</section>

@@ -1,0 +1,30 @@
+<section id="numbers" data-transition="fade" style="background:#fbfcfd;color:#45546b;font-family:'Pretendard Variable', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:56px">
+<div style="position:absolute;left:0;top:0;width:1920px;height:12px;background:linear-gradient(90deg, #2463c8 0%, #8bc22c 100%)"></div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;color:#037673">3 · 상태 8개와 육각형</p>
+<h2 style="font-size:56px;font-weight:800;line-height:1.15;letter-spacing:-1px;color:#013364">세 숫자의 관계를 외워 두자</h2>
+</div>
+<div style="display:flex;gap:24px;align-items:center">
+<div style="flex:1;background:#ffffff;border:2px solid #dae3ec;border-radius:20px;padding:40px;display:flex;flex-direction:column;gap:12px">
+<p style="font-size:96px;font-weight:800;color:#013364;line-height:1">2.256</p>
+<h3 style="font-size:32px;font-weight:800;color:#013364">DC 링크 V<span style="color:#2463c8">dc</span></h3>
+<p style="font-size:26px;line-height:1.45">700 V ÷ 310 V (380 V 선간의 상전압 피크)</p>
+</div>
+<x-shape kind="arrow-right" style="width:72px;height:44px;background:#8bc22c"></x-shape>
+<div style="flex:1;background:#ffffff;border:2px solid #dae3ec;border-radius:20px;padding:40px;display:flex;flex-direction:column;gap:12px">
+<p style="font-size:96px;font-weight:800;color:#2463c8;line-height:1">1.504</p>
+<h3 style="font-size:32px;font-weight:800;color:#013364">꼭짓점 × ⅔</h3>
+<p style="font-size:26px;line-height:1.45">유효 벡터 크기 = 육각형 꼭짓점 거리</p>
+</div>
+<x-shape kind="arrow-right" style="width:72px;height:44px;background:#8bc22c"></x-shape>
+<div style="flex:1;background:#013364;border-radius:20px;padding:40px;display:flex;flex-direction:column;gap:12px">
+<p style="font-size:96px;font-weight:800;color:#8bc22c;line-height:1">1.303</p>
+<h3 style="font-size:32px;font-weight:800;color:#ffffff">내접원 × cos 30°</h3>
+<p style="font-size:26px;line-height:1.45;color:#c6d4e6">왜곡 없는 최대 상전압 = V<b>dc</b>/√3</p>
+</div>
+</div>
+<p style="font-size:30px;line-height:1.45">검산: 1.303 × √3 = 2.256 → 선형 한계에서 <b style="color:#013364">선간전압 진폭 = V<span style="color:#2463c8">dc</span></b></p>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#7d8ca2">2강 · 2레벨 전압형 컨버터(VSC)</p>
+<p style="position:absolute;left:1592px;bottom:64px;width:200px;font-size:24px;color:#7d8ca2;text-align:right">19 / 28</p>
+<aside>오늘 나온 세 숫자를 한 장에 정리합니다. 2.256은 DC 링크 전압입니다. 700 V를 380 V 계통의 상전압 피크 310 V로 나눈 값입니다. 여기에 2/3을 곱하면 유효 벡터 크기이자 육각형 꼭짓점 거리 1.504가 됩니다. 여기에 cos 30도를 곱하면 내접원 반지름, 왜곡 없이 낼 수 있는 최대 상전압 1.303입니다. 검산 하나를 해 보면, 1.303에 루트3을 곱하면 2.256으로 돌아옵니다. 즉 선형 한계에서 선간전압 진폭이 정확히 DC 전압과 같습니다. 물리적으로 당연한 결과죠. 선간전압은 두 레그의 극전압 차이이고, 그 차이는 V_dc를 넘을 수 없으니까요. 그런데 계통 전압 1 pu에 비해 여유가 0.3 pu밖에 없다는 점도 기억해 두세요. 필터와 변압기의 전압강하를 이 여유로 감당해야 합니다.</aside>
+</section>

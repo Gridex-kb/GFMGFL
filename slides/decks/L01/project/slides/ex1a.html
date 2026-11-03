@@ -1,0 +1,25 @@
+<section id="ex1a" data-transition="fade" style="background:#fbfcfd;color:#45546b;font-family:'Pretendard Variable', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:32px">
+<div style="position:absolute;left:0;top:0;width:1920px;height:12px;background:linear-gradient(90deg, #2463c8 0%, #8bc22c 100%)"></div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;color:#3aa150">예제 1 · 풀이</p>
+<h2 style="font-size:56px;font-weight:800;line-height:1.15;letter-spacing:-1px;color:#013364">30° 늦은 전류 = 길이 1, 각도 −30°의 멈춘 화살표</h2>
+</div>
+<div style="display:flex;gap:40px;align-items:center">
+<div style="width:740px;display:flex;flex-direction:column;gap:28px">
+<div style="background:#ffffff;border-left:8px solid #2463c8;padding:20px 24px;border-radius:8px">
+<img src="/_blob/24f986fb57e5217938a912f1e0e66bda" alt="i = e^(j(ωt − 30°)), idq = i e^(−jωt) = e^(−j30°) = 0.866 − j0.5" style="width:684px;height:149px;object-fit:contain">
+</div>
+<table style="font-size:30px;color:#45546b">
+<tr><th style="width:50%">결과</th><th style="width:50%">값 [pu]</th></tr>
+<tr><td>i<b>d</b> = cos 30°</td><td><b style="color:#013364">0.866</b></td></tr>
+<tr><td>i<b>q</b> = −sin 30°</td><td><b style="color:#013364">−0.5</b></td></tr>
+<tr><td>P = v<b>d</b> i<b>d</b></td><td><b style="color:#013364">0.866</b></td></tr>
+<tr><td>Q = −v<b>d</b> i<b>q</b></td><td><b style="color:#013364">0.5</b> (내보냄)</td></tr>
+</table>
+</div>
+<img src="/_blob/11e9def9338b091d1f1df902fa46b908" alt="같은 전류를 abc 세 상, αβ 두 성분, dq 두 성분으로 그린 3단 그림. dq에서는 id 0.866, iq −0.5의 직류" style="width:884px;height:566px;object-fit:contain;background:#ffffff;border:2px solid #dae3ec;border-radius:16px">
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#7d8ca2">1강 · 3상 계통의 표현과 공간벡터·dq</p>
+<p style="position:absolute;left:1592px;bottom:64px;width:200px;font-size:24px;color:#7d8ca2;text-align:right">23 / 27</p>
+<aside>풀이입니다. 평형 3상 전류의 공간벡터는 2부에서 본 것처럼 진폭 곱하기 e의 j(위상)입니다. 진폭 1, 위상 ωt − 30도이니 e의 j(ωt − 30°)입니다. 여기에 e의 −jωt를 곱하면 ωt가 지워지고 e의 −j30°, 즉 0.866 − j0.5가 남습니다. 그래서 id는 0.866, iq는 −0.5입니다. 전압은 d축에 맞췄으니 vd = 1, vq = 0입니다. P는 vd id로 0.866, Q는 −vd iq로 0.5입니다. 역률 cos 30도가 0.866인 것과 맞습니다. Q가 양수이니 이 규약에서는 무효전력을 내보내는 쪽입니다. 오른쪽 그림이 같은 전류를 세 단계로 본 것입니다. 맨 위 abc는 사인파 세 개, 가운데 알파베타는 사인파 두 개, 맨 아래 dq는 직류 두 개입니다. 도입에서 물었던 PI 문제가 이렇게 풀립니다. 맨 아래 직류 두 개를 PI로 제어하면 됩니다.</aside>
+</section>

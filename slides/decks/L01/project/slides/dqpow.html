@@ -1,0 +1,29 @@
+<section id="dqpow" data-transition="fade" style="background:#fbfcfd;color:#45546b;font-family:'Pretendard Variable', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:36px">
+<div style="position:absolute;left:0;top:0;width:1920px;height:12px;background:linear-gradient(90deg, #2463c8 0%, #8bc22c 100%)"></div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;color:#037673">3 · dq와 Park</p>
+<h2 style="font-size:56px;font-weight:800;line-height:1.15;letter-spacing:-1px;color:#013364">d축을 전압에 맞추면 P와 Q가 따로 제어된다</h2>
+</div>
+<div style="display:flex;gap:48px;align-items:center">
+<div style="background:#ffffff;border-left:8px solid #2463c8;padding:28px 32px;border-radius:8px;display:flex;flex-direction:column;gap:24px">
+<img src="/_blob/a3405ae91c1673c0b26042190aa7b3c1" alt="P = vd id + vq iq, Q = vq id − vd iq" style="width:356px;height:157px;object-fit:contain">
+</div>
+<x-shape kind="arrow-right" style="width:96px;height:56px;background:#8bc22c"></x-shape>
+<div style="flex:1;background:#ffffff;border-left:8px solid #3aa150;padding:28px 32px;border-radius:8px">
+<img src="/_blob/697a95230a7565897d85c93685ff3051" alt="vq = 0 이면 P = vd id, Q = −vd iq" style="width:798px;height:73px;object-fit:contain">
+</div>
+</div>
+<div style="display:flex;gap:32px">
+<div style="flex:1;background:#013364;border-radius:20px;padding:36px;display:flex;flex-direction:column;gap:12px">
+<h3 style="font-size:40px;font-weight:800;color:#ffffff">i<span style="color:#b9f179">d</span> → 유효전력 P</h3>
+<p style="font-size:30px;line-height:1.45;color:#c6d4e6">전압과 같은 방향의 전류 성분</p>
+</div>
+<div style="flex:1;background:#013364;border-radius:20px;padding:36px;display:flex;flex-direction:column;gap:12px">
+<h3 style="font-size:40px;font-weight:800;color:#ffffff">−i<span style="color:#b9f179">q</span> → 무효전력 Q</h3>
+<p style="font-size:30px;line-height:1.45;color:#c6d4e6">전압보다 90° 늦은 전류 성분 (iq &lt; 0 이면 Q &gt; 0)</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#7d8ca2">1강 · 3상 계통의 표현과 공간벡터·dq</p>
+<p style="position:absolute;left:1592px;bottom:64px;width:200px;font-size:24px;color:#7d8ca2;text-align:right">20 / 27</p>
+<aside>pu 전력식 P = Re(v i*)에 v = vd + j vq, i = id + j iq를 넣고 풀면 왼쪽 식이 나옵니다. P는 vd id + vq iq, Q는 vq id − vd iq입니다. 칠판에서 켤레 복소수 곱을 전개해 보겠습니다. 여기서 θ를 잘 고르면 식이 아주 단순해집니다. d축을 전압 벡터 방향에 맞추면 vq가 0이 되고, P는 vd id, Q는 −vd iq가 됩니다. 즉 id를 지령하면 유효전력을, iq를 지령하면 무효전력을 따로따로 정할 수 있습니다. 부호에 주의하세요. 이 강좌의 규약에서 iq가 음수이면 전류가 전압보다 늦고, 무효전력을 내보내는 방향입니다. GFL 제어기가 PLL로 d축을 계통 전압에 맞추는 이유가 바로 이것입니다.</aside>
+</section>

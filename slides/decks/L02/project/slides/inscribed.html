@@ -1,0 +1,21 @@
+<section id="inscribed" data-transition="fade" style="background:#fbfcfd;color:#45546b;font-family:'Pretendard Variable', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:28px">
+<div style="position:absolute;left:0;top:0;width:1920px;height:12px;background:linear-gradient(90deg, #2463c8 0%, #8bc22c 100%)"></div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;color:#037673">3 · 상태 8개와 육각형</p>
+<h2 style="font-size:56px;font-weight:800;line-height:1.15;letter-spacing:-1px;color:#013364">돌아가는 원이 육각형 안에 들어가야 한다: 1.303 pu</h2>
+</div>
+<div style="display:flex;gap:48px;align-items:center">
+<img src="/_blob/b1829ae52df838c4e7ef12b9e535bf74" alt="육각형과 내접원. 꼭짓점 거리 R = 1.504, 중심에서 변까지 수직 거리 r = R cos 30° = V_dc/√3 = 1.303" style="width:640px;height:560px;object-fit:contain;background:#ffffff;border:2px solid #dae3ec;border-radius:16px">
+<div style="flex:1;display:flex;flex-direction:column;gap:24px">
+<div style="background:#ffffff;border-left:8px solid #2463c8;border-radius:8px;padding:20px 28px;align-self:flex-start">
+<img src="/_blob/ae2245812507e69761c3ab7237782880" alt="V̂max = (2/3) V_dc cos 30° = V_dc/√3 = 1.303 pu" style="width:807px;height:123px;object-fit:contain">
+</div>
+<p style="font-size:30px;line-height:1.45">평형 3상 = 길이가 일정한 <b style="color:#013364">원</b>을 그리는 벡터 (1강)</p>
+<p style="font-size:30px;line-height:1.45">평균 벡터는 육각형 안에서만 → 원의 최대 반지름 = <b style="color:#013364">내접원</b></p>
+<p style="font-size:30px;line-height:1.45">그 이상은 꼭짓점 쪽으로만 나갈 수 있어 <b style="color:#eb6834">파형이 찌그러진다</b> (과변조)</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#7d8ca2">2강 · 2레벨 전압형 컨버터(VSC)</p>
+<p style="position:absolute;left:1592px;bottom:64px;width:200px;font-size:24px;color:#7d8ca2;text-align:right">18 / 28</p>
+<aside>이제 점선 원의 정체입니다. 1강에서 평형 3상 전압은 길이가 일정한 벡터가 원을 그리며 도는 것이라고 했습니다. 평균 벡터는 육각형 안에서만 만들 수 있으니, 원 전체가 육각형 안에 들어가야 왜곡 없는 사인파가 나옵니다. 가장 큰 원은 육각형의 내접원이고, 그 반지름은 중심에서 변까지의 수직 거리입니다. 꼭짓점까지 거리 R이 2/3 V_dc이고, 수직선과 꼭짓점 방향 사이 각이 30도이니 r은 R cos 30도, 정리하면 V_dc 나누기 루트3입니다. 숫자로 1.303 pu입니다. 이 값을 넘으면 원의 일부가 육각형 밖으로 나가서, 그 구간에서는 원하는 전압을 낼 수 없고 파형이 찌그러집니다. 이것이 과변조입니다. 1.303은 강좌 내내 나오는 컨버터 전압 한계입니다.</aside>
+</section>

@@ -1,0 +1,19 @@
+<section id="ex2" data-transition="fade" style="background:#fbfcfd;color:#45546b;font-family:'Pretendard Variable', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:28px">
+<div style="position:absolute;left:0;top:0;width:1920px;height:12px;background:linear-gradient(90deg, #2463c8 0%, #8bc22c 100%)"></div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;color:#eb6834">예제 2 · 그림 읽기</p>
+<h2 style="font-size:56px;font-weight:800;line-height:1.15;letter-spacing:-1px;color:#013364">반송파 PWM: 한 주기 동안 상태는 어떤 순서로 바뀔까?</h2>
+</div>
+<div style="display:flex;gap:36px;align-items:center">
+<img src="/_blob/62556261d04afd3e5a638f3c0f2c711a" alt="삼각 반송파(0 µs 골, 100 µs 꼭짓점)와 듀티 da 0.5, db −0.2, dc −0.3 수평선, 아래 상태 띠: 111, 110, 100, 000, 100, 110, 111" style="width:1300px;height:560px;object-fit:contain;background:#ffffff;border:2px solid #dae3ec;border-radius:16px">
+<div style="flex:1;display:flex;flex-direction:column;gap:20px">
+<p style="font-size:26px;line-height:1.45"><b style="color:#013364">규칙</b> 듀티 &gt; 반송파 → S = 1</p>
+<p style="font-size:26px;line-height:1.45"><b style="color:#eb6834">Q1</b> 0, 50, 100 µs의 상태는?</p>
+<p style="font-size:26px;line-height:1.45"><b style="color:#eb6834">Q2</b> 110은 왜 이렇게 짧은가?</p>
+<p style="font-size:26px;line-height:1.45"><b style="color:#eb6834">Q3</b> 영벡터는 어디에 오는가?</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#7d8ca2">2강 · 2레벨 전압형 컨버터(VSC)</p>
+<p style="position:absolute;left:1592px;bottom:64px;width:200px;font-size:24px;color:#7d8ca2;text-align:right">25 / 28</p>
+<aside>두 번째 예제는 우리 시뮬레이션 모델의 PWM을 그림으로 읽는 것입니다. 모델은 상마다 듀티를 마이너스 1에서 1 사이로 정하고, 삼각 반송파와 비교해서 듀티가 반송파보다 크면 위 스위치를 켭니다. 반송파는 0 마이크로초에서 골, 100에서 꼭짓점입니다. 듀티가 0.5, 마이너스 0.2, 마이너스 0.3일 때, 세 질문에 답해 보세요. 1번, 0 마이크로초에서는 반송파가 마이너스 1이라 세 듀티가 모두 더 크므로 111, 영벡터입니다. 50에서는 반송파가 0이라 a만 1, 즉 100, V1입니다. 100에서는 반송파가 1이라 모두 0, 000입니다. 2번, 110은 반송파가 마이너스 0.3에서 마이너스 0.2 사이에 있는 동안만 나옵니다. b와 c의 듀티가 가까워서 짧습니다. 이 짧은 V2가 평균 벡터를 V1에서 살짝 60도 쪽으로 기울입니다. 3번, 영벡터 111과 000이 반주기의 양 끝에 대칭으로 옵니다. 이 대칭 배치가 12강 변조의 주제입니다.</aside>
+</section>

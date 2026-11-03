@@ -1,0 +1,23 @@
+<section id="park" data-transition="fade" style="background:#fbfcfd;color:#45546b;font-family:'Pretendard Variable', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:32px">
+<div style="position:absolute;left:0;top:0;width:1920px;height:12px;background:linear-gradient(90deg, #2463c8 0%, #8bc22c 100%)"></div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;color:#037673">3 · dq와 Park</p>
+<h2 style="font-size:56px;font-weight:800;line-height:1.15;letter-spacing:-1px;color:#013364">Park 변환: 벡터와 함께 θ만큼 돌아서 본다</h2>
+</div>
+<div style="display:flex;gap:56px;align-items:center">
+<img src="/_blob/253c5cb6249ec4af274c16fd270919b4" alt="정지 αβ축 위에 각도 θ만큼 돌아간 d축과 q축, 공간벡터 v를 d축 성분 vd와 q축 성분 vq로 나눈 그림" style="width:600px;height:470px;object-fit:contain;background:#ffffff;border:2px solid #dae3ec;border-radius:16px">
+<div style="flex:1;display:flex;flex-direction:column;gap:32px">
+<div style="background:#ffffff;border-left:8px solid #2463c8;padding:24px 28px;border-radius:8px;align-self:flex-start">
+<img src="/_blob/060695f52c971d200727168912d84946" alt="xdq = xd + j xq = x e^(−jθ)" style="width:517px;height:73px;object-fit:contain">
+</div>
+<div style="display:flex;gap:16px;align-items:center"><img src="/_blob/b98ce867ae761be555fbe88ae018d921" alt="e^(−jθ)" style="width:91px;height:64px;object-fit:contain"><p style="font-size:30px;line-height:1.45">곱하기 = 좌표축을 θ만큼 돌려서 보기</p></div>
+<p style="font-size:30px;line-height:1.45">θ = ωt 이면 회전 벡터가 <b style="color:#013364">멈춘 화살표</b>, 즉 직류 두 개가 된다</p>
+<div style="background:#e9f0f6;border-radius:16px;padding:24px 28px">
+<p style="font-size:30px;line-height:1.45;color:#013364"><b>θ는 어디서 오나?</b>  GFL: PLL이 계통에서 <b style="color:#2463c8">측정</b> · GFM: 제어기가 스스로 <b style="color:#3aa150">생성</b></p>
+</div>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#7d8ca2">1강 · 3상 계통의 표현과 공간벡터·dq</p>
+<p style="position:absolute;left:1592px;bottom:64px;width:200px;font-size:24px;color:#7d8ca2;text-align:right">18 / 27</p>
+<aside>Park 변환은 공간벡터에 e의 −jθ를 곱하는 것입니다. 복소수에 e의 −jθ를 곱하면 −θ만큼 돌아갑니다. 벡터를 거꾸로 돌리는 것은 좌표축을 θ만큼 돌려서 보는 것과 같습니다. 그림처럼 θ만큼 돌아간 d축과 q축에서 벡터를 읽으면 그것이 vd와 vq입니다. 이제 θ를 ωt로, 즉 벡터와 같은 속도로 돌리면 V햇 e의 jωt 곱하기 e의 −jωt는 V햇, 상수가 됩니다. 60 Hz 사인파 세 개가 직류 두 개가 된 것입니다. 이제 PI 제어기로 오차 없이 제어할 수 있습니다. 그런데 중요한 질문이 남습니다. 이 θ는 어디서 옵니까? 이것이 강좌 전체를 가르는 질문입니다. GFL은 PLL로 계통 전압에서 θ를 측정해서 따라가고, GFM은 제어기가 θ를 스스로 만들어 냅니다. 6강과 7강에서 각각 자세히 다룹니다.</aside>
+</section>

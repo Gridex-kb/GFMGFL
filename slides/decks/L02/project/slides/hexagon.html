@@ -1,0 +1,23 @@
+<section id="hexagon" data-transition="fade" style="background:#fbfcfd;color:#45546b;font-family:'Pretendard Variable', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:28px">
+<div style="position:absolute;left:0;top:0;width:1920px;height:12px;background:linear-gradient(90deg, #2463c8 0%, #8bc22c 100%)"></div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;color:#037673">3 · 상태 8개와 육각형</p>
+<h2 style="font-size:56px;font-weight:800;line-height:1.15;letter-spacing:-1px;color:#013364">유효 벡터 6개는 육각형, 영벡터 2개는 원점</h2>
+</div>
+<div style="display:flex;gap:48px;align-items:center">
+<img src="/_blob/b277e18b61fb9b7bb6bd687bacc2e55f" alt="αβ 평면의 전압 벡터 육각형: V1(100) 0°부터 V6(101) 300°까지 크기 1.504의 유효 벡터 6개, 원점의 영벡터 V0·V7, 반지름 1.303의 점선 내접원" style="width:660px;height:603px;object-fit:contain;background:#ffffff;border:2px solid #dae3ec;border-radius:16px">
+<table style="font-size:26px;color:#45546b">
+<tr><th style="width:24%">상태 S<span>a</span>S<span>b</span>S<span>c</span></th><th style="width:16%">벡터</th><th style="width:18%">각도</th><th style="width:20%">크기</th><th style="width:22%">영상분 v<span>n0</span></th></tr>
+<tr><td>100</td><td>V1</td><td>0°</td><td>1.504</td><td>−0.376</td></tr>
+<tr><td>110</td><td>V2</td><td>60°</td><td>1.504</td><td>+0.376</td></tr>
+<tr><td>010</td><td>V3</td><td>120°</td><td>1.504</td><td>−0.376</td></tr>
+<tr><td>011</td><td>V4</td><td>180°</td><td>1.504</td><td>+0.376</td></tr>
+<tr><td>001</td><td>V5</td><td>240°</td><td>1.504</td><td>−0.376</td></tr>
+<tr><td>101</td><td>V6</td><td>300°</td><td>1.504</td><td>+0.376</td></tr>
+<tr style="background:#e9f0f6"><td>000 / 111</td><td>V0 / V7</td><td>—</td><td>0</td><td>−1.128 / +1.128</td></tr>
+</table>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#7d8ca2">2강 · 2레벨 전압형 컨버터(VSC)</p>
+<p style="position:absolute;left:1592px;bottom:64px;width:200px;font-size:24px;color:#7d8ca2;text-align:right">16 / 28</p>
+<aside>여덟 상태를 모두 계산하면 이 그림이 됩니다. 100은 a상만 위에 붙은 상태로, 2/3 V_dc 곱하기 1, 즉 1.504 pu가 0도 방향입니다. 이것을 V1이라고 부릅니다. 110은 1 + a인데, 1 + a는 마이너스 a제곱, 즉 e의 j60도입니다. 그래서 V2는 60도 방향입니다. 이렇게 60도씩 돌아가며 유효 벡터 여섯 개가 정확히 정육각형의 꼭짓점에 놓입니다. 000과 111은 세 단자가 모두 같은 레일에 붙은 상태라 선간전압이 0이고, 공간벡터도 0입니다. 영벡터 두 개가 원점에 겹칩니다. 오른쪽 표의 마지막 열을 보세요. αβ 벡터는 같아도 영상분은 다릅니다. 특히 두 영벡터는 영상분이 마이너스 1.128과 플러스 1.128로 정반대입니다. 둘 중 어느 쪽을 얼마나 쓰느냐가 12강에서 다룰 SVPWM의 핵심입니다. 점선 원은 잠시 뒤에 설명합니다.</aside>
+</section>

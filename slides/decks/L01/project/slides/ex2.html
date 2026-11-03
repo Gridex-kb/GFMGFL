@@ -1,0 +1,19 @@
+<section id="ex2" data-transition="fade" style="background:#fbfcfd;color:#45546b;font-family:'Pretendard Variable', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:32px">
+<div style="position:absolute;left:0;top:0;width:1920px;height:12px;background:linear-gradient(90deg, #2463c8 0%, #8bc22c 100%)"></div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;color:#eb6834">예제 2 · 그림 읽기</p>
+<h2 style="font-size:56px;font-weight:800;line-height:1.15;letter-spacing:-1px;color:#013364">전압이 꺼지고 위상이 뛰면 vd, vq는 어떻게 움직일까?</h2>
+</div>
+<img src="/_blob/f462d3a981ede078accfffed28e905c4" alt="θ = ωt로 고정했을 때, 25 ms에 진폭이 1에서 0.7로 떨어지면 vd만 0.7로 내려가고, 50 ms에 위상이 30도 뛰면 vd 0.61, vq 0.35로 나뉜다" style="width:1500px;height:420px;object-fit:contain;background:#ffffff;border:2px solid #dae3ec;border-radius:16px">
+<div style="display:flex;gap:32px">
+<div style="flex:1;background:#e9f0f6;border-radius:20px;padding:28px 32px">
+<p style="font-size:30px;line-height:1.45"><b style="color:#013364">25 ms 진폭 1 → 0.7</b>: 화살표 길이만 줄어 vd = 0.7, vq = 0</p>
+</div>
+<div style="flex:1;background:#e9f0f6;border-radius:20px;padding:28px 32px">
+<p style="font-size:30px;line-height:1.45"><b style="color:#013364">50 ms 위상 +30°</b>: 0.7∠30° → vd = 0.61, vq = 0.35</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#7d8ca2">1강 · 3상 계통의 표현과 공간벡터·dq</p>
+<p style="position:absolute;left:1592px;bottom:64px;width:200px;font-size:24px;color:#7d8ca2;text-align:right">24 / 27</p>
+<aside>두 번째 예제는 그림 읽기입니다. Park 각도는 ωt로 고정해 두고, 계통 전압에 두 가지 사건을 줍니다. 25 밀리초에 진폭이 1에서 0.7로 떨어지고, 50 밀리초에 위상이 30도 앞으로 뜁니다. 그림을 보기 전에 먼저 예측해 보세요. vd와 vq가 각각 어떻게 될까요? 진폭만 바뀌면 화살표가 같은 방향으로 짧아질 뿐이니 vd만 0.7로 내려가고 vq는 0 그대로입니다. 위상이 뛰면 화살표가 d축에서 30도 벗어나므로 0.7 cos 30° = 0.61, 0.7 sin 30° = 0.35로 나뉩니다. 이것이 dq의 강력한 점입니다. 크기 변화와 위상 변화가 한눈에 구분됩니다. 실제 GFL에서는 PLL이 이 vq를 0으로 되돌리도록 θ를 고칩니다. 그것이 6강의 내용입니다.</aside>
+</section>

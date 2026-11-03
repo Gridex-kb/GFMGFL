@@ -1,0 +1,23 @@
+<section id="code" data-transition="fade" style="background:#fbfcfd;color:#45546b;font-family:'Pretendard Variable', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:32px">
+<div style="position:absolute;left:0;top:0;width:1920px;height:12px;background:linear-gradient(90deg, #2463c8 0%, #8bc22c 100%)"></div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;color:#037673">4 · 예제와 실습 · Python</p>
+<h2 style="font-size:56px;font-weight:800;line-height:1.15;letter-spacing:-1px;color:#013364">상태 8개 표를 열 줄로 만든다</h2>
+</div>
+<div style="display:flex;gap:36px;align-items:stretch">
+<div style="flex:1;background:#0f233f;border-radius:20px;padding:36px 40px">
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:26px;line-height:1.6;color:#e6edf5">import itertools, numpy as np<br>V_dc = 2.256<br>a = np.exp(2j*np.pi/3)<br>for s in itertools.product((1, 0), repeat=3):<br>    vp  = (2*np.array(s) - 1)*V_dc/2   <span style="color:#8fa6c4"># 극전압</span><br>    vn0 = vp.mean()                    <span style="color:#8fa6c4"># 영상분</span><br>    vph = vp - vn0                     <span style="color:#8fa6c4"># 상전압</span><br>    v   = 2/3*(vp[0] + a*vp[1] + a**2*vp[2])<br>    print(s, vn0, vph[0], abs(v), np.angle(v, deg=True))</p>
+</div>
+<div style="width:560px;display:flex;flex-direction:column;gap:20px">
+<div style="background:#013364;border-radius:20px;padding:28px 32px;display:flex;flex-direction:column;gap:8px">
+<p style="font-size:24px;font-weight:700;color:#b9f179">출력 (일부)</p>
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:24px;line-height:1.6;color:#ffffff">110  +0.376  +0.752  1.504   60°<br>100  −0.376  +1.504  1.504    0°<br>011  +0.376  −1.504  1.504  180°<br>000  −1.128   0.000  0.000    —</p>
+</div>
+<p style="font-size:26px;line-height:1.45"><b style="color:#013364">해 보기 1</b>  vph로 공간벡터를 다시 계산해 v와 같은지 assert</p>
+<p style="font-size:26px;line-height:1.45"><b style="color:#013364">해 보기 2</b>  선간전압 vp[0] − vp[1]이 {−2.256, 0, +2.256}뿐인지 확인</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#7d8ca2">2강 · 2레벨 전압형 컨버터(VSC)</p>
+<p style="position:absolute;left:1592px;bottom:64px;width:200px;font-size:24px;color:#7d8ca2;text-align:right">26 / 28</p>
+<aside>이제 Python으로 여덟 상태 표를 만들어 봅니다. itertools.product로 세 레그의 0과 1 조합 여덟 개를 돌면서, 극전압, 영상분, 상전압, 공간벡터를 차례로 계산합니다. 극전압은 2S − 1에 V_dc/2를 곱한 것, 영상분은 평균, 상전압은 그 차이, 공간벡터는 1강의 정의 그대로입니다. 출력의 일부를 오른쪽에 적었습니다. 예제 1에서 손으로 구한 110의 값이 그대로 나옵니다. 해 볼 것 두 가지입니다. 첫째, 극전압 대신 상전압으로 공간벡터를 계산해서 같은 값이 나오는지 assert로 확인해 보세요. 영상분이 αβ에 안 보인다는 것을 코드로 증명하는 겁니다. 둘째, 선간전압이 세 값뿐인지 확인해 보세요. 교재 C03 실습에는 시뮬레이션 모델의 pwm 함수를 직접 호출하는 실습 2도 있습니다.</aside>
+</section>
